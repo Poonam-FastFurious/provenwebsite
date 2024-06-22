@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.fixed-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20; /* Make sure it's above other content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a shadow */
+}
+@media (min-width: 575px) and (max-width: 767px) {
+  .hide-on-medium {
+    display: none;
+  }
+}
+
+@media (min-width: 575px) and (max-width: 767px) {
+  .menudemo {
+    display: none;
+  }
+}
