@@ -113,7 +113,7 @@ function HomeBestSelling() {
                       prices={product.price}
                       ratings={product.rating}
                       ID={product._id}
-                    />{" "}
+                    />
                     <ProductLatestCard
                       name={product.name}
                       images={product.thumbnail}

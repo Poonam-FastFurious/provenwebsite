@@ -9,6 +9,7 @@ function ShopPageCard({
   title = "Domestic RO",
   offprice = "4150 ₹",
   images,
+  ID,
 }) {
   const [quickview, setQuickview] = useState(false);
   const truncateText = (text, maxLength) => {
@@ -25,7 +26,10 @@ function ShopPageCard({
           <div className="gi-product-inner transition-all duration-[0.3s] ease-in-out cursor-pointer flex flex-col overflow-hidden border-[1px] border-solid border-[#eee] rounded-[5px]">
             <div className="gi-pro-image-outer transition-all duration-[0.3s] ease delay-[0s] z-[11] relative">
               <div className="gi-pro-image overflow-hidden">
-                <Link className="image relative block overflow-hidden pointer-events-none transition-all duration-[0.3s] ease-in-out">
+                <Link
+                  to={`/Product/${ID}`}
+                  className="image relative block overflow-hidden pointer-events-none transition-all duration-[0.3s] ease-in-out"
+                >
                   <span className="label veg max-[991px]:hidden">
                     <span className="dot"></span>
                   </span>
@@ -70,14 +74,14 @@ function ShopPageCard({
               </div>
             </div>
             <div className="gi-pro-content h-full p-[20px] relative z-[10] flex flex-col text-left border-t-[1px] border-solid border-[#eee]">
-              <Link to="/details">
+              <Link to={`/Product/${ID}`}>
                 <h6 className="gi-pro-stitle mb-[10px] font-normal text-[#999] text-[13px] capitalize font-manrope tracking-[0.01rem] leading-[1.2]">
                   {title}
                 </h6>
               </Link>
               <h5 className="gi-pro-title h-full mb-[10px] text-[16px] tracking-[0.01rem] font-normal leading-[1.2]">
                 <Link
-                  to="/details"
+                  to={`/Product/${ID}`}
                   className="text-[#4b5966]  text-[14px] leading-[22px] font-normal tracking-[0.85px] capitalize font-Poppins hidden"
                 >
                   {truncateText(description, 60)}

@@ -21,6 +21,7 @@ import ContactUs from "../../Pages/ContactUs/ContactUs";
 import Suport from "../../Pages/Suport/Suport";
 import ProtectedRoute from "../Protectedroutes/ProtectedRoutes";
 import RouteProtected from "../Protectedroutes/RoutesProtected";
+import Ordersuccess from "../Specific/Ordersuccess";
 
 function HomeRouter() {
   return (
@@ -46,6 +47,12 @@ function HomeRouter() {
           <Route
             path="/Cart"
             element={<RouteProtected element={<Cart />} redirectTo="/login" />}
+          />
+          <Route
+            path="/success"
+            element={
+              <RouteProtected element={<Ordersuccess />} redirectTo="/login" />
+            }
           />
           <Route
             path="/checkout"

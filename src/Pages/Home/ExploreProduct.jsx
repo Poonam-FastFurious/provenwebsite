@@ -51,6 +51,7 @@ function ExploreProduct() {
                   title={product.name}
                   offprice={product.discount}
                   images={product.thumbnail}
+                  ID={product._id}
                 />
               ))}
               {products.map((product, index) => (
@@ -62,17 +63,7 @@ function ExploreProduct() {
                   title={product.name}
                   offprice={product.discount}
                   images={product.thumbnail}
-                />
-              ))}
-              {products.map((product, index) => (
-                <ShopPageCard
-                  key={index}
-                  tag={product.tag}
-                  price={product.price}
-                  description={product.description}
-                  title={product.name}
-                  offprice={product.discount}
-                  images={product.thumbnail}
+                  ID={product._id}
                 />
               ))}
             </div>

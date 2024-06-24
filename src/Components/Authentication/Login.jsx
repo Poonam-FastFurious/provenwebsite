@@ -36,7 +36,7 @@ function Login() {
       }
 
       // Store user data in localStorage and cookies
-      localStorage.setItem("userid", JSON.stringify(data.data.user._id));
+      localStorage.setItem("userid", data.data.user._id);
       localStorage.setItem("user", JSON.stringify(data.data.user.fullName));
       localStorage.setItem("accessToken", data.data.accessToken);
       localStorage.setItem("refreshToken", data.data.refreshToken);

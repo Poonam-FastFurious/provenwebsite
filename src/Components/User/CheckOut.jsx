@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+// import { Baseurl } from "../../confige";
 
 const AccordionItem = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -36,6 +37,184 @@ const AccordionItem = ({ title, children }) => {
 };
 
 const CheckoutSection = () => {
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [formData, setFormData] = useState({
+    address: "",
+    totalAmount: 0, // Dynamic total amount
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  useEffect(() => {
+    // Assuming you have retrieved the products from the cart page and set them in localStorage
+    const storedProducts = JSON.parse(localStorage.getItem("cartProducts"));
+
+    if (storedProducts && storedProducts.length > 0) {
+      setProducts(storedProducts);
+    }
+  }, []);
+  useEffect(() => {
+    const totalAmount = products.reduce(
+      (total, product) => total + product.quantity * product.price,
+      0
+    );
+    setFormData((prevData) => ({ ...prevData, totalAmount }));
+  }, [products]);
+  const createOrder = async () => {
+    const customerId = localStorage.getItem("userid"); // Retrieve customer ID from localStorage
+
+    if (!customerId) {
+      alert("Customer ID not found in local storage.");
+      return null;
+    }
+
+    try {
+      const orderData = {
+        customerId,
+        products: products.map((product) => ({
+          product: product.product._id, // Change this line
+          quantity: product.quantity,
+          price: product.product.price, // Also, adjust this line to access the price from the nested product object
+        })),
+        totalAmount: formData.totalAmount,
+        shippingInfo: {
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          postalCode: formData.postalCode,
+          country: "Country",
+          phoneNumber: formData.phoneNumber,
+        },
+        paymentInfo: {
+          method: "Credit Card",
+          status: "Pending",
+        },
+      };
+
+      const response = await fetch("http://localhost:3000/api/v1/order/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(
+          `Failed to create order: ${response.status} ${errorText}`
+        );
+      }
+
+      const responseData = await response.json();
+      console.log("Order created successfully:", responseData);
+      console.log("Order created successfullyid:", responseData.data._id);
+      return responseData.data._id;
+    } catch (error) {
+      console.error("Error creating order:", error);
+      alert(`Error creating order: ${error.message}`);
+    }
+  };
+  const paymentHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Retrieve user ID from local storage
+      const userId = localStorage.getItem("userid");
+      if (!userId) {
+        throw new Error("User ID not found in local storage");
+      }
+
+      const orderId = await createOrder();
+      const response = await fetch(
+        "http://localhost:3000/api/v1/payments/create",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            orderId,
+            amount: formData.totalAmount,
+            currency: "INR",
+            paymentMethod: "Credit Card",
+            userId, // Include userId in the request body
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to create payment");
+      }
+
+      const order = await response.json();
+      console.log(order);
+
+      // Initialize Razorpay
+      var options = {
+        key: "rzp_test_apOsHc9PArNQm9",
+        amount: formData.totalAmount * 100,
+        currency: "INR",
+        name: "Acme Corp",
+        description: "Test Transaction",
+        image: "https://example.com/your_logo",
+        order_id: order.payment.razorpayOrderId,
+        handler: async function (response) {
+          const body = {
+            orderId: order.payment.razorpayOrderId,
+            razorpayPaymentId: response.razorpay_payment_id,
+            razorpayOrderId: response.razorpay_order_id,
+            razorpaySignature: response.razorpay_signature,
+          };
+          // Verify payment on backend
+          const validateRes = await fetch(
+            "http://localhost:3000/api/v1/payments/verify",
+            {
+              method: "POST",
+              body: JSON.stringify(body),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const jsonRes = await validateRes.json();
+          console.log(jsonRes);
+          if (validateRes.ok) {
+            // Payment verification successful
+            localStorage.removeItem("cartProducts");
+            localStorage.setItem("orderId", jsonRes.payment.order);
+            navigate("/success");
+            // Navigate to home or success page
+          } else {
+            // Payment verification failed
+            navigate("/payment-failed"); // Navigate to failure page
+          }
+        },
+        prefill: {
+          name: "Proven Ro",
+          email: "provenro@gmailo.com",
+          contact: "9876543210",
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      var rzp1 = new window.Razorpay(options);
+      rzp1.open();
+    } catch (error) {
+      console.error("Error:", error.message); // Print error message to console
+    }
+  };
   return (
     <>
       <section className="gi-checkout-section py-10 text-sm max-md:py-8 ">
@@ -45,34 +224,23 @@ const CheckoutSection = () => {
             <div className="gi-checkout-rightside min-[992px]:w-[50%]  w-full">
               <AccordionItem title="Product summary">
                 <div className="gi-checkout-summary">
-                  <div className="flex justify-between items-center mb-2.5">
-                    <span className="text-left text-gray-500 text-sm leading-6">
-                      Sub-Total
-                    </span>
-                    <span className="text-right text-gray-700 text-base leading-6 font-medium">
-                      Rs80.00
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between items-center mb-2.5">
-                    <span className="text-left text-gray-500 text-sm leading-6">
-                      Delivery Charges
-                    </span>
-                    <span className="text-right text-gray-700 text-base leading-6 font-medium">
-                      Rs80.00
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between items-center mb-2.5">
-                    <span className="text-left text-gray-500 text-sm leading-6">
-                      Coupon Discount
-                    </span>
-                    <span className="text-right text-gray-700 text-base leading-6 font-medium">
-                      <Link className="gi-checkout-coupan text-green-500 text-sm font-medium">
-                        Apply Coupon
-                      </Link>
-                    </span>
-                  </div>
+                  {products.map((pro, index) => (
+                    <div
+                      className="flex justify-between items-center mb-2.5"
+                      key={index}
+                    >
+                      <span className="text-left text-gray-500 text-sm leading-6">
+                        <img
+                          className="h-20 w-20 dark:hidden"
+                          src={pro.product.image}
+                          alt="imac image"
+                        />
+                      </span>
+                      <span className="text-right text-gray-700 text-base leading-6 font-medium">
+                        {pro.quantity}=QUANTITY
+                      </span>
+                    </div>
+                  ))}
 
                   <div className="gi-checkout-coupan-content flex justify-between items-center mb-2.5">
                     <form
@@ -102,11 +270,9 @@ const CheckoutSection = () => {
 
                   <div className="gi-checkout-summary-total border-t border-solid border-gray-300 pt-4.5 mb-0 mt-4 flex justify-between items-center">
                     <span className="text-left text-base font-semibold text-gray-700 tracking-normal font-manrope">
-                      Total Amount
+                      Total Items
                     </span>
-                    <span className="text-right text-base font-semibold text-gray-700 font-manrope">
-                      Rs80.00
-                    </span>
+                    <span className="text-right text-base font-semibold text-gray-700 font-manrope"></span>
                   </div>
                 </div>
               </AccordionItem>
@@ -169,44 +335,51 @@ const CheckoutSection = () => {
                     order.
                   </div>
                   <form action="#">
-                    <span className="gi-del-option ">
-                      <span className="w-1/2">
+                    <div className="gi-del-option">
+                      <div className="w-1/2">
                         <span className="gi-del-opt-head text-gray-700 text-base font-medium leading-none tracking-normal mb-2.5 block">
                           Home Address
                         </span>
                         <input
                           type="radio"
-                          id="Address"
-                          name="radio-group-address"
+                          id="homeAddress"
+                          name="address"
+                          value="homeAddress"
+                          checked={formData.address === "homeAddress"}
+                          onChange={handleInputChange}
                         />
                         <label
-                          htmlFor="Address"
+                          htmlFor="homeAddress"
                           className="relative pl-6 cursor-pointer leading-4 inline-block text-gray-500 tracking-normal mb-3.5"
                         >
-                          noida secto 62
+                          Noida Sector 62
                         </label>
-                      </span>
-                      <span className="w-1/2">
+                      </div>
+                      <div className="w-1/2">
                         <span className="gi-del-opt-head text-gray-700 text-base font-medium leading-none tracking-normal mb-2.5 block">
-                          Office address
+                          Office Address
                         </span>
                         <input
                           type="radio"
-                          id="adress2"
-                          name="radio-group-address"
+                          id="officeAddress"
+                          name="address"
+                          value="officeAddress"
+                          checked={formData.address === "officeAddress"}
+                          onChange={handleInputChange}
                         />
                         <label
-                          htmlFor="adress2"
+                          htmlFor="officeAddress"
                           className="relative pl-6 cursor-pointer leading-4 inline-block text-gray-500 tracking-normal mb-3.5"
                         >
-                          noida secto 62
+                          Noida Sector 62
                         </label>
-                      </span>
-                    </span>
+                      </div>
+                    </div>
                   </form>
                 </div>
               </AccordionItem>
             </div>
+
             <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full  ml-4  ">
               <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm   sm:p-6 ">
                 <p className="text-xl font-semibold text-gray-900 ">
@@ -247,7 +420,7 @@ const CheckoutSection = () => {
                         Tax
                       </dt>
                       <dd className="text-base font-medium text-gray-900 ">
-                        Rs799
+                        ₹799
                       </dd>
                     </dl>
                   </div>
@@ -257,17 +430,17 @@ const CheckoutSection = () => {
                       Total Payable
                     </dt>
                     <dd className="text-base font-bold text-gray-900 ">
-                      Rs8,191.00
+                      ₹{formData.totalAmount}
                     </dd>
                   </dl>
                 </div>
 
-                <Link
-                  href="#"
+                <button
+                  onClick={paymentHandler}
                   className="flex w-full items-center justify-center rounded-lg bg-AFPPrimary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300"
                 >
                   Place Order
-                </Link>
+                </button>
 
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-sm font-normal text-gray-500 00">
