@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Baseurl } from "../../confige";
 function Ordersuccess() {
   const [order, setOrder] = useState({});
   useEffect(() => {
@@ -8,7 +8,7 @@ function Ordersuccess() {
 
     // Fetch data only if 'id' is available
     if (storedId) {
-      fetch(`http://localhost:3000/api/v1/order/singleorder/${storedId}`)
+      fetch(`${Baseurl}/api/v1/order/singleorder/${storedId}`)
         .then((response) => response.json())
         .then((data) => {
           // Assuming data.data is the actual order object

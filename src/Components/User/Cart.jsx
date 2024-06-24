@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Baseurl } from "../../confige";
 
 function Cart() {
   const [cart, setCart] = useState(null);
@@ -13,16 +14,13 @@ function Cart() {
       try {
         setIsLoading(true);
         const token = localStorage.getItem("accessToken");
-        const response = await fetch(
-          "https://provenbackend.onrender.com/api/v1/cart/product",
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch(Baseurl + "/api/v1/cart/product", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
 
         if (!response.ok) {
           const errorData = await response.json();
@@ -104,17 +102,14 @@ function Cart() {
   const removeProduct = async (productId) => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch(
-        "https://provenbackend.onrender.com/api/v1/cart/removeproduct",
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ productId }),
-        }
-      );
+      const response = await fetch(Baseurl + "/api/v1/cart/removeproduct", {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId }),
+      });
 
       if (!response.ok) {
         const errorData = await response.json();

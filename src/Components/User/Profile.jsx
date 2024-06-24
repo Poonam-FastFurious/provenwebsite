@@ -16,6 +16,7 @@ import { IoPersonOutline, IoSettingsOutline } from "react-icons/io5";
 import { useState } from "react";
 import { CiMobile4 } from "react-icons/ci";
 import axios from "axios";
+import { Baseurl } from "../../confige";
 function Profile() {
   const [activeTab, setActiveTab] = useState("DashBoard");
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -58,20 +59,17 @@ function Profile() {
         return;
       }
 
-      const response = await fetch(
-        "https://provenbackend.onrender.com/api/v1/user/change-password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-          body: JSON.stringify({
-            oldPassword,
-            newPassword,
-          }),
-        }
-      );
+      const response = await fetch(Baseurl + "/api/v1/user/change-password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          oldPassword,
+          newPassword,
+        }),
+      });
 
       const data = await response.json();
 
@@ -97,7 +95,7 @@ function Profile() {
       }
 
       const response = await axios.post(
-        "https://provenbackend.onrender.com/api/v1/user/logout",
+        Baseurl + "/api/v1/user/logout",
         { id: userId },
         {
           headers: {

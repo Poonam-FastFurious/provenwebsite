@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Baseurl } from "../../confige";
 // import { Baseurl } from "../../confige";
 
 const AccordionItem = ({ title, children }) => {
@@ -97,7 +98,7 @@ const CheckoutSection = () => {
         },
       };
 
-      const response = await fetch("http://localhost:3000/api/v1/order/add", {
+      const response = await fetch(Baseurl + "/api/v1/order/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -132,22 +133,19 @@ const CheckoutSection = () => {
       }
 
       const orderId = await createOrder();
-      const response = await fetch(
-        "http://localhost:3000/api/v1/payments/create",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            orderId,
-            amount: formData.totalAmount,
-            currency: "INR",
-            paymentMethod: "Credit Card",
-            userId, // Include userId in the request body
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(Baseurl + "/api/v1/payments/create", {
+        method: "POST",
+        body: JSON.stringify({
+          orderId,
+          amount: formData.totalAmount,
+          currency: "INR",
+          paymentMethod: "Credit Card",
+          userId, // Include userId in the request body
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -174,16 +172,13 @@ const CheckoutSection = () => {
             razorpaySignature: response.razorpay_signature,
           };
           // Verify payment on backend
-          const validateRes = await fetch(
-            "http://localhost:3000/api/v1/payments/verify",
-            {
-              method: "POST",
-              body: JSON.stringify(body),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
+          const validateRes = await fetch(Baseurl + "/api/v1/payments/verify", {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
           const jsonRes = await validateRes.json();
           console.log(jsonRes);
           if (validateRes.ok) {
