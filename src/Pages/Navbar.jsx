@@ -1,7 +1,39 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Baseurl } from "../confige";
+const AccordionItem = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState(true);
 
+  return (
+    <div className="border border-solid border-gray-300 mb-6 p-4 rounded-md">
+      <button
+        className="w-full text-left flex items-center justify-between  text-gray-700"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span>{title}</span>
+        <svg
+          className={`w-3 h-3 transform transition-transform ${
+            isOpen ? "rotate-0" : "rotate-180"
+          }`}
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M9 5 5 1 1 5"
+          />
+        </svg>
+      </button>
+      {isOpen && <div className="mt-4">{children}</div>}
+    </div>
+  );
+};
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [category, setCategory] = useState([]);
@@ -265,7 +297,7 @@ function Navbar() {
                     </div>
 
                     <Link
-                      to="wishlist"
+                      to="/wishlist"
                       className="gi-header-btn gi-wish-toggle mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center whitespace-nowrap"
                       title="Wishlist"
                     >
@@ -300,7 +332,7 @@ function Navbar() {
                   <div className="gi-header-bottons flex justify-end">
                     <div className="right-icons flex flex-row">
                       <Link
-                        to="/login"
+                        to="/profile"
                         className="gi-header-btn gi-header-user mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center"
                       >
                         <div className="header-icon relative flex">
@@ -316,12 +348,12 @@ function Navbar() {
                           <i className="fi-rr-heart text-[24px] leading-[17px]"></i>
                         </div>
                         <span className="gi-header-count gi-wishlist-count w-[15px] h-[15px] text-[#fff] flex items-center justify-center rounded-[50%] text-[11px] absolute top-[-2px] right-[-6px] opacity-[0.8]">
-                          3
+                          4
                         </span>
                       </Link>
 
                       <Link
-                        to="#"
+                        to="/Cart"
                         className="gi-header-btn gi-cart-toggle mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center"
                       >
                         <div className="header-icon relative flex">
@@ -393,12 +425,20 @@ function Navbar() {
         <div className="py-4 overflow-y-auto">
           <ul>
             <li className="dropdown relative">
-              <Link
-                to="#"
-                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
-              >
-                Water Purifier
-              </Link>
+              <AccordionItem title="Product summary">
+                <Link
+                  to="#"
+                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  Water Purifier
+                </Link>
+                <Link
+                  to="#"
+                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  Water Purifier
+                </Link>
+              </AccordionItem>
             </li>
             <li className="relative">
               <Link

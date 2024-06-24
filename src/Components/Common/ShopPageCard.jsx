@@ -78,7 +78,7 @@ function ShopPageCard({
               <h5 className="gi-pro-title h-full mb-[10px] text-[16px] tracking-[0.01rem] font-normal leading-[1.2]">
                 <Link
                   to="/details"
-                  className="text-[#4b5966] block text-[14px] leading-[22px] font-normal tracking-[0.85px] capitalize font-Poppins"
+                  className="text-[#4b5966]  text-[14px] leading-[22px] font-normal tracking-[0.85px] capitalize font-Poppins hidden"
                 >
                   {truncateText(description, 60)}
                 </Link>

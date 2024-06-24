@@ -31,3 +31,7 @@
     display: none;
   }
 }
+
+.testimonial-slider .slick-slide {
+  padding: 0px 10px;
+}

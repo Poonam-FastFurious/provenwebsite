@@ -40,7 +40,7 @@ function ProductLatestCard({ name, images, prices, ratings, ID }) {
                   <i className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
                 </Link>
                 <Link
-                  to={`/${ID}`}
+                  to={`/Product/${ID}`}
                   className="gi-btn-group quickview transition-all duration-[0.3s] ease-in-out h-[30px] w-[30px] my-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] modal-toggle"
                 >
                   <i className="fi-rr-eye transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
@@ -71,14 +71,14 @@ function ProductLatestCard({ name, images, prices, ratings, ID }) {
           </div>
           <hr />
           <div className="gi-pro-content h-full p-[20px] relative z-[10] flex flex-col text-left">
-            <Link to={`/${ID}`}>
+            <Link to={`/Product/${ID}`}>
               <h6 className="gi-pro-stitle mb-[10px] font-normal text-[#999] text-[13px] leading-[1.2] capitalize">
                 category
               </h6>
             </Link>
             <h5 className="gi-pro-title h-full mb-[10px] text-[16px]">
               <Link
-                to={`/${ID}`}
+                to={`/Product/${ID}`}
                 className="block text-[14px] leading-[22px] font-normal text-[#4b5966] tracking-[0.85px] capitalize font-Poppins hover:text-[#5caf90]"
               >
                 {name}

@@ -1,22 +1,39 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-alice-carousel";
 import HomeSmallBanner from "../Home/HomeSmallBanner";
 
 function AboutUs() {
   return (
     <>
-      <div className="relative overflow-hidden h-[450px]">
-        <img
-          className="absolute left-0 top-0 w-full h-auto opacity-"
-          src="https://s3-alpha-sig.figma.com/img/13fc/f39f/f95ccedc77bb0dea110ccc66fa4aef90?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Q60Gv1mWwBdR9oVZ6v0F9ksGci40OxeZ7wzO-yAI7REIWMFSpONIEvMnJUrtQE4m7QMQOAEzgRrKgmGU5HbLfdM2mtKYUy9mJfHoeEKidbZqaSj6eHGXaylwLx8ka46xKh3eJzHRlwpR4cL1eT7pUapEnzuckgaj4RldQO2LdUmkOGTHIyAolssmgnoA~sbGUUPSb38SggdXLuOVGej2vkknNsTf-bWPPPC8R7i1wChgFMXyairXeYjsr1GS78ypRxlZXushxXP0ssJ3KMdeG9zlyN527b6V5u1K2~QHGZFqpshi58gHSVwqbIj-RJa56Tc9zcbnTeaK44MfF6TwCg__"
-          alt=""
-        />
-        <div className="absolute left-0 top-0 w-full h-full bg-gray-500 opacity-70"></div>
-        <div className="relative z-10 h-[250px] flex  items-center">
-          <h1 className="  text-black text-4xl  absolute top-[250px] left-[250px]">
-            About Proven
-          </h1>
+      <div
+        className="relative overflow-hidden  bg-cover bg-no-repeat p-12 text-center"
+        style={{
+          "background-image":
+            "url('https://s3-alpha-sig.figma.com/img/c927/1695/feb959553a8e29013ee7a58abe2d7d52?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Z7xbT3Y8D0Q4x0TsM~F3oR3Sr3KAOryvNeKqnHWiTUkAlPkGFT~xoFvr9nGQB9~jcwfKP0B5dOcqUZ-QEYzuAeISpDwyHJ0cJjNd6Bs0xgCfNZGUpCrMV575-MGBFcGhabTFKTtbOMWE6Noa0PnV2qEYjfI50Z4pGc2WQ4iMofBWR-nppXF~WjZPRYyqb2Fbg126~YrMNVx48wF6UhEHHvULaYoNOHZ-xkWBi6KKuVmsbaPJx1PpyQzTxPZk6WRF7Ee9~A1KISITSWe4y7iVbSptYc0na8nIfvRJhnb9242IFlLHQml1QTCTB~Xretj8vsCfnhdu0Yy3PrLgy9DVhg__')",
+          height: "400px",
+        }}
+      >
+        <div
+          className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
+          style={{ "background-color": "rgba(0, 0, 0, 0.6)" }}
+        >
+          <div className="flex h-full items-center justify-center">
+            <div className="text-white">
+              <h2 className="mb-4 text-4xl font-semibold">Aboutus</h2>
+              <h4 className="mb-6 text-xl font-semibold">Subheading</h4>
+              <button
+                type="button"
+                className="rounded border-2 border-neutral-50 px-7 pb-[8px] pt-[10px] text-sm font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                data-twe-ripple-init
+                data-twe-ripple-color="light"
+              >
+                Call to action
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
       <section className="gi-facts-section py-[40px] max-[767px]:py-[30px] ">
         <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
           <div className="flex flex-wrap w-full my-[-12px]">
@@ -57,6 +74,83 @@ function AboutUs() {
         </div>
       </section>
       <HomeSmallBanner />
+
+      <div className="container bg-gray-200 mx-auto w-full h-full">
+        <div className="relative wrap overflow-hidden p-10 h-full">
+          <div
+            className="border-2-2 absolute border-opacity-20 border-gray-700 h-full border"
+            style={{ left: "50%" }}
+          ></div>
+
+          <div className="mb-8 flex justify-between items-center w-full right-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+              <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
+            </div>
+            <div className="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <h3 className="mb-3 font-bold text-gray-800 text-xl">
+                Lorem Ipsum
+              </h3>
+              <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+              <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
+            </div>
+            <div className="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <h3 className="mb-3 font-bold text-white text-xl">Lorem Ipsum</h3>
+              <p className="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-8 flex justify-between items-center w-full right-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+              <h1 className="mx-auto font-semibold text-lg text-white">3</h1>
+            </div>
+            <div className="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <h3 className="mb-3 font-bold text-gray-800 text-xl">
+                Lorem Ipsum
+              </h3>
+              <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+              <h1 className="mx-auto text-white font-semibold text-lg">4</h1>
+            </div>
+            <div className="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <h3 className="mb-3 font-bold text-white text-xl">Lorem Ipsum</h3>
+              <p className="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
       <section className="bg-white  w-[82%] mx-auto pt-8">
         <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
           <div className="grid grid-cols-2 gap-4 mt-8 ">

@@ -1,7 +1,41 @@
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import { FaGift, FaWhatsapp } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
 import { TbPhoneCall } from "react-icons/tb";
+import { Link } from "react-router-dom";
+const AccordionItem = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState(true);
 
+  return (
+    <div className="border border-solid border-gray-300 mb-6 p-4 rounded-md">
+      <button
+        className="w-full text-left flex items-center justify-between  text-gray-700"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span>{title}</span>
+        <svg
+          className={`w-3 h-3 transform transition-transform ${
+            isOpen ? "rotate-0" : "rotate-180"
+          }`}
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M9 5 5 1 1 5"
+          />
+        </svg>
+      </button>
+      {isOpen && <div className="mt-4">{children}</div>}
+    </div>
+  );
+};
 function Footermobile() {
   return (
     <>
@@ -52,8 +86,11 @@ function Footermobile() {
             </span>
           </button>
           <button
+            data-drawer-target="drawer-navigation"
+            data-drawer-show="drawer-navigation"
+            aria-controls="drawer-navigation"
+            className="  flex-col items-center justify-center px-5 hover:bg-gray-50  group gi-site-menu-icon transition-all duration-[0.3s] ease-in-out  flex text-[#4b5966]"
             type="button"
-            className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  group"
           >
             <IoIosMenu className=" text-2xl" />
 
@@ -61,6 +98,106 @@ function Footermobile() {
               Menu
             </span>
           </button>
+        </div>
+        <div
+          id="drawer-navigation"
+          className="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-64 "
+          tabIndex="-1"
+          aria-labelledby="drawer-navigation-label"
+        >
+          <h5
+            id="drawer-navigation-label"
+            className="text-base font-semibold text-gray-500 uppercase "
+          >
+            <img
+              className=" w-20"
+              src="https://provenonline.in/wp-content/uploads/2023/04/Untitled-design-6.png"
+              alt=""
+            />
+          </h5>
+          <button
+            type="button"
+            data-drawer-hide="drawer-navigation"
+            aria-controls="drawer-navigation"
+            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center "
+          >
+            <svg
+              className="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span className="sr-only">Close menu</span>
+          </button>
+          <div className="py-4 overflow-y-auto">
+            <ul>
+              <li className="dropdown relative">
+                <AccordionItem title="Product summary">
+                  <Link
+                    to="#"
+                    className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                  >
+                    Water Purifier
+                  </Link>
+                  <Link
+                    to="#"
+                    className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                  >
+                    Water Purifier
+                  </Link>
+                </AccordionItem>
+              </li>
+              <li className="relative">
+                <Link
+                  to="#"
+                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  Book Demo
+                </Link>
+              </li>
+              <li className="relative">
+                <Link
+                  to="#"
+                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  Spare Parts
+                </Link>
+              </li>
+              <li className="dropdown ">
+                <Link
+                  to="#"
+                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li className="relative">
+                <Link
+                  to="#"
+                  className="dropdown-arrow p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  Certifications
+                </Link>
+              </li>
+              <li className="relative pt-2">
+                <Link
+                  to="#"
+                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  Book Demo
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>

@@ -19,6 +19,8 @@ import OrderDetails from "../User/OrderDetails";
 import Orderlist from "../User/Orderlist";
 import ContactUs from "../../Pages/ContactUs/ContactUs";
 import Suport from "../../Pages/Suport/Suport";
+import ProtectedRoute from "../Protectedroutes/ProtectedRoutes";
+import RouteProtected from "../Protectedroutes/RoutesProtected";
 
 function HomeRouter() {
   return (
@@ -32,14 +34,38 @@ function HomeRouter() {
           <Route path="/Book-Demo" element={<BookDemo />} />
           <Route path="/Water-purifier" element={<Shop />} />
           <Route path="/Water-purifier" element={<Shop />} />
-          <Route path="/:id" element={<ProductDetails />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/SignUp" element={<Signup />} />
-          <Route path="/Cart" element={<Cart />} />
-          <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/Product/:id" element={<ProductDetails />} />
+          <Route
+            path="/login"
+            element={<ProtectedRoute element={<Login />} redirectTo="/" />}
+          />
+          <Route
+            path="/register"
+            element={<ProtectedRoute element={<Signup />} redirectTo="/" />}
+          />
+          <Route
+            path="/Cart"
+            element={<RouteProtected element={<Cart />} redirectTo="/login" />}
+          />
+          <Route
+            path="/checkout"
+            element={
+              <RouteProtected element={<CheckOut />} redirectTo="/login" />
+            }
+          />
           <Route path="/ordertracking" element={<Ordertracking />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/wishlist" element={<Wishlist />} />
+          <Route
+            path="/profile"
+            element={
+              <RouteProtected element={<Profile />} redirectTo="/login" />
+            }
+          />
+          <Route
+            path="/wishlist"
+            element={
+              <RouteProtected element={<Wishlist />} redirectTo="/login" />
+            }
+          />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/myorder/orderDetails" element={<OrderDetails />} />
           <Route path="/myorder" element={<Orderlist />} />

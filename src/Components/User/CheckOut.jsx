@@ -13,8 +13,8 @@ const AccordionItem = ({ title, children }) => {
       >
         <span>{title}</span>
         <svg
-          className={`w-3 h-3 transform transition-transform Rs{
-            isOpen ? "rotate-180" : "rotate-0"
+          className={`w-3 h-3 transform transition-transform ${
+            isOpen ? "rotate-0" : "rotate-180"
           }`}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@ const CheckoutSection = () => {
           <div className="flex flex-wrap w-full">
             <div className="gi-checkout-rightside min-[992px]:w-[50%]  w-full">
               <AccordionItem title="Product summary">
-                {/* <div className="gi-checkout-summary">
+                <div className="gi-checkout-summary">
                   <div className="flex justify-between items-center mb-2.5">
                     <span className="text-left text-gray-500 text-sm leading-6">
                       Sub-Total
@@ -108,7 +108,7 @@ const CheckoutSection = () => {
                       Rs80.00
                     </span>
                   </div>
-                </div> */}
+                </div>
               </AccordionItem>
 
               <AccordionItem title="Delivery Method">

@@ -6,8 +6,10 @@ import HomeBestSelling from "./HomeBestSelling";
 import HomeCategory from "./HomeCategory";
 import HomeSecondBanner from "./HomeSecondBanner";
 import HomeSmallBanner from "./HomeSmallBanner";
+import Newservice from "./Newservice";
 import Serviceoffer from "./Serviceoffer";
 import Services from "./Services";
+import Testimonial from "./Testimonial";
 import TrendindItem from "./TrendindItem";
 
 function Home() {
@@ -21,7 +23,9 @@ function Home() {
       <HomeSmallBanner />
       <Services />
       <TrendindItem />
+      <Testimonial />
       <Certificate />
+      <Newservice />
       <Serviceoffer />
     </>
   );
