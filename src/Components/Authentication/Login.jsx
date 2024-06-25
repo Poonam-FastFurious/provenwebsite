@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
 
 function Login() {
-  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [formData, setFormData] = useState({
@@ -57,7 +56,7 @@ function Login() {
       setFormData({ email: "", password: "" });
 
       setTimeout(() => {
-        navigate("/");
+        window.location.href = "/";
       }, 2000);
     } catch (error) {
       console.error("Login error:", error); // Handle error here

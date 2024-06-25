@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Baseurl } from "../confige";
+import axios from "axios";
 const AccordionItem = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -61,6 +62,42 @@ function Navbar() {
         console.error("Error fetching images:", error);
       });
   }, []);
+  const handleLogout = async () => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const userId = localStorage.getItem("userid");
+
+      if (!accessToken || !userId) {
+        throw new Error("User information not found in local storage.");
+      }
+
+      const response = await axios.post(
+        Baseurl + "/api/v1/user/logout",
+        { id: userId },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("userid");
+        localStorage.removeItem("user"); // Remove user info if stored
+        localStorage.removeItem("refreshToken");
+
+        document.cookie = `accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        document.cookie = `refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        // Redirect to login page or perform any other actions
+        window.location.href = "/login"; // Example: redirect to login page
+      } else {
+        console.error("Failed to log out:", response);
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
   return (
     <>
       <header
@@ -265,6 +302,7 @@ function Navbar() {
                         </li>
                         <li>
                           <Link
+                            onClick={handleLogout}
                             className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
                             to="#"
                           >
