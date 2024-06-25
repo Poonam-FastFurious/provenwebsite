@@ -27,7 +27,9 @@ function ProductDetails() {
   const slider1 = useRef(null);
   const slider2 = useRef(null);
   const [products, setProducts] = useState([]);
+  const [images, setImages] = useState([]);
   const { id } = useParams();
+  const [wishlist, setWishlist] = useState([]);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -39,8 +41,9 @@ function ProductDetails() {
         }
         const data = await response.json();
         setProducts(data.data);
+        setImages([data.data.thumbnail, data.data.image]);
       } catch (err) {
-        throw new Error("data not fetch ", err);
+        console.error("Error fetching data: ", err);
       }
     };
 
@@ -65,16 +68,6 @@ function ProductDetails() {
     ref: (slider) => setNav2(slider),
     beforeChange: (current, next) => slider1.current.slickGoTo(next),
   };
-
-  const images = [
-    "https://provenonline.in/wp-content/uploads/2023/01/610r5cGRijL._SL1500_.jpg",
-    "https://provenonline.in/wp-content/uploads/2023/01/610r5cGRijL._SL1500_.jpg",
-    "https://provenonline.in/wp-content/uploads/2023/01/610r5cGRijL._SL1500_.jpg",
-    "https://provenonline.in/wp-content/uploads/2023/01/610r5cGRijL._SL1500_.jpg",
-    "https://provenonline.in/wp-content/uploads/2023/01/610r5cGRijL._SL1500_.jpg",
-  ];
-
-  const [wishlist, setWishlist] = useState([]);
 
   const addToWishlist = (productId) => {
     setWishlist((prevWishlist) => [...prevWishlist, productId]);
@@ -298,6 +291,7 @@ function ProductDetails() {
                               </strong>
                               RO FEATURE
                             </li>
+
                             <li className="my-[10px] text-[#777] text-[14px] list-circle">
                               <strong className="font-semibold">
                                 Dimensions :
@@ -348,9 +342,9 @@ function ProductDetails() {
                             </button>
                             <input
                               className="qty-input"
-                              type="text"
                               name="ms_qtybtn"
                               value={1}
+                              readOnly
                             />
                             <button
                               type="button"
@@ -419,13 +413,13 @@ function ProductDetails() {
                               className="tab-single-pane"
                             >
                               <div className="gi-single-pro-tab-desc">
-                                <p className="mb-[15px] text-[14px] tracking-[0] text-[#777] leading-[28px] font-normal font-Poppins">
+                                <div className="mb-[15px] text-[14px] tracking-[0] text-[#777] leading-[28px] font-normal font-Poppins">
                                   <div
                                     dangerouslySetInnerHTML={{
                                       __html: products.description,
                                     }}
                                   />
-                                </p>
+                                </div>
                                 <ul className="mb-[15px] pl-[24px]">
                                   <li className="list-disc text-[15px] mb-[4px] text-[#777]">
                                     Any Product types that You want - Simple,
@@ -663,12 +657,10 @@ function ProductDetails() {
                           <MdOutlineCurrencyRupee />
                           {products.price}
                         </div>
-                        <p>
-                          <span className="  text-AFPPrimaryDark   ">
-                            Free delivery
-                          </span>
-                          Monday, 20 May
-                        </p>
+                        <span className="  text-AFPPrimaryDark   ">
+                          Free delivery
+                        </span>
+                        Monday, 20 May
                         <div className=" flex mt-2  items-center w-full gap-4">
                           <CiLocationOn className="  " />
                           <span className=" text-AFPPrimaryDark font-[12px]   leading-3.5">
@@ -1000,9 +992,9 @@ function ProductDetails() {
                           <div className="qty-plus-minus w-[100px] h-[43px] border-[1px] border-solid border-[#eee] overflow-hidden relative flex items-center justify-between rounded-[3px]">
                             <input
                               className="qty-input w-[40px] h-[50px] text-[#777] text-[14px] text-center outline-[0]"
-                              type="text"
                               name="gi_qtybtn"
-                              value="1"
+                              value={1}
+                              readOnly
                             />
                           </div>
                           <div className="gi-quickview-cart">
