@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { Baseurl } from "../../confige";
+import { ToastContainer, toast } from "react-toastify";
 /* eslint-disable react/prop-types */
 function ShopPageCard({
   tag = "New",
@@ -19,8 +21,42 @@ function ShopPageCard({
   const toggleQuickview = () => {
     setQuickview(!quickview);
   };
+  const addToCart = async (productId) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const response = await fetch(Baseurl + "/api/v1/cart/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ productId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Product added to cart:", data);
+      toast.success("Product added to cart!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      toast.error("Failed to add product to cart.");
+    }
+  };
   return (
     <>
+      <ToastContainer />
       <div className="min-[1200px]:w-[25%] min-[992px]:w-[33.33%] min-[768px]:w-[50%] min-[576px]:w-[50%] max-[420px]:w-full px-[12px] gi-product-box max-[575px]:w-[50%] max-[575px]:mx-auto pro-gl-content ">
         <div className="gi-product-content pb-[24px] h-full flex">
           <div className="gi-product-inner transition-all duration-[0.3s] ease-in-out cursor-pointer flex flex-col overflow-hidden border-[1px] border-solid border-[#eee] rounded-[5px]">
@@ -68,7 +104,10 @@ function ShopPageCard({
                     title="Add To Cart"
                     className=" add-to-cart transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-AFPPrimary"
                   >
-                    <i className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
+                    <i
+                      className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
+                      onClick={() => addToCart(ID)}
+                    ></i>
                   </Link>
                 </div>
               </div>

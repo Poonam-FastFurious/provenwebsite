@@ -235,7 +235,7 @@ function Cart() {
                               className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 "
                               placeholder=""
                               value={item.quantity}
-                              required
+                              readOnly
                             />
                             <button
                               type="button"
@@ -275,7 +275,7 @@ function Cart() {
                             to="#"
                             className="text-base font-medium text-gray-900 hover:underline "
                           >
-                            {item.product.description}
+                            {item.product.name}
                           </Link>
 
                           <div className="flex items-center gap-4">

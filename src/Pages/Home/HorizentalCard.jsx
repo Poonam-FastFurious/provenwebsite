@@ -1,9 +1,39 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import { Baseurl } from "../../confige";
+import { ToastContainer, toast } from "react-toastify";
 
-function HorizentalCard({ name, price, images, discount }) {
+function HorizentalCard({ name, price, images, discount, ID }) {
+  const addToCart = async (productId) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const response = await fetch(Baseurl + "/api/v1/cart/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ productId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Product added to cart:", data);
+      toast.success("Product added to cart!", {
+        position: "top-right",
+        autoClose: 1000,
+      });
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      toast.error("Failed to add product to cart.");
+    }
+  };
   return (
     <>
+      <ToastContainer />
       <div className="gi-all-product-block px-[12px]">
         <div className="w-full gi-all-product-block px-[12px]">
           <div className="gi-all-product-inner mr-[1px] p-[15px] flex flex-wrap items-center bg-[#fff] border-[1px] border-solid border-[#eee] overflow-hidden relative">
@@ -51,7 +81,10 @@ function HorizentalCard({ name, price, images, discount }) {
                 className="add-to-cart w-[30px] h-[30px] absolute bottom-[10px] right-[10px] bg-AFPPrimaryLight border-[1px] border-solid border-[#eee] flex items-center justify-center "
                 title="Add To Cart"
               >
-                <i className="fi-rr-shopping-basket text-[18px] text-[#777] leading-[0]"></i>
+                <i
+                  className="fi-rr-shopping-basket text-[18px] text-[#777] leading-[0]"
+                  onClick={() => addToCart(ID)}
+                ></i>
               </Link>
             </div>
           </div>

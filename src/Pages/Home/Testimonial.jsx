@@ -39,7 +39,7 @@ function Testimonial() {
   };
   return (
     <>
-      <div className="lg:p-12 p-4 font-[sans-serif]  bg-AFPPrimary">
+      <div className="lg:p-12 p-4 font-[sans-serif]  bg-AFPPrimaryLight">
         <div className="max-w-7xl max-md:max-w-lg mx-auto">
           <div className="grid md:grid-cols-3 gap-4">
             <div className="col-span-4">

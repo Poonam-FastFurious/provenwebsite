@@ -35,18 +35,8 @@ const AccordionItem = ({ title, children }) => {
   );
 };
 function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [category, setCategory] = useState([]);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-  }, []);
+
   const [hoveredImage, setHoveredImage] = useState(
     "https://provenonline.in/wp-content/uploads/2023/01/612vp1CNrKL._SL1500_.jpg"
   );
@@ -74,18 +64,6 @@ function Navbar() {
   return (
     <>
       <header
-        style={
-          isScrolled
-            ? {
-                position: "fixed",
-                top: "0",
-                left: "0",
-                width: "100%",
-                zIndex: "1000",
-                boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.35)",
-              }
-            : {}
-        }
         className={`gi-header bg-[#fff] z-[14] max-[1024px]:z-[16] relative  border`}
       >
         <div className="gi-header-bottom py-[12px] max-[1024px]:py-[10px] max-[1024px]:border-b-[1px] border-solid border-[#eee]">

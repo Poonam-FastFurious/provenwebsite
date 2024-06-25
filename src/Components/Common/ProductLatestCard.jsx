@@ -1,10 +1,40 @@
 /* eslint-disable react/prop-types */
 
 import { Link } from "react-router-dom";
+import { Baseurl } from "../../confige";
+import { ToastContainer, toast } from "react-toastify";
 
 function ProductLatestCard({ name, images, prices, ratings, ID }) {
+  const addToCart = async (productId) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const response = await fetch(Baseurl + "/api/v1/cart/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ productId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Product added to cart:", data);
+      toast.success("Product added to cart!", {
+        position: "top-right",
+        autoClose: 1000,
+      });
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      toast.error("Failed to add product to cart.");
+    }
+  };
   return (
-    <div>
+    <>
+      <ToastContainer />
       <div className="gi-product-content h-full  wi-[50px]  px-[12px] flex">
         <div className="gi-product-inner transition-all duration-[0.3s] ease-in-out cursor-pointer flex flex-col overflow-hidden border-[1px] border-solid border-[#eee]">
           <div className="gi-pro-image-outer transition-all duration-[0.3s] delay-[0s] ease z-[11] relative">
@@ -39,34 +69,18 @@ function ProductLatestCard({ name, images, prices, ratings, ID }) {
                 >
                   <i className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
                 </Link>
-                <Link
-                  to={`/Product/${ID}`}
-                  className="gi-btn-group quickview transition-all duration-[0.3s] ease-in-out h-[30px] w-[30px] my-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] modal-toggle"
-                >
-                  <i className="fi-rr-eye transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
-                </Link>
 
                 <Link
                   to="#"
                   title="Add To Cart"
                   className="gi-btn-group add-to-cart transition-all duration-[0.3s] ease-in-out h-[30px] w-[30px] my-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee]"
                 >
-                  <i className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
+                  <i
+                    className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
+                    onClick={() => addToCart(ID)}
+                  ></i>
                 </Link>
               </div>
-              {/* <div className="gi-pro-option transition-all w-full duration-[0.3s] ease-in-out absolute z-[9] left-[0] right-[0] bottom-[-10px] max-[991px]:opacity-[1] max-[991px]:bottom-[0] flex justify-between my-[0] pt-[20px] px-[20px] mx-auto ">
-                <ul className="flex">
-                  <li className="bg-[#01f1f1] transition-all duration-[0.3s] ease-in-out h-[15px] w-[15px] mx-[2px] flex items-center justify-center border-[1px] border-solid border-[#eee]">
-                    <Link to="#" className="bg-[#01f1f1]"></Link>
-                  </li>
-                  <li className="bg-[#383838] transition-all duration-[0.3s] ease-in-out h-[15px] w-[15px] mx-[2px] flex items-center justify-center border-[1px] border-solid border-[#eee]">
-                    <Link to="#" className="bg-[#383838]"></Link>
-                  </li>
-                  <li className="bg-[#e8c2ff] transition-all duration-[0.3s] ease-in-out h-[15px] w-[15px] mx-[2px] flex items-center justify-center border-[1px] border-solid border-[#eee]">
-                    <Link to="#" className="bg-[#e8c2ff]"></Link>
-                  </li>
-                </ul>
-              </div> */}
             </div>
           </div>
           <hr />
@@ -106,7 +120,7 @@ function ProductLatestCard({ name, images, prices, ratings, ID }) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

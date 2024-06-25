@@ -79,6 +79,7 @@ function TrendingItem() {
                     price={product.price}
                     discount={product.discount}
                     images={product.thumbnail}
+                    ID={product._id}
                   />
                 ))}
               </Slider>
@@ -104,6 +105,7 @@ function TrendingItem() {
                     price={product.price}
                     discount={product.discount}
                     images={product.thumbnail}
+                    ID={product._id}
                   />
                 ))}
               </Slider>
@@ -129,6 +131,7 @@ function TrendingItem() {
                     price={product.price}
                     discount={product.discount}
                     images={product.thumbnail}
+                    ID={product._id}
                   />
                 ))}
               </Slider>
