@@ -114,7 +114,7 @@ function Navbar() {
                                         onMouseOut={handleMouseOut}
                                       >
                                         <Link
-                                          to="#"
+                                          to={`/Productctegory/${cat.categoriesTitle}`}
                                           className="text-[#777] capitalize leading-[30px] font-normal text-[13px] block py-[5px] border-0 h-auto hover:text-[#5caf90]"
                                         >
                                           <span className=" text-md">
@@ -136,7 +136,7 @@ function Navbar() {
                                         onMouseOut={handleMouseOut}
                                       >
                                         <Link
-                                          to="#"
+                                          to={`/Productctegory/${cat.categoriesTitle}`}
                                           className="text-[#777] capitalize leading-[30px] font-normal text-[13px] block py-[5px] border-0 h-auto hover:text-[#5caf90]"
                                         >
                                           <span className=" text-md">
@@ -158,7 +158,7 @@ function Navbar() {
                                         onMouseOut={handleMouseOut}
                                       >
                                         <Link
-                                          to="#"
+                                          to={`/Productctegory/${cat.categoriesTitle}`}
                                           className="text-[#777] capitalize leading-[30px] font-normal text-[13px] block py-[5px] border-0 h-auto hover:text-[#5caf90]"
                                         >
                                           <span className=" text-md">
@@ -183,7 +183,7 @@ function Navbar() {
                             </li>
                             <li className="dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px]">
                               <Link
-                                to="/Water-purifier"
+                                to="/Spare_Parts"
                                 className="dropdown-arrow relative transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
                               >
                                 Spare Parts
@@ -319,7 +319,7 @@ function Navbar() {
                       </Link>
 
                       <Link
-                        to="wishlist"
+                        to="/wishlist"
                         className="gi-header-btn gi-wish-toggle mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center"
                       >
                         <div className="header-icon relative flex">

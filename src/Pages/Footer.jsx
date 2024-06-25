@@ -37,7 +37,7 @@ function Footer() {
                       <ul className="align-itegi-center">
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
-                            to="shop-left-sidebar-col-3"
+                            to="/Productctegory/Domestic Ro"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Domestic Ro
@@ -45,7 +45,7 @@ function Footer() {
                         </li>
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
-                            to="shop-banner-left-sidebar-col-3"
+                            to="/Productctegory/Commercial Ro"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Commercial Ro
@@ -53,7 +53,7 @@ function Footer() {
                         </li>
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
-                            to="shop-full-width-col-5"
+                            to="/Productctegory/Industrial Ro"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Industrial Ro
@@ -61,7 +61,7 @@ function Footer() {
                         </li>
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
-                            to="shop-list-left-sidebar"
+                            to="/Productctegory/Hydrogen Water"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Hydrogen Water
@@ -69,7 +69,7 @@ function Footer() {
                         </li>
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
-                            to="shop-list-full-col-2"
+                            to="/Productctegory/Copper Water"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Copper Water
@@ -77,7 +77,7 @@ function Footer() {
                         </li>
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center">
                           <Link
-                            to="shop-banner-right-sidebar-col-4"
+                            to="/Spare_Parts"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Spare Parts
@@ -99,7 +99,7 @@ function Footer() {
                       <ul className="align-itegi-center">
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
-                            to="/about-us"
+                            to="/AboutUs"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             About us
@@ -107,7 +107,7 @@ function Footer() {
                         </li>
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
-                            to="/track-order"
+                            to="/ordertracking"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Delivery
