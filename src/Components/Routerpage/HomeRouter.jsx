@@ -77,7 +77,10 @@ function HomeRouter() {
             }
           />
           <Route path="/AboutUs" element={<AboutUs />} />
-          <Route path="/myorder/orderDetails" element={<OrderDetails />} />
+          <Route
+            path="/profile/myorder/orderDetails"
+            element={<OrderDetails />}
+          />
           <Route path="/myorder" element={<Orderlist />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/Support" element={<Suport />} />

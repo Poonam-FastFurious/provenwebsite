@@ -78,7 +78,7 @@ function Orderlist() {
                       Cancel order
                     </button>
                     <Link
-                      to="orderDetails"
+                      to="myorder/orderDetails"
                       className="w-full inline-flex justify-center rounded-lg  border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100   lg:w-auto"
                     >
                       View details

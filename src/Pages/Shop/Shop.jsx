@@ -187,6 +187,7 @@ function Shop() {
                             title={product.name}
                             offprice={product.discount}
                             images={product.thumbnail}
+                            ID={product._id}
                           />
                         ))}
                       </>
@@ -201,6 +202,7 @@ function Shop() {
                             title={product.name}
                             offprice={product.discount}
                             images={product.thumbnail}
+                            ID={product._id}
                           />
                         ))}
                       </>

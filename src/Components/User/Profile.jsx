@@ -13,7 +13,7 @@ import { VscListUnordered } from "react-icons/vsc";
 import { FaRegAddressCard } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { IoPersonOutline, IoSettingsOutline } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiMobile4 } from "react-icons/ci";
 import axios from "axios";
 import { Baseurl } from "../../confige";
@@ -26,6 +26,32 @@ function Profile() {
   const [retypeNewPassword, setRetypeNewPassword] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [userData, setUserData] = useState({});
+  // Retrieve user ID from local storage
+  useEffect(() => {
+    const userId = localStorage.getItem("userid");
+    if (!userId) {
+      console.error("User ID not found in local storage");
+      return;
+    }
+
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(
+          `https://provenbackend.onrender.com/api/v1/user/getuser?id=${userId}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const result = await response.json();
+        setUserData(result.data.user); // Access user data from the response
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
   const handleAddAddressClick = () => {
     setIsaddaddressvisible(true);
   };
@@ -157,8 +183,10 @@ function Profile() {
                       </div>
 
                       <div className="mt-4">
-                        <h5 className="text-lg font-semibold">Rahul demo</h5>
-                        <p className="text-slate-400">rahul@gmail.com</p>
+                        <h5 className="text-lg font-semibold">
+                          {userData.fullName}
+                        </h5>
+                        <p className="text-slate-400">{userData.email}</p>
                       </div>
                     </div>
                   </div>
@@ -394,7 +422,7 @@ function Profile() {
                           <div className="px-4 py-2 font-semibold">
                             First Name
                           </div>
-                          <div className="px-4 py-2">Rahul</div>
+                          <div className="px-4 py-2"> {userData.fullName}</div>
                         </div>
                         <div className="grid grid-cols-2">
                           <div className="px-4 py-2 font-semibold">
@@ -402,31 +430,19 @@ function Profile() {
                           </div>
                           <div className="px-4 py-2">Raj</div>
                         </div>
-                        <div className="grid grid-cols-2">
-                          <div className="px-4 py-2 font-semibold">Gender</div>
-                          <div className="px-4 py-2">Male</div>
-                        </div>
+
                         <div className="grid grid-cols-2">
                           <div className="px-4 py-2 font-semibold">
                             Contact No.
                           </div>
                           <div className="px-4 py-2">+9876543210</div>
                         </div>
-                        <div className="grid grid-cols-2">
-                          <div className="px-4 py-2 font-semibold">Address</div>
-                          <div className="px-4 py-2">Noida sector 62</div>
-                        </div>
-                        <div className="grid grid-cols-2">
-                          <div className="px-4 py-2 font-semibold">
-                            Billing Address
-                          </div>
-                          <div className="px-4 py-2">Noida sector 62</div>
-                        </div>
+
                         <div className="grid grid-cols-2">
                           <div className="px-4 py-2 font-semibold">Email.</div>
                           <div className="px-4 py-2">
                             <Link className="" to="mailto:jane@example.com">
-                              rahul@gmail.com
+                              {userData.email}
                             </Link>
                           </div>
                         </div>

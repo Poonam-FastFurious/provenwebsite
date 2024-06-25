@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Baseurl } from "../../confige";
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-alice-carousel";
+import { Link } from "react-router-dom";
 
 /* eslint-disable react/no-unescaped-entities */
 function Newproducts() {
@@ -213,12 +213,12 @@ function Newproducts() {
                     <div className="min-[768px]:w-[58.33%] px-[12px] max-[767px]:px-[0] w-full max-[767px]:mt-[30px]">
                       <div className="quickview-pro-content">
                         <h5 className="gi-quick-title">
-                          <a
-                            href="product-left-sidebar.html"
+                          <Link
+                            to="product-left-sidebar.html"
                             className="mb-[15px] block text-[#4b5966] text-[22px] leading-[1.5] font-medium max-[991px]:text-[20px]"
                           >
                             Proven Ro
-                          </a>
+                          </Link>
                         </h5>
                         <div className="gi-quickview-rating flex mb-[15px]">
                           <i className="gicon gi-star fill text-[14px] text-[#f27d0c] mr-[5px]"></i>
@@ -245,40 +245,40 @@ function Newproducts() {
                             <div className="gi-pro-variation-content">
                               <ul className="gi-opt-size">
                                 <li className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90] active">
-                                  <a
-                                    href="javascript:void(0)"
+                                  <Link
+                                    to="#"
                                     className="gi-opt-sz text-[#777]"
                                     data-tooltip="Small"
                                   >
                                     250g
-                                  </a>
+                                  </Link>
                                 </li>
                                 <li className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]">
-                                  <a
-                                    href="javascript:void(0)"
+                                  <Link
+                                    to="#"
                                     className="gi-opt-sz text-[#777]"
                                     data-tooltip="Medium"
                                   >
                                     500g
-                                  </a>
+                                  </Link>
                                 </li>
                                 <li className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]">
-                                  <a
-                                    href="javascript:void(0)"
+                                  <Link
+                                    to="#"
                                     className="gi-opt-sz text-[#777]"
                                     data-tooltip="Large"
                                   >
                                     1kg
-                                  </a>
+                                  </Link>
                                 </li>
                                 <li className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]">
-                                  <a
-                                    href="javascript:void(0)"
+                                  <Link
+                                    to="#"
                                     className="gi-opt-sz text-[#777]"
                                     data-tooltip="Extra Large"
                                   >
                                     2kg
-                                  </a>
+                                  </Link>
                                 </li>
                               </ul>
                             </div>
