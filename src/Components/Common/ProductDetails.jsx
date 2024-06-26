@@ -18,8 +18,9 @@ import ReactImageMagnify from "react-image-magnify";
 
 import { Link, useParams } from "react-router-dom";
 import { Baseurl } from "../../confige";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import handleAddToWishlist from "../Utilty/wishlistUtils";
 
 function ProductDetails() {
   const [nav1, setNav1] = useState(null);
@@ -29,7 +30,11 @@ function ProductDetails() {
   const [products, setProducts] = useState([]);
   const [images, setImages] = useState([]);
   const { id } = useParams();
-  const [wishlist, setWishlist] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const addToWishlist = (productId) => {
+    handleAddToWishlist(productId, setLoading);
+  };
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -69,19 +74,6 @@ function ProductDetails() {
     beforeChange: (current, next) => slider1.current.slickGoTo(next),
   };
 
-  const addToWishlist = (productId) => {
-    setWishlist((prevWishlist) => [...prevWishlist, productId]);
-    toast.success("Item added to wishlist!", {
-      position: "top-right",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
 
@@ -168,7 +160,6 @@ function ProductDetails() {
   };
   return (
     <>
-      <ToastContainer />
       <section className="gi-single-product py-[40px] max-[767px]:py-[30px]">
         <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
           <div className="flex flex-wrap w-full px-[12px]">
@@ -367,17 +358,11 @@ function ProductDetails() {
                           <div className="gi-single-wishlist m-[5px]">
                             <Link
                               onClick={() => addToWishlist(products._id)}
+                              disabled={loading}
                               className="gi-btn-group wishlist w-[40px] h-[40px] flex items-center justify-center transition-all duration-[0.3s] ease delay-[0s] text-[#17181c] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:text-[#fff] hover:bg-[#5caf90] hover:border-[#5caf90]"
                               title="Wishlist"
                             >
-                              <i
-                                className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#4b5966] leading-[0]"
-                                style={{
-                                  color: wishlist.includes(products._id)
-                                    ? "red"
-                                    : "black",
-                                }}
-                              ></i>
+                              <i className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#4b5966] leading-[0]"></i>
                             </Link>
                           </div>
                         </div>

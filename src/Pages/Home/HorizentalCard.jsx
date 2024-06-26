@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 function HorizentalCard({ name, price, images, discount, ID }) {
   const addToCart = async (productId) => {
@@ -33,7 +33,6 @@ function HorizentalCard({ name, price, images, discount, ID }) {
   };
   return (
     <>
-      <ToastContainer />
       <div className="gi-all-product-block px-[12px]">
         <div className="w-full gi-all-product-block px-[12px]">
           <div className="gi-all-product-inner mr-[1px] p-[15px] flex flex-wrap items-center bg-[#fff] border-[1px] border-solid border-[#eee] overflow-hidden relative">

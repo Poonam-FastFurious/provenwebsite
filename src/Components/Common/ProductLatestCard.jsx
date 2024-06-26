@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 function ProductLatestCard({ name, images, prices, ratings, ID }) {
   const addToCart = async (productId) => {
@@ -34,7 +34,6 @@ function ProductLatestCard({ name, images, prices, ratings, ID }) {
   };
   return (
     <>
-      <ToastContainer />
       <div className="gi-product-content h-full  wi-[50px]  px-[12px] flex">
         <div className="gi-product-inner transition-all duration-[0.3s] ease-in-out cursor-pointer flex flex-col overflow-hidden border-[1px] border-solid border-[#eee]">
           <div className="gi-pro-image-outer transition-all duration-[0.3s] delay-[0s] ease z-[11] relative">

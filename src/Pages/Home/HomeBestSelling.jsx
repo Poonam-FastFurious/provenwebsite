@@ -4,11 +4,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import { Baseurl } from "../../confige";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 function HomeBestSelling() {
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const toggleQuickview = () => {
     setQuickview(!quickview);
   };
@@ -91,9 +91,51 @@ function HomeBestSelling() {
     ],
   };
 
+  const handleAddToWishlist = async (productId) => {
+    setLoading(true);
+    const token = localStorage.getItem("accessToken");
+
+    if (!token) {
+      toast.error("You must be logged in to add items to your wishlist.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${Baseurl}/api/v1/wishlist/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ productId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Product added to wishlist:", data);
+      toast.success("Product added to wishlist!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      console.error("Error adding product to wishlist:", error);
+      toast.error("Failed to add product to wishlist.");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
-      <ToastContainer />
       <section className="gi-new-product py-[40px] max-[767px]:py-[30px]">
         <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
           <div className="flex flex-wrap w-full overflow-hidden mb-[-24px]">
@@ -164,6 +206,8 @@ function HomeBestSelling() {
                                 <Link
                                   className="gi-btn-group wishlist transition-all duration-[0.3s] ease-in-out h-[30px] w-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px]"
                                   title="Wishlist"
+                                  onClick={() => handleAddToWishlist(pro._id)}
+                                  disabled={loading}
                                 >
                                   <i className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
                                 </Link>

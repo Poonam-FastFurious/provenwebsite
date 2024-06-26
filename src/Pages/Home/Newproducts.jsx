@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { Baseurl } from "../../confige";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import handleAddToWishlist from "../../Components/Utilty/wishlistUtils";
 
 /* eslint-disable react/no-unescaped-entities */
 function Newproducts() {
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  const addToWishlist = (productId) => {
+    handleAddToWishlist(productId, setLoading);
+  };
   const toggleQuickview = () => {
     setQuickview(!quickview);
   };
@@ -52,7 +57,6 @@ function Newproducts() {
   };
   return (
     <>
-      <ToastContainer />
       <section
         className="gi-product-tab gi-products py-[40px] max-[767px]:py-[30px] wow fadeInUp"
         data-wow-duration="2s"
@@ -110,7 +114,11 @@ function Newproducts() {
                                     className="gi-btn-group wishlist transition-all duration-[0.3s] ease-in-out h-[30px] w-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px]"
                                     title="Wishlist"
                                   >
-                                    <i className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
+                                    <i
+                                      className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
+                                      onClick={() => addToWishlist(pro._id)}
+                                      disabled={loading}
+                                    ></i>
                                   </Link>
                                   <Link
                                     to="#"

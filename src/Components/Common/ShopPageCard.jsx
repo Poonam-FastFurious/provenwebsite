@@ -2,7 +2,8 @@ import { useState } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import handleAddToWishlist from "../Utilty/wishlistUtils";
 /* eslint-disable react/prop-types */
 function ShopPageCard({
   tag = "New",
@@ -14,6 +15,7 @@ function ShopPageCard({
   ID,
 }) {
   const [quickview, setQuickview] = useState(false);
+  const [loading, setLoading] = useState(false);
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) return text;
     return text.slice(0, maxLength) + "...";
@@ -54,9 +56,11 @@ function ShopPageCard({
       toast.error("Failed to add product to cart.");
     }
   };
+  const addToWishlist = (productId) => {
+    handleAddToWishlist(productId, setLoading);
+  };
   return (
     <>
-      <ToastContainer />
       <div className="min-[1200px]:w-[25%] min-[992px]:w-[33.33%] min-[768px]:w-[50%] min-[576px]:w-[50%] max-[420px]:w-full px-[12px] gi-product-box max-[575px]:w-[50%] max-[575px]:mx-auto pro-gl-content ">
         <div className="gi-product-content pb-[24px] h-full flex">
           <div className="gi-product-inner transition-all duration-[0.3s] ease-in-out cursor-pointer flex flex-col overflow-hidden border-[1px] border-solid border-[#eee] rounded-[5px]">
@@ -90,7 +94,11 @@ function ShopPageCard({
                     className=" wishlist transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-AFPPrimary"
                     title="Wishlist"
                   >
-                    <i className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
+                    <i
+                      onClick={() => addToWishlist(ID)}
+                      disabled={loading}
+                      className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
+                    ></i>
                   </Link>
                   <Link
                     onClick={toggleQuickview}

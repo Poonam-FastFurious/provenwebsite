@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import { Baseurl } from "../../confige";
 
@@ -144,7 +144,6 @@ function Cart() {
 
   return (
     <>
-      <ToastContainer autoClose={1000} />
       <section className="bg-white py-8 antialiased  md:py-16">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <h2 className="text-xl font-semibold text-gray-900  sm:text-2xl">
