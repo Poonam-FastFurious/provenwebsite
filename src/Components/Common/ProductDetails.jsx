@@ -7,12 +7,7 @@ import "slick-carousel/slick/slick";
 import Slider from "react-slick";
 
 import { useState, useRef, useEffect } from "react";
-import {
-  CiCircleMinus,
-  CiCirclePlus,
-  CiLocationOn,
-  CiLock,
-} from "react-icons/ci";
+import { CiLocationOn, CiLock } from "react-icons/ci";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import ReactImageMagnify from "react-image-magnify";
 
@@ -31,6 +26,7 @@ function ProductDetails() {
   const [images, setImages] = useState([]);
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const addToWishlist = (productId) => {
     handleAddToWishlist(productId, setLoading);
@@ -77,8 +73,25 @@ function ProductDetails() {
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
 
-  const toggleQuickview = () => {
-    setQuickview(!quickview);
+  const toggleQuickview = async (productId) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `${Baseurl}/api/v1/Product/product?id=${productId}`
+      );
+      const data = await response.json();
+      if (data.success) {
+        setSelectedProduct(data.data);
+        setQuickview(true);
+      } else {
+        toast.error("Failed to fetch product details.");
+      }
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+      toast.error("Failed to fetch product details.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -158,6 +171,7 @@ function ProductDetails() {
       },
     ],
   };
+
   return (
     <>
       <section className="gi-single-product py-[40px] max-[767px]:py-[30px]">
@@ -322,30 +336,6 @@ function ProductDetails() {
                         </div>
 
                         <div className="gi-single-qty flex flex-wrap w-full m-[-5px]">
-                          <div className="qty-plus-minus w-[120px] h-[40px] p-[10px] border-[1px] border-solid border-[#eee] overflow-hidden m-[5px] relative flex items-center justify-between rounded-[5px]">
-                            <button
-                              type="button"
-                              id="decrement-button"
-                              data-input-counter-decrement="quantity-input"
-                              className=" "
-                            >
-                              <CiCircleMinus />
-                            </button>
-                            <input
-                              className="qty-input"
-                              name="ms_qtybtn"
-                              value={1}
-                              readOnly
-                            />
-                            <button
-                              type="button"
-                              id="decrement-button"
-                              data-input-counter-decrement="quantity-input"
-                              className=" "
-                            >
-                              <CiCirclePlus />
-                            </button>
-                          </div>
                           <div className="gi-single-cart">
                             <button
                               onClick={() => addToCart(id)}
@@ -727,7 +717,7 @@ function ProductDetails() {
                 >
                   <div className="section-detail">
                     <h2 className="gi-title mb-[0] text-[25px] font-semibold text-AFPPrimary relative inline p-[0] capitalize leading-[1]  font-manrope max-[991px]:text-[25px] max-[767px]:text-[25px] max-[575px]:text-[25px]">
-                      Best Selling Purifiers
+                      Add On
                       <span className=""></span>
                     </h2>
                     <p className="max-w-[400px] mt-[10px] text-[14px] text-[#777] leading-[18px]">
@@ -785,7 +775,10 @@ function ProductDetails() {
                                   className="gi-btn-group wishlist transition-all duration-[0.3s] ease-in-out h-[30px] w-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px]"
                                   title="Wishlist"
                                 >
-                                  <i className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
+                                  <i
+                                    className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
+                                    onClick={() => addToWishlist(products._id)}
+                                  ></i>
                                 </Link>
                                 <Link
                                   to="#"
@@ -793,7 +786,9 @@ function ProductDetails() {
                                 >
                                   <i
                                     className="fi-rr-eye transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
-                                    onClick={toggleQuickview}
+                                    onClick={() =>
+                                      toggleQuickview(products._id)
+                                    }
                                   ></i>
                                 </Link>
                                 <Link
@@ -880,7 +875,7 @@ function ProductDetails() {
             <div className="modal-dialog modal-dialog-centered h-full my-[0%] mx-auto max-w-[900px] w-[900px] max-[991px]:max-w-[650px] max-[991px]:w-[650px] max-[767px]:w-[80%] max-[767px]:h-auto max-[767px]:max-w-[80%] max-[767px]:m-[0] max-[767px]:py-[35px] max-[767px]:mx-auto max-[575px]:w-[90%] transition-transform duration-[0.3s] ease-out">
               <div className="modal-content quickview-modal p-[30px] relative bg-[#fff] rounded-[5px] max-[360px]:p-[15px]">
                 <button
-                  onClick={toggleQuickview}
+                  onClick={() => setQuickview(false)}
                   type="button"
                   className="gi-close-modal qty_close absolute top-[10px] right-[10px] leading-[18px] max-[420px]:top-[5px] max-[420px]:right-[5px]"
                 ></button>
@@ -892,8 +887,8 @@ function ProductDetails() {
                           <div className="single-slide h-full flex items-center zoom-image-hover">
                             <img
                               className="img-responsive h-full w-full"
-                              src="https://provenonline.in/wp-content/uploads/2023/08/proven-daimond.jpg"
-                              alt=""
+                              src={selectedProduct.image}
+                              alt={selectedProduct.name}
                             />
                           </div>
                         </div>
@@ -906,7 +901,7 @@ function ProductDetails() {
                             href="product-left-sidebar.html"
                             className="mb-[15px] block text-[#4b5966] text-[22px] leading-[1.5] font-medium max-[991px]:text-[20px]"
                           >
-                            Proven Ro
+                            {selectedProduct.name}
                           </a>
                         </h5>
                         <div className="gi-quickview-rating flex mb-[15px]">
@@ -917,16 +912,14 @@ function ProductDetails() {
                           <i className="gicon gi-star text-[14px] text-[#777] mr-[5px]"></i>
                         </div>
                         <div className="gi-quickview-desc mb-[10px] text-[15px] leading-[24px] text-[#777] font-light">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry standard dummy text ever since the 1900s,
+                          {selectedProduct.shortDescription}
                         </div>
                         <div className="gi-quickview-price pt-[5px] pb-[10px] flex items-center justify-left">
                           <span className="new-price text-[#4b5966] font-bold text-[22px]">
-                            $50.00
+                            {selectedProduct.price} ₹
                           </span>
                           <span className="old-price text-[18px] ml-[10px] line-through text-[#777]">
-                            $62.00
+                            {selectedProduct.discount} %
                           </span>
                         </div>
                         <div className="gi-pro-variation mt-[5px]">

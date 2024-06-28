@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Baseurl } from "../../confige";
+import Loader from "../Specific/Loader";
 
 function Wishlist() {
   const [wishlistData, setWishlistData] = useState(null);
@@ -108,7 +109,11 @@ function Wishlist() {
   };
   console.log(error);
   if (isLoading) {
-    return <div className="loader">Loading...</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
   return (
     <>
@@ -192,11 +197,11 @@ function Wishlist() {
                           </thead>
                           <tbody className="wish-empt border-t-[3px]  border-solid border-[#dee2e6]">
                             {wishlistData &&
-                              wishlistData.items.map((item) => (
+                              wishlistData.items.map((item, index) => (
                                 <tr key={item._id} className="pro-gl-content">
                                   <td className="p-[0.5rem] border-b-[1px] border-solid border-[#dee2e6]">
                                     <span className="max-[767px]:text-[14px] py-[14px] flex text-[#777] tracking-[0.02rem]">
-                                      {item._id}
+                                      {index + 1}
                                     </span>
                                   </td>
                                   <td className="p-[0.5rem] border-b-[1px] border-solid border-[#dee2e6]">
