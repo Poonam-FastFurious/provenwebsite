@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -5,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Baseurl } from "../../confige";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-function HomeBestSelling() {
+function HomeBestSelling({ heading = "add on" }) {
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -168,7 +169,7 @@ function HomeBestSelling() {
                 >
                   <div className="section-detail">
                     <h2 className="gi-title mb-[0] text-[25px] font-semibold text-AFPPrimary relative inline p-[0] capitalize leading-[1]  font-manrope max-[991px]:text-[25px] max-[767px]:text-[25px] max-[575px]:text-[25px]">
-                      Best Selling Purifiers
+                      {heading}
                       <span className=""></span>
                     </h2>
                     <p className="max-w-[400px] mt-[10px] text-[14px] text-[#777] leading-[18px]">
@@ -350,7 +351,7 @@ function HomeBestSelling() {
                         </div>
                         <div className="gi-quickview-price pt-[5px] pb-[10px] flex items-center justify-left">
                           <span className="new-price text-[#4b5966] font-bold text-[22px]">
-                            {selectedProduct.price} ₹
+                            ₹{selectedProduct.price}
                           </span>
                           <span className="old-price text-[18px] ml-[10px] line-through text-[#777]">
                             {selectedProduct.discount} %

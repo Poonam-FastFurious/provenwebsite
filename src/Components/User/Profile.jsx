@@ -27,6 +27,9 @@ function Profile() {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({});
+  const [addresses, setAddresses] = useState([]);
+  const userId = localStorage.getItem("userid");
+  const accessToken = localStorage.getItem("accessToken");
   // Retrieve user ID from local storage
   useEffect(() => {
     const userId = localStorage.getItem("userid");
@@ -147,6 +150,76 @@ function Profile() {
       console.error("Error during logout:", error);
     }
   };
+  const [formData, setFormData] = useState({
+    userId: "6676b96793d44360934200c1",
+    fullName: "",
+    phoneNumber: "",
+    streetAddress: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    country: "INDIA",
+    addressType: "office",
+  });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userId = localStorage.getItem("userid");
+    const accessToken = localStorage.getItem("accessToken");
+
+    const dataToSend = {
+      ...formData,
+      userId: userId,
+    };
+
+    try {
+      const response = await fetch(Baseurl + "/api/v1/address/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(dataToSend),
+      });
+      const result = await response.json();
+      if (response.ok) {
+        console.log("Address added successfully:", result);
+      } else {
+        console.error("Error adding address:", result);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  useEffect(() => {
+    const fetchAddressDetails = async () => {
+      try {
+        const response = await fetch(
+          `${Baseurl}/api/v1/address?userId=${userId}`,
+          {
+            method: "GET", // Assuming you use POST for sending data
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch address details");
+        }
+
+        const data = await response.json();
+        setAddresses(data.data); // Assuming your API response has an 'addresses' array
+      } catch (error) {
+        console.error("Error fetching address details:", error);
+      }
+    };
+
+    fetchAddressDetails();
+  }, [userId, accessToken]);
 
   return (
     <>
@@ -475,74 +548,47 @@ function Profile() {
                       </h6>
 
                       <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 mt-6">
-                        <div className=" border p-4">
-                          <div className="flex items-center mb-4 justify-between">
-                            <h5 className="text-xl font-medium">Home </h5>
-                            <Link to="#" className=" text-AFPPrimary text-lg">
-                              <FiEdit />
-                            </Link>
+                        {addresses.slice(0, 2).map((addres, index) => (
+                          <div key={index} className=" border p-4">
+                            <div className="flex items-center mb-4 justify-between">
+                              <h5 className="text-xl font-medium">
+                                {addres.addressType}{" "}
+                              </h5>
+                              <Link to="#" className=" text-AFPPrimary text-lg">
+                                <FiEdit />
+                              </Link>
+                            </div>
+                            <div className="pt-4 border-t border-gray-100 ">
+                              <p className="text-lg font-medium mb-2">
+                                {addres.fullName}
+                              </p>
+
+                              <ul className="list-none">
+                                <li className="flex">
+                                  <i
+                                    data-feather="map-pin"
+                                    className="size-4 me-2 mt-1"
+                                  ></i>
+                                  <p className="text-slate-400">
+                                    {addres.streetAddress} <br />
+                                    {addres.city} <br />
+                                    {addres.postalCode}
+                                  </p>
+                                </li>
+
+                                <li className="flex mt-1">
+                                  <i
+                                    data-feather="phone"
+                                    className="size-4 me-2 mt-1"
+                                  ></i>
+                                  <p className="text-slate-400">
+                                    +{addres.phoneNumber}
+                                  </p>
+                                </li>
+                              </ul>
+                            </div>
                           </div>
-                          <div className="pt-4 border-t border-gray-100 ">
-                            <p className="text-lg font-medium mb-2">
-                              Rahul Demo
-                            </p>
-
-                            <ul className="list-none">
-                              <li className="flex">
-                                <i
-                                  data-feather="map-pin"
-                                  className="size-4 me-2 mt-1"
-                                ></i>
-                                <p className="text-slate-400">
-                                  Noida sector 62, <br /> Noida,India 201301
-                                </p>
-                              </li>
-
-                              <li className="flex mt-1">
-                                <i
-                                  data-feather="phone"
-                                  className="size-4 me-2 mt-1"
-                                ></i>
-                                <p className="text-slate-400">+9876543210</p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-
-                        <div className="border p-4">
-                          <div className="flex items-center mb-4 justify-between">
-                            <h5 className="text-xl font-medium">Office</h5>
-                            <Link to="#" className="text-AFPPrimary  text-lg">
-                              <FiEdit />
-                            </Link>
-                          </div>
-                          <div className="pt-4 border-t border-gray-100 ">
-                            <p className="text-lg font-medium mb-2">
-                              Rahul demo
-                            </p>
-
-                            <ul className="list-none">
-                              <li className="flex">
-                                <i
-                                  data-feather="map-pin"
-                                  className="size-4 me-2 mt-1"
-                                ></i>
-                                <p className="text-slate-400">
-                                  Noida sector 62, <br />
-                                  Noida , India 201301
-                                </p>
-                              </li>
-
-                              <li className="flex mt-1">
-                                <i
-                                  data-feather="phone"
-                                  className="size-4 me-2 mt-1"
-                                ></i>
-                                <p className="text-slate-400">+9876543210</p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -927,14 +973,14 @@ function Profile() {
                 className="fixed top-10 right-0 left-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50"
               >
                 <div className="relative p-4 w-full max-w-2xl max-h-full">
-                  <div className="relative bg-white rounded-lg shadow ">
-                    <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
-                      <h3 className="text-lg font-semibold text-gray-900 ">
+                  <div className="relative bg-white rounded-lg shadow">
+                    <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                      <h3 className="text-lg font-semibold text-gray-900">
                         Add New Address
                       </h3>
                       <button
                         type="button"
-                        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center  "
+                        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                         onClick={handleCloseModaladdress}
                       >
                         <svg
@@ -955,41 +1001,128 @@ function Profile() {
                         <span className="sr-only">Close modal</span>
                       </button>
                     </div>
-                    <form className="p-4 md:p-5">
-                      <div className="border-b border-gray-900/10 pb-12">
+                    <form className="p-4 md:p-5" onSubmit={handleSubmit}>
+                      <div className=" border-gray-900/10 pb-12">
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                           <div className="sm:col-span-3">
                             <label
-                              htmlFor="first-name"
+                              htmlFor="fullName"
                               className="block text-sm font-medium leading-6 text-gray-900"
                             >
-                              First name
+                              Full name
                             </label>
                             <div className="mt-2">
                               <input
                                 type="text"
-                                name="first-name"
-                                id="first-name"
-                                autoComplete="given-name"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                name="fullName"
+                                id="fullName"
+                                value={formData.fullName}
+                                onChange={handleChange}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:text-sm sm:leading-6"
                               />
                             </div>
                           </div>
 
                           <div className="sm:col-span-3">
                             <label
-                              htmlFor="last-name"
+                              htmlFor="phoneNumber"
                               className="block text-sm font-medium leading-6 text-gray-900"
                             >
-                              Last name
+                              Phone number
                             </label>
                             <div className="mt-2">
                               <input
                                 type="text"
-                                name="last-name"
-                                id="last-name"
-                                autoComplete="family-name"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                name="phoneNumber"
+                                id="phoneNumber"
+                                value={formData.phoneNumber}
+                                onChange={(e) => {
+                                  const value = e.target.value;
+                                  if (/^\d*$/.test(value)) {
+                                    // Only allow digits
+                                    setFormData({
+                                      ...formData,
+                                      phoneNumber: value,
+                                    });
+                                  }
+                                }}
+                                maxLength="12"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="sm:col-span-6">
+                            <label
+                              htmlFor="streetAddress"
+                              className="block text-sm font-medium leading-6 text-gray-900"
+                            >
+                              Street address
+                            </label>
+                            <div className="mt-2">
+                              <textarea
+                                name="streetAddress"
+                                id="streetAddress"
+                                value={formData.streetAddress}
+                                onChange={handleChange}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="city"
+                              className="block text-sm font-medium leading-6 text-gray-900"
+                            >
+                              City
+                            </label>
+                            <div className="mt-2">
+                              <input
+                                type="text"
+                                name="city"
+                                id="city"
+                                value={formData.city}
+                                onChange={handleChange}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="state"
+                              className="block text-sm font-medium leading-6 text-gray-900"
+                            >
+                              State
+                            </label>
+                            <div className="mt-2">
+                              <input
+                                type="text"
+                                name="state"
+                                id="state"
+                                value={formData.state}
+                                onChange={handleChange}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:text-sm sm:leading-6"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="postalCode"
+                              className="block text-sm font-medium leading-6 text-gray-900"
+                            >
+                              ZIP / Postal code
+                            </label>
+                            <div className="mt-2">
+                              <input
+                                type="text"
+                                name="postalCode"
+                                id="postalCode"
+                                value={formData.postalCode}
+                                onChange={handleChange}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
                               />
                             </div>
                           </div>
@@ -1005,82 +1138,34 @@ function Profile() {
                               <select
                                 id="country"
                                 name="country"
-                                autoComplete="country-name"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                value={formData.country}
+                                onChange={handleChange}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:max-w-xs sm:text-sm sm:leading-6"
                               >
                                 <option>India</option>
                               </select>
                             </div>
                           </div>
 
-                          <div className="col-span-full">
+                          <div className="sm:col-span-3">
                             <label
-                              htmlFor="street-address"
+                              htmlFor="addressType"
                               className="block text-sm font-medium leading-6 text-gray-900"
                             >
-                              Street address
+                              Address Type
                             </label>
                             <div className="mt-2">
-                              <textarea
-                                name="street-address"
-                                id="street-address"
-                                autoComplete="street-address"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                              />
-                            </div>
-                          </div>
-
-                          <div className="sm:col-span-2 sm:col-start-1">
-                            <label
-                              htmlFor="city"
-                              className="block text-sm font-medium leading-6 text-gray-900"
-                            >
-                              City
-                            </label>
-                            <div className="mt-2">
-                              <input
-                                type="text"
-                                name="city"
-                                id="city"
-                                autoComplete="address-level2"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                              />
-                            </div>
-                          </div>
-
-                          <div className="sm:col-span-2">
-                            <label
-                              htmlFor="region"
-                              className="block text-sm font-medium leading-6 text-gray-900"
-                            >
-                              State
-                            </label>
-                            <div className="mt-2">
-                              <input
-                                type="text"
-                                name="region"
-                                id="region"
-                                autoComplete="address-level1"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                              />
-                            </div>
-                          </div>
-
-                          <div className="sm:col-span-2">
-                            <label
-                              htmlFor="postal-code"
-                              className="block text-sm font-medium leading-6 text-gray-900"
-                            >
-                              ZIP / Postal code
-                            </label>
-                            <div className="mt-2">
-                              <input
-                                type="text"
-                                name="postal-code"
-                                id="postal-code"
-                                autoComplete="postal-code"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                              />
+                              <select
+                                id="addressType"
+                                name="addressType"
+                                value={formData.addressType}
+                                onChange={handleChange}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
+                              >
+                                <option value="">Select address type</option>
+                                <option value="home">Home</option>
+                                <option value="office">Office</option>
+                              </select>
                             </div>
                           </div>
                         </div>
@@ -1088,7 +1173,7 @@ function Profile() {
 
                       <button
                         type="submit"
-                        className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center   "
+                        className="text-white inline-flex items-center bg-AFPPrimary  hover:bg-AFPPrimary  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                       >
                         <svg
                           className="me-1 -ms-1 w-5 h-5"

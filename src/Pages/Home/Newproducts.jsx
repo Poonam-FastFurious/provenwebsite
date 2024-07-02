@@ -9,12 +9,29 @@ function Newproducts() {
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const addToWishlist = (productId) => {
     handleAddToWishlist(productId, setLoading);
   };
-  const toggleQuickview = () => {
-    setQuickview(!quickview);
+  const toggleQuickview = async (productId) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `${Baseurl}/api/v1/Product/product?id=${productId}`
+      );
+      const data = await response.json();
+      if (data.success) {
+        setSelectedProduct(data.data);
+        setQuickview(true);
+      } else {
+        toast.error("Failed to fetch product details.");
+      }
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+      toast.error("Failed to fetch product details.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -126,7 +143,7 @@ function Newproducts() {
                                   >
                                     <i
                                       className="fi-rr-eye transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
-                                      onClick={toggleQuickview}
+                                      onClick={() => toggleQuickview(pro._id)}
                                     ></i>
                                   </Link>
                                   <Link
@@ -199,7 +216,7 @@ function Newproducts() {
             <div className="modal-dialog modal-dialog-centered h-full my-[0%] mx-auto max-w-[900px] w-[900px] max-[991px]:max-w-[650px] max-[991px]:w-[650px] max-[767px]:w-[80%] max-[767px]:h-auto max-[767px]:max-w-[80%] max-[767px]:m-[0] max-[767px]:py-[35px] max-[767px]:mx-auto max-[575px]:w-[90%] transition-transform duration-[0.3s] ease-out">
               <div className="modal-content quickview-modal p-[30px] relative bg-[#fff] rounded-[5px] max-[360px]:p-[15px]">
                 <button
-                  onClick={toggleQuickview}
+                  onClick={() => setQuickview(false)}
                   type="button"
                   className="gi-close-modal qty_close absolute top-[10px] right-[10px] leading-[18px] max-[420px]:top-[5px] max-[420px]:right-[5px]"
                 ></button>
@@ -211,8 +228,8 @@ function Newproducts() {
                           <div className="single-slide h-full flex items-center zoom-image-hover">
                             <img
                               className="img-responsive h-full w-full"
-                              src="https://provenonline.in/wp-content/uploads/2023/08/proven-daimond.jpg"
-                              alt=""
+                              src={selectedProduct.image}
+                              alt={selectedProduct.name}
                             />
                           </div>
                         </div>
@@ -225,7 +242,7 @@ function Newproducts() {
                             to="product-left-sidebar.html"
                             className="mb-[15px] block text-[#4b5966] text-[22px] leading-[1.5] font-medium max-[991px]:text-[20px]"
                           >
-                            Proven Ro
+                            {selectedProduct.name}
                           </Link>
                         </h5>
                         <div className="gi-quickview-rating flex mb-[15px]">
@@ -236,16 +253,14 @@ function Newproducts() {
                           <i className="gicon gi-star text-[14px] text-[#777] mr-[5px]"></i>
                         </div>
                         <div className="gi-quickview-desc mb-[10px] text-[15px] leading-[24px] text-[#777] font-light">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry standard dummy text ever since the 1900s,
+                          {selectedProduct.shortDescription}
                         </div>
                         <div className="gi-quickview-price pt-[5px] pb-[10px] flex items-center justify-left">
                           <span className="new-price text-[#4b5966] font-bold text-[22px]">
-                            $50.00
+                            ₹{selectedProduct.price}
                           </span>
                           <span className="old-price text-[18px] ml-[10px] line-through text-[#777]">
-                            $62.00
+                            {selectedProduct.discount} %
                           </span>
                         </div>
                         <div className="gi-pro-variation mt-[5px]">

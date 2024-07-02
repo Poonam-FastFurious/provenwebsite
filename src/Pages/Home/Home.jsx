@@ -19,9 +19,8 @@ function Home() {
     <>
       <HomeBanner />
       <HomeCategory />
-      <HomeBestSelling />
+      <HomeBestSelling heading="Best Selling Purifiers" />
       <HomeSecondBanner />
-
       <Newproducts />
       <HomeSmallBanner />
       <Services />

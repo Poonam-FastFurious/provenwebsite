@@ -12,7 +12,7 @@ function NewcatCard({ icon, title }) {
             className="h-[50px] w-[50px] w-50 my-[10px] block"
           />
           <div className="gi-cat-detail text-center">
-            <Link to="/details">
+            <Link to="#">
               <h4 className="gi-cat-title m-[0] text-[15px] leading-[22px] font-semibold text-[#4b5966] capitalize font-manrope">
                 {title}
               </h4>
