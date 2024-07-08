@@ -18,7 +18,7 @@ function Suport() {
         <div className="grid md:grid-cols-12 grid-cols-1 items-center gap-6">
           <div className="lg:col-span-5 md:col-span-6 md:order-2 order-1">
             <img
-              src="https://s3-alpha-sig.figma.com/img/eb25/e7a2/08b91723b76aa02b85398d72e37a24c7?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jD~F9fRRhH~d6DyoTPHL9TrEwW0t1G5~hMclG1q8tPMclhQbPTT8hmvzgzMZyhYSXfnPoSf23mEx3eQlOrIlE8NzFKJSMsuRdHSmi~Op8RdbGWMeLTW7DZzMKdwqvB7rQD7eKiQ2ZuX8KBhS2UI8MCSj2hcOrCkkcrjwqYeLXM1351Yb8cigjeR-gKCI9dwwPxA5m1E-zfsqmaK9O~tf2a1zJd0ApwIyN642woNcMkQQ4Nb9p93N3eP5ZuZIoPXsrPQO6KSb--AbItXExvo3nPRjVIgsvxp3UpXCpHGpvmhW7Mej4-oTqthufTnuWhwDFCoF~tW0Jl-6cLccEXvCAw__"
+              src="https://s3-alpha-sig.figma.com/img/eb25/e7a2/08b91723b76aa02b85398d72e37a24c7?Expires=1721606400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K0sW7uQyiFQrPMr0PSVxNAYjvW3vff76eNIv~WBL42uCaj-Tmk1TApT8zkih4qUy0ic4FAltpnhFQSb~E-ExskzICXtR7EXVSRyhxtmyfQkpvVkLdxqfMpAv69e-JBC7YzWz0DsotZNwY6LDVDHA7npHVd5Q5BaQcHMcqvsGuncUTDvq6JgdOfeYyEi1B0De08hRDyJCA5tXfGDuHPPh8JY0NwlJEIAXRUdcvI7rri9y82n1QaA29we7vLutubyb2ggIFV151mYBEZo4HDfyWzdl21qPri3bBkI6~KnGQPFhC4y-UwnQvp5hjtzyEVz3I0BAfSBs6if~rIuhhXAhgg__"
               className="rounded-b-full shadow-md "
               alt=""
             />

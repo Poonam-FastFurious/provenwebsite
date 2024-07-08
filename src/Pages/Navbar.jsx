@@ -260,6 +260,16 @@ function Navbar() {
 
                 <div className="gi-header-action self-center max-[991px]:hidden">
                   <div className="gi-header-bottons flex justify-end">
+                    <Link
+                      to="#"
+                      className="gi-header-btn  h-icon gi-search-icon mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center whitespace-nowrap"
+                      title="Wishlist"
+                    >
+                      <div className="header-icon relative flex">
+                        <i className="fi-rr-search text-[24px] leading-[17px] max-[575px]:text-[#fff] max-[575px]:text-[18px]"></i>
+                      </div>
+                      <div className="gi-btn-desc flex flex-col uppercase ml-[10px] max-[1199px]:hidden"></div>
+                    </Link>
                     <div className="gi-acc-drop relative">
                       <Link
                         to="/Login"
@@ -347,6 +357,15 @@ function Navbar() {
                 <div className="grow-[1] shrink-[0] basis-[0%] min-[576px]:flex justify-end items-center min-[992px]:hidden">
                   <div className="gi-header-bottons flex justify-end">
                     <div className="right-icons flex flex-row">
+                      <a
+                        href="javascript:void(0)"
+                        className="gi-header-btn h-icon gi-search-icon transition-all duration-[0.3s] ease-in-out w-auto px-[15px] relative flex text-[#4b5966] items-center"
+                        title="search"
+                      >
+                        <div className="header-icon relative flex">
+                          <i className="fi-rr-search text-[24px] leading-[17px] max-[575px]:text-[#fff] max-[575px]:text-[18px]"></i>
+                        </div>
+                      </a>
                       <Link
                         to="/profile"
                         className="gi-header-btn gi-header-user mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center"

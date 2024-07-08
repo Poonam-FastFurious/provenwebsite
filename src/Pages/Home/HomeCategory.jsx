@@ -3,7 +3,12 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import NewcatCard from "../../Components/Common/NewcatCard";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useRef } from "react";
-
+import provencategoryimg from "../../assets/Images/provencategory.png";
+import provencategoryimg2 from "../../assets/Images/provencat2.png";
+import provencategoryimg3 from "../../assets/Images/provencat3.png";
+import provencategoryimg4 from "../../assets/Images/provencat4.png";
+import provencategoryimg5 from "../../assets/Images/provencat5.png";
+import provencategoryimg6 from "../../assets/Images/provencat6.png";
 const responsive = {
   0: {
     items: 1.5,
@@ -21,52 +26,22 @@ const responsive = {
 
 const items = [
   <div className="item mx-2" data-value="1" key="1">
-    <NewcatCard
-      icon={
-        "https://s3-alpha-sig.figma.com/img/a1ad/027c/1b85e8a09506aaeb3fb80687b5e12212?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fKCTuE9GjhP-GVprnNBO12Dowx2rZnhpGv~shHZvID-oR44t2eBED9rJsNCKJzCf75go~sgRvLICYZ5a5JJURy4kLESYYKkLsvku~cVPkKv6Ycar6YMQ5bB7BLouE0eF7y1bjx8phRKe~-MhJFP5bKocRgr1XrYns1vbbQz363J3OZ8aia0WOTMsyMFwwkrRDFO1DS4sjH-qtW8Yp589~oqyW0I3toPqJ8P1HUaZ0TzaycbgiLNNAdmKHpmhC19~o-RauBUFBm~9qPeMZB09tM7CCNEfs68LVVW32h73L6vhZRSu6D7pZ3-j8YQ0naB73s4FOrqW65qRc0ozchzqfw__"
-      }
-      title={"Domestic RO"}
-    />
+    <NewcatCard icon={provencategoryimg} title={"Domestic RO"} />
   </div>,
   <div className="item mx-2" data-value="2" key="2">
-    <NewcatCard
-      icon={
-        "https://s3-alpha-sig.figma.com/img/67a5/3b7f/664399edc26b97fd01e290d5cd13c368?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=oWDWTGT2r1R46HfawFnx9tFDRA2HKkMsoACiHd4B9m~p8zgPfLWl2bssMpyWom4gq05hOd~P90nkWHs0VuC~O1jtusVqaduPcrfBjh0TybTsoQwUx1lJrcf9u2xEf8QLXvZ77i~Bulwhsdliojz9a9CQqJhy1eVeQpJVGJlaZgKEpU6J5~mFb-E33kEsadr2MFiyfa5~knymRcUcD3j4xP1jsiDJtk94QIYxO0WhPqQEs2BAPAPagjlH6os0CCyW4FAr1QVMgBCwqRjOfPFM6ZXQwgar3qz4xcDVlrtBgR-eCyI1SuXLojts8O7YODoQ6wj7P9hzxjiG8cU2RQAJow__"
-      }
-      title={"Commercial"}
-    />
+    <NewcatCard icon={provencategoryimg2} title={"Commercial"} />
   </div>,
   <div className="item mx-2" data-value="3" key="3">
-    <NewcatCard
-      icon={
-        "https://s3-alpha-sig.figma.com/img/cc1b/f332/9ddce6aa547fd51ae082510c71b6d5e2?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IHbuSwVeULHUZcoqyGef~0z~cYyVtKet03QRS4Iqm9FiIyjvxHMOIjOb5h5-8kd551Zg5YT2jmXio1Cwu1R3WmIiOqyqBKufXGdZ6SL2fkKCloxJkg7fxTwUCqK499k62tj9EemkF31nwBUBDzI~weTFHjvn5CIw8EmvRszVzVLw5yOynEhLLDx4dyNE4rfSxoB3HxcAkk3jjJOwsS33lRFvGQlQDqjq~0NRzSKOHYjwLWkXQgEYoGhfAxL44E6G2I9mobzG2Zrxpl9TuTzMnupyUkPYq9Xr4wyUKeJ5uV~Yj5HQFNwswWMb7ARpp~toNrPj8vN8sovMbMsBpk4iNw__"
-      }
-      title={"Industrial RO"}
-    />
+    <NewcatCard icon={provencategoryimg3} title={"Industrial RO"} />
   </div>,
   <div className="item mx-2" data-value="4" key="4">
-    <NewcatCard
-      icon={
-        "https://s3-alpha-sig.figma.com/img/41be/e66b/1b0c24bf1954b0c517c9307127ff0a1c?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=VLZuExEIBZWmeBB58C2jBbH9b3Diec9q4YpSgUG9JZtnYUkpVM1s6TC8tAqAD5k~Zwqy1p~qKq~QFkUZ0-BV5AcAWJAiWlNeTNTDYCm~DU~sJmY5uY5a6ClUCzWCfGhXuhU5TRbsTlOnkdHlhxAgu7K39RpSbuB9NgXKS29ex1EPT3WyEkdpaNONK8iOnsf2SQl-6dAWVggNuY8NVaxrTZmg-8r2Gg5r~ZPR9ScxZ-V5cLc9QdaFrzJDPJhecNEpvOGV1INHDCzAEyjjHt9g5p2IVIHgekallRp28b429BCuCZJKGlNU~byQcev2~jJaVQIFda0-R3Asaz-dm8pJnQ__"
-      }
-      title={"Spare Part"}
-    />
+    <NewcatCard icon={provencategoryimg4} title={"Spare Part"} />
   </div>,
   <div className="item mx-2" data-value="5" key="5">
-    <NewcatCard
-      icon={
-        "https://s3-alpha-sig.figma.com/img/952f/8a80/4d3e43b1fb2c71b2ecd166d9d7bfc4f2?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ebDVqKNfFE~aIdPpJmMvjmo7-PJjy8muCWGT8OYLzPpvKu2be3tDdQ-TI3K90s~unS6592p5xHfMnXPo0IExkKFeFfqOqrDCC9fbc2VbS2p6tPXWxMWAQgGwl1wzeb68feeyUbr4rWtM2KJdvt2dVMQl1onO2WilUM0rbXubUWW1pqC-fHhfew9YaXQKIwvFXzQw923VIynnJjXe-2CVTnj29ys67ZCmgaD7po~rpAy-ZjDAnz1ATGovCzpK6qL-rAeFD9bnGc6NJ5EbISok3RAQzARmsJoCzj5Tu3Ny~zuXBp6c1whC4b5sM3xg0R5LUhDg1~Nwb0hG-OMxTklyBg__"
-      }
-      title={"Home & Kitchen"}
-    />
+    <NewcatCard icon={provencategoryimg5} title={"Home & Kitchen"} />
   </div>,
   <div className="item mx-2" data-value="6" key="6">
-    <NewcatCard
-      icon={
-        "https://s3-alpha-sig.figma.com/img/7202/2302/7c995db011c4786dc5c4094fc7195818?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fhFDrHgzCI2GepKA8-JZ9YqM627BJ3fuT2shBQ0tVjx3UyXhCM7H~igRHKOPZRyalKiDG5ByxxlP-A-omp4WNyfsiYnG85y3dBDKiv9YY-9xTa~X2-YPmkSsfI00gQscWn780A7iFXS9LCkX7gFSXVYGDNMuvPNNy1jDAj8U7RnCIKo8S-L8LfZiWgCFp6dSO14asBdF0xRrJT2NMGJvqYCWTtJrQ8OT7SRpgFh~3Xbf3ryOHv0f4tL0ciC-oJMPbrBvXN6Y5hc7B3~y-AoAFcwoeaQCWn69Z8GVHkJLgoOmu9CChb1WYdyk~qZel3S2Ff-nqj~KVbpa9F3ltZje0g__"
-      }
-      title={"Appliances"}
-    />
+    <NewcatCard icon={provencategoryimg6} title={"Appliances"} />
   </div>,
 ];
 
