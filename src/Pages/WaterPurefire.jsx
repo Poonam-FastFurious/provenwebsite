@@ -214,7 +214,7 @@ function WaterPurefire() {
                             description={product.description}
                             title={product.name}
                             offprice={product.discount}
-                            images={product.thumbnail}
+                            images={product.image}
                             ID={product._id}
                           />
                         ))}
