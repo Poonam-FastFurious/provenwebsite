@@ -1,199 +1,102 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Baseurl } from "../../confige";
 
 function OrderDetails() {
+  const [order, setOrder] = useState(null);
+  const { id } = useParams();
+  useEffect(() => {
+    const fetchOrderDetails = async () => {
+      try {
+        const response = await fetch(
+          `${Baseurl}/api/v1/order/singleorder/${id}`
+        );
+        const result = await response.json();
+        if (result.success) {
+          setOrder(result.data);
+        }
+      } catch (error) {
+        console.error("Error fetching order details:", error);
+      }
+    };
+
+    fetchOrderDetails();
+  }, [id]);
+
+  if (!order) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <section className="bg-white py-8 antialiased  md:py-16">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <h2 className="text-xl font-semibold text-gray-900  sm:text-2xl">
-            Track the delivery of order #957684673
+            Track the delivery of order #{order.orderID}
           </h2>
-
+          <button
+            type="button"
+            className="rounded-lg  border border-gray-200  bg-AFPPrimary  px-5  py-2.5 text-sm font-medium text-white   mt-4  focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100"
+          >
+            <a
+              href={`http://${order.shippingInfo.shippingLink}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Track order
+            </a>
+          </button>
           <div className="mt-6 sm:mt-8 lg:flex lg:gap-8">
             <div className="w-full divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-200   lg:max-w-xl xl:max-w-2xl">
-              <div className="space-y-4 p-6">
-                <div className="flex items-center gap-6">
-                  <Link to="#" className="h-14 w-14 shrink-0">
-                    <img
-                      className="h-full w-full dark:hidden"
-                      src="https://provenonline.in/wp-content/uploads/2023/08/proven-daimond.jpg"
-                      alt="imac image"
-                    />
-                    <img
-                      className="hidden h-full w-full dark:block"
-                      src="https://provenonline.in/wp-content/uploads/2023/08/2-scaled.jpg"
-                      alt="imac image"
-                    />
-                  </Link>
+              {order.products.map((productItem) => (
+                <div key={productItem._id} className="space-y-4 p-6">
+                  <div className="flex items-center gap-6">
+                    <Link to="#" className="h-14 w-14 shrink-0">
+                      <img
+                        className="h-full w-full dark:hidden"
+                        src={productItem.product?.image}
+                        alt={productItem.product?.name}
+                      />
+                    </Link>
 
-                  <Link
-                    to="#"
-                    className="min-w-0 flex-1 font-medium text-gray-900 hover:underline "
-                  >
-                    Proven Daimond Zinc Copper Alkaline with Hydrogen RO Water
-                    Purifier | RO + ZN + CU + ALK + UV + UF + TDS ( UNDER 2500)+
-                    PF | Wall Mount & Table Top Best For Home and Office (Made
-                    In India)
-                  </Link>
-                </div>
+                    <Link
+                      to="#"
+                      className="min-w-0 flex-1 font-medium text-gray-900 hover:underline"
+                    >
+                      {productItem.product?.name}
+                    </Link>
+                  </div>
 
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-sm font-normal text-gray-500 ">
-                    <span className="font-medium text-gray-900 ">
-                      Product ID:
-                    </span>
-                    BJ8364850
-                  </p>
-
-                  <div className="flex items-center justify-end gap-4">
-                    <p className="text-base font-normal text-gray-900 ">x1</p>
-
-                    <p className="text-xl font-bold leading-tight text-gray-900 ">
-                      ₹1,499
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="text-sm font-normal text-gray-500">
+                      <span className="font-medium text-gray-900">
+                        Product ID:
+                      </span>
+                      {productItem.product?._id}
                     </p>
+
+                    <div className="flex items-center justify-end gap-4">
+                      <p className="text-base font-normal text-gray-900">
+                        x{productItem.quantity}
+                      </p>
+
+                      <p className="text-xl font-bold leading-tight text-gray-900">
+                        ₹{productItem.price}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="space-y-4 p-6">
-                <div className="flex items-center gap-6">
-                  <Link to="#" className="h-14 w-14 shrink-0">
-                    <img
-                      className="h-full w-full dark:hidden"
-                      src="https://provenonline.in/wp-content/uploads/2023/08/proven-daimond.jpg"
-                      alt="imac image"
-                    />
-                    <img
-                      className="hidden h-full w-full dark:block"
-                      src="https://provenonline.in/wp-content/uploads/2023/08/2-scaled.jpg"
-                      alt="imac image"
-                    />
-                  </Link>
-
-                  <Link
-                    to="#"
-                    className="min-w-0 flex-1 font-medium text-gray-900 hover:underline "
-                  >
-                    Proven Daimond Zinc Copper Alkaline with Hydrogen RO Water
-                    Purifier | RO + ZN + CU + ALK + UV + UF + TDS ( UNDER 2500)+
-                    PF | Wall Mount & Table Top Best For Home and Office (Made
-                    In India)
-                  </Link>
-                </div>
-
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-sm font-normal text-gray-500 ">
-                    <span className="font-medium text-gray-900 ">
-                      Product ID:
-                    </span>
-                    BJ8364850
-                  </p>
-
-                  <div className="flex items-center justify-end gap-4">
-                    <p className="text-base font-normal text-gray-900 ">x1</p>
-
-                    <p className="text-xl font-bold leading-tight text-gray-900 ">
-                      ₹1,499
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-4 p-6">
-                <div className="flex items-center gap-6">
-                  <Link to="#" className="h-14 w-14 shrink-0">
-                    <img
-                      className="h-full w-full dark:hidden"
-                      src="https://provenonline.in/wp-content/uploads/2023/08/proven-daimond.jpg"
-                      alt="imac image"
-                    />
-                    <img
-                      className="hidden h-full w-full dark:block"
-                      src="https://provenonline.in/wp-content/uploads/2023/08/2-scaled.jpg"
-                      alt="imac image"
-                    />
-                  </Link>
-
-                  <Link
-                    to="#"
-                    className="min-w-0 flex-1 font-medium text-gray-900 hover:underline "
-                  >
-                    Proven Daimond Zinc Copper Alkaline with Hydrogen RO Water
-                    Purifier | RO + ZN + CU + ALK + UV + UF + TDS ( UNDER 2500)+
-                    PF | Wall Mount & Table Top Best For Home and Office (Made
-                    In India)
-                  </Link>
-                </div>
-
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-sm font-normal text-gray-500 ">
-                    <span className="font-medium text-gray-900 ">
-                      Product ID:
-                    </span>
-                    BJ8364850
-                  </p>
-
-                  <div className="flex items-center justify-end gap-4">
-                    <p className="text-base font-normal text-gray-900 ">x1</p>
-
-                    <p className="text-xl font-bold leading-tight text-gray-900 ">
-                      ₹1,499
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-4 p-6">
-                <div className="flex items-center gap-6">
-                  <Link to="#" className="h-14 w-14 shrink-0">
-                    <img
-                      className="h-full w-full dark:hidden"
-                      src="https://provenonline.in/wp-content/uploads/2023/08/proven-daimond.jpg"
-                      alt="imac image"
-                    />
-                    <img
-                      className="hidden h-full w-full dark:block"
-                      src="https://provenonline.in/wp-content/uploads/2023/08/2-scaled.jpg"
-                      alt="imac image"
-                    />
-                  </Link>
-
-                  <Link
-                    to="#"
-                    className="min-w-0 flex-1 font-medium text-gray-900 hover:underline "
-                  >
-                    Proven Daimond Zinc Copper Alkaline with Hydrogen RO Water
-                    Purifier | RO + ZN + CU + ALK + UV + UF + TDS ( UNDER 2500)+
-                    PF | Wall Mount & Table Top Best For Home and Office (Made
-                    In India)
-                  </Link>
-                </div>
-
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-sm font-normal text-gray-500 ">
-                    <span className="font-medium text-gray-900 ">
-                      Product ID:
-                    </span>
-                    BJ8364850
-                  </p>
-
-                  <div className="flex items-center justify-end gap-4">
-                    <p className="text-base font-normal text-gray-900 ">x1</p>
-
-                    <p className="text-xl font-bold leading-tight text-gray-900 ">
-                      ₹1,499
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
 
               <div className="space-y-4 bg-gray-50 p-6 ">
                 <div className="space-y-2">
                   <dl className="flex items-center justify-between gap-4">
-                    <dt className="font-normal text-gray-500 ">
-                      Original price
-                    </dt>
-                    <dd className="font-medium text-gray-900 ">₹6,592.00</dd>
+                    <dt className="font-normal text-gray-500 ">Total price</dt>
+                    <dd className="font-medium text-gray-900 ">
+                      ₹{order.totalAmount}
+                    </dd>
                   </dl>
 
-                  <dl className="flex items-center justify-between gap-4">
+                  {/* <dl className="flex items-center justify-between gap-4">
                     <dt className="font-normal text-gray-500 ">Savings</dt>
                     <dd className="text-base font-medium text-green-500">
                       -₹299.00
@@ -208,21 +111,21 @@ function OrderDetails() {
                   <dl className="flex items-center justify-between gap-4">
                     <dt className="font-normal text-gray-500 ">Tax</dt>
                     <dd className="font-medium text-gray-900 ">₹799</dd>
-                  </dl>
-                  <dl className="flex items-center justify-between gap-4">
+                  </dl> */}
+                  {/* <dl className="flex items-center justify-between gap-4">
                     <dt className="font-normal text-gray-500 ">
                       Billing Address:
                     </dt>
                     <dd className="font-medium text-gray-900 ">
-                      Noida sector 62
+                      {order.shippingInfo.address}
                     </dd>
-                  </dl>
+                  </dl> */}
                   <dl className="flex items-center justify-between gap-4">
                     <dt className="font-normal text-gray-500 ">
                       Shipping Address:
                     </dt>
                     <dd className="font-medium text-gray-900 ">
-                      Noida sector 142
+                      {order.shippingInfo.address}
                     </dd>
                   </dl>
                 </div>
@@ -230,7 +133,7 @@ function OrderDetails() {
                 <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 ">
                   <dt className="text-lg font-bold text-gray-900 ">Total</dt>
                   <dd className="text-lg font-bold text-gray-900 ">
-                    ₹7,191.00
+                    ₹{order.totalAmount}
                   </dd>
                 </dl>
               </div>
@@ -420,7 +323,18 @@ function OrderDetails() {
                   >
                     Cancel the order
                   </button>
-
+                  <button
+                    type="button"
+                    className="w-full rounded-lg  border border-gray-200 bg-white px-5  py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100"
+                  >
+                    <a
+                      href={`http://${order.shippingInfo.shippingLink}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Track order
+                    </a>
+                  </button>
                   <Link
                     to="#"
                     className="mt-4 flex w-full items-center justify-center rounded-lg bg-primary-700  px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300   sm:mt-0"

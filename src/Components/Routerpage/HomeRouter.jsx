@@ -78,7 +78,7 @@ function HomeRouter() {
           />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route
-            path="/profile/myorder/orderDetails"
+            path="/profile/myorder/orderDetails/:id"
             element={<OrderDetails />}
           />
           <Route path="/myorder" element={<Orderlist />} />
