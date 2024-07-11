@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
 import { toast } from "react-toastify";
+import { IoCartOutline } from "react-icons/io5";
 
 function HorizentalCard({ name, price, images, discount, ID }) {
   const addToCart = async (productId) => {
@@ -28,7 +29,7 @@ function HorizentalCard({ name, price, images, discount, ID }) {
       });
     } catch (error) {
       console.error("Error adding product to cart:", error);
-      toast.error("Failed to add product to cart.");
+      toast.error("Login fist to add to cart.");
     }
   };
   return (
@@ -70,7 +71,7 @@ function HorizentalCard({ name, price, images, discount, ID }) {
                       ₹{price}
                     </span>
                     <span className="old-price text-[12px] line-through text-[#777] ml-[9px]">
-                      ₹{discount}
+                      {discount}%
                     </span>
                   </span>
                 </div>
@@ -80,10 +81,10 @@ function HorizentalCard({ name, price, images, discount, ID }) {
                 className="add-to-cart w-[30px] h-[30px] absolute bottom-[10px] right-[10px] bg-AFPPrimaryLight border-[1px] border-solid border-[#eee] flex items-center justify-center "
                 title="Add To Cart"
               >
-                <i
-                  className="fi-rr-shopping-basket text-[18px] text-[#777] leading-[0]"
+                <IoCartOutline
+                  className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px] text-xl"
                   onClick={() => addToCart(ID)}
-                ></i>
+                />
               </Link>
             </div>
           </div>

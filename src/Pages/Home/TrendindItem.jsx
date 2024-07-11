@@ -78,7 +78,7 @@ function TrendingItem() {
                     name={product.name}
                     price={product.price}
                     discount={product.discount}
-                    images={product.thumbnail}
+                    images={product.image}
                     ID={product._id}
                   />
                 ))}
@@ -104,7 +104,7 @@ function TrendingItem() {
                     name={product.name}
                     price={product.price}
                     discount={product.discount}
-                    images={product.thumbnail}
+                    images={product.image}
                     ID={product._id}
                   />
                 ))}
@@ -130,7 +130,7 @@ function TrendingItem() {
                     name={product.name}
                     price={product.price}
                     discount={product.discount}
-                    images={product.thumbnail}
+                    images={product.image}
                     ID={product._id}
                   />
                 ))}

@@ -3,7 +3,7 @@ import Home from "../../Pages/Home/Home";
 import Navbar from "../../Pages/Navbar";
 import Footer from "../../Pages/Footer";
 import Shop from "../../Pages/Shop/Shop";
-import ProductDetails from "../Common/ProductDetails";
+// import ProductDetails from "../Common/ProductDetails";
 import Login from "../Authentication/Login";
 import Signup from "../Authentication/Signup";
 import Cart from "../User/Cart";
@@ -23,6 +23,7 @@ import ProtectedRoute from "../Protectedroutes/ProtectedRoutes";
 import RouteProtected from "../Protectedroutes/RoutesProtected";
 import Ordersuccess from "../Specific/Ordersuccess";
 import WaterPurefire from "../../Pages/WaterPurefire";
+import Productnewdetails from "../Common/Productnewdetails";
 
 function HomeRouter() {
   return (
@@ -38,7 +39,7 @@ function HomeRouter() {
           <Route path="/Water-purifier" element={<Shop />} />
           <Route path="/Spare_Parts" element={<Shop />} />
           <Route path="/Productctegory/:id" element={<WaterPurefire />} />
-          <Route path="/Product/:id" element={<ProductDetails />} />
+          <Route path="/Product/:id" element={<Productnewdetails />} />
           <Route
             path="/login"
             element={<ProtectedRoute element={<Login />} redirectTo="/" />}

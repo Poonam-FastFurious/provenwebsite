@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Baseurl } from "../../confige";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { IoCartOutline } from "react-icons/io5";
 function HomeBestSelling({ heading = "add on" }) {
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
@@ -154,6 +155,11 @@ function HomeBestSelling({ heading = "add on" }) {
       setLoading(false);
     }
   };
+  const truncateText = (text, maxLength) => {
+    return text.length > maxLength
+      ? text.substring(0, maxLength) + "..."
+      : text;
+  };
   return (
     <>
       <section className="gi-new-product py-[40px] max-[767px]:py-[30px]">
@@ -252,10 +258,10 @@ function HomeBestSelling({ heading = "add on" }) {
                                   title="Add To Cart"
                                   className="gi-btn-group add-to-cart transition-all duration-[0.3s] ease-in-out h-[30px] w-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px]"
                                 >
-                                  <i
-                                    className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
+                                  <IoCartOutline
+                                    className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px] text-xl"
                                     onClick={() => addToCart(pro._id)}
-                                  ></i>
+                                  />
                                 </Link>
                               </div>
                             </div>
@@ -271,7 +277,7 @@ function HomeBestSelling({ heading = "add on" }) {
                                 to={`/Product/${pro._id}`}
                                 className="block text-[14px] leading-[22px] font-normal text-[#4b5966] tracking-[0.85px] capitalize font-Poppins hover:text-[#5caf90]"
                               >
-                                {pro.name}
+                                {truncateText(pro.name, 80)}
                               </Link>
                             </h5>
                             <div className="gi-pro-rat-price mt-[5px] mb-[0] flex flex-col">
@@ -288,7 +294,7 @@ function HomeBestSelling({ heading = "add on" }) {
                                   ₹{pro.price}
                                 </span>
                                 <span className="old-price text-[14px] text-[#777] line-through">
-                                  ₹56.00
+                                  {pro.discount}%
                                 </span>
                               </span>
                             </div>
