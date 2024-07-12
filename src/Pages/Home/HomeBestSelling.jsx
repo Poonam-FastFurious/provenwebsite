@@ -206,26 +206,28 @@ function HomeBestSelling({ heading = "add on" }) {
                           <div className="gi-pro-image-outer transition-all duration-[0.3s] delay-[0s] ease z-[11] relative">
                             <div className="gi-pro-image overflow-hidden">
                               <Link
-                                to={`/Product/${pro._id}`}
+                                to="#"
                                 className="image relative block overflow-hidden pointer-events-none"
                               >
                                 <span className="label veg max-[991px]:hidden">
                                   <span className="dot"></span>
                                 </span>
-                                <img
-                                  className="main-image max-w-full transition-all duration-[0.3s] ease delay-[0s]"
-                                  src={pro.image}
-                                  alt="Product"
-                                />
-                                <img
-                                  className="hover-image absolute z-[1] top-[0] left-[0] opacity-[0] transition-all duration-[0.3s] ease delay-[0s]"
-                                  src={pro.image}
-                                  alt="Product"
-                                />
+                                <Link to={`/Product/${pro._id}`}>
+                                  <img
+                                    className="main-image max-w-full transition-all duration-[0.3s] ease delay-[0s]"
+                                    src={pro.image}
+                                    alt="Product"
+                                  />
+                                  {/* <img
+                                    className="hover-image absolute z-[1] top-[0] left-[0] opacity-[0] transition-all duration-[0.3s] ease delay-[0s]"
+                                    src={pro.image}
+                                    alt="Product"
+                                  /> */}
+                                </Link>
                               </Link>
                               <span className="flags flex flex-col p-[0] uppercase absolute top-[10px] right-[10px] z-[2]">
                                 <span className="sale px-[10px] py-[5px] text-[11px] font-medium leading-[12px] text-left uppercase flex items-center bg-AFPPrimary text-[#fff] tracking-[0.5px] relative rounded-[5px]">
-                                  Sale
+                                  -{pro.discount}%
                                 </span>
                               </span>
                               <div className="gi-pro-actions transition-all duration-[0.3s] ease-in-out absolute z-[9] left-[0] right-[0] bottom-[-10px] max-[991px]:opacity-[1] max-[991px]:bottom-[10px] flex flex-row items-center justify-center my-[0] mx-auto opacity-0">
@@ -294,7 +296,11 @@ function HomeBestSelling({ heading = "add on" }) {
                                   ₹{pro.price}
                                 </span>
                                 <span className="old-price text-[14px] text-[#777] line-through">
-                                  {pro.discount}%
+                                  ₹
+                                  {(
+                                    pro.price +
+                                    (pro.price * pro.discount) / 100
+                                  ).toFixed(2)}
                                 </span>
                               </span>
                             </div>

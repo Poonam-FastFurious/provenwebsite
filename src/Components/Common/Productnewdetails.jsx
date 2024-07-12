@@ -257,8 +257,7 @@ function Productnewdetails() {
                         <div className="gi-single-price-stoke mb-[15px] pt-[15px] pb-[15px] flex justify-between">
                           <div className="gi-single-price flex flex-col">
                             <div className="final-price mb-[15px] text-[#4b5966] font-semibold text-[22px] leading-[32px] font-Poppins tracking-[0] max-[1199px]:text-[20px]">
-                              ₹
-                              {(productData.price * productData.discount) / 100}
+                              ₹{productData.price}
                               <span className="price-des ml-[15px] text-[#5caf90] font-medium text-[18px] tracking-[0.02rem]">
                                 -{productData.discount}%
                               </span>
@@ -266,7 +265,10 @@ function Productnewdetails() {
                             <div className="mrp text-[#777]">
                               M.R.P. :
                               <span className="text-[#999] line-through">
-                                ₹{productData.price}
+                                ₹
+                                {productData.price +
+                                  (productData.price * productData.discount) /
+                                    100}
                               </span>
                             </div>
                           </div>
