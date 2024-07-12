@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { FaGift, FaWhatsapp } from "react-icons/fa";
-import { IoIosMenu } from "react-icons/io";
+import { CiGift } from "react-icons/ci";
+import { FaWhatsapp } from "react-icons/fa";
+import { IoIosMenu, IoMdHome } from "react-icons/io";
 import { TbPhoneCall } from "react-icons/tb";
 import { Link } from "react-router-dom";
 const AccordionItem = ({ title, children }) => {
@@ -45,44 +46,38 @@ function Footermobile() {
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  group"
           >
-            <svg
-              className="w-5 h-5 mb-2 text-gray-500  group-hover:text-blue-600 "
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-            </svg>
-            <span className="text-sm text-gray-500  group-hover:text-blue-600 ">
-              Home
+            <IoMdHome className=" text-2xl  mb-2 text-gray-500" />
+            <span className="text-sm text-gray-500   ">
+              <Link to="/">Home</Link>
             </span>
           </button>
           <button
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  group"
           >
-            <FaWhatsapp className="text-2xl" />
-            <span className="text-sm text-gray-500  group-hover:text-blue-600 ">
-              WhatsApp
+            <FaWhatsapp className=" text-2xl  mb-2 text-gray-500" />
+            <span className="text-sm text-gray-500   ">
+              <Link to={`https://wa.me/${+919820035336}`} target="_blank">
+                Whatsapp
+              </Link>
             </span>
           </button>
           <button
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  group"
           >
-            <FaGift className=" text-2xl" />
-            <span className="text-sm text-gray-500  group-hover:text-blue-600 ">
-              Demo
+            <CiGift className=" text-2xl  mb-2 text-gray-500" />
+            <span className="text-sm text-gray-500   ">
+              <Link to="/Book-Demo">Demo</Link>
             </span>
           </button>
           <button
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50  group"
           >
-            <TbPhoneCall className=" text-2xl" />
-            <span className="text-sm text-gray-500  group-hover:text-blue-600 ">
-              Contact
+            <TbPhoneCall className=" text-2xl  mb-2 text-gray-500" />
+            <span className="text-sm text-gray-500   ">
+              <Link to="/contact-us">Contact</Link>
             </span>
           </button>
           <button
@@ -92,11 +87,9 @@ function Footermobile() {
             className="  flex-col items-center justify-center px-5 hover:bg-gray-50  group gi-site-menu-icon transition-all duration-[0.3s] ease-in-out  flex text-[#4b5966]"
             type="button"
           >
-            <IoIosMenu className=" text-2xl" />
+            <IoIosMenu className=" text-2xl  mb-2 text-gray-500" />
 
-            <span className="text-sm text-gray-500  group-hover:text-blue-600 ">
-              Menu
-            </span>
+            <span className="text-sm text-gray-500   ">Menu</span>
           </button>
         </div>
         <div

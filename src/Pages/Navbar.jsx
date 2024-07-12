@@ -37,6 +37,15 @@ const AccordionItem = ({ title, children }) => {
 };
 function Navbar() {
   const [category, setCategory] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
 
   const [hoveredImage, setHoveredImage] = useState(
     "https://provenonline.in/wp-content/uploads/2023/01/612vp1CNrKL._SL1500_.jpg"
@@ -142,28 +151,6 @@ function Navbar() {
                                     </li>
                                   </ul>
                                   <ul className="mega-block w-[calc(25%-30px)] mr-[30px] py-[15px] block">
-                                    {category.slice(8, 13).map((cat, index) => (
-                                      <li
-                                        key={index}
-                                        onMouseOver={() =>
-                                          handleMouseOver(cat.image)
-                                        }
-                                        onMouseOut={handleMouseOut}
-                                      >
-                                        <Link
-                                          to={`/Productctegory/${cat.categoriesTitle}`}
-                                          className="text-[#777] capitalize leading-[30px] font-normal text-[13px] block py-[5px] border-0 h-auto hover:text-[#5caf90]"
-                                        >
-                                          <span className=" text-md">
-                                            {cat.categoriesTitle}
-                                          </span>
-                                          <br />
-                                          Explore (35 Products)
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                  <ul className="mega-block w-[calc(25%-30px)] mr-[30px] py-[15px] block">
                                     {category.slice(0, 5).map((cat, index) => (
                                       <li
                                         key={index}
@@ -180,13 +167,12 @@ function Navbar() {
                                             {cat.categoriesTitle}
                                           </span>
                                           <br />
-                                          Explore (35 Products)
                                         </Link>
                                       </li>
                                     ))}
                                   </ul>
                                   <ul className="mega-block w-[calc(25%-30px)] mr-[30px] py-[15px] block">
-                                    {category.slice(8, 13).map((cat, index) => (
+                                    {category.slice(6, 13).map((cat, index) => (
                                       <li
                                         key={index}
                                         onMouseOver={() =>
@@ -202,10 +188,32 @@ function Navbar() {
                                             {cat.categoriesTitle}
                                           </span>
                                           <br />
-                                          Explore (35 Products)
                                         </Link>
                                       </li>
                                     ))}
+                                  </ul>
+                                  <ul className="mega-block w-[calc(25%-30px)] mr-[30px] py-[15px] block">
+                                    {category
+                                      .slice(13, 24)
+                                      .map((cat, index) => (
+                                        <li
+                                          key={index}
+                                          onMouseOver={() =>
+                                            handleMouseOver(cat.image)
+                                          }
+                                          onMouseOut={handleMouseOut}
+                                        >
+                                          <Link
+                                            to={`/Productctegory/${cat.categoriesTitle}`}
+                                            className="text-[#777] capitalize leading-[30px] font-normal text-[13px] block py-[5px] border-0 h-auto hover:text-[#5caf90]"
+                                          >
+                                            <span className=" text-md">
+                                              {cat.categoriesTitle}
+                                            </span>
+                                            <br />
+                                          </Link>
+                                        </li>
+                                      ))}
                                   </ul>
                                 </li>
                               </ul>
@@ -281,45 +289,47 @@ function Navbar() {
                         </div>
                         <div className="gi-btn-desc flex flex-col uppercase ml-[10px] max-[1199px]:hidden">
                           <span className="gi-btn-title transition-all duration-[0.3s] ease-in-out text-[12px] leading-[1] text-[#777] mb-[6px] tracking-[0.6px] capitalize font-medium">
-                            Login
+                            {isLoggedIn ? "My Account" : "Login"}
                           </span>
                         </div>
                       </Link>
-                      <ul className="gi-dropdown-menu min-w-[150px] py-[5px] transition-all duration-[0.3s] ease-in-out mt-[25px] absolute z-[16] text-left bg-[#fff] block opacity-0 invisible left-[0] right-[auto] border-[1px] border-solid border-[#eee]">
-                        <li>
-                          <Link
-                            className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
-                            to="/profile"
-                          >
-                            Profile
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
-                            to="/profile"
-                          >
-                            My Accounts
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
-                            to="#"
-                          >
-                            Support
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            onClick={handleLogout}
-                            className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
-                            to="#"
-                          >
-                            Log Out
-                          </Link>
-                        </li>
-                      </ul>
+                      {isLoggedIn && (
+                        <ul className="gi-dropdown-menu min-w-[150px] py-[5px] transition-all duration-[0.3s] ease-in-out mt-[25px] absolute z-[16] text-left bg-[#fff] block opacity-0 invisible left-[0] right-[auto] border-[1px] border-solid border-[#eee]">
+                          <li>
+                            <Link
+                              className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
+                              to="/profile"
+                            >
+                              Profile
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
+                              to="/profile"
+                            >
+                              My Accounts
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
+                              to="#"
+                            >
+                              Support
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              onClick={handleLogout}
+                              className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
+                              to="#"
+                            >
+                              Log Out
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
                     </div>
 
                     <Link

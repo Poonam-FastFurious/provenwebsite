@@ -6,8 +6,8 @@ function BookDemo() {
           <div className="relative flex items-end px-4 pb-10 pt-60 sm:px-6 sm:pb-16 md:justify-center lg:px-8 lg:pb-24 bg-gradient-to-tr from-slate-300 to-slate-800">
             <div className="absolute inset-0 bg-gradient-to-tr from-slate-300 to-slate-800">
               <img
-                className="h-full w-full   object-cover object-top "
-                src="https://s3-alpha-sig.figma.com/img/d79a/f25b/5567d070b924d2c025b3a088e97b3f83?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fyRyR~RGlx171GJSgbykRnDU9wk-rkw4nFqtYVdvWEN~M1y3cc1SPLhUbfpg~DSPl~Ckd6sIrV4CrIU6u1gPkl25d6NOxS7l0I7jLhvwCh-XxVa53z79xHYvzgwi~Dw~rHSGXMYaIF4ClVCEcsRnYW-rHgdcFCPtqxBykU9a4wW7xQNNR6Kiapiou8pb0-Q8JDly-YzRdr4wy~P4~37a~Za1Ugx7AXLUzhccmxSdpLprvbFjUg42S6ZHTHeM7FvkSN97bB74DimDzoKNK5L0eAv5cHkzH~PB5IQwl7ObwhhR3o9ag9sqD2Ss8XmF9ZEg3Acieik~Oc8seZ8aVGnc4g__"
+                className="h-full w-full   object-full object-top "
+                src="https://img.freepik.com/free-vector/water-filter-realistic-with-faucet-full-glass-vector-illustration_1284-76637.jpg?t=st=1720761230~exp=1720764830~hmac=c3ac13ead9f325289541b0202169ee8e66a2abfeec46fb99d3df167c7b501231&w=740"
                 alt=""
               />
             </div>

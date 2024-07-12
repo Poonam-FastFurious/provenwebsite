@@ -16,6 +16,10 @@ function Testimonial() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+
     responsive: [
       {
         breakpoint: 1024,
@@ -97,10 +101,10 @@ function Testimonial() {
       <div className="max-w-7xl max-md:max-w-lg mx-auto">
         <div className="grid md:grid-cols-3 gap-4">
           <div className="col-span-4">
-            <h2 className="text-gray-800 text-2xl font-extrabold text-center">
+            <h2 className="text-white sm:text-4xl text-2xl font-extrabold text-center tracking-normal">
               Loved by Our Testimonials
             </h2>
-            <p className="text-xl text-gray-800 mt-4 leading-relaxed sm:pb-16 pb-0 text-center">
+            <p className="text-xl text-white tracking-wide mt-4 leading-relaxed sm:pb-16 pb-0 text-center">
               What People are Saying
             </p>
           </div>
@@ -109,7 +113,7 @@ function Testimonial() {
         <Slider {...settings} className="testimonial-slider w-full p-8">
           {testimonial.map((testi, index) => (
             <div
-              className="p-6 rounded-lg bg-white shadow-md py-12"
+              className="p-6 rounded-lg bg-white shadow-md py-12 h-64"
               key={index}
             >
               <div className="flex items-center">

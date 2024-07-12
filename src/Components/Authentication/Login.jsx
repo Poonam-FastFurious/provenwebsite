@@ -102,7 +102,7 @@ function Login() {
                     id="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#237DA2]  focus:border-[#237DA2] block w-full p-2.5"
                     placeholder="name@gmail.com"
                     required
                   />
@@ -121,7 +121,7 @@ function Login() {
                       id="password"
                       value={formData.password}
                       onChange={handleInputChange}
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#237DA2] focus:border-accent-AFPPrimary block w-full p-2.5"
                       placeholder="••••••••"
                       required
                     />
@@ -188,7 +188,6 @@ function Login() {
                         aria-describedby="remember"
                         type="checkbox"
                         className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                        required
                       />
                     </div>
                     <div className="ml-3 text-sm">

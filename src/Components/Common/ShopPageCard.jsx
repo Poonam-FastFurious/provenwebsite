@@ -122,23 +122,19 @@ function ShopPageCard({
             </div>
             <div className="gi-pro-content h-full p-[20px] relative z-[10] flex flex-col text-left border-t-[1px] border-solid border-[#eee]">
               <Link to={`/Product/${ID}`}>
-                <h6 className="gi-pro-stitle mb-[10px] font-normal text-[#999] text-[13px] capitalize font-manrope tracking-[0.01rem] leading-[1.2]">
+                <h6 className="gi-pro-stitle mb-[10px] font-semibold  text-[#4b5966]  hover:text-[#237DA2] text-[13px] capitalize text  tracking-[0.01rem] leading-[1.2]">
                   {title}
                 </h6>
               </Link>
               <h5 className="gi-pro-title h-full mb-[10px] text-[16px] tracking-[0.01rem] font-normal leading-[1.2]">
                 <Link
                   to={`/Product/${ID}`}
-                  className="text-[#4b5966]  text-[14px] leading-[22px] font-normal tracking-[0.85px] capitalize font-Poppins hidden"
+                  className="  text-[14px] leading-[22px] font-normal tracking-[0.85px] capitalize font-Poppins hidden"
                 >
                   {truncateText(description, 60)}
                 </Link>
               </h5>
-              <p className="gi-info text-[15px] leading-[28px] font-light tracking-[0.02rem] mb-[16px] hidden">
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical Latin literature from
-                45 BC, making it over 2000 years old.
-              </p>
+
               <div className="gi-pro-rat-price mt-[5px] mb-[0] flex flex-col">
                 <span className="gi-pro-rating mb-[10px] opacity-[0.7] relative">
                   <i className="gicon gi-star fill inline-block text-[#f27d0c] float-left text-[14px] mr-[3px]"></i>
@@ -209,16 +205,14 @@ function ShopPageCard({
                           <i className="gicon gi-star text-[14px] text-[#777] mr-[5px]"></i>
                         </div>
                         <div className="gi-quickview-desc mb-[10px] text-[15px] leading-[24px] text-[#777] font-light">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry standard dummy text ever since the 1900s,
+                          {description}
                         </div>
                         <div className="gi-quickview-price pt-[5px] pb-[10px] flex items-center justify-left">
                           <span className="new-price text-[#4b5966] font-bold text-[22px]">
-                            {price}
+                            ₹{price}
                           </span>
                           <span className="old-price text-[18px] ml-[10px] line-through text-[#777]">
-                            {offprice}
+                            {offprice}%
                           </span>
                         </div>
                         <div className="gi-pro-variation mt-[5px]">
@@ -281,7 +275,7 @@ function ShopPageCard({
                                 id="quantity-input"
                                 data-input-counter
                                 aria-describedby="helper-text-explanation"
-                                className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5  "
+                                className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm  block w-full py-2.5  "
                                 placeholder="999"
                                 required
                                 value={1}
@@ -301,6 +295,7 @@ function ShopPageCard({
                             <button
                               type="button"
                               className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px] bg-[#4b5966] text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-AFPPrimary hover:text-[#fff]"
+                              onClick={() => addToCart(ID)}
                             >
                               <i className="fi-rr-shopping-basket text-[14px] leading-[0] mr-[5px]"></i>
                               Add To Cart

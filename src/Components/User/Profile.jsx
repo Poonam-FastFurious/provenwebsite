@@ -30,6 +30,7 @@ function Profile() {
   const [addresses, setAddresses] = useState([]);
   const userId = localStorage.getItem("userid");
   const accessToken = localStorage.getItem("accessToken");
+  const [showPassword, setShowPassword] = useState(false);
   // Retrieve user ID from local storage
   useEffect(() => {
     const userId = localStorage.getItem("userid");
@@ -220,7 +221,9 @@ function Profile() {
 
     fetchAddressDetails();
   }, [userId, accessToken]);
-
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <>
       <section className="relative lg:pb-24 pb-16 md:mt-[84px] mt-[70px]">
@@ -376,7 +379,7 @@ function Profile() {
               </div>
             </div>
 
-            <div className=" w-full  ml-4  ">
+            <div className=" w-full  sm:ml-0 md:ml-4 lg:ml-4 xl:ml-4  ">
               {activeTab === "Orders" && (
                 <div>
                   <Orderlist />
@@ -385,7 +388,7 @@ function Profile() {
 
               {activeTab === "DashBoard" && (
                 <>
-                  <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+                  <div className="grid gap-6 mt-4 md:grid-cols-2 xl:grid-cols-4">
                     <div className="flex items-center p-4 bg-white rounded-lg shadow-xs border ">
                       <div className="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
                         <svg
@@ -461,7 +464,7 @@ function Profile() {
                       </div>
                       <div>
                         <p className="mb-2 text-sm font-medium text-gray-600">
-                          User vip
+                          User
                         </p>
                         <p className="text-lg font-semibold text-gray-700">
                           828
@@ -511,9 +514,9 @@ function Profile() {
                           <div className="px-4 py-2">+9876543210</div>
                         </div>
 
-                        <div className="grid grid-cols-2">
+                        <div className="grid grid-cols-4">
                           <div className="px-4 py-2 font-semibold">Email.</div>
-                          <div className="px-4 py-2">
+                          <div className="">
                             <Link className="" to="mailto:jane@example.com">
                               {userData.email}
                             </Link>
@@ -638,7 +641,7 @@ function Profile() {
                               <MdWifiPassword />
                             </i>
                             <input
-                              type="password"
+                              type={showPassword ? "text" : "password"}
                               className="ps-12 w-full py-2 px-3 h-10 bg-transparent   rounded outline-none border border-gray-400  focus:ring-0"
                               placeholder="New password"
                               required=""
@@ -646,6 +649,59 @@ function Profile() {
                               onChange={(e) => setNewPassword(e.target.value)}
                               disabled={isLoading}
                             />
+                            <button
+                              type="button"
+                              onClick={togglePasswordVisibility}
+                              className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-600 focus:outline-none"
+                            >
+                              {showPassword ? (
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                  />
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M10 14V10a2 2 0 012-2h0"
+                                  />
+                                </svg>
+                              ) : (
+                                <svg
+                                  className="w-5 h-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                  />
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M10 14V10a2 2 0 012-2h0"
+                                  />
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M17.6 15.6a9 9 0 01-12.8 0"
+                                  />
+                                </svg>
+                              )}
+                            </button>
                           </div>
                         </div>
 
@@ -679,7 +735,7 @@ function Profile() {
                         type="submit"
                         className="py-2 px-5 inline-block font-semibold tracking-wide align-middle duration-500 text-base text-center bg-AFPPrimary text-white rounded-md mt-5"
                       >
-                        {isLoading ? "Saving..." : "Save password"}
+                        {isLoading ? "Saving..." : "Change password"}
                       </button>
                       {message && <p>{message}</p>}
                     </form>

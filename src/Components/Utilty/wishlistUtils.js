@@ -7,7 +7,7 @@ const handleAddToWishlist = async (productId, setLoading) => {
   const token = localStorage.getItem("accessToken");
 
   if (!token) {
-    toast.error("You must be logged in to add items to your wishlist.");
+    toast.warn("You must be logged in to add items to your wishlist.");
     setLoading(false);
     return;
   }
@@ -40,7 +40,7 @@ const handleAddToWishlist = async (productId, setLoading) => {
     });
   } catch (error) {
     console.error("Error adding product to wishlist:", error);
-    toast.error("Failed to add product to wishlist.");
+    toast.warn("Failed to add product to wishlist.");
   } finally {
     setLoading(false);
   }

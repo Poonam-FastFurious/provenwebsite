@@ -78,10 +78,8 @@ function Cart() {
       const updatedCart = { ...prevCart };
       const updatedItems = updatedCart.items.map((item) => {
         if (item.product._id === productId) {
-          const updatedQuantity = item.quantity - 1;
-          // Ensure quantity doesn't go below 0
-          const newQuantity = updatedQuantity < 0 ? 0 : updatedQuantity;
-          return { ...item, quantity: newQuantity };
+          const updatedQuantity = Math.max(item.quantity - 1, 1); // Ensure quantity doesn't go below 0
+          return { ...item, quantity: updatedQuantity };
         }
         return item;
       });
@@ -184,7 +182,10 @@ function Cart() {
                       className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm   md:p-6"
                     >
                       <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
-                        <Link to="#" className="shrink-0 md:order-1">
+                        <Link
+                          to={`/Product/${item.product._id}`}
+                          className="shrink-0 md:order-1"
+                        >
                           <img
                             className="h-20 w-20 dark:hidden"
                             src={item.product.image}

@@ -69,7 +69,7 @@ function HomeBestSelling({ heading = "add on" }) {
       });
     } catch (error) {
       console.error("Error adding product to cart:", error);
-      toast.error("Failed to add product to cart.");
+      toast.warn("login First to add product.");
     }
   };
   const settings = {
@@ -117,7 +117,7 @@ function HomeBestSelling({ heading = "add on" }) {
     const token = localStorage.getItem("accessToken");
 
     if (!token) {
-      toast.error("You must be logged in to add items to your wishlist.");
+      toast.warn("You must be logged in to add items to your wishlist.");
       setLoading(false);
       return;
     }
@@ -150,7 +150,7 @@ function HomeBestSelling({ heading = "add on" }) {
       });
     } catch (error) {
       console.error("Error adding product to wishlist:", error);
-      toast.error("Failed to add product to wishlist.");
+      toast.warn("Failed to add product to wishlist.");
     } finally {
       setLoading(false);
     }
@@ -174,11 +174,11 @@ function HomeBestSelling({ heading = "add on" }) {
                   data-aos-delay="200"
                 >
                   <div className="section-detail">
-                    <h2 className="gi-title mb-[0] text-[25px] font-semibold text-AFPPrimary relative inline p-[0] capitalize leading-[1]  font-manrope max-[991px]:text-[25px] max-[767px]:text-[25px] max-[575px]:text-[25px]">
+                    <h2 className="gi-title mb-[0] text-[25px] font-semibold text-AFPPrimary relative inline p-4 sm:p-0 md:p-0 lg:p-0 xl:p-0 capitalize leading-[1]  font-manrope max-[991px]:text-[25px] max-[767px]:text-[25px] max-[575px]:text-[25px]">
                       {heading}
                       <span className=""></span>
                     </h2>
-                    <p className="max-w-[400px] mt-[10px] text-[14px] text-[#777] leading-[18px]">
+                    <p className="max-w-[400px] mt-[10px] text-[14px] text-[#777] leading-[18px] px-4 sm:p-0 md:p-0 lg:p-0 xl:p-0">
                       Don wait. The time will never be just right.
                     </p>
                   </div>

@@ -205,15 +205,19 @@ function Wishlist() {
                                     </span>
                                   </td>
                                   <td className="p-[0.5rem] border-b-[1px] border-solid border-[#dee2e6]">
-                                    <img
-                                      className="prod-img h-[58px] w-[58px]"
-                                      src={item.url}
-                                      alt="product image"
-                                    />
+                                    <Link to={`/Product/${item.productId}`}>
+                                      <img
+                                        className="prod-img h-[58px] w-[58px]"
+                                        src={item.url[0]}
+                                        alt="product image"
+                                      />
+                                    </Link>
                                   </td>
                                   <td className="p-[0.5rem] border-b-[1px] border-solid border-[#dee2e6]">
                                     <span className="max-[767px]:text-[14px] py-[14px] flex text-[#777] tracking-[0.02rem]">
-                                      {item.productName}
+                                      <Link to={`/Product/${item.productId}`}>
+                                        {item.productName}
+                                      </Link>
                                     </span>
                                   </td>
                                   <td className="p-[0.5rem] border-b-[1px] border-solid border-[#dee2e6]">

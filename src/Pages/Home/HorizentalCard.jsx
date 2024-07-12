@@ -39,7 +39,7 @@ function HorizentalCard({ name, price, images, discount, ID }) {
           <div className="gi-all-product-inner mr-[1px] p-[15px] flex flex-wrap items-center bg-[#fff] border-[1px] border-solid border-[#eee] overflow-hidden relative">
             <div className="gi-pro-image-outer basis-[70px]">
               <div className="gi-pro-image overflow-hidden">
-                <Link to="product-left-sidebar" className="image">
+                <Link to={`/Product/${ID}`} className="image">
                   <img
                     className="main-image w-full"
                     src={images}
@@ -51,14 +51,14 @@ function HorizentalCard({ name, price, images, discount, ID }) {
             <div className="gi-pro-content w-[calc(100%-70px)] basis-[calc(100%-70px)] pl-[15px]">
               <h5 className="gi-pro-title text-[16px]">
                 <Link
-                  to="product-left-sidebar"
+                  to={`/Product/${ID}`}
                   title="Healthy Nutmix, 200g Pack"
                   className="text-[#777] whitespace-nowrap overflow-hidden text-ellipsis block font-Poppins text-[14px] leading-[24px] font-medium tracking-[0.2px] capitalize"
                 ></Link>
               </h5>
               <h6 className="gi-pro-stitle text-[#777] whitespace-nowrap overflow-hidden text-ellipsis block text-[12px] leading-[24px] font-normal tracking-[0.3px] capitalize mb-[5px]">
                 <Link
-                  to="shop-left-sidebar-col-3"
+                  to={`/Product/${ID}`}
                   className="text-[#999] hover:text-[#5caf90]"
                 >
                   {name}

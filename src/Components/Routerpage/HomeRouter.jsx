@@ -24,6 +24,7 @@ import RouteProtected from "../Protectedroutes/RoutesProtected";
 import Ordersuccess from "../Specific/Ordersuccess";
 import WaterPurefire from "../../Pages/WaterPurefire";
 import Productnewdetails from "../Common/Productnewdetails";
+import Blogdetails from "../../Pages/Blog/Blogdetails";
 
 function HomeRouter() {
   return (
@@ -85,6 +86,7 @@ function HomeRouter() {
           <Route path="/myorder" element={<Orderlist />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/Support" element={<Suport />} />
+          <Route path="/Blogdetails" element={<Blogdetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>
