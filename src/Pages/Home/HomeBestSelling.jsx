@@ -160,6 +160,36 @@ function HomeBestSelling({ heading = "add on" }) {
       ? text.substring(0, maxLength) + "..."
       : text;
   };
+  const renderStars = (rating) => {
+    const totalStars = 5;
+    const filledStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    const emptyStars = totalStars - filledStars - (hasHalfStar ? 1 : 0);
+
+    return (
+      <span className="gi-pro-rating mb-[10px] opacity-[0.7] relative">
+        {[...Array(filledStars)].map((_, index) => (
+          <i
+            key={`filled-${index}`}
+            className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left"
+          ></i>
+        ))}
+        {hasHalfStar && (
+          <i
+            key="half"
+            className="gicon gi-star-half fill text-[14px] text-[#f27d0c] float-left"
+          ></i>
+        )}
+        {[...Array(emptyStars)].map((_, index) => (
+          <i
+            key={`empty-${index}`}
+            className="gicon gi-star text-[14px] text-[#777] float-left"
+          ></i>
+        ))}
+      </span>
+    );
+  };
+
   return (
     <>
       <section className="gi-new-product py-[40px] max-[767px]:py-[30px]">
@@ -206,24 +236,22 @@ function HomeBestSelling({ heading = "add on" }) {
                           <div className="gi-pro-image-outer transition-all duration-[0.3s] delay-[0s] ease z-[11] relative">
                             <div className="gi-pro-image overflow-hidden">
                               <Link
-                                to="#"
-                                className="image relative block overflow-hidden pointer-events-none"
+                                to={`/Product/${pro._id}`}
+                                className="image relative block overflow-hidden max-h-72"
                               >
                                 <span className="label veg max-[991px]:hidden">
                                   <span className="dot"></span>
                                 </span>
-                                <Link to={`/Product/${pro._id}`}>
-                                  <img
-                                    className="main-image max-w-full transition-all duration-[0.3s] ease delay-[0s]"
-                                    src={pro.image}
-                                    alt="Product"
-                                  />
-                                  {/* <img
-                                    className="hover-image absolute z-[1] top-[0] left-[0] opacity-[0] transition-all duration-[0.3s] ease delay-[0s]"
-                                    src={pro.image}
-                                    alt="Product"
-                                  /> */}
-                                </Link>
+                                <img
+                                  className="main-image  max-w-full transition-all duration-[0.3s] ease delay-[0s]"
+                                  src={pro.image}
+                                  alt="Product"
+                                />
+                                <img
+                                  className="hover-image absolute top-0 left-0 w-full transition-all duration-[0.3s] ease delay-[0s]"
+                                  src={pro.image}
+                                  alt="Product"
+                                />
                               </Link>
                               <span className="flags flex flex-col p-[0] uppercase absolute top-[10px] right-[10px] z-[2]">
                                 <span className="sale px-[10px] py-[5px] text-[11px] font-medium leading-[12px] text-left uppercase flex items-center bg-AFPPrimary text-[#fff] tracking-[0.5px] relative rounded-[5px]">
@@ -284,12 +312,7 @@ function HomeBestSelling({ heading = "add on" }) {
                             </h5>
                             <div className="gi-pro-rat-price mt-[5px] mb-[0] flex flex-col">
                               <span className="gi-pro-rating mb-[10px] opacity-[0.7] relative">
-                                {pro.rating}
-                                <i className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left"></i>
-                                <i className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left"></i>
-                                <i className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left"></i>
-                                <i className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left"></i>
-                                <i className="gicon gi-star text-[14px] text-[#777] float-left"></i>
+                                {renderStars(pro.rating)}
                               </span>
                               <span className="gi-price">
                                 <span className="new-price text-[#4b5966] font-bold text-[14px] mr-[7px]">
@@ -298,8 +321,8 @@ function HomeBestSelling({ heading = "add on" }) {
                                 <span className="old-price text-[14px] text-[#777] line-through">
                                   ₹
                                   {(
-                                    pro.price +
-                                    (pro.price * pro.discount) / 100
+                                    (pro.price * 100) /
+                                    (100 - pro.discount)
                                   ).toFixed(2)}
                                 </span>
                               </span>
@@ -344,12 +367,12 @@ function HomeBestSelling({ heading = "add on" }) {
                     <div className="min-[768px]:w-[58.33%] px-[12px] max-[767px]:px-[0] w-full max-[767px]:mt-[30px]">
                       <div className="quickview-pro-content">
                         <h5 className="gi-quick-title">
-                          <a
+                          <Link
                             href="product-left-sidebar.html"
                             className="mb-[15px] block text-[#4b5966] text-[22px] leading-[1.5] font-medium max-[991px]:text-[20px]"
                           >
                             {selectedProduct.name}
-                          </a>
+                          </Link>
                         </h5>
                         <div className="gi-quickview-rating flex mb-[15px]">
                           <i className="gicon gi-star fill text-[14px] text-[#f27d0c] mr-[5px]"></i>
@@ -373,42 +396,19 @@ function HomeBestSelling({ heading = "add on" }) {
                           <div className="gi-pro-variation-inner flex flex-col mb-[15px] gi-pro-variation-size gi-pro-size">
                             <div className="gi-pro-variation-content">
                               <ul className="gi-opt-size">
-                                <li className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90] active">
-                                  <a
-                                    href="javascript:void(0)"
-                                    className="gi-opt-sz text-[#777]"
-                                    data-tooltip="Small"
+                                {selectedProduct.attributes.map((attribute) => (
+                                  <li
+                                    key={attribute._id}
+                                    className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]"
                                   >
-                                    250g
-                                  </a>
-                                </li>
-                                <li className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]">
-                                  <a
-                                    href="javascript:void(0)"
-                                    className="gi-opt-sz text-[#777]"
-                                    data-tooltip="Medium"
-                                  >
-                                    500g
-                                  </a>
-                                </li>
-                                <li className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]">
-                                  <a
-                                    href="javascript:void(0)"
-                                    className="gi-opt-sz text-[#777]"
-                                    data-tooltip="Large"
-                                  >
-                                    1kg
-                                  </a>
-                                </li>
-                                <li className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]">
-                                  <a
-                                    href="javascript:void(0)"
-                                    className="gi-opt-sz text-[#777]"
-                                    data-tooltip="Extra Large"
-                                  >
-                                    2kg
-                                  </a>
-                                </li>
+                                    <Link
+                                      to="#"
+                                      className="gi-opt-sz text-[#777]"
+                                    >
+                                      {attribute.attributeValue}
+                                    </Link>
+                                  </li>
+                                ))}
                               </ul>
                             </div>
                           </div>
@@ -425,7 +425,7 @@ function HomeBestSelling({ heading = "add on" }) {
                           <div className="gi-quickview-cart">
                             <button
                               type="button"
-                              className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px] bg-[#4b5966] text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#5caf90] hover:text-[#fff]"
+                              className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px]  bg-AFPPrimary text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#5caf90] hover:text-[#fff]"
                             >
                               <i className="fi-rr-shopping-basket text-[14px] leading-[0] mr-[5px]"></i>
                               Add To Cart

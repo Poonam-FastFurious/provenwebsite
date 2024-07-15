@@ -5,6 +5,7 @@ import { Link } from "react-alice-carousel";
 import { useParams } from "react-router-dom";
 import ShopPageCard from "../Components/Common/ShopPageCard";
 import { Baseurl } from "../confige";
+import ListCard from "../Components/Common/ListCard";
 
 function WaterPurefire() {
   const [activeTab, setActiveTab] = useState("grid");
@@ -15,6 +16,7 @@ function WaterPurefire() {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
   const { id } = useParams();
+
   useEffect(() => {
     // Simulating fetching data from API
     fetch(Baseurl + "/api/v1/Product/products")
@@ -211,26 +213,20 @@ function WaterPurefire() {
                             key={index}
                             tag={product.tag}
                             price={product.price}
-                            description={product.description}
+                            description={product.shortDescription}
                             title={product.name}
                             offprice={product.discount}
                             images={product.image}
                             ID={product._id}
+                            atriutes={product.attributes}
+                            rating={product.rating}
                           />
                         ))}
                       </>
                     ) : (
                       <>
                         {paginatedProducts.map((product, index) => (
-                          <ShopPageCard
-                            key={index}
-                            tag={product.tag}
-                            price={product.price}
-                            description={product.description}
-                            title={product.name}
-                            offprice={product.discount}
-                            images={product.thumbnail}
-                          />
+                          <ListCard key={index} products={product} />
                         ))}
                       </>
                     )}
@@ -390,187 +386,6 @@ function WaterPurefire() {
                               10ltr
                             </Link>
                             <span className="checked absolute top-[50%] left-[0] h-[18px] w-[18px] bg-[#fff] border-[1px] border-solid border-[#eee] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="gi-sidebar-block mb-[15px] color-block gi-sidebar-block-clr">
-                    <div className="gi-sb-title border-b-[1px] border-solid border-[#eee] pb-[15px]">
-                      <h3 className="gi-sidebar-title font-semibold tracking-[0] relative text-[#4b5966] w-full flex justify-between font-Poppins text-[17px] leading-[1.2]">
-                        Color
-                      </h3>
-                    </div>
-                    <div className="gi-sb-block-content mt-[20px]">
-                      <ul className="w-full flex flex-wrap flex-row">
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#c4d6f9" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#ff748b" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#000000" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="active mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#2bff4a" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#ff7c5e" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#f155ff" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#ffef00" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#c89fff" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#7bfffa" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#56ffc1" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#ffdb9f" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#9f9f9f" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li className="mr-[10px]">
-                          <div className="gi-sidebar-block-item py-[5px] border-[0] flex flex-row relative">
-                            <input
-                              type="checkbox"
-                              className="w-[20px] h-[20px] absolute opacity-[0] cursor-pointer z-[9] top-[50%] left-[0] translate-y-[-50%]"
-                            />
-                            <span
-                              className="gi-clr-block transition-all duration-[0.3s] ease-in-out w-[22px] h-[22px] rounded-[50%] opacity-[0.7] bg-transparent cursor-pointer tracking-[0.02rem]"
-                              style={{ backgroundColor: "#6556ff" }}
-                            ></span>
-                            <span className="checked w-[20px] h-[20px] bg-transparent border-[0] absolute top-[50%] left-[0] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
                           </div>
                         </li>
                       </ul>

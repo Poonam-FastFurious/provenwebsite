@@ -1,20 +1,13 @@
+/* eslint-disable react/prop-types */
+
 import { useState } from "react";
-import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
 import { toast } from "react-toastify";
 import handleAddToWishlist from "../Utilty/wishlistUtils";
-/* eslint-disable react/prop-types */
-function ShopPageCard({
-  price = " ₹250",
-  description = "Lorem ipsum dolor sit amet consectetur.  ",
-  title = "Domestic RO",
-  offprice = "4150 ₹",
-  images,
-  ID,
-  atriutes,
-  rating,
-}) {
+import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
+import { Link } from "react-router-dom";
+
+function ListCard({ products }) {
   const [quickview, setQuickview] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -86,87 +79,108 @@ function ShopPageCard({
       </span>
     );
   };
-
   return (
     <>
-      <div className="min-[1200px]:w-[25%] min-[992px]:w-[33.33%] min-[768px]:w-[50%] min-[576px]:w-[50%] max-[420px]:w-full px-[12px] gi-product-box max-[575px]:w-[50%] max-[575px]:mx-auto pro-gl-content ">
-        <div className="gi-product-content pb-[24px] h-full flex">
-          <div className="gi-product-inner transition-all duration-[0.3s] ease-in-out cursor-pointer flex flex-col overflow-hidden border-[1px] border-solid border-[#eee] rounded-[5px]">
-            <div className="gi-pro-image-outer transition-all duration-[0.3s] ease delay-[0s] z-[11] relative">
-              <div className="gi-pro-image overflow-hidden">
-                <Link
-                  to={`/Product/${ID}`}
-                  className="image relative block overflow-hidden pointer-events-none transition-all duration-[0.3s] ease-in-out"
-                >
-                  <span className="label veg max-[991px]:hidden">
-                    <span className="dot"></span>
-                  </span>
-                  <img
-                    className="main-image max-w-full z-[1] transition-all duration-[0.3s] ease delay-[0s]"
-                    src={images}
-                    alt="Product"
-                  />
-                  <img
-                    className="hover-image absolute z-[2] top-[0] left-[0] opacity-[0] max-w-full transition-all duration-[0.3s] ease delay-[0s]"
-                    src={images}
-                    alt="Product"
-                  />
-                </Link>
-                <span className="flags flex flex-col p-[0] uppercase absolute top-[10px] right-[10px] z-[2]">
-                  <span className="sale py-[5px] px-[10px] text-[11px] font-medium leading-[12px] text-left uppercase flex items-center  bg-AFPPrimary text-[#fff] tracking-[0.5px] relative rounded-[5px]">
-                    -{offprice}%
-                  </span>
-                </span>
-                <div className="gi-pro-actions transition-all duration-[0.3s] ease-in-out absolute z-[9] left-[0] right-[0] bottom-[-10px] max-[991px]:opacity-[1] max-[991px]:bottom-[10px] flex flex-row items-center justify-center my-[0] mx-auto opacity-[0]">
-                  <Link
-                    className=" wishlist transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-AFPPrimary hover:text-[#fff]"
-                    title="Wishlist"
-                  >
-                    <i
-                      onClick={() => addToWishlist(ID)}
-                      disabled={loading}
-                      className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
-                    ></i>
-                  </Link>
-                  <Link
-                    onClick={toggleQuickview}
-                    className=" modal-toggle quickview transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-AFPPrimary"
-                  >
-                    <i className="fi-rr-eye transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
-                  </Link>
-
-                  <Link
-                    to="#"
-                    title="Add To Cart"
-                    className=" add-to-cart transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-AFPPrimary"
-                  >
-                    <i
-                      className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
-                      onClick={() => addToCart(ID)}
-                    ></i>
-                  </Link>
+      <div className="shop-pro-content">
+        <div className="shop-pro-inner ">
+          <div className="flex flex-wrap w-full">
+            <div className="w-full px-[12px] gi-product-box max-[575px]:mx-auto pro-gl-content">
+              <div className="gi-product-content pb-[24px] h-full flex max-[767px]:max-w-[400px] max-[575px]:max-w-[350px] max-[767px]:m-auto">
+                <div className="gi-product-inner transition-all duration-[0.3s] ease-in-out cursor-pointer flex flex-row overflow-hidden border-[1px] border-solid border-[#eee] rounded-[5px] max-[767px]:flex-col">
+                  <div className="gi-pro-image-outer transition-all duration-[0.3s] ease delay-[0s] z-[11] relative max-w-[270px] bg-[#fff] flex items-center max-[767px]:max-w-full">
+                    <div className="gi-pro-image overflow-hidden">
+                      <a
+                        href="product-left-sidebar.html"
+                        className="image relative block overflow-hidden pointer-events-none transition-all duration-[0.3s] ease-in-out"
+                      >
+                        <span className="label veg max-[991px]:hidden">
+                          <span className="dot"></span>
+                        </span>
+                        <img
+                          className="main-image max-w-full z-[1] transition-all duration-[0.3s] ease delay-[0s]"
+                          src={products.image}
+                          alt="Product"
+                        />
+                        <img
+                          className="hover-image absolute z-[2] top-[0] left-[0] opacity-[0] max-w-full transition-all duration-[0.3s] ease delay-[0s]"
+                          src={products.image}
+                          alt="Product"
+                        />
+                      </a>
+                      <div className="gi-pro-actions transition-all duration-[0.3s] ease-in-out absolute z-[9] left-[0] right-[0] bottom-[-10px] max-[991px]:opacity-[1] max-[991px]:bottom-[10px] flex flex-row items-center justify-center my-[0] mx-auto opacity-[0]">
+                        <a
+                          className="gi-btn-group wishlist transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90]"
+                          title="Wishlist"
+                        >
+                          <i
+                            className="fi-rr-heart transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
+                            onClick={() => addToWishlist(products._id)}
+                            disabled={loading}
+                          ></i>
+                        </a>
+                        <a
+                          href="javascript:void(0)"
+                          className="gi-btn-group modal-toggle quickview transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90]"
+                          onClick={toggleQuickview}
+                        >
+                          <i className="fi-rr-eye transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
+                        </a>
+                        <a
+                          href="javascript:void(0)"
+                          className="gi-btn-group compare transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90]"
+                          title="Compare"
+                        >
+                          <i className="fi fi-rr-arrows-repeat transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
+                        </a>
+                        <a
+                          href="javascript:void(0)"
+                          title="Add To Cart"
+                          className="gi-btn-group add-to-cart transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90]"
+                        >
+                          <i
+                            onClick={() => addToCart(products._id)}
+                            className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
+                          ></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="gi-pro-content h-full p-[20px] relative z-[10] flex flex-col text-left border-l-[1px] border-solid border-[#eee] justify-center">
+                    <a href="shop-left-sidebar-col-3.html">
+                      <h6 className="gi-pro-stitle mb-[10px] font-normal text-[#999] text-[13px] capitalize font-manrope tracking-[0.01rem] leading-[1.2]">
+                        {products.category}
+                      </h6>
+                    </a>
+                    <h5 className="gi-pro-title h-auto mb-[10px] text-[16px] tracking-[0.01rem] font-normal leading-[1.2]">
+                      <a
+                        href="product-left-sidebar.html"
+                        className="text-[#4b5966] block text-[16px] leading-[22px] font-normal tracking-[0.85px] capitalize font-Poppins"
+                      >
+                        {products.name}
+                      </a>
+                    </h5>
+                    <p className="gi-info my-[5px] text-[13px] text-[#777] block">
+                      {products.shortDescription}
+                    </p>
+                    <div className="gi-pro-rat-price mt-[5px] mb-[0] flex flex-col">
+                      <span className="gi-pro-rating mb-[10px] opacity-[0.7] relative">
+                        {renderStars(products.rating)}
+                      </span>
+                      <span className="gi-price text-[18px] flex items-center justify-left text-[#4b5966] tracking-[0.4px]">
+                        <span className="new-price text-[#4b5966] font-bold text-[14px] mr-[7px] tracking-[0.02rem]">
+                          ₹{products.price}
+                        </span>
+                        <span className="old-price text-[14px] text-[#777] tracking-[0.02rem] line-through">
+                          ₹
+                          {(
+                            (products.price * 100) /
+                            (100 - products.discount)
+                          ).toFixed(2)}
+                        </span>
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="gi-pro-content h-full p-[20px] relative z-[10] flex flex-col text-left border-t-[1px] border-solid border-[#eee]">
-              <Link to={`/Product/${ID}`}>
-                <h6 className="gi-pro-stitle mb-[10px] font-semibold  text-[#4b5966]  hover:text-[#237DA2] text-[13px] capitalize text  tracking-[0.01rem] leading-[1.2]">
-                  {title}
-                </h6>
-              </Link>
-
-              <div className="gi-pro-rat-price mt-[5px] mb-[0] flex flex-col">
-                <span className="gi-pro-rating mb-[10px] opacity-[0.7] relative">
-                  {renderStars(rating)}
-                </span>
-                <span className="gi-price text-[18px] flex items-center justify-left text-[#4b5966] tracking-[0.4px]">
-                  <span className="new-price text-[#4b5966] font-bold text-[14px] mr-[7px] tracking-[0.02rem]">
-                    ₹{price}
-                  </span>
-                  <span className="old-price text-[14px] text-[#777] tracking-[0.02rem] line-through">
-                    ₹{((price * 100) / (100 - offprice)).toFixed(2)}
-                  </span>
-                </span>
               </div>
             </div>
           </div>
@@ -194,7 +208,7 @@ function ShopPageCard({
                           <div className="single-slide h-full flex items-center zoom-image-hover">
                             <img
                               className="img-responsive h-full w-full"
-                              src={images}
+                              src={products.image}
                               alt=""
                             />
                           </div>
@@ -208,28 +222,32 @@ function ShopPageCard({
                             to="/detail"
                             className="mb-[15px] block text-[#4b5966] text-[22px] leading-[1.5] font-medium max-[991px]:text-[20px]"
                           >
-                            {title}
+                            {products.name}
                           </Link>
                         </h5>
                         <div className="gi-quickview-rating flex mb-[15px]">
-                          {renderStars(rating)}
+                          {renderStars(products.rating)}
                         </div>
                         <div className="gi-quickview-desc mb-[10px] text-[15px] leading-[24px] text-[#777] font-light">
-                          {description}
+                          {products.shortDescription}
                         </div>
                         <div className="gi-quickview-price pt-[5px] pb-[10px] flex items-center justify-left">
                           <span className="new-price text-[#4b5966] font-bold text-[22px]">
-                            ₹{price}
+                            ₹{products.price}
                           </span>
                           <span className="old-price text-[18px] ml-[10px] line-through text-[#777]">
-                            ₹{((price * 100) / (100 - offprice)).toFixed(2)}
+                            ₹
+                            {(
+                              (products.price * 100) /
+                              (100 - products.discount)
+                            ).toFixed(2)}
                           </span>
                         </div>
                         <div className="gi-pro-variation mt-[5px]">
                           <div className="gi-pro-variation-inner flex flex-col mb-[15px] gi-pro-variation-size gi-pro-size">
                             <div className="gi-pro-variation-content">
                               <ul className="gi-opt-size">
-                                {atriutes.map((attribute) => (
+                                {products.attributes.map((attribute) => (
                                   <li
                                     key={attribute._id}
                                     className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]"
@@ -282,7 +300,7 @@ function ShopPageCard({
                             <button
                               type="button"
                               className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px] bg-[#4b5966] text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-AFPPrimary hover:text-[#fff]"
-                              onClick={() => addToCart(ID)}
+                              onClick={() => addToCart(products._id)}
                             >
                               <i className="fi-rr-shopping-basket text-[14px] leading-[0] mr-[5px]"></i>
                               Add To Cart
@@ -302,4 +320,4 @@ function ShopPageCard({
   );
 }
 
-export default ShopPageCard;
+export default ListCard;

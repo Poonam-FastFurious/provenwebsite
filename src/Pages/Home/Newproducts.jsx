@@ -78,6 +78,28 @@ function Newproducts() {
       ? text.substring(0, maxLength) + "..."
       : text;
   };
+  const renderStars = (rating) => {
+    const totalStars = 5;
+    const filledStars = Math.floor(rating);
+    const emptyStars = totalStars - filledStars;
+
+    return (
+      <span className="gi-pro-rating mb-[10px] opacity-[0.7] relative">
+        {[...Array(filledStars)].map((_, index) => (
+          <i
+            key={index}
+            className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left"
+          ></i>
+        ))}
+        {[...Array(emptyStars)].map((_, index) => (
+          <i
+            key={index}
+            className="gicon gi-star text-[14px] text-[#777] float-left"
+          ></i>
+        ))}
+      </span>
+    );
+  };
   return (
     <>
       <section
@@ -105,7 +127,7 @@ function Newproducts() {
               <div className="tab-content">
                 <div className="tab-pro-pane" id="all">
                   <div className="w-full flex flex-wrap">
-                    {product.slice(0, 10).map((pro, index) => (
+                    {product.map((pro, index) => (
                       <div
                         key={index}
                         className="min-[1200px]:w-[20%] min-[768px]:w-[33.33%] min-[576px]:w-[50%] max-[575px]:w-[50%] max-[480px]:w-full px-[12px]"
@@ -116,22 +138,27 @@ function Newproducts() {
                               <div className="gi-pro-image overflow-hidden">
                                 <Link
                                   to={`/Product/${pro._id}`}
-                                  className="image relative block overflow-hidden pointer-events-none"
+                                  className="image relative block overflow-hidden max-h-72"
                                 >
                                   <span className="label veg max-[991px]:hidden">
                                     <span className="dot"></span>
                                   </span>
                                   <img
-                                    className="main-image max-w-full transition-all duration-[0.3s] ease delay-[0s]"
+                                    className="main-image  max-w-full transition-all duration-[0.3s] ease delay-[0s]"
                                     src={pro.image}
                                     alt="Product"
                                   />
                                   <img
-                                    className="hover-image absolute z-[1] top-[0] left-[0] opacity-[0] transition-all duration-[0.3s] ease delay-[0s]"
+                                    className="hover-image absolute top-0 left-0 w-full transition-all duration-[0.3s] ease delay-[0s]"
                                     src={pro.image}
                                     alt="Product"
                                   />
                                 </Link>
+                                <span className="flags flex flex-col p-[0] uppercase absolute top-[10px] right-[10px] z-[2]">
+                                  <span className="sale px-[10px] py-[5px] text-[11px] font-medium leading-[12px] text-left uppercase flex items-center bg-AFPPrimary text-[#fff] tracking-[0.5px] relative rounded-[5px]">
+                                    -{pro.discount}%
+                                  </span>
+                                </span>
                                 <div className="gi-pro-actions transition-all duration-[0.3s] ease-in-out absolute z-[9] left-[0] right-[0] bottom-[-10px] max-[991px]:opacity-[1] max-[991px]:bottom-[10px] flex flex-row items-center justify-center my-[0] mx-auto opacity-0">
                                   <Link
                                     className="gi-btn-group wishlist transition-all duration-[0.3s] ease-in-out h-[30px] w-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px]"
@@ -187,19 +214,19 @@ function Newproducts() {
                                 </Link>
                               </h5>
                               <div className="gi-pro-rat-price mt-[5px] mb-[0] flex flex-col">
-                                <span className="gi-pro-rating mb-[10px] opacity-[0.7] relative">
-                                  <i className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left mr-[3px]"></i>
-                                  <i className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left mr-[3px]"></i>
-                                  <i className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left mr-[3px]"></i>
-                                  <i className="gicon gi-star fill text-[14px] text-[#f27d0c] float-left mr-[3px]"></i>
-                                  <i className="gicon gi-star text-[14px] text-[#777] float-left mr-[3px]"></i>
+                                <span className="gi-pro-rating mb-[10px] relative">
+                                  {renderStars(pro.rating)}
                                 </span>
                                 <span className="gi-price">
                                   <span className="new-price text-[#4b5966] font-bold text-[14px] mr-[7px]">
                                     ₹{pro.price}
                                   </span>
                                   <span className="old-price text-[14px] text-[#777] line-through">
-                                    {pro.discount}%
+                                    ₹
+                                    {(
+                                      (pro.price * 100) /
+                                      (100 - pro.discount)
+                                    ).toFixed(2)}
                                   </span>
                                 </span>
                               </div>
