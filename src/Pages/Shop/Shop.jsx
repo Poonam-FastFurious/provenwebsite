@@ -18,6 +18,7 @@ function Shop() {
       .then((data) => {
         // Assuming data is an array of objects with properties like tag, price, description, title, offprice
         setProducts(data.products); // Store fetched data in state
+
         const extractedTags = data.products.flatMap((product) =>
           product.tags.map((tag) => ({
             id: `${product._id}_${tag}`,

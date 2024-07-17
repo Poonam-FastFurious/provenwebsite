@@ -61,10 +61,7 @@ const CheckoutSection = () => {
     }
   }, []);
   useEffect(() => {
-    const totalAmount = products.reduce(
-      (total, product) => total + product.quantity * product.price,
-      0
-    );
+    const totalAmount = localStorage.getItem("cartTotal");
     setFormData((prevData) => ({ ...prevData, totalAmount }));
   }, [products]);
   const createOrder = async () => {
@@ -109,7 +106,7 @@ const CheckoutSection = () => {
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(
-          `Failed to create order: ${response.status} ${errorText}`
+          ` Failed to create order: ${response.status} ${errorText}`
         );
       }
 
@@ -264,9 +261,9 @@ const CheckoutSection = () => {
                   </div>
 
                   <div className="gi-checkout-summary-total border-t border-solid border-gray-300 pt-4.5 mb-0 mt-4 flex justify-between items-center">
-                    <span className="text-left text-base font-semibold text-gray-700 tracking-normal font-manrope">
+                    {/* <span className="text-left text-base font-semibold text-gray-700 tracking-normal font-manrope">
                       Total Items
-                    </span>
+                    </span> */}
                     <span className="text-right text-base font-semibold text-gray-700 font-manrope"></span>
                   </div>
                 </div>
@@ -297,20 +294,8 @@ const CheckoutSection = () => {
                           Rate - Rs0.00
                         </label>
                       </span>
-                      <span className="w-1/2">
-                        <span className="gi-del-opt-head text-gray-700 text-base font-medium leading-none tracking-normal mb-2.5 block">
-                          Flat Rate
-                        </span>
-                        <input type="radio" id="del2" name="radio-group" />
-                        <label
-                          htmlFor="del2"
-                          className="relative pl-6 cursor-pointer leading-4 inline-block text-gray-500 tracking-normal mb-3.5"
-                        >
-                          Rate - Rs5.00
-                        </label>
-                      </span>
                     </span>
-                    <span className="gi-del-commemt block mt-3">
+                    {/* <span className="gi-del-commemt block mt-3">
                       <span className="gi-del-opt-head mb-2 text-gray-700 text-base font-medium leading-none tracking-normal block">
                         Add Comments About Your Order
                       </span>
@@ -319,7 +304,7 @@ const CheckoutSection = () => {
                         placeholder="Comments"
                         className="bg-transparent border border-solid border-gray-300 text-gray-700 h-[100px] py-2.5 px-3.5 mb-0 w-full outline-none text-sm block rounded-md"
                       ></textarea>
-                    </span>
+                    </span> */}
                   </form>
                 </div>
               </AccordionItem>

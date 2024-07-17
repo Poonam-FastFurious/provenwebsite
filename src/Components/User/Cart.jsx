@@ -7,6 +7,10 @@ import { Baseurl } from "../../confige";
 function Cart() {
   const [cart, setCart] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [couponCode, setCouponCode] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [couponError, setCouponError] = useState("");
+  const [coupons, setCoupons] = useState([]);
   const navigate = useNavigate(); // Use navigate hook for programmatic navigation
 
   useEffect(() => {
@@ -46,8 +50,23 @@ function Cart() {
         setIsLoading(false); // Set loading to false whether fetch succeeded or failed
       }
     };
+    const fetchCoupons = async () => {
+      try {
+        const response = await fetch(Baseurl + "/api/v1/coupon/coupons");
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Failed to fetch coupons");
+        }
+
+        const data = await response.json();
+        setCoupons(data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
     fetchCart();
+    fetchCoupons();
   }, []);
 
   const incrementQuantity = (productId) => {
@@ -136,10 +155,30 @@ function Cart() {
   };
 
   const handleCheckout = () => {
+    const totalAfterDiscount = getTotalWithDiscount();
     localStorage.setItem("cartProducts", JSON.stringify(cart.items));
+    localStorage.setItem("cartTotal", totalAfterDiscount);
     navigate("/checkout");
   };
+  const handleApplyCoupon = () => {
+    const coupon = coupons.find((coupon) => coupon.code === couponCode);
 
+    if (coupon) {
+      setDiscount(coupon.discount);
+      setCouponError("");
+    } else {
+      setDiscount(0);
+      setCouponError("Invalid coupon code");
+    }
+  };
+
+  const getTotalWithDiscount = () => {
+    if (cart) {
+      const totalAfterDiscount = cart.total - (cart.total * discount) / 100;
+      return totalAfterDiscount.toFixed(2);
+    }
+    return 0;
+  };
   return (
     <>
       <section className="bg-white py-8 antialiased  md:py-16">
@@ -351,7 +390,7 @@ function Cart() {
                           Sub Total
                         </dt>
                         <dd className="text-base font-medium text-gray-900 ">
-                          ₹{cart.total}
+                          ₹{cart ? cart.total : "0.00"}
                         </dd>
                       </dl>
 
@@ -360,7 +399,7 @@ function Cart() {
                           Savings
                         </dt>
                         <dd className="text-base font-medium text-green-600">
-                          -₹299.00
+                          {discount}%
                         </dd>
                       </dl>
 
@@ -388,7 +427,7 @@ function Cart() {
                         Total
                       </dt>
                       <dd className="text-base font-bold text-gray-900 ">
-                        ₹8,191.00
+                        ₹{getTotalWithDiscount()}
                       </dd>
                     </dl>
                   </div>
@@ -442,15 +481,21 @@ function Cart() {
                       className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 "
                       placeholder=""
                       required
+                      value={couponCode}
+                      onChange={(e) => setCouponCode(e.target.value)}
                     />
                   </div>
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={handleApplyCoupon}
                     className="flex w-full items-center justify-center rounded-lg  bg-AFPPrimary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 "
                   >
                     Apply Code
                   </button>
                 </form>
+                {couponError && (
+                  <p className="mt-2 text-sm text-red-600">{couponError}</p>
+                )}
               </div>
             </div>
           </div>
