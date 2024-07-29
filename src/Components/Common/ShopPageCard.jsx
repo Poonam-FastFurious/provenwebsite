@@ -164,7 +164,7 @@ function ShopPageCard({
                     ₹{price}
                   </span>
                   <span className="old-price text-[14px] text-[#777] tracking-[0.02rem] line-through">
-                    ₹{((price * 100) / (100 - offprice)).toFixed(2)}
+                    ₹{atriutes}
                   </span>
                 </span>
               </div>
@@ -222,28 +222,12 @@ function ShopPageCard({
                             ₹{price}
                           </span>
                           <span className="old-price text-[18px] ml-[10px] line-through text-[#777]">
-                            ₹{((price * 100) / (100 - offprice)).toFixed(2)}
+                            ₹{atriutes}
                           </span>
                         </div>
                         <div className="gi-pro-variation mt-[5px]">
                           <div className="gi-pro-variation-inner flex flex-col mb-[15px] gi-pro-variation-size gi-pro-size">
-                            <div className="gi-pro-variation-content">
-                              <ul className="gi-opt-size">
-                                {atriutes.map((attribute) => (
-                                  <li
-                                    key={attribute._id}
-                                    className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]"
-                                  >
-                                    <Link
-                                      to="#"
-                                      className="gi-opt-sz text-[#777]"
-                                    >
-                                      {attribute.attributeValue}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+                            <div className="gi-pro-variation-content"></div>
                           </div>
                         </div>
                         <div className="gi-quickview-qty mt-[15px] inline-flex  ">

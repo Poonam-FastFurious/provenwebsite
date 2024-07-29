@@ -1,24 +1,79 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useEffect, useRef, useState } from "react";
 
 import { useParams } from "react-router-dom";
 import { Baseurl } from "../../confige";
-import { toast } from "react-toastify";
-import HomeBestSelling from "../../Pages/Home/HomeBestSelling";
-import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { CiLocationOn, CiLock } from "react-icons/ci";
-function Productnewdetails() {
-  const productCoverSlider = useRef(null);
-  const navThumbSlider = useRef(null);
+import { toast } from "react-toastify";
+import { MdOutlineCurrencyRupee } from "react-icons/md";
+import HomeBestSelling from "../../Pages/Home/HomeBestSelling";
+
+function Productdetailswitvedio() {
+  const { id } = useParams();
+  const [productData, setProductData] = useState(null);
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
-  const [productData, setProductData] = useState(null);
-  const { id } = useParams();
   const [loading, setLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState("details");
+
+  const productCoverSettings = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: false,
+    asNavFor: nav2,
+    ref: (slider) => setNav1(slider),
+  };
+
+  const navThumbSettings = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: nav1,
+    dots: false,
+    arrows: true,
+    focusOnSelect: true,
+    ref: (slider) => setNav2(slider),
+  };
+
+  useEffect(() => {
+    fetch(`${Baseurl}/api/v1/Product/product?id=${id}`)
+      .then((response) => response.json())
+      .then((data) => setProductData(data.product))
+      .catch((error) => console.error("Error fetching product data:", error));
+  }, [id]);
+  const addToCart = async (productId) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const response = await fetch(Baseurl + "/api/v1/cart/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ productId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Product added to cart:", data);
+      toast.success("Product added to cart!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      toast.warn("login First to add product.");
+    }
+  };
   const handleAddToWishlist = async (productId) => {
     setLoading(true);
     const token = localStorage.getItem("accessToken");
@@ -62,121 +117,95 @@ function Productnewdetails() {
       setLoading(false);
     }
   };
-  const handleTabClick = (tabName) => {
-    setActiveTab(tabName);
-  };
-  useEffect(() => {
-    setNav1(productCoverSlider.current);
-    setNav2(navThumbSlider.current);
-  }, []);
-  useEffect(() => {
-    fetch(`${Baseurl}/api/v1/Product/product?id=${id}`)
-      .then((responce) => responce.json())
-      .then((data) => setProductData(data.product));
-  }, [id]);
-  console.log(productData);
-  const productCoverSettings = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    fade: false,
-    asNavFor: nav2,
-    ref: productCoverSlider,
-  };
-
-  const navThumbSettings = {
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    asNavFor: nav1,
-    dots: false,
-    arrows: true,
-    focusOnSelect: true,
-    ref: navThumbSlider,
-  };
-  const addToCart = async (productId) => {
-    try {
-      const token = localStorage.getItem("accessToken");
-      const response = await fetch(Baseurl + "/api/v1/cart/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ productId }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      console.log("Product added to cart:", data);
-      toast.success("Product added to cart!", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    } catch (error) {
-      console.error("Error adding product to cart:", error);
-      toast.warn("login First to add product.");
-    }
-  };
   if (!productData) {
     return <div>Loading...</div>;
   }
-
   return (
     <>
       <section className="gi-single-product py-[40px] max-[767px]:py-[30px]">
-        <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
-          <div className="flex flex-wrap w-full px-[12px]">
-            <div className="gi-pro-rightside gi-common-rightside w-full">
+        <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
+          <div className="flex flex-wrap w-full">
+            <div className="gi-pro-rightside gi-common-rightside min-[992px]:w-[100%] w-full px-[12px]">
               <div className="single-pro-block">
                 <div className="single-pro-inner">
-                  <div className="flex flex-wrap gap-4 w-full">
+                  <div className="w-full flex flex-wrap">
                     <div className="single-pro-img single-pro-img-no-sidebar lg:w-[30%] w-full relative  max-[991px]:pl-[12px] max-[991px]:w-full max-[991px]:max-w-[500px] max-[991px]:m-auto max-[420px]:px-[0]">
                       <div className="single-product-scroll p-[15px] sticky top-[30px] rounded-[5px] border-[1px] border-solid border-[#eee]">
-                        <Slider
-                          {...productCoverSettings}
-                          ref={productCoverSlider}
-                          className="single-product-cover overflow-hidden cursor-zoom-in rounded-[5px]"
-                        >
-                          {productData.thumbnail.map((media, index) => (
-                            <div
-                              className="single-slide zoom-image-hover"
-                              key={index}
+                        {productData ? (
+                          <>
+                            <Slider
+                              {...productCoverSettings}
+                              className="single-product-cover overflow-hidden cursor-zoom-in rounded-[5px]"
                             >
-                              <img
-                                src={media}
-                                alt={`Product Image ${index + 1}`}
-                                className="img-responsive h-full w-full"
-                              />
-                            </div>
-                          ))}
-                        </Slider>
-                        <Slider
-                          {...navThumbSettings}
-                          ref={navThumbSlider}
-                          className="single-nav-thumb w-full overflow-hidden"
-                        >
-                          {productData.thumbnail.map((media, index) => (
-                            <div
-                              className="single-slide px-[11px] pt-[11px]"
-                              key={index}
+                              {productData.thumbnail.map((media, index) => (
+                                <div
+                                  className="single-slide zoom-image-hover"
+                                  key={index}
+                                >
+                                  <img
+                                    src={media}
+                                    alt={`Product Image ${index + 1}`}
+                                    className="img-responsive h-full w-full"
+                                  />
+                                </div>
+                              ))}
+                              {productData.youtubeVideoLink && (
+                                <div
+                                  className="single-slide"
+                                  key="youtube-video"
+                                >
+                                  <iframe
+                                    width="100%"
+                                    height="315"
+                                    src={productData.youtubeVideoLink.replace(
+                                      "watch?v=",
+                                      "embed/"
+                                    )}
+                                    title="YouTube Video"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                  ></iframe>
+                                </div>
+                              )}
+                            </Slider>
+                            <Slider
+                              {...navThumbSettings}
+                              className="single-nav-thumb w-full overflow-hidden"
                             >
-                              <img
-                                src={media}
-                                alt={`Thumbnail ${index + 1}`}
-                                className="img-responsive h-full w-full"
-                              />
-                            </div>
-                          ))}
-                        </Slider>
+                              {productData.thumbnail.map((media, index) => (
+                                <div
+                                  className="single-slide px-[11px] pt-[11px]"
+                                  key={index}
+                                >
+                                  <img
+                                    src={media}
+                                    alt={`Thumbnail ${index + 1}`}
+                                    className="img-responsive h-full w-full"
+                                  />
+                                </div>
+                              ))}
+                              {productData.youtubeVideoLink && (
+                                <div
+                                  className="single-slide px-[11px] pt-[11px]"
+                                  key="youtube-video-thumb"
+                                >
+                                  <img
+                                    src={`https://img.youtube.com/vi/${
+                                      productData.youtubeVideoLink.split(
+                                        "v="
+                                      )[1]
+                                    }/hqdefault.jpg`}
+                                    alt="YouTube Video Thumbnail"
+                                    className="img-responsive h-full w-full"
+                                  />
+                                </div>
+                              )}
+                            </Slider>
+                          </>
+                        ) : (
+                          <p>Loading...</p>
+                        )}
                       </div>
                     </div>
                     <div className="single-pro-desc single-pro-desc-no-sidebar lg:w-[50%]  sm:w-[100%] md:w-[100%]  relative pl-[12px] max-[991px]:pl-[0] max-[991px]:mt-[30px] max-[991px]:w-full">
@@ -231,15 +260,6 @@ function Productnewdetails() {
                         </div>
 
                         <div className="gi-single-qty flex flex-wrap w-full m-[-5px]">
-                          <div className="qty-plus-minus w-[120px] h-[40px] p-[10px] border-[1px] border-solid border-[#eee] overflow-hidden m-[5px] relative flex items-center justify-between rounded-[5px]">
-                            <input
-                              className="qty-input"
-                              type="text"
-                              name="ms_qtybtn"
-                              value="1"
-                              readOnly
-                            />
-                          </div>
                           <div className="gi-single-cart">
                             <button
                               type="button"
@@ -337,132 +357,24 @@ function Productnewdetails() {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="gi-single-pro-tab mt-[40px]">
-                <div className="gi-single-pro-tab-wrapper flex flex-col">
-                  <div className="gi-single-pro-tab-nav w-full m-auto relative block text-center float-left">
-                    <ul
-                      className="nav-tabs inline-block float-left"
-                      id="singleprotab"
-                    >
-                      <li
-                        className={`mr-[5px] ml-auto mb-[5px] inline-block float-left ${
-                          activeTab === "details" ? "active" : ""
-                        }`}
-                        onClick={() => handleTabClick("details")}
-                      >
-                        <a className="capitalize leading-[24px] py-[8px] px-[28px] m-[0] text-[15px] font-medium relative transition-all duration-[300ms] linear inline-block cursor-pointer bg-[#fff] text-[#4b5966] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]">
-                          Detail
-                        </a>
-                      </li>
-                      <li
-                        className={`mr-[5px] ml-auto mb-[5px] inline-block float-left ${
-                          activeTab === "reviews" ? "active" : ""
-                        }`}
-                        onClick={() => handleTabClick("reviews")}
-                      >
-                        <a className="capitalize leading-[24px] py-[8px] px-[28px] m-[0] text-[15px] font-medium relative transition-all duration-[300ms] linear inline-block cursor-pointer bg-[#fff] text-[#4b5966] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]">
-                          Reviews
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div
-                    className="tab-content transition-all w-full overflow-hidden bg-[#fff] text-left p-[30px] border-[1px] border-solid border-[#eee] text-[#202020] text-[18px] tracking-[0] leading-[1.6] rounded-[5px]"
-                    id="singleTabContent"
-                  >
-                    {activeTab === "details" && (
-                      <div id="gi-spt-nav-details" className="tab-single-pane">
+                <div>
+                  <div>
+                    <div className="gi-single-pro-tab mt-[40px]">
+                      <div className="gi-single-pro-tab-wrapper flex flex-col">
                         <div className="gi-single-pro-tab-desc">
-                          <p
-                            className="mb-[15px] text-[14px] tracking-[0] text-[#777] leading-[28px] font-normal font-Poppins"
-                            dangerouslySetInnerHTML={{
-                              __html: productData.description,
-                            }}
-                          ></p>
+                          <p className="mb-[15px] text-[14px] tracking-[0] text-[#777] leading-[28px] font-normal">
+                            {productData.description}
+                          </p>
                         </div>
                       </div>
-                    )}
-                    {activeTab === "reviews" && (
-                      <div id="gi-spt-nav-review" className="tab-single-pane">
-                        <div className="flex flex-wrap w-full">
-                          <div className="gi-t-review-wrapper mt-[10px]">
-                            <div className="gi-t-review-item flex mb-[25px] pb-[25px] border-b-[1px] border-solid border-[#eee]">
-                              <div className="gi-t-review-avtar basis-[50px] grow-[0] shrink-[0] mr-[15px]">
-                                <img
-                                  src="assets/img/user/1.jpg"
-                                  alt="user"
-                                  className="max-w-full rounded-[5px]"
-                                />
-                              </div>
-                              <div className="gi-t-review-content">
-                                <div className="gi-t-review-top flex flex-col mb-[10px]">
-                                  <div className="gi-t-review-name text-[15px] m-[0] leading-[1.5] block text-[#4b5966]">
-                                    Mariya Lykra
-                                  </div>
-                                  <div className="gi-t-review-rating mt-[5px]">
-                                    <i className="gicon gi-star fill inline-block text-[#f27d0c] float-left text-[14px] mr-[3px]"></i>
-                                    <i className="gicon gi-star fill inline-block text-[#f27d0c] float-left text-[14px] mr-[3px]"></i>
-                                    <i className="gicon gi-star fill inline-block text-[#f27d0c] float-left text-[14px] mr-[3px]"></i>
-                                    <i className="gicon gi-star fill inline-block text-[#f27d0c] float-left text-[14px] mr-[3px]"></i>
-                                    <i className="gicon gi-star-o inline-block text-[#b2b2b2] float-left text-[14px] mr-[3px]"></i>
-                                  </div>
-                                </div>
-                                <div className="gi-t-review-bottom">
-                                  <p className="w-full text-[14px] text-[#777] font-normal">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an unknown
-                                    printer took a galley of type and scrambled
-                                    it to make a type specimen.
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="gi-t-review-item flex mb-[25px] pb-[25px] border-b-[1px] border-solid border-[#eee]">
-                              <div className="gi-t-review-avtar basis-[50px] grow-[0] shrink-[0] mr-[15px]">
-                                <img
-                                  src="assets/img/user/2.jpg"
-                                  alt="user"
-                                  className="max-w-full rounded-[5px]"
-                                />
-                              </div>
-                              <div className="gi-t-review-content">
-                                <div className="gi-t-review-top flex flex-col mb-[10px]">
-                                  <div className="gi-t-review-name text-[15px] m-[0] leading-[1.5] block text-[#4b5966]">
-                                    Moris Willson
-                                  </div>
-                                  <div className="gi-t-review-rating mt-[5px]">
-                                    <i className="gicon gi-star fill inline-block text-[#f27d0c] float-left text-[14px] mr-[3px]"></i>
-                                    <i className="gicon gi-star fill inline-block text-[#f27d0c] float-left text-[14px] mr-[3px]"></i>
-                                    <i className="gicon gi-star fill inline-block text-[#f27d0c] float-left text-[14px] mr-[3px]"></i>
-                                    <i className="gicon gi-star-o inline-block text-[#b2b2b2] float-left text-[14px] mr-[3px]"></i>
-                                    <i className="gicon gi-star-o inline-block text-[#b2b2b2] float-left text-[14px] mr-[3px]"></i>
-                                  </div>
-                                </div>
-                                <div className="gi-t-review-bottom">
-                                  <p className="w-full text-[14px] text-[#777] font-normal">
-                                    Lorem Ipsum has been the industry's standard
-                                    dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and
-                                    scrambled it to make a type specimen.
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </section>{" "}
       <HomeBestSelling heading={"related product"} />
       <div className=" w-full flex ">
         <img
@@ -482,4 +394,4 @@ function Productnewdetails() {
   );
 }
 
-export default Productnewdetails;
+export default Productdetailswitvedio;

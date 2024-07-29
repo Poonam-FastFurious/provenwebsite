@@ -26,6 +26,20 @@ function OrderDetails() {
   if (!order) {
     return <div>Loading...</div>;
   }
+  const handleTrackOrderClick = () => {
+    if (order && order.shippingInfo && order.shippingInfo.shippingLink) {
+      // Proceed to track order
+      window.open(`${order.shippingInfo.shippingLink}`, "_blank");
+    } else {
+      // Show alert if shippingLink is null
+      alert("Your order status not cahnge yet .");
+    }
+  };
+
+  if (!order || !order.shippingInfo) {
+    return null; // Optionally, return a placeholder or loading state here
+  }
+
   return (
     <>
       <section className="bg-white py-8 antialiased  md:py-16">
@@ -35,15 +49,12 @@ function OrderDetails() {
           </h2>
           <button
             type="button"
+            onClick={handleTrackOrderClick}
             className="rounded-lg  border border-gray-200  bg-AFPPrimary  px-5  py-2.5 text-sm font-medium text-white   mt-4  focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100"
           >
-            <a
-              href={`http://${order.shippingInfo.shippingLink}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link to="#" rel="noopener noreferrer">
               Track order
-            </a>
+            </Link>
           </button>
           <div className="mt-6 sm:mt-8 lg:flex lg:gap-8">
             <div className="w-full divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-200   lg:max-w-xl xl:max-w-2xl">
@@ -96,30 +107,6 @@ function OrderDetails() {
                     </dd>
                   </dl>
 
-                  {/* <dl className="flex items-center justify-between gap-4">
-                    <dt className="font-normal text-gray-500 ">Savings</dt>
-                    <dd className="text-base font-medium text-green-500">
-                      -₹299.00
-                    </dd>
-                  </dl>
-
-                  <dl className="flex items-center justify-between gap-4">
-                    <dt className="font-normal text-gray-500 ">Store Pickup</dt>
-                    <dd className="font-medium text-gray-900 ">₹99</dd>
-                  </dl>
-
-                  <dl className="flex items-center justify-between gap-4">
-                    <dt className="font-normal text-gray-500 ">Tax</dt>
-                    <dd className="font-medium text-gray-900 ">₹799</dd>
-                  </dl> */}
-                  {/* <dl className="flex items-center justify-between gap-4">
-                    <dt className="font-normal text-gray-500 ">
-                      Billing Address:
-                    </dt>
-                    <dd className="font-medium text-gray-900 ">
-                      {order.shippingInfo.address}
-                    </dd>
-                  </dl> */}
                   <dl className="flex items-center justify-between gap-4">
                     <dt className="font-normal text-gray-500 ">
                       Shipping Address:
@@ -167,153 +154,54 @@ function OrderDetails() {
                       </svg>
                     </span>
                     <h4 className="mb-0.5 text-base font-semibold text-gray-900 ">
-                      Estimated delivery in 24 Nov 2023
+                      Order Placed -
                     </h4>
                     <p className="text-sm font-normal text-gray-500 ">
-                      Products delivered
+                      {new Date(order.createdAt).toLocaleDateString("en-US", {
+                        weekday: "long",
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
                     </p>
                   </li>
-
-                  <li className="mb-10 ms-6">
-                    <span className="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 ring-8 ring-white  ">
-                      <svg
-                        className="h-4 w-4 text-gray-500 "
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"
-                        />
-                      </svg>
-                    </span>
-                    <h4 className="mb-0.5 text-base font-semibold text-gray-900 ">
-                      Today
-                    </h4>
-                    <p className="text-sm font-normal text-gray-500 ">
-                      Products being delivered
-                    </p>
-                  </li>
-
-                  <li className="mb-10 ms-6 text-primary-700 ">
-                    <span className="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-100 ring-8 ring-white">
-                      <svg
-                        className="h-4 w-4"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 11.917 9.724 16.5 19 7.5"
-                        />
-                      </svg>
-                    </span>
-                    <h4 className="mb-0.5 font-semibold">23 Nov 2023, 15:15</h4>
-                    <p className="text-sm">
-                      Products in the couriers warehouse
-                    </p>
-                  </li>
-
-                  <li className="mb-10 ms-6 text-primary-700">
-                    <span className="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-100 ring-8 ring-white  ">
-                      <svg
-                        className="h-4 w-4"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 11.917 9.724 16.5 19 7.5"
-                        />
-                      </svg>
-                    </span>
-                    <h4 className="mb-0.5 text-base font-semibold">
-                      22 Nov 2023, 12:27
-                    </h4>
-                    <p className="text-sm">
-                      Products delivered to the courier - DHL Express
-                    </p>
-                  </li>
-
-                  <li className="mb-10 ms-6 text-primary-700 ">
-                    <span className="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-100 ring-8 ring-white  ">
-                      <svg
-                        className="h-4 w-4"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 11.917 9.724 16.5 19 7.5"
-                        />
-                      </svg>
-                    </span>
-                    <h4 className="mb-0.5 font-semibold">19 Nov 2023, 10:47</h4>
-                    <p className="text-sm">
-                      Payment accepted - VISA Credit Card
-                    </p>
-                  </li>
-
-                  <li className="ms-6 text-primary-700 ">
-                    <span className="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-100 ring-8 ring-white  ">
-                      <svg
-                        className="h-4 w-4"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 11.917 9.724 16.5 19 7.5"
-                        />
-                      </svg>
-                    </span>
-                    <div>
-                      <h4 className="mb-0.5 font-semibold">
-                        19 Nov 2023, 10:45
+                  {order.orderHistory.map((history, index) => (
+                    <li className="mb-10 ms-6" key={index}>
+                      <span className="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 ring-8 ring-white  ">
+                        <svg
+                          className="h-4 w-4 text-gray-500 "
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"
+                          />
+                        </svg>
+                      </span>
+                      <h4 className="mb-0.5 text-base font-semibold text-gray-900 ">
+                        {history.status} -
                       </h4>
-                      <Link
-                        to="#"
-                        className="text-sm font-medium hover:underline"
-                      >
-                        Order placed - Receipt #647563
-                      </Link>
-                    </div>
-                  </li>
+                      <p className="text-sm font-normal text-gray-500 ">
+                        {new Date(history.changedAt).toLocaleDateString(
+                          "en-US",
+                          {
+                            weekday: "long",
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          }
+                        )}
+                      </p>
+                    </li>
+                  ))}
                 </ol>
 
                 <div className="gap-4 sm:flex sm:items-center">
@@ -324,16 +212,13 @@ function OrderDetails() {
                     Cancel the order
                   </button>
                   <button
+                    onClick={handleTrackOrderClick}
                     type="button"
                     className="w-full rounded-lg  border border-gray-200 bg-white px-5  py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100"
                   >
-                    <a
-                      href={`http://${order.shippingInfo.shippingLink}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <Link to="#" rel="noopener noreferrer">
                       Track order
-                    </a>
+                    </Link>
                   </button>
                   <Link
                     to="#"

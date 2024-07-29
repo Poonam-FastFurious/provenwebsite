@@ -62,6 +62,7 @@ function Wishlist() {
         draggable: true,
         progress: undefined,
         theme: "light",
+        onClose: () => removeFromWishlist(productId),
       });
     } catch (error) {
       console.error("Error adding product to cart:", error);
@@ -213,13 +214,13 @@ function Wishlist() {
                                       />
                                     </Link>
                                   </td>
-                                  <td className="p-[0.5rem] border-b-[1px] border-solid border-[#dee2e6]">
+                                  {/* <td className="p-[0.5rem] border-b-[1px] border-solid border-[#dee2e6]">
                                     <span className="max-[767px]:text-[14px] py-[14px] flex text-[#777] tracking-[0.02rem]">
                                       <Link to={`/Product/${item.productId}`}>
                                         {item.productName}
                                       </Link>
                                     </span>
-                                  </td>
+                                  </td> */}
                                   <td className="p-[0.5rem] border-b-[1px] border-solid border-[#dee2e6]">
                                     <span className="max-[767px]:text-[14px] py-[14px] flex text-[#777] tracking-[0.02rem]">
                                       {new Date(

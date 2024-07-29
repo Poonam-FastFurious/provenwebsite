@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-import secondnbanner2 from "../../assets/Images/secondbanner2.jpeg";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Baseurl } from "../../confige";
 function HomeSecondBanner() {
-  const [banners, setBanners] = useState([]);
+  const [banner, setBanner] = useState(null); // Initialize as null to handle loading state
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -14,60 +16,57 @@ function HomeSecondBanner() {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setBanners(data.data); // Assuming data is an array of banner objects
+        // Set the first item of the data array
+        setBanner(data.data[0] || null); // Default to null if no data is available
       } catch (error) {
-        console.error("Error fetching banners:", error);
+        console.error("Error fetching banner:", error);
       }
     };
 
     fetchData();
   }, []);
-  console.log(banners);
+
+  if (!banner) {
+    return <div>Loading...</div>; // Display a loading message while data is being fetched
+  }
+
   return (
-    <div className=" pt-24">
-      <div className="container mx-auto py-10 md:py-12 px-3 md:px-8 bg-AFPPrimaryLight  pt-14">
-        <div className="flex items-strech justify-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8">
-          {banners.slice(0, 1).map((banner, index) => (
-            <div
-              key={index}
-              className={`flex flex-col md:flex-row items-stretch justify-between bg-gray-50 py-6 px-6 md:py-12 lg:px-12 ${
-                index === 0
-                  ? "md:w-8/12 lg:w-7/12 xl:w-8/12 2xl:w-9/12"
-                  : "md:w-4/12 lg:w-5/12 xl:w-4/12 2xl:w-3/12"
-              }`}
-            >
-              <div className="flex flex-col justify-center md:w-1/2">
-                <h1 className="text-3xl lg:text-4xl font-semibold text-gray-800 ">
-                  {banner.title}
-                </h1>
-                <p className="text-base lg:text-xl text-gray-800 mt-2">
-                  <span className="font-bold">{banner.details}</span>
-                </p>
+    <div>
+      <section
+        className="gi-banner py-[40px] max-[767px]:py-[30px] wow fadeInUp"
+        data-wow-duration="2s"
+      >
+        <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
+          <div className="w-full flex flex-wrap px-[12px]">
+            <div className="w-full">
+              <div
+                className="w-full bg-center bg-no-repeat bg-cover overflow-hidden relative rounded-[5px] h-auto"
+                style={{ backgroundImage: `url(${banner.image})` }}
+              >
+                <div className="gi-bnr-detail h-full py-[80px] px-[100px] max-[991px]:p-[50px] max-[420px]:p-[15px] flex flex-col justify-center items-end text-right relative">
+                  <div className="gi-bnr-info">
+                    <h2 className="text-[50px] max-[1399px]:text-[38px] max-[1199px]:text-[30px] max-[991px]:text-[28px] max-[767px]:text-[20px] max-[480px]:text-[18px] font-bold text-white  leading-[65px] max-[1199px]:leading-[40px] max-[991px]:leading-[35px] max-[767px]:leading-[27px] max-[480px]:leading-[25px] z-[2] relative">
+                      {banner.title}
+                    </h2>
+                    <h3 className="mt-[15px] mb-[15px]  text-AFPPrimary leading-[1.2] font-semibold text-[1.75rem] max-[991px]:text-[20px] max-[767px]:text-[16px] max-[767px]:mt-[5px]">
+                      {banner.details}
+                      <span className="text-white font-normal">
+                        Hurry up!!!
+                      </span>
+                    </h3>
+                    <a
+                      href={banner.link}
+                      className="gi-btn-2 mt-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[5px] max-[767px]:py-[6px] px-[10px] max-[767px]:px-[10px] bg-[#5caf90] text-[#fff] border-[0] text-[14px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#4b5966] hover:text-[#fff]"
+                    >
+                      Shop now
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center md:justify-end">
-                <img src={banner.image} alt={banner.title} className="" />
-              </div>
-            </div>
-          ))}
-          <div className="md:w-4/12 lg:w-5/12 xl:w-4/12 2xl:w-3/12 bg-gray-50  py-6 px-6 md:py-0 md:px-4 lg:px-6 flex flex-col justify-center relative">
-            <div className="flex flex-col justify-center">
-              <h1 className="text-3xl lg:text-4xl font-semibold text-gray-800 ">
-                Proven Ro
-              </h1>
-              <p className="text-base lg:text-xl text-gray-800 ">
-                Save Upto <span className="font-bold">30%</span>
-              </p>
-            </div>
-            <div className="flex justify-end md:absolute md:bottom-4 md:right-4 lg:bottom-0 lg:right-0">
-              <img
-                src={secondnbanner2}
-                alt=""
-                className="md:w-20 md:h-20 lg:w-full lg:h-full"
-              />
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

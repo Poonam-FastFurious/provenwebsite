@@ -23,8 +23,11 @@ import ProtectedRoute from "../Protectedroutes/ProtectedRoutes";
 import RouteProtected from "../Protectedroutes/RoutesProtected";
 import Ordersuccess from "../Specific/Ordersuccess";
 import WaterPurefire from "../../Pages/WaterPurefire";
-import Productnewdetails from "../Common/Productnewdetails";
+// import Productnewdetails from "../Common/Productnewdetails";
 import Blogdetails from "../../Pages/Blog/Blogdetails";
+import ShaprePart from "../../Pages/Shop/ShaprePart";
+import SerchPage from "../../Pages/Shop/SerchPage";
+import Productdetailswitvedio from "../Common/Productdetailswitvedio";
 
 function HomeRouter() {
   return (
@@ -37,9 +40,10 @@ function HomeRouter() {
           <Route path="/" element={<Home />} />
           <Route path="/Book-Demo" element={<BookDemo />} />
           <Route path="/Water-purifier" element={<Shop />} />
-          <Route path="/Spare_Parts" element={<Shop />} />
+          <Route path="/Spare_Parts" element={<ShaprePart />} />
           <Route path="/Productctegory/:id" element={<WaterPurefire />} />
-          <Route path="/Product/:id" element={<Productnewdetails />} />
+          <Route path="/Product/:id" element={<Productdetailswitvedio />} />
+          <Route path="/products" element={<SerchPage />} />
           <Route
             path="/login"
             element={<ProtectedRoute element={<Login />} redirectTo="/" />}

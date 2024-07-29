@@ -14,7 +14,7 @@ function TrendingItem() {
     fetch(`${Baseurl}/api/v1/Product/products`)
       .then((response) => response.json())
       .then((data) => {
-        setProducts(data.products); // Assuming data is the array of products
+        setProducts(data.data); // Assuming data is the array of products
       })
       .catch((error) => {
         console.error("There was an error fetching the products!", error);
@@ -75,9 +75,9 @@ function TrendingItem() {
                 {products.map((product) => (
                   <HorizentalCard
                     key={product._id} // Assuming each product has a unique id
-                    name={product.name}
+                    name={product.title}
                     price={product.price}
-                    discount={product.discount}
+                    discount={product.cutPrice}
                     images={product.image}
                     ID={product._id}
                   />
@@ -101,9 +101,9 @@ function TrendingItem() {
                 {products.map((product) => (
                   <HorizentalCard
                     key={product._id} // Assuming each product has a unique id
-                    name={product.name}
+                    name={product.title}
                     price={product.price}
-                    discount={product.discount}
+                    discount={product.cutPrice}
                     images={product.image}
                     ID={product._id}
                   />
@@ -127,9 +127,9 @@ function TrendingItem() {
                 {products.map((product) => (
                   <HorizentalCard
                     key={product._id} // Assuming each product has a unique id
-                    name={product.name}
+                    name={product.title}
                     price={product.price}
-                    discount={product.discount}
+                    discount={product.cutPrice}
                     images={product.image}
                     ID={product._id}
                   />

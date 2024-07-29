@@ -71,7 +71,7 @@ function HorizentalCard({ name, price, images, discount, ID }) {
                       ₹{price}
                     </span>
                     <span className="old-price text-[12px] line-through text-[#777] ml-[9px]">
-                      {discount}%
+                      ₹{discount}
                     </span>
                   </span>
                 </div>

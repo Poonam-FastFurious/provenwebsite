@@ -17,9 +17,8 @@ function Shop() {
       .then((response) => response.json())
       .then((data) => {
         // Assuming data is an array of objects with properties like tag, price, description, title, offprice
-        setProducts(data.products); // Store fetched data in state
-
-        const extractedTags = data.products.flatMap((product) =>
+        setProducts(data.data); // Store fetched data in state
+        const extractedTags = data.data.flatMap((product) =>
           product.tags.map((tag) => ({
             id: `${product._id}_${tag}`,
             name: tag,
@@ -66,7 +65,7 @@ function Shop() {
   const filteredProducts = selectedCategories.length
     ? products.filter(
         (product) =>
-          selectedCategories.includes(product.category) &&
+          selectedCategories.includes(product.categories) &&
           product.price >= minPrice &&
           product.price <= maxPrice
       )
@@ -174,15 +173,15 @@ function Shop() {
                         {filteredProducts.map((product, index) => (
                           <ShopPageCard
                             key={index}
-                            tag={product.tag}
+                            tag={product.tags}
                             price={product.price}
                             description={product.shortDescription}
-                            title={product.name}
+                            title={product.title}
                             offprice={product.discount}
                             images={product.image}
                             ID={product._id}
-                            atriutes={product.attributes}
-                            rating={product.rating}
+                            atriutes={product.cutPrice}
+                            rating={5}
                           />
                         ))}
                       </>
@@ -238,7 +237,7 @@ function Shop() {
                     </div>
                   </div>
 
-                  <div className="gi-sidebar-block mb-[15px]">
+                  {/* <div className="gi-sidebar-block mb-[15px]">
                     <div className="gi-sb-title border-b-[1px] border-solid border-[#eee] pb-[15px]">
                       <h3 className="gi-sidebar-title font-semibold tracking-[0] relative text-[#4b5966] w-full flex justify-between font-Poppins text-[17px] leading-[1.2]">
                         Storage
@@ -324,7 +323,7 @@ function Shop() {
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="gi-sidebar-block mb-[15px]">
                     <div className="gi-sb-title border-b-[1px] border-solid border-[#eee] pb-[15px]">

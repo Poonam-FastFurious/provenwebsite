@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Baseurl } from "../../confige";
+
 // import { Baseurl } from "../../confige";
 
 const AccordionItem = ({ title, children }) => {
@@ -39,17 +40,20 @@ const AccordionItem = ({ title, children }) => {
 
 const CheckoutSection = () => {
   const navigate = useNavigate();
+  const userId = localStorage.getItem("userid");
+  const accessToken = localStorage.getItem("accessToken");
   const [products, setProducts] = useState([]);
+  const [addresses, setAddresses] = useState([]);
   const [formData, setFormData] = useState({
     address: "",
     totalAmount: 0, // Dynamic total amount
   });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleAddressSelect = (event) => {
+    const { value } = event.target;
     setFormData({
       ...formData,
-      [name]: value,
+      address: value, // Update the selected address
     });
   };
   useEffect(() => {
@@ -62,6 +66,7 @@ const CheckoutSection = () => {
   }, []);
   useEffect(() => {
     const totalAmount = localStorage.getItem("cartTotal");
+
     setFormData((prevData) => ({ ...prevData, totalAmount }));
   }, [products]);
   const createOrder = async () => {
@@ -106,7 +111,7 @@ const CheckoutSection = () => {
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(
-          ` Failed to create order: ${response.status} ${errorText}`
+          `Failed to create order: ${response.status} ${errorText}`
         );
       }
 
@@ -207,6 +212,33 @@ const CheckoutSection = () => {
       console.error("Error:", error.message); // Print error message to console
     }
   };
+  useEffect(() => {
+    const fetchAddressDetails = async () => {
+      try {
+        const response = await fetch(
+          `${Baseurl}/api/v1/address?userId=${userId}`,
+          {
+            method: "GET", // Assuming you use POST for sending data
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch address details");
+        }
+
+        const data = await response.json();
+        setAddresses(data.data); // Assuming your API response has an 'addresses' array
+      } catch (error) {
+        console.error("Error fetching address details:", error);
+      }
+    };
+
+    fetchAddressDetails();
+  }, [userId, accessToken]);
   return (
     <>
       <section className="gi-checkout-section py-10 text-sm max-md:py-8 ">
@@ -261,101 +293,41 @@ const CheckoutSection = () => {
                   </div>
 
                   <div className="gi-checkout-summary-total border-t border-solid border-gray-300 pt-4.5 mb-0 mt-4 flex justify-between items-center">
-                    {/* <span className="text-left text-base font-semibold text-gray-700 tracking-normal font-manrope">
+                    <span className="text-left text-base font-semibold text-gray-700 tracking-normal font-manrope">
                       Total Items
-                    </span> */}
+                    </span>
                     <span className="text-right text-base font-semibold text-gray-700 font-manrope"></span>
                   </div>
                 </div>
               </AccordionItem>
 
-              <AccordionItem title="Delivery Method">
-                <div className="gi-checkout-del">
-                  <div className="gi-del-desc text-gray-500 text-sm font-light leading-6 mb-3.5">
-                    Please select the preferred shipping method to use on this
-                    order.
-                  </div>
-                  <form action="#">
-                    <span className="gi-del-option flex">
-                      <span className="w-1/2">
-                        <span className="gi-del-opt-head text-gray-700 text-base font-medium leading-none tracking-normal mb-2.5 block">
-                          Free Shipping
-                        </span>
-                        <input
-                          type="radio"
-                          id="del1"
-                          name="radio-group"
-                          defaultChecked
-                        />
-                        <label
-                          htmlFor="del1"
-                          className="relative pl-6 cursor-pointer leading-4 inline-block text-gray-500 tracking-normal mb-3.5"
-                        >
-                          Rate - Rs0.00
-                        </label>
-                      </span>
-                    </span>
-                    {/* <span className="gi-del-commemt block mt-3">
-                      <span className="gi-del-opt-head mb-2 text-gray-700 text-base font-medium leading-none tracking-normal block">
-                        Add Comments About Your Order
-                      </span>
-                      <textarea
-                        name="your-commemt"
-                        placeholder="Comments"
-                        className="bg-transparent border border-solid border-gray-300 text-gray-700 h-[100px] py-2.5 px-3.5 mb-0 w-full outline-none text-sm block rounded-md"
-                      ></textarea>
-                    </span> */}
-                  </form>
-                </div>
-              </AccordionItem>
               <AccordionItem title="Delivery Address">
                 <div className="gi-checkout-del">
                   <div className="gi-del-desc text-gray-500 text-sm font-light leading-6 mb-3.5">
                     Please select the preferred shipping method to use on this
                     order.
                   </div>
-                  <form action="#">
-                    <div className="gi-del-option">
-                      <div className="w-1/2">
-                        <span className="gi-del-opt-head text-gray-700 text-base font-medium leading-none tracking-normal mb-2.5 block">
-                          Home Address
-                        </span>
-                        <input
-                          type="radio"
-                          id="homeAddress"
-                          name="address"
-                          value="homeAddress"
-                          checked={formData.address === "homeAddress"}
-                          onChange={handleInputChange}
-                        />
-                        <label
-                          htmlFor="homeAddress"
-                          className="relative pl-6 cursor-pointer leading-4 inline-block text-gray-500 tracking-normal mb-3.5"
-                        >
-                          Noida Sector 62
+                  {addresses.length > 0 ? (
+                    addresses.map((address, index) => (
+                      <div key={index} className="border p-8">
+                        <label>
+                          <input
+                            type="checkbox"
+                            name="address"
+                            value={address._id}
+                            checked={formData.address === address._id}
+                            onChange={handleAddressSelect}
+                            className="mr-2"
+                          />
+                          {address.addressType},{address.streetAddress},{" "}
+                          {address.city}, {address.state}, {address.postalCode},{" "}
+                          {address.country}
                         </label>
                       </div>
-                      <div className="w-1/2">
-                        <span className="gi-del-opt-head text-gray-700 text-base font-medium leading-none tracking-normal mb-2.5 block">
-                          Office Address
-                        </span>
-                        <input
-                          type="radio"
-                          id="officeAddress"
-                          name="address"
-                          value="officeAddress"
-                          checked={formData.address === "officeAddress"}
-                          onChange={handleInputChange}
-                        />
-                        <label
-                          htmlFor="officeAddress"
-                          className="relative pl-6 cursor-pointer leading-4 inline-block text-gray-500 tracking-normal mb-3.5"
-                        >
-                          Noida Sector 62
-                        </label>
-                      </div>
-                    </div>
-                  </form>
+                    ))
+                  ) : (
+                    <p>No addresses found. Please add an address.</p>
+                  )}
                 </div>
               </AccordionItem>
             </div>
@@ -370,37 +342,10 @@ const CheckoutSection = () => {
                   <div className="space-y-2">
                     <dl className="flex items-center justify-between gap-4">
                       <dt className="text-base font-normal text-gray-500 ">
-                        Price(6Items)
+                        {formData.quantity}
                       </dt>
                       <dd className="text-base font-medium text-gray-900 ">
-                        Rs7,592.00
-                      </dd>
-                    </dl>
-
-                    <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-base font-normal text-gray-500">
-                        Savings
-                      </dt>
-                      <dd className="text-base font-medium text-green-600">
-                        -Rs299.00
-                      </dd>
-                    </dl>
-
-                    <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-base font-normal text-gray-500 ">
-                        Store Pickup
-                      </dt>
-                      <dd className="text-base font-medium text-gray-900 ">
-                        Rs99
-                      </dd>
-                    </dl>
-
-                    <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-base font-normal text-gray-500 ">
-                        Tax
-                      </dt>
-                      <dd className="text-base font-medium text-gray-900 ">
-                        ₹799
+                        ₹{formData.totalAmount}
                       </dd>
                     </dl>
                   </div>
@@ -427,7 +372,7 @@ const CheckoutSection = () => {
                     or
                   </span>
                   <Link
-                    href="#"
+                    to="/Water-purifier"
                     title=""
                     className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline "
                   >

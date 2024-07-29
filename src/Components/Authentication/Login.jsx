@@ -5,6 +5,7 @@ import { Baseurl } from "../../confige";
 function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -15,9 +16,23 @@ function Login() {
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]{2,}@([a-zA-Z0-9.-]+\.)+[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
+    // Validate email format
+    if (!validateEmail(formData.email)) {
+      setLoading(false);
+      setErrorMessage(
+        "Invalid email format. Please enter a valid email address."
+      );
+      return;
+    }
 
     try {
       const response = await fetch(Baseurl + "/api/v1/user/login", {
@@ -28,7 +43,7 @@ function Login() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json(); // Move this line here
+      const data = await response.json();
 
       if (!response.ok) {
         throw new Error(data.message || "Login failed");
@@ -60,8 +75,10 @@ function Login() {
       }, 2000);
     } catch (error) {
       console.error("Login error:", error); // Handle error here
-      setErrorMessage("Login error credential not match");
+      setErrorMessage("Login error, credential not match");
       setSuccessMessage(""); // Clear any previous success message
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,7 +88,7 @@ function Login() {
 
   return (
     <>
-      <section className="bg-gray-50 md:py-8 md:pt-24">
+      <section className="bg-gray-50 md:py-8 md:pt-4">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-auto lg:py-0">
           <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -222,6 +239,7 @@ function Login() {
                   <Link
                     to="/register"
                     className="font-medium text-primary-600 hover:underline"
+                    disabled={loading}
                   >
                     Sign up
                   </Link>

@@ -28,6 +28,7 @@ function Profile() {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({});
   const [addresses, setAddresses] = useState([]);
+  const [notification, setNotification] = useState([]);
   const userId = localStorage.getItem("userid");
   const accessToken = localStorage.getItem("accessToken");
   const [showPassword, setShowPassword] = useState(false);
@@ -42,7 +43,7 @@ function Profile() {
     const fetchUserData = async () => {
       try {
         const response = await fetch(
-          `https://provenbackend.onrender.com/api/v1/user/getuser?id=${userId}`
+          `${Baseurl}/api/v1/user/getuser?id=${userId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch user data");
@@ -186,7 +187,7 @@ function Profile() {
       });
       const result = await response.json();
       if (response.ok) {
-        console.log("Address added successfully:", result);
+        "Address added successfully:", result;
       } else {
         console.error("Error adding address:", result);
       }
@@ -224,6 +225,11 @@ function Profile() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  useEffect(() => {
+    fetch(Baseurl + "/api/v1/Notification/allnotification")
+      .then((response) => response.json())
+      .then((data) => setNotification(data.data));
+  }, []);
   return (
     <>
       <section className="relative lg:pb-24 pb-16 md:mt-[84px] mt-[70px]">
@@ -233,9 +239,9 @@ function Profile() {
 
         <div className="container relative mt-8 md:mt-12 ">
           <div className="md:flex">
-            <div className="lg:w-1/4 md:w-1/3 md:mt-24 mt-16">
-              <div className="relative md:-mt-48 -mt-32">
-                <div className="p-6 rounded-md shadow  bg-white ">
+            <div className=" md:mt-24 mt-16">
+              <div className="relative md:-mt-48 ">
+                <div className="p-6 rounded-md shadow  bg-white b">
                   <div className="profile-pic text-center mb-5">
                     <input
                       id="pro-img"
@@ -259,10 +265,8 @@ function Profile() {
                       </div>
 
                       <div className="mt-4">
-                        <h5 className="text-lg font-semibold">
-                          {userData.fullName}
-                        </h5>
-                        <p className="text-slate-400">{userData.email}</p>
+                        <h5 className="">{userData.fullName}</h5>
+                        <p className="">{userData.email}</p>
                       </div>
                     </div>
                   </div>
@@ -388,91 +392,7 @@ function Profile() {
 
               {activeTab === "DashBoard" && (
                 <>
-                  <div className="grid gap-6 mt-4 md:grid-cols-2 xl:grid-cols-4">
-                    <div className="flex items-center p-4 bg-white rounded-lg shadow-xs border ">
-                      <div className="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
-                        <svg
-                          className="w-5 h-5"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="mb-2 text-sm font-medium text-gray-600">
-                          Total Order
-                        </p>
-                        <p className="text-lg font-semibold text-gray-700">
-                          19238
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center p-4 bg-white rounded-lg shadow-xs border ">
-                      <div className="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
-                        <svg
-                          className="w-5 h-5"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="mb-2 text-sm font-medium text-gray-600">
-                          Pending Order
-                        </p>
-                        <p className="text-lg font-semibold text-gray-700">
-                          120
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center p-4 bg-white rounded-lg shadow-xs border">
-                      <div className="p-3 mr-4 text-red-500 bg-red-100 rounded-full">
-                        <svg
-                          className="w-5 h-5"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="mb-2 text-sm font-medium text-gray-600">
-                          Deliverd Order
-                        </p>
-                        <p className="text-lg font-semibold text-gray-700">
-                          6389
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center p-4 bg-white rounded-lg shadow-xs border">
-                      <div className="p-3 mr-4 text-yellow-500 bg-yellow-100 rounded-full">
-                        <svg
-                          className="w-5 h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <circle cx="12" cy="8" r="7"></circle>
-                          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="mb-2 text-sm font-medium text-gray-600">
-                          User
-                        </p>
-                        <p className="text-lg font-semibold text-gray-700">
-                          828
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-white shadow-sm rounded-sm">
+                  <div className="bg-white shadow-sm rounded-sm mt-4">
                     <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                       <span className="text-green-500">
                         <svg
@@ -511,22 +431,7 @@ function Profile() {
                           <div className="px-4 py-2 font-semibold">
                             Contact No.
                           </div>
-                          <div className="px-4 py-2">+9876543210</div>
-                        </div>
-
-                        <div className="grid grid-cols-4">
-                          <div className="px-4 py-2 font-semibold">Email.</div>
-                          <div className="">
-                            <Link className="" to="mailto:jane@example.com">
-                              {userData.email}
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-2">
-                          <div className="px-4 py-2 font-semibold">
-                            Birthday
-                          </div>
-                          <div className="px-4 py-2">jan 01, 2000</div>
+                          <div className="px-4 py-2">{userData.mobile}</div>
                         </div>
                       </div>
                     </div>
@@ -551,7 +456,7 @@ function Profile() {
                       </h6>
 
                       <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 mt-6">
-                        {addresses.slice(0, 2).map((addres, index) => (
+                        {addresses.map((addres, index) => (
                           <div key={index} className=" border p-4">
                             <div className="flex items-center mb-4 justify-between">
                               <h5 className="text-xl font-medium">
@@ -875,74 +780,17 @@ function Profile() {
                     </div>
 
                     <div className="p-6">
-                      <div className="flex justify-between pb-4">
-                        <h6 className="mb-0 font-medium">
-                          When someone mentions me
-                        </h6>
-                        <div className="">
-                          <input
-                            className="form-checkbox rounded border-gray-400   text-AFPPrimaryDark focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50"
-                            type="checkbox"
-                            value=""
-                            id="noti1"
-                          />
-                          <label
-                            className="form-check-label"
-                            htmlFor="noti1"
-                          ></label>
+                      {notification.map((notify, index) => (
+                        <div className="flex justify-between pb-4" key={index}>
+                          <h6 className="mb-0 font-medium">{notify.Detail}</h6>
+                          <div className="">
+                            <label
+                              className="form-check-label"
+                              htmlFor="noti1"
+                            ></label>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex justify-between py-4 border-t border-gray-200 ">
-                        <h6 className="mb-0 font-medium">
-                          When someone follows me
-                        </h6>
-                        <div className="">
-                          <input
-                            className="form-checkbox rounded border-gray-400  text-AFPPrimaryDark focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50"
-                            type="checkbox"
-                            value=""
-                            id="noti2"
-                          />
-                          <label
-                            className="form-check-label"
-                            htmlFor="noti2"
-                          ></label>
-                        </div>
-                      </div>
-                      <div className="flex justify-between py-4 border-t border-gray-200 ">
-                        <h6 className="mb-0 font-medium">
-                          When shares my activity
-                        </h6>
-                        <div className="">
-                          <input
-                            className="form-checkbox rounded border-gray-400  text-AFPPrimaryDark focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50"
-                            type="checkbox"
-                            value=""
-                            id="noti3"
-                          />
-                          <label
-                            className="form-check-label"
-                            htmlFor="noti3"
-                          ></label>
-                        </div>
-                      </div>
-                      <div className="flex justify-between py-4 border-t border-gray-200 ">
-                        <h6 className="mb-0 font-medium">
-                          When someone messages me
-                        </h6>
-                        <div className="">
-                          <input
-                            className="form-checkbox rounded border-gray-400  text-AFPPrimaryDark focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50"
-                            type="checkbox"
-                            value=""
-                            id="noti4"
-                          />
-                          <label
-                            className="form-check-label"
-                            htmlFor="noti4"
-                          ></label>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </>
@@ -1102,7 +950,7 @@ function Profile() {
                                     });
                                   }
                                 }}
-                                maxLength="12"
+                                maxLength="10"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
                               />
                             </div>
@@ -1117,11 +965,12 @@ function Profile() {
                             </label>
                             <div className="mt-2">
                               <textarea
+                                id="streetAddress" // Added id to match label's htmlFor attribute
                                 name="streetAddress"
-                                id="streetAddress"
                                 value={formData.streetAddress}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
+                                className="block w-full  pl-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:text-sm sm:leading-6"
+                                placeholder="Enter your street address" // Added placeholder for better UX
                               />
                             </div>
                           </div>

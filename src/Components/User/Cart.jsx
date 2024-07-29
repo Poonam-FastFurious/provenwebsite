@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 
 import "react-toastify/dist/ReactToastify.css";
 import { Baseurl } from "../../confige";
+import { toast } from "react-toastify";
 
 function Cart() {
   const [cart, setCart] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [couponCode, setCouponCode] = useState("");
   const [discount, setDiscount] = useState(0);
@@ -52,7 +54,9 @@ function Cart() {
     };
     const fetchCoupons = async () => {
       try {
-        const response = await fetch(Baseurl + "/api/v1/coupon/coupons");
+        const response = await fetch(
+          "http://localhost:3000/api/v1/coupon/coupons"
+        );
         if (!response.ok) {
           const errorData = await response.json();
           throw new Error(errorData.message || "Failed to fetch coupons");
@@ -164,8 +168,14 @@ function Cart() {
     const coupon = coupons.find((coupon) => coupon.code === couponCode);
 
     if (coupon) {
-      setDiscount(coupon.discount);
-      setCouponError("");
+      if (coupon.status === "active") {
+        setDiscount(coupon.discount);
+        localStorage.setItem("couponDiscount", coupon.discount); // Store discount
+        setCouponError("");
+      } else {
+        setDiscount(0);
+        setCouponError("Coupon code has expired");
+      }
     } else {
       setDiscount(0);
       setCouponError("Invalid coupon code");
@@ -178,6 +188,49 @@ function Cart() {
       return totalAfterDiscount.toFixed(2);
     }
     return 0;
+  };
+  const handleAddToWishlist = async (productId) => {
+    setLoading(true);
+    const token = localStorage.getItem("accessToken");
+
+    if (!token) {
+      toast.warn("You must be logged in to add items to your wishlist.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${Baseurl}/api/v1/wishlist/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ productId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Product added to wishlist:", data);
+      toast.success("Product added to wishlist!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      console.error("Error adding product to wishlist:", error);
+      toast.warn("Failed to add product to wishlist.");
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <>
@@ -319,6 +372,10 @@ function Cart() {
 
                           <div className="flex items-center gap-4">
                             <button
+                              onClick={() =>
+                                handleAddToWishlist(item.product._id)
+                              }
+                              disabled={loading}
                               type="button"
                               className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline "
                             >
@@ -403,7 +460,7 @@ function Cart() {
                         </dd>
                       </dl>
 
-                      <dl className="flex items-center justify-between gap-4">
+                      {/* <dl className="flex items-center justify-between gap-4">
                         <dt className="text-base font-normal text-gray-500 ">
                           Store Pickup
                         </dt>
@@ -419,7 +476,7 @@ function Cart() {
                         <dd className="text-base font-medium text-gray-900 ">
                           ₹799
                         </dd>
-                      </dl>
+                      </dl> */}
                     </div>
 
                     <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 ">

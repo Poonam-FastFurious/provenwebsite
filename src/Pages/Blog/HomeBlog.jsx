@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Baseurl } from "../../confige";
 
 function HomeBlog() {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
-    fetch("https://provenbackend.onrender.com/api/v1/blog/allblogs")
+    fetch(Baseurl + "/api/v1/blog/allblogs")
       .then((res) => res.json())
       .then((data) => setBlogs(data.data));
   }, []);
@@ -29,7 +30,7 @@ function HomeBlog() {
                     className="bg-white rounded-lg overflow-hidden hover:scale-105 transition-all duration-300 border"
                   >
                     <img
-                      src={blog.thumbnail}
+                      src={blog.image}
                       alt="Blog Post 1"
                       className="w-full h-52 object-cover"
                     />

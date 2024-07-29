@@ -11,7 +11,7 @@ function Topheader() {
                 <ul className="mb-[0] p-[0] flex">
                   <li className="list-inline-item transition-all duration-[0.3s] ease-in-out flex text-[13px] mr-[15px]">
                     <Link
-                      to="#"
+                      to="tel:+919876543210"
                       className="mx-[5px] text-center flex items-center justify-center text-[15px]"
                     >
                       <i className="fi fi-rr-phone-call transition-all duration-[0.3s] ease-in-out text-[#fff]"></i>
@@ -20,7 +20,8 @@ function Topheader() {
                   </li>
                   <li className="list-inline-item transition-all duration-[0.3s] ease-in-out flex text-[13px]">
                     <Link
-                      to="#"
+                      to={`https://wa.me/${+919820035336}`}
+                      target="_blank"
                       className="mx-[5px] text-center flex items-center justify-center text-[15px]"
                     >
                       <i className="fi fi-brands-whatsapp transition-all duration-[0.3s] ease-in-out text-[#fff]"></i>
@@ -39,15 +40,9 @@ function Topheader() {
               <div className="header-top-right-inner flex justify-end">
                 <Link
                   className="gi-help pl-[20px] text-[13px] text-[#fff] tracking-[0.7px] font-normal hover:text-[#5caf90]"
-                  to="#"
+                  to="/contact-us"
                 >
                   Help?
-                </Link>
-                <Link
-                  className="gi-help pl-[20px] text-[13px] text-[#fff] tracking-[0.7px] font-normal hover:text-[#5caf90]"
-                  to="/ordertracking"
-                >
-                  Track Order?
                 </Link>
 
                 <div className="header-top-lan-curr header-top-lan dropdown pl-[20px] flex flex-wrap relative">

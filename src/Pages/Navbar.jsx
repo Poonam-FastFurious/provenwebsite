@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Baseurl } from "../confige";
 import axios from "axios";
 const AccordionItem = ({ title, children }) => {
@@ -38,6 +38,13 @@ const AccordionItem = ({ title, children }) => {
 function Navbar() {
   const [category, setCategory] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     if (token) {
@@ -107,6 +114,14 @@ function Navbar() {
       console.error("Error during logout:", error);
     }
   };
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchOpen(false);
+    }
+  };
+
   return (
     <>
       <header
@@ -140,7 +155,6 @@ function Navbar() {
                                 className="dropdown-arrow relative transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
                               >
                                 Water Purifiers
-                                <i className="fi-rr-angle-small-right transition-all duration-[0.3s] ease-in-out mr-[5px] text-[#4b5966] absolute right-[-27px] text-[18px] rotate-[90deg] flex"></i>
                               </Link>
                               <ul className="mega-menu block transition-all duration-[0.3s] ease-in-out w-full max-[1399px]:mx-[12px] max-[1399px]:w-[calc(100%-24px)] mt-[15px] absolute bg-[#fff] pl-[30px] opacity-0 invisible left-0 z-[15] border-[1px] border-solid border-[#eee] truncate">
                                 <li className="flex">
@@ -240,7 +254,6 @@ function Navbar() {
                                 className="dropdown-arrow relative transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
                               >
                                 About Us
-                                <i className="fi-rr-angle-small-right transition-all duration-[0.3s] ease-in-out mr-[5px] text-[#4b5966] absolute right-[-27px] text-[18px] rotate-[90deg] flex"></i>
                               </Link>
                             </li>
                             <li className="dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px]">
@@ -271,13 +284,49 @@ function Navbar() {
                     <Link
                       to="#"
                       className="gi-header-btn  h-icon gi-search-icon mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center whitespace-nowrap"
-                      title="Wishlist"
+                      title="Search"
+                      onClick={() => setIsSearchOpen(!isSearchOpen)}
                     >
                       <div className="header-icon relative flex">
                         <i className="fi-rr-search text-[24px] leading-[17px] max-[575px]:text-[#fff] max-[575px]:text-[18px]"></i>
                       </div>
                       <div className="gi-btn-desc flex flex-col uppercase ml-[10px] max-[1199px]:hidden"></div>
                     </Link>
+                    {isSearchOpen && (
+                      <div className="gi-search-menu w-full h-[30%] fixed top-[0] left-[0] bg-[#000000cc] z-[17]">
+                        <div className="gi-search-wrapper h-full w-full relative flex items-center justify-center">
+                          <a
+                            href="javascript:void(0)"
+                            className="gi-close-search absolute top-[30px] right-[30px] text-[#fff] text-[30px] leading-[20px]"
+                            title="Close"
+                            onClick={() => setIsSearchOpen(false)}
+                          >
+                            ×
+                          </a>
+                          <form
+                            className="gi-form relative flex items-center justify-center max-[575px]:w-[100%] max-[575px]:px-[15px]"
+                            onSubmit={handleSearchSubmit}
+                          >
+                            <input
+                              className="gi-popup-search w-[500px] max-[575px]:w-[100%] bg-transparent border-[0] border-b-[2px] border-solid outline-[0] border-[#fff] text-[#fff] h-[50px]"
+                              type="text"
+                              name="u"
+                              placeholder="Search here"
+                              value={searchQuery}
+                              onChange={handleSearchChange}
+                            />
+                            <i className="fi-rr-search ml-[-17px] text-[#fff]"></i>
+                            <button
+                              type="submit"
+                              className="gi-popup-search-button p-[0]"
+                              name="search"
+                            >
+                              <i className="ion-ios-search-strong mr-[-17px] text-[#fff]"></i>
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    )}
                     <div className="gi-acc-drop relative">
                       <Link
                         to="/Login"
@@ -289,7 +338,7 @@ function Navbar() {
                         </div>
                         <div className="gi-btn-desc flex flex-col uppercase ml-[10px] max-[1199px]:hidden">
                           <span className="gi-btn-title transition-all duration-[0.3s] ease-in-out text-[12px] leading-[1] text-[#777] mb-[6px] tracking-[0.6px] capitalize font-medium">
-                            {isLoggedIn ? "My Account" : "Login"}
+                            {isLoggedIn ? "" : ""}
                           </span>
                         </div>
                       </Link>
@@ -314,7 +363,7 @@ function Navbar() {
                           <li>
                             <Link
                               className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
-                              to="#"
+                              to="/Support"
                             >
                               Support
                             </Link>
@@ -341,9 +390,7 @@ function Navbar() {
                         <i className="fi-rr-heart text-[24px] leading-[17px]"></i>
                       </div>
                       <div className="gi-btn-desc flex flex-col uppercase ml-[10px] max-[1199px]:hidden">
-                        <span className="gi-btn-title transition-all duration-[0.3s] ease-in-out text-[12px] leading-[1] text-[#777] mb-[6px] tracking-[0.6px] capitalize font-medium">
-                          Wishlist
-                        </span>
+                        <span className="gi-btn-title transition-all duration-[0.3s] ease-in-out text-[12px] leading-[1] text-[#777] mb-[6px] tracking-[0.6px] capitalize font-medium"></span>
                       </div>
                     </Link>
 
@@ -356,9 +403,7 @@ function Navbar() {
                         <i className="fi-rr-shopping-bag text-[24px] leading-[17px]"></i>
                       </div>
                       <div className="gi-btn-desc flex flex-col uppercase ml-[10px] max-[1199px]:hidden">
-                        <span className="gi-btn-title transition-all duration-[0.3s] ease-in-out text-[12px] leading-[1] text-[#777] mb-[6px] tracking-[0.6px] capitalize font-medium">
-                          Cart
-                        </span>
+                        <span className="gi-btn-title transition-all duration-[0.3s] ease-in-out text-[12px] leading-[1] text-[#777] mb-[6px] tracking-[0.6px] capitalize font-medium"></span>
                       </div>
                     </Link>
                   </div>
@@ -367,15 +412,52 @@ function Navbar() {
                 <div className="grow-[1] shrink-[0] basis-[0%] min-[576px]:flex justify-end items-center min-[992px]:hidden">
                   <div className="gi-header-bottons flex justify-end">
                     <div className="right-icons flex flex-row">
-                      <a
-                        href="javascript:void(0)"
-                        className="gi-header-btn h-icon gi-search-icon transition-all duration-[0.3s] ease-in-out w-auto px-[15px] relative flex text-[#4b5966] items-center"
-                        title="search"
+                      <Link
+                        to="#"
+                        className="gi-header-btn gi-header-user mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center"
                       >
                         <div className="header-icon relative flex">
-                          <i className="fi-rr-search text-[24px] leading-[17px] max-[575px]:text-[#fff] max-[575px]:text-[18px]"></i>
+                          <i
+                            className="fi-rr-search text-[24px] text-[#4b5966] leading-[17px]"
+                            onClick={() => setIsSearchOpen(!isSearchOpen)}
+                          ></i>
                         </div>
-                      </a>
+                      </Link>
+                      {isSearchOpen && (
+                        <div className="gi-search-menu w-full h-[30%] fixed top-[0] left-[0] bg-[#000000cc] z-[17]">
+                          <div className="gi-search-wrapper h-full w-full relative flex items-center justify-center">
+                            <a
+                              href="javascript:void(0)"
+                              className="gi-close-search absolute top-[30px] right-[30px] text-[#fff] text-[30px] leading-[20px]"
+                              title="Close"
+                              onClick={() => setIsSearchOpen(false)}
+                            >
+                              ×
+                            </a>
+                            <form
+                              className="gi-form relative flex items-center justify-center max-[575px]:w-[100%] max-[575px]:px-[15px]"
+                              onSubmit={handleSearchSubmit}
+                            >
+                              <input
+                                className="gi-popup-search w-[500px] max-[575px]:w-[100%] bg-transparent border-[0]  border-solid outline-[0] border-[#fff] text-[#fff] h-[50px]"
+                                type="text"
+                                name="u"
+                                placeholder="Search here"
+                                value={searchQuery}
+                                onChange={handleSearchChange}
+                              />
+                              <i className="fi-rr-search ml-[-17px] text-[#fff]"></i>
+                              <button
+                                type="submit"
+                                className="gi-popup-search-button p-[0]"
+                                name="search"
+                              >
+                                <i className="ion-ios-search-strong mr-[-17px] text-[#fff]"></i>
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      )}
                       <Link
                         to="/profile"
                         className="gi-header-btn gi-header-user mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center"

@@ -125,13 +125,7 @@ function ListCard({ products }) {
                         >
                           <i className="fi-rr-eye transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
                         </a>
-                        <a
-                          href="javascript:void(0)"
-                          className="gi-btn-group compare transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90]"
-                          title="Compare"
-                        >
-                          <i className="fi fi-rr-arrows-repeat transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
-                        </a>
+
                         <a
                           href="javascript:void(0)"
                           title="Add To Cart"
@@ -148,7 +142,7 @@ function ListCard({ products }) {
                   <div className="gi-pro-content h-full p-[20px] relative z-[10] flex flex-col text-left border-l-[1px] border-solid border-[#eee] justify-center">
                     <a href="shop-left-sidebar-col-3.html">
                       <h6 className="gi-pro-stitle mb-[10px] font-normal text-[#999] text-[13px] capitalize font-manrope tracking-[0.01rem] leading-[1.2]">
-                        {products.category}
+                        {products.categories}
                       </h6>
                     </a>
                     <h5 className="gi-pro-title h-auto mb-[10px] text-[16px] tracking-[0.01rem] font-normal leading-[1.2]">
@@ -156,7 +150,7 @@ function ListCard({ products }) {
                         href="product-left-sidebar.html"
                         className="text-[#4b5966] block text-[16px] leading-[22px] font-normal tracking-[0.85px] capitalize font-Poppins"
                       >
-                        {products.name}
+                        {products.title}
                       </a>
                     </h5>
                     <p className="gi-info my-[5px] text-[13px] text-[#777] block">
@@ -164,18 +158,14 @@ function ListCard({ products }) {
                     </p>
                     <div className="gi-pro-rat-price mt-[5px] mb-[0] flex flex-col">
                       <span className="gi-pro-rating mb-[10px] opacity-[0.7] relative">
-                        {renderStars(products.rating)}
+                        {renderStars(4)}
                       </span>
                       <span className="gi-price text-[18px] flex items-center justify-left text-[#4b5966] tracking-[0.4px]">
                         <span className="new-price text-[#4b5966] font-bold text-[14px] mr-[7px] tracking-[0.02rem]">
                           ₹{products.price}
                         </span>
                         <span className="old-price text-[14px] text-[#777] tracking-[0.02rem] line-through">
-                          ₹
-                          {(
-                            (products.price * 100) /
-                            (100 - products.discount)
-                          ).toFixed(2)}
+                          ₹{products.cutPrice}
                         </span>
                       </span>
                     </div>
@@ -222,11 +212,11 @@ function ListCard({ products }) {
                             to="/detail"
                             className="mb-[15px] block text-[#4b5966] text-[22px] leading-[1.5] font-medium max-[991px]:text-[20px]"
                           >
-                            {products.name}
+                            {products.title}
                           </Link>
                         </h5>
                         <div className="gi-quickview-rating flex mb-[15px]">
-                          {renderStars(products.rating)}
+                          {renderStars(4)}
                         </div>
                         <div className="gi-quickview-desc mb-[10px] text-[15px] leading-[24px] text-[#777] font-light">
                           {products.shortDescription}
@@ -236,32 +226,12 @@ function ListCard({ products }) {
                             ₹{products.price}
                           </span>
                           <span className="old-price text-[18px] ml-[10px] line-through text-[#777]">
-                            ₹
-                            {(
-                              (products.price * 100) /
-                              (100 - products.discount)
-                            ).toFixed(2)}
+                            ₹{products.cutPrice}
                           </span>
                         </div>
                         <div className="gi-pro-variation mt-[5px]">
                           <div className="gi-pro-variation-inner flex flex-col mb-[15px] gi-pro-variation-size gi-pro-size">
-                            <div className="gi-pro-variation-content">
-                              <ul className="gi-opt-size">
-                                {products.attributes.map((attribute) => (
-                                  <li
-                                    key={attribute._id}
-                                    className="h-[22px] py-[2px] px-[8px] cursor-pointer border-[1px] border-solid border-[#eee] text-[#fff] flex items-center justify-center text-[12px] leading-[22px] rounded-[3px] font-normal float-left mr-[5px] hover:bg-[#5caf90] hover:text-[#fff] hover:border-[#5caf90]"
-                                  >
-                                    <Link
-                                      to="#"
-                                      className="gi-opt-sz text-[#777]"
-                                    >
-                                      {attribute.attributeValue}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+                            <div className="gi-pro-variation-content"></div>
                           </div>
                         </div>
                         <div className="gi-quickview-qty mt-[15px] inline-flex  ">
