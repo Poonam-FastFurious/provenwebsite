@@ -1,81 +1,68 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Baseurl } from "../../confige";
 
-function Login() {
+function Resetpassword() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const { id, token } = useParams();
+
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const validateEmail = (email) => {
-    const regex = /^[a-zA-Z0-9._%+-]{2,}@([a-zA-Z0-9.-]+\.)+[a-zA-Z]{2,}$/;
-    return regex.test(email);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    // Validate email format
-    if (!validateEmail(formData.email)) {
+    // Check if passwords match
+    if (formData.password !== formData.confirmPassword) {
       setLoading(false);
-      setErrorMessage(
-        "Invalid email format. Please enter a valid email address."
-      );
+      setErrorMessage("Passwords do not match.");
       return;
     }
 
     try {
-      const response = await fetch(Baseurl + "/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${Baseurl}/api/v1/admin/resetpassword?id=${id}&token=${token}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            password: formData.password,
+          }),
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Login failed");
+        throw new Error(data.message || "Password reset failed");
       }
 
-      // Store user data in localStorage and cookies
-      localStorage.setItem("userid", data.data.user._id);
-      localStorage.setItem("user", JSON.stringify(data.data.user.fullName));
-      localStorage.setItem("accessToken", data.data.accessToken);
-      localStorage.setItem("refreshToken", data.data.refreshToken);
-
-      // Store tokens in cookies using js-cookie library
-      document.cookie = `accessToken=${
-        data.data.accessToken
-      }; path=/; max-age=${60 * 60 * 24 * 7}`;
-      document.cookie = `refreshToken=${
-        data.data.refreshToken
-      }; path=/; max-age=${60 * 60 * 24 * 7}`;
-
-      console.log("Login success:", data); // Handle success response here
-      setSuccessMessage("Login successful!");
+      // Handle success response here
+      setSuccessMessage("Password reset successful!");
       setErrorMessage(""); // Clear any previous error message
 
-      // Reset form fields after successful login
-      setFormData({ email: "", password: "" });
+      // Reset form fields after successful password reset
+      setFormData({ password: "", confirmPassword: "" });
 
       setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = "/login";
       }, 2000);
     } catch (error) {
-      console.error("Login error:", error); // Handle error here
-      setErrorMessage("Login error, credential not match");
+      console.error("Password reset error:", error); // Handle error here
+      setErrorMessage("Password reset error. Please try again.");
       setSuccessMessage(""); // Clear any previous success message
     } finally {
       setLoading(false);
@@ -103,27 +90,9 @@ function Login() {
                 />
               </Link>
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                Sign in to your account
+                Create new password
               </h1>
               <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Your email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#237DA2]  focus:border-[#237DA2] block w-full p-2.5"
-                    placeholder="name@gmail.com"
-                    required
-                  />
-                </div>
                 <div>
                   <label
                     htmlFor="password"
@@ -131,14 +100,32 @@ function Login() {
                   >
                     Password
                   </label>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    id="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#237DA2] focus:border-[#237DA2] block w-full p-2.5"
+                    placeholder="••••••••"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="confirmPassword"
+                    className="block mb-2 text-sm font-medium text-gray-900"
+                  >
+                    Confirm Password
+                  </label>
                   <div className="relative">
                     <input
                       type={showPassword ? "text" : "password"}
-                      name="password"
-                      id="password"
-                      value={formData.password}
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      value={formData.confirmPassword}
                       onChange={handleInputChange}
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#237DA2] focus:border-accent-AFPPrimary block w-full p-2.5"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#237DA2] focus:border-[#237DA2] block w-full p-2.5"
                       placeholder="••••••••"
                       required
                     />
@@ -197,34 +184,12 @@ function Login() {
                     </button>
                   </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-start">
-                    <div className="flex items-center h-5">
-                      <input
-                        id="remember"
-                        aria-describedby="remember"
-                        type="checkbox"
-                        className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                      />
-                    </div>
-                    <div className="ml-3 text-sm">
-                      <label htmlFor="remember" className="text-gray-500">
-                        Remember me
-                      </label>
-                    </div>
-                  </div>
-                  <Link
-                    to="/forgotpassword"
-                    className="text-sm font-medium text-primary-600 hover:underline"
-                  >
-                    Forgot password?
-                  </Link>
-                </div>
+
                 <button
                   type="submit"
-                  className="w-full text-white  bg-AFPPrimary hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  className="w-full text-white bg-AFPPrimary hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
-                  Sign in
+                  Reset Password
                 </button>
                 {errorMessage && (
                   <p className="text-sm text-red-500 mt-2">{errorMessage}</p>
@@ -235,13 +200,13 @@ function Login() {
                   </p>
                 )}
                 <p className="text-sm font-light text-gray-500">
-                  Don’t have an account yet?{" "}
+                  Wait, I remember my password?
                   <Link
-                    to="/register"
+                    to="/login"
                     className="font-medium text-primary-600 hover:underline"
                     disabled={loading}
                   >
-                    Sign up
+                    Click here
                   </Link>
                 </p>
               </form>
@@ -253,4 +218,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Resetpassword;

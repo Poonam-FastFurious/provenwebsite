@@ -28,6 +28,8 @@ import Blogdetails from "../../Pages/Blog/Blogdetails";
 import ShaprePart from "../../Pages/Shop/ShaprePart";
 import SerchPage from "../../Pages/Shop/SerchPage";
 import Productdetailswitvedio from "../Common/Productdetailswitvedio";
+import Forgotpassword from "../Authentication/Forgotpassword";
+import Resetpassword from "../Authentication/Resetpassword";
 
 function HomeRouter() {
   return (
@@ -44,10 +46,16 @@ function HomeRouter() {
           <Route path="/Productctegory/:id" element={<WaterPurefire />} />
           <Route path="/Product/:id" element={<Productdetailswitvedio />} />
           <Route path="/products" element={<SerchPage />} />
+          <Route path="/forgotpassword" element={<Forgotpassword />} />
+          <Route
+            path="/Reset-password/:id/:token"
+            element={<Resetpassword />}
+          />
           <Route
             path="/login"
             element={<ProtectedRoute element={<Login />} redirectTo="/" />}
           />
+
           <Route
             path="/register"
             element={<ProtectedRoute element={<Signup />} redirectTo="/" />}
