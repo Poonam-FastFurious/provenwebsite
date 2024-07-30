@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Baseurl } from "../../confige";
 
 function Forgotpassword() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -32,16 +33,13 @@ function Forgotpassword() {
     }
 
     try {
-      const response = await fetch(
-        "http://localhost:3000/api/v1/user/forgotpassword",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: formData.email }),
-        }
-      );
+      const response = await fetch(Baseurl + "/api/v1/user/forgotpassword", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: formData.email }),
+      });
 
       const data = await response.json();
 

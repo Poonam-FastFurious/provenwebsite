@@ -54,9 +54,7 @@ function Cart() {
     };
     const fetchCoupons = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:3000/api/v1/coupon/coupons"
-        );
+        const response = await fetch(Baseurl + "/api/v1/coupon/coupons");
         if (!response.ok) {
           const errorData = await response.json();
           throw new Error(errorData.message || "Failed to fetch coupons");
