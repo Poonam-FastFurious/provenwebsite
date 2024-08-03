@@ -3,7 +3,7 @@ import Home from "../../Pages/Home/Home";
 import Navbar from "../../Pages/Navbar";
 import Footer from "../../Pages/Footer";
 import Shop from "../../Pages/Shop/Shop";
-// import ProductDetails from "../Common/ProductDetails";
+
 import Login from "../Authentication/Login";
 import Signup from "../Authentication/Signup";
 import Cart from "../User/Cart";
@@ -14,22 +14,21 @@ import Profile from "../User/Profile";
 import BookDemo from "../../Pages/BookDemo/BookDemo";
 import Wishlist from "../User/Wishlist";
 import AboutUs from "../../Pages/AboutUs/AboutUs";
-
 import OrderDetails from "../User/OrderDetails";
-import Orderlist from "../User/Orderlist";
 import ContactUs from "../../Pages/ContactUs/ContactUs";
 import Suport from "../../Pages/Suport/Suport";
 import ProtectedRoute from "../Protectedroutes/ProtectedRoutes";
 import RouteProtected from "../Protectedroutes/RoutesProtected";
 import Ordersuccess from "../Specific/Ordersuccess";
 import WaterPurefire from "../../Pages/WaterPurefire";
-// import Productnewdetails from "../Common/Productnewdetails";
 import Blogdetails from "../../Pages/Blog/Blogdetails";
 import ShaprePart from "../../Pages/Shop/ShaprePart";
 import SerchPage from "../../Pages/Shop/SerchPage";
 import Productdetailswitvedio from "../Common/Productdetailswitvedio";
 import Forgotpassword from "../Authentication/Forgotpassword";
 import Resetpassword from "../Authentication/Resetpassword";
+import Career from "../../Pages/Career/Career";
+import Faqs from "../../Pages/Faq/Faqs";
 
 function HomeRouter() {
   return (
@@ -90,11 +89,13 @@ function HomeRouter() {
             }
           />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/Career" element={<Career />} />
+          <Route path="/Faq" element={<Faqs />} />
           <Route
             path="/profile/myorder/orderDetails/:id"
             element={<OrderDetails />}
           />
-          <Route path="/myorder" element={<Orderlist />} />
+
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/Support" element={<Suport />} />
           <Route path="/Blogdetails" element={<Blogdetails />} />

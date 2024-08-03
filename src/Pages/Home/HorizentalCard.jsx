@@ -78,11 +78,11 @@ function HorizentalCard({ name, price, images, discount, ID }) {
               </div>
               <Link
                 to="#"
-                className="add-to-cart w-[30px] h-[30px] absolute bottom-[10px] right-[10px] bg-AFPPrimaryLight border-[1px] border-solid border-[#eee] flex items-center justify-center "
+                className="add-to-cart w-[30px] h-[30px] absolute bottom-[10px] right-[10px]  bg-AFPPrimary border-[1px] border-solid border-[#eee] flex items-center justify-center "
                 title="Add To Cart"
               >
                 <IoCartOutline
-                  className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px] text-xl"
+                  className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#fff] leading-[10px] text-xl"
                   onClick={() => addToCart(ID)}
                 />
               </Link>

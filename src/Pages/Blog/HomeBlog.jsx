@@ -14,6 +14,10 @@ function HomeBlog() {
       ? text.substring(0, maxLength) + "..."
       : text;
   };
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <>
       <section className="gi-blog-section py-[40px] max-[767px]:py-[30px] wow fadeInUp bg-[#E6F4FA]">
@@ -39,9 +43,14 @@ function HomeBlog() {
                         {blog.title}
                       </h3>
                       <p className="text-gray-600 text-sm">
-                        {truncateText(blog.content, 120)}
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: truncateText(blog.content, 120),
+                          }}
+                        />
                       </p>
                       <Link
+                        onClick={handleClick}
                         to="/Blogdetails"
                         className="mt-4 inline-block text-blue-600 text-sm hover:underline"
                       >

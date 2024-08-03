@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Baseurl } from "../../confige";
+import { Link } from "react-router-dom";
 function HomeSecondBanner() {
   const [banner, setBanner] = useState(null); // Initialize as null to handle loading state
 
@@ -54,12 +55,12 @@ function HomeSecondBanner() {
                         Hurry up!!!
                       </span>
                     </h3>
-                    <a
-                      href={banner.link}
+                    <Link
+                      to={banner.link}
                       className="gi-btn-2 mt-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[5px] max-[767px]:py-[6px] px-[10px] max-[767px]:px-[10px] bg-[#5caf90] text-[#fff] border-[0] text-[14px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#4b5966] hover:text-[#fff]"
                     >
                       Shop now
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -32,7 +32,7 @@ function Resetpassword() {
 
     try {
       const response = await fetch(
-        `${Baseurl}/api/v1/admin/resetpassword?id=${id}&token=${token}`,
+        `${Baseurl}/api/v1/user/resetpassword?id=${id}&token=${token}`,
         {
           method: "PATCH",
           headers: {

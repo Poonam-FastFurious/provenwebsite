@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
 import { toast } from "react-toastify";
@@ -7,7 +6,6 @@ import handleAddToWishlist from "../Utilty/wishlistUtils";
 /* eslint-disable react/prop-types */
 function ShopPageCard({
   price = " ₹250",
-  description = "Lorem ipsum dolor sit amet consectetur.  ",
   title = "Domestic RO",
   offprice = "4150 ₹",
   images,
@@ -214,9 +212,7 @@ function ShopPageCard({
                         <div className="gi-quickview-rating flex mb-[15px]">
                           {renderStars(rating)}
                         </div>
-                        <div className="gi-quickview-desc mb-[10px] text-[15px] leading-[24px] text-[#777] font-light">
-                          {description}
-                        </div>
+
                         <div className="gi-quickview-price pt-[5px] pb-[10px] flex items-center justify-left">
                           <span className="new-price text-[#4b5966] font-bold text-[22px]">
                             ₹{price}
@@ -231,37 +227,6 @@ function ShopPageCard({
                           </div>
                         </div>
                         <div className="gi-quickview-qty mt-[15px] inline-flex  ">
-                          <form className="max-w-xs mx-auto">
-                            <div className="relative flex items-center max-w-[8rem]">
-                              <button
-                                type="button"
-                                id="decrement-button"
-                                data-input-counter-decrement="quantity-input"
-                                className="bg-gray-100  hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100  focus:ring-2 focus:outline-none"
-                              >
-                                <CiCircleMinus />
-                              </button>
-                              <input
-                                type="text"
-                                id="quantity-input"
-                                data-input-counter
-                                aria-describedby="helper-text-explanation"
-                                className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm  block w-full py-2.5  "
-                                placeholder="999"
-                                required
-                                value={1}
-                              />
-                              <button
-                                type="button"
-                                id="increment-button"
-                                data-input-counter-increment="quantity-input"
-                                className="bg-gray-100   hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100  focus:ring-2 focus:outline-none"
-                              >
-                                <CiCirclePlus />
-                              </button>
-                            </div>
-                          </form>
-
                           <div className="gi-quickview-cart">
                             <button
                               type="button"

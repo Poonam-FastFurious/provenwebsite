@@ -9,14 +9,14 @@ function ContactUs() {
       <div className="relative overflow-hidden h-[450px]">
         <img
           className="absolute left-0 top-0 w-full h-full opacity- object-cover"
-          src="https://img.freepik.com/free-photo/asian-business-male-professional-owner-entrepreneur-work-leading-executive-business-empire-modern-office_609648-1391.jpg?t=st=1718704191~exp=1718707791~hmac=d8ac73706e885b30a892e0573aba4eee0b35766011cbf5c602eaade7d5a8200f&w=1380"
+          src="https://s3-alpha-sig.figma.com/img/c927/1695/feb959553a8e29013ee7a58abe2d7d52?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NieXCR3u1hLi15thKCCq9mZF88LZ258meT5ttKOpIXfx0ukSMzWurFDBK8ftXPf2E0OLtuRo-6ViwasddfCZRcgGp1ninyrbsrfHjyK8M~qxMaVy09TOsv2AZ~6FCPNS965Ezd665bYz7Hdlgq6IHWln2ynhwWR-0Z9axq-SzdBwo0Bzcd2IK08us5XuzayB0~FbjhQ1I04vY45T9YAxWn4UQT2zOYFgI5FO66HADLLv4D-NfaiIkxTtRopClMJyrOuYJEQ7-ItkSapuh87vUviOmHHpeFDM4DTjfJoVJunhxYjh534lp-8F8PPOXQ5w5qpsC0UbVFpFo5322IDaeA__"
           alt=""
         />
         <div className="absolute left-0 top-0 w-full h-full bg-gray-500 opacity-20"></div>
         <div className="relative z-10 h-[250px] flex  items-center">
-          {/* <h1 className="  text-AFPPrimary text-8xl  absolute top-[250px] left-[250px]">
+          <h1 className="  text-AFPPrimary  font-bold text-6xl  absolute top-[200px] left-[380px]">
             Contact US
-          </h1> */}
+          </h1>
         </div>
       </div>
       <section className="py-24">

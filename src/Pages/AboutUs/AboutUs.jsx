@@ -1,6 +1,7 @@
+/* eslint-disable no-irregular-whitespace */
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-alice-carousel";
-import HomeSmallBanner from "../Home/HomeSmallBanner";
+import Certificate from "../Home/Certificate";
 
 function AboutUs() {
   return (
@@ -9,7 +10,7 @@ function AboutUs() {
         className="relative overflow-hidden  bg-cover bg-no-repeat p-12 text-center"
         style={{
           "background-image":
-            "url('https://s3-alpha-sig.figma.com/img/c927/1695/feb959553a8e29013ee7a58abe2d7d52?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Z7xbT3Y8D0Q4x0TsM~F3oR3Sr3KAOryvNeKqnHWiTUkAlPkGFT~xoFvr9nGQB9~jcwfKP0B5dOcqUZ-QEYzuAeISpDwyHJ0cJjNd6Bs0xgCfNZGUpCrMV575-MGBFcGhabTFKTtbOMWE6Noa0PnV2qEYjfI50Z4pGc2WQ4iMofBWR-nppXF~WjZPRYyqb2Fbg126~YrMNVx48wF6UhEHHvULaYoNOHZ-xkWBi6KKuVmsbaPJx1PpyQzTxPZk6WRF7Ee9~A1KISITSWe4y7iVbSptYc0na8nIfvRJhnb9242IFlLHQml1QTCTB~Xretj8vsCfnhdu0Yy3PrLgy9DVhg__')",
+            "url('https://s3-alpha-sig.figma.com/img/13fc/f39f/f95ccedc77bb0dea110ccc66fa4aef90?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DFV5tja15q2MuXhjkyEMuenSq~vfEsS~f7~D1G8UVQFgFISFzexuBOHVHQPiy8Cb8HG9Qv54H-a-qJTLTUvb3rYl2H-YSmd9w2~YOSkoiTViwLk5pjdna3J1qN~G72~o~-tN9vwUIlEpBxMbRtdTOlSpWWcXKwxD42CTYTgK4rAn6dG8fa8C1a39dvLkYo19l7Ba7PiFceFRY88-N3SAZqaI7wTkPnQeRgctt1kBKwjmRGwesONt3qETx2qkay0XZ3a4yqisChH4qVT3JZUNb-RZYToco4413cU115ag8MIBIXziSBJxHSjy2WD5cZxfTsBSceZVXUQ2FEpuAIem2w__')",
           height: "400px",
         }}
       >
@@ -38,7 +39,7 @@ function AboutUs() {
         <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
           <div className="flex flex-wrap w-full my-[-12px]">
             <div className="min-[992px]:w-[50%] min-[768px]:w-[50%] w-full px-[12px] py-[12px]">
-              <div className="gi-facts-inner py-[30px] px-[15px] h-full flex items-center justify-center flex-col text-center bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px]">
+              <div className="gi-facts-inner py-[30px] px-[15px] h-full flex items-center justify-center flex-col text-center bg-[#fff] border-[1px] border-solid  border-AFPPrimary rounded-[5px]">
                 <div className="gi-facts-desc">
                   <h4 className="text-[20px] text-[#4b5966] font-semibold leading-[1.2] mb-[6px]">
                     Who We Are ?
@@ -55,7 +56,7 @@ function AboutUs() {
               </div>
             </div>
             <div className="min-[992px]:w-[50%] min-[768px]:w-[50%] w-full px-[12px] py-[12px]">
-              <div className="gi-facts-inner py-[30px] px-[15px] h-full flex items-center justify-center flex-col text-center bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px]">
+              <div className="gi-facts-inner py-[30px] px-[15px] h-full flex items-center justify-center flex-col text-center bg-[#fff] border-[1px] border-solid border-AFPPrimary rounded-[5px]">
                 <div className="gi-facts-desc">
                   <h4 className="text-[20px] text-[#4b5966] font-semibold leading-[1.2] mb-[6px]">
                     What We Do Best
@@ -73,139 +74,179 @@ function AboutUs() {
           </div>
         </div>
       </section>
-      <HomeSmallBanner />
+      <section className="gi-offer-section overflow-hidden py-[40px] max-[767px]:py-[30px] xl:w-[84%] md:w-[90%] mx-auto">
+        <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
+          <div className="w-full flex flex-wrap">
+            <div
+              className="w-[33.33%] max-[1199px]:w-[50%] max-[767px]:w-full  px-[12px] wow fadeInUp"
+              data-wow-duration="2s"
+            >
+              <div className="gi-ofr-banners">
+                <div className="gi-bnr-body flex flex-row relative overflow-hidden">
+                  <div className="gi-bnr-img w-full relative">
+                    <img
+                      src="https://s3-alpha-sig.figma.com/img/eb25/e7a2/08b91723b76aa02b85398d72e37a24c7?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H4~BgN~sNVNc9yhk8Ei~dGmojNn19xfMa3F1Y3H8Y7qvTMovYuNmqXRkXcRCGBgHtKPJ0cTqVeCG93zWGSmu-lrZrmURoPZzbTef9crqhKTZ7SCSOChGtvaw4tPY8J8aAiYSuv2Y65CUtkZOqXH7MG9oa5SNjk-enpCLKleZU6uaimrMJH1AciO8NOqDSRGBhupWKx0RmD8LnSNxldgQ0SkvuO0nK1oSYwVliIWnsz~XdlSqMmYZKkkryiFsxVFb~6UVlsxQjOGDasltS0paHbpWXi4PHY6yhDdT6Lwq-xr282juVe37fn9yvvGSnrqNbEWEog57WcjoYWiikekO7Q__"
+                      alt="banner"
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="w-[33.33%] max-[1199px]:w-[50%] max-[767px]:w-full  px-[12px] wow fadeInUp"
+              data-wow-duration="2s"
+            >
+              <div className="gi-ofr-banners max-[767px]:mt-[30px]">
+                <div className="gi-bnr-body flex flex-row relative overflow-hidden">
+                  <div className="gi-bnr-img w-full relative">
+                    <img
+                      src="https://s3-alpha-sig.figma.com/img/13fc/f39f/f95ccedc77bb0dea110ccc66fa4aef90?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DFV5tja15q2MuXhjkyEMuenSq~vfEsS~f7~D1G8UVQFgFISFzexuBOHVHQPiy8Cb8HG9Qv54H-a-qJTLTUvb3rYl2H-YSmd9w2~YOSkoiTViwLk5pjdna3J1qN~G72~o~-tN9vwUIlEpBxMbRtdTOlSpWWcXKwxD42CTYTgK4rAn6dG8fa8C1a39dvLkYo19l7Ba7PiFceFRY88-N3SAZqaI7wTkPnQeRgctt1kBKwjmRGwesONt3qETx2qkay0XZ3a4yqisChH4qVT3JZUNb-RZYToco4413cU115ag8MIBIXziSBJxHSjy2WD5cZxfTsBSceZVXUQ2FEpuAIem2w__"
+                      alt="banner"
+                      className="w-full "
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="w-[33.33%] max-[1199px]:hidden max-[767px]:flex max-[767px]:w-full  px-[12px] wow fadeInUp"
+              data-wow-duration="2s"
+            >
+              <div className="gi-ofr-banners max-[767px]:mt-[30px]">
+                <div className="gi-bnr-body flex flex-row relative overflow-hidden">
+                  <div className="gi-bnr-img w-full relative">
+                    <img
+                      src="https://s3-alpha-sig.figma.com/img/eb25/e7a2/08b91723b76aa02b85398d72e37a24c7?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H4~BgN~sNVNc9yhk8Ei~dGmojNn19xfMa3F1Y3H8Y7qvTMovYuNmqXRkXcRCGBgHtKPJ0cTqVeCG93zWGSmu-lrZrmURoPZzbTef9crqhKTZ7SCSOChGtvaw4tPY8J8aAiYSuv2Y65CUtkZOqXH7MG9oa5SNjk-enpCLKleZU6uaimrMJH1AciO8NOqDSRGBhupWKx0RmD8LnSNxldgQ0SkvuO0nK1oSYwVliIWnsz~XdlSqMmYZKkkryiFsxVFb~6UVlsxQjOGDasltS0paHbpWXi4PHY6yhDdT6Lwq-xr282juVe37fn9yvvGSnrqNbEWEog57WcjoYWiikekO7Q__"
+                      alt="banner"
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div className="container bg-gray-200 mx-auto w-full h-full">
+      <div className=" bg-gray-200 mx-auto w-full h-full px-4 sm:px-6 lg:px-8">
         <div className="relative wrap overflow-hidden p-10 h-full">
           <div
-            className="border-2-2 absolute border-opacity-20 border-gray-700 h-full border"
+            className=" absolute sm:border-opacity-20 border-opacity-0 border-gray-700 h-full border"
             style={{ left: "50%" }}
           ></div>
 
-          <div className="mb-8 flex justify-between items-center w-full right-timeline">
-            <div className="order-1 w-5/12"></div>
+          <div className="mb-8 flex flex-col sm:flex-row justify-between items-center w-full right-timeline">
+            <div className="order-1 w-full sm:w-5/12"></div>
             <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
               <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
             </div>
-            <div className="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+            <div className="order-1 bg-AFPPrimaryLight rounded-lg shadow-xl w-full sm:w-5/12 px-6 py-4">
               <h3 className="mb-3 font-bold text-gray-800 text-xl">
-                Lorem Ipsum
+                Our Founder
               </h3>
               <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
+                A Company of PROVEN Founded by Mr. SIYA RAM PRAJAPATI Sales and
+                service water purifier and RO based mineral water (Domestic ,
+                Commercial and Industrial) from India and selling, installing,
+                maintaining in local market from 2002.
               </p>
             </div>
           </div>
 
-          <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-            <div className="order-1 w-5/12"></div>
-            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-              <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
+          <div className="mb-8 flex flex-col sm:flex-row-reverse justify-between items-center w-full left-timeline">
+            <div className="order-1 w-full sm:w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full ">
+              <h1 className="mx-auto text-white font-semibold text-lg ">2</h1>
             </div>
-            <div className="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
-              <h3 className="mb-3 font-bold text-white text-xl">Lorem Ipsum</h3>
-              <p className="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
+            <div className="order-1 bg-AFPPrimaryLight rounded-lg shadow-xl w-full sm:w-5/12 px-6 py-4">
+              <h3 className="mb-3 font-bold text-black text-xl">Lorem Ipsum</h3>
+              <p className="text-sm font-medium leading-snug tracking-wide text-black text-opacity-100">
+                Proven Water Industries Private Limited is a 21st century
+                healthcare products company with a vision to make the world a
+                healthy and a happy place. Pioneers in bringing the
+                revolutionary Reverse Osmosis (RO) technology to India, PROVEN
+                started its operations from DELHI, India in 2002.
               </p>
             </div>
           </div>
 
-          <div className="mb-8 flex justify-between items-center w-full right-timeline">
-            <div className="order-1 w-5/12"></div>
+          <div className="mb-8 flex flex-col sm:flex-row justify-between items-center w-full right-timeline">
+            <div className="order-1 w-full sm:w-5/12"></div>
             <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
               <h1 className="mx-auto font-semibold text-lg text-white">3</h1>
             </div>
-            <div className="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+            <div className="order-1 bg-AFPPrimaryLight rounded-lg shadow-xl w-full sm:w-5/12 px-6 py-4">
               <h3 className="mb-3 font-bold text-gray-800 text-xl">
                 Lorem Ipsum
               </h3>
               <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
-              </p>
-            </div>
-          </div>
-
-          <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-            <div className="order-1 w-5/12"></div>
-            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-              <h1 className="mx-auto text-white font-semibold text-lg">4</h1>
-            </div>
-            <div className="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
-              <h3 className="mb-3 font-bold text-white text-xl">Lorem Ipsum</h3>
-              <p className="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
+                Proven Water Industries Private Limited is a 21st century
+                healthcare products company with a vision to make the world a
+                healthy and a happy place. Pioneers in bringing the
+                revolutionary Reverse Osmosis (RO) technology to India, PROVEN
+                started its operations from DELHI, India in 2002.
               </p>
             </div>
           </div>
         </div>
       </div>
-      <section className="bg-white  w-[82%] mx-auto pt-8">
+
+      <section className="bg-white w-[82%] mx-auto pt-8">
         <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-          <div className="grid grid-cols-2 gap-4 mt-8 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
             <Link
               to="#"
-              className=" lg:mt-10 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100  "
+              className="lg:mt-10 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                 Customers
               </h5>
-              <p className="font-normal text-gray-700 ">
+              <p className="font-normal text-gray-700">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Possimus perferendis reprehenderit voluptates?
               </p>
             </Link>
             <Link
               to="#"
-              className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 "
+              className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                 Honesty
               </h5>
-              <p className="font-normal text-gray-700  ">
+              <p className="font-normal text-gray-700">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Possimus perferendis reprehenderit voluptates?
               </p>
             </Link>
             <Link
               to="#"
-              className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 "
+              className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                 Our Mission
               </h5>
-              <p className="font-normal text-gray-700  ">
+              <p className="font-normal text-gray-700">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Possimus perferendis reprehenderit voluptates?
               </p>
             </Link>
             <Link
               to="#"
-              className=" lg:mt-10 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 "
+              className="lg:mt-10 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                 Team Work
               </h5>
-              <p className="font-normal text-gray-700 ">
+              <p className="font-normal text-gray-700">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Possimus perferendis reprehenderit voluptates?
               </p>
             </Link>
           </div>
-          <div className="font-light text-gray-500 sm:text-lg grid-cols-8 ">
-            <h6>All features</h6>
-            <h2 className="mb-4 text-2xl tracking-tight font-bold text-gray-800 ">
+          <div className="font-light text-gray-500 sm:text-lg mt-4 lg:mt-0 lg:ml-8">
+            <h6 className="text-lg font-semibold">All features</h6>
+            <h2 className="mb-4 text-2xl tracking-tight font-bold text-gray-800">
               Our Core Values
             </h2>
             <p className="mb-4">
@@ -221,6 +262,8 @@ function AboutUs() {
           </div>
         </div>
       </section>
+
+      <Certificate />
     </>
   );
 }

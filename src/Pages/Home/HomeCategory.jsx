@@ -77,7 +77,7 @@ function HomeCategory() {
                 >
                   <div className="section-detail">
                     <h2 className="gi-title mb-[0] text-[25px] font-semibold text-AFPPrimary relative inline p-[0] capitalize leading-[1]  font-manrope max-[991px]:text-[25px] max-[767px]:text-[25px] max-[575px]:text-[25px]">
-                      Browse By Ctegory
+                      Browse By categories
                       <span className=""></span>
                     </h2>
                   </div>

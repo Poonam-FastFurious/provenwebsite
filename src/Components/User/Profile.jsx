@@ -3,18 +3,13 @@ import { FiEdit } from "react-icons/fi";
 import Orderlist from "../User/Orderlist";
 import { Link } from "react-router-dom";
 import { IoIosLogOut, IoMdNotificationsOutline } from "react-icons/io";
-import {
-  MdDashboard,
-  MdMarkEmailUnread,
-  MdOutlinePersonAdd,
-  MdWifiPassword,
-} from "react-icons/md";
+import { MdDashboard, MdWifiPassword } from "react-icons/md";
 import { VscListUnordered } from "react-icons/vsc";
 import { FaRegAddressCard } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { IoPersonOutline, IoSettingsOutline } from "react-icons/io5";
+
 import { useEffect, useState } from "react";
-import { CiMobile4 } from "react-icons/ci";
+
 import axios from "axios";
 import { Baseurl } from "../../confige";
 function Profile() {
@@ -350,7 +345,7 @@ function Profile() {
                         </Link>
                       </li>
 
-                      <li className="navbar-item account-menu">
+                      {/* <li className="navbar-item account-menu">
                         <Link
                           to="#"
                           className={`navbar-link text-slate-400 flex items-center py-2 rounded ${
@@ -363,7 +358,7 @@ function Profile() {
                           </span>
                           <h6 className="mb-0 font-medium">Settings</h6>
                         </Link>
-                      </li>
+                      </li> */}
 
                       <li className="navbar-item account-menu">
                         <Link
@@ -419,12 +414,6 @@ function Profile() {
                             First Name
                           </div>
                           <div className="px-4 py-2"> {userData.fullName}</div>
-                        </div>
-                        <div className="grid grid-cols-2">
-                          <div className="px-4 py-2 font-semibold">
-                            Last Name
-                          </div>
-                          <div className="px-4 py-2">Raj</div>
                         </div>
 
                         <div className="grid grid-cols-2">
@@ -647,129 +636,7 @@ function Profile() {
                   </div>
                 </>
               )}
-              {activeTab === "settings" && (
-                <>
-                  <div className="p-6 rounded-md shadow  bg-white ">
-                    <h5 className="text-lg font-semibold mb-4">
-                      Personal Detail :
-                    </h5>
-                    <form>
-                      <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
-                        <div>
-                          <label className="form-label font-medium">
-                            First Name : <span className="text-red-600">*</span>
-                          </label>
-                          <div className="form-icon relative mt-2">
-                            <i
-                              data-feather="user"
-                              className="w-4 h-4 absolute top-3 start-4"
-                            >
-                              <IoPersonOutline />
-                            </i>
-                            <input
-                              type="text"
-                              className="ps-12 w-full py-2 px-3 h-10 bg-transparent   rounded outline-none border border-gray-100  focus:ring-0"
-                              placeholder="First Name"
-                              id="firstname"
-                              name="name"
-                              required=""
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <label className="form-label font-medium">
-                            Last Name : <span className="text-red-600">*</span>
-                          </label>
-                          <div className="form-icon relative mt-2">
-                            <i
-                              data-feather="user-check"
-                              className="w-4 h-4 absolute top-3 start-4"
-                            >
-                              <MdOutlinePersonAdd />
-                            </i>
-                            <input
-                              type="text"
-                              className="ps-12 w-full py-2 px-3 h-10 bg-transparent  rounded outline-none border border-gray-100  focus:ring-0"
-                              placeholder="Last Name"
-                              id="lastname"
-                              name="name"
-                              required=""
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <label className="form-label font-medium">
-                            Your Email : <span className="text-red-600">*</span>
-                          </label>
-                          <div className="form-icon relative mt-2">
-                            <i
-                              data-feather="mail"
-                              className="w-4 h-4 absolute top-3 start-4"
-                            >
-                              <MdMarkEmailUnread />
-                            </i>
-                            <input
-                              type="email"
-                              className="ps-12 w-full py-2 px-3 h-10 bg-transparent  rounded outline-none border border-gray-100  focus:ring-0"
-                              placeholder="Email"
-                              name="email"
-                              required=""
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <label className="form-label font-medium">
-                            Mobile:
-                          </label>
-                          <div className="form-icon relative mt-2">
-                            <i
-                              data-feather="bookmark"
-                              className="w-4 h-4 absolute top-3 start-4"
-                            >
-                              <CiMobile4 />
-                            </i>
-                            <input
-                              name="name"
-                              id="occupation"
-                              type="text"
-                              className="ps-12 w-full py-2 px-3 h-10 bg-transparent   rounded outline-none border border-gray-100  focus:ring-0"
-                              placeholder="Mobile Number "
-                            />
-                          </div>
-                        </div>
-                      </div>
 
-                      <div className="grid grid-cols-1">
-                        <div className="mt-5">
-                          <label className="form-label font-medium">
-                            Description :{" "}
-                          </label>
-                          <div className="form-icon relative mt-2">
-                            <i
-                              data-feather="message-circle"
-                              className="w-4 h-4 absolute top-3 start-4"
-                            ></i>
-                            <textarea
-                              name="comments"
-                              id="comments"
-                              className="ps-11 w-full py-2 px-3 h-28 bg-transparent   rounded outline-none border border-gray-100  focus:ring-0"
-                              placeholder="Message :"
-                            ></textarea>
-                          </div>
-                        </div>
-                      </div>
-
-                      <input
-                        type="submit"
-                        id="submit"
-                        name="send"
-                        className="py-2 px-5 inline-block font-semibold tracking-wide align-middle duration-500 text-base text-center  bg-AFPPrimary text-white rounded-md mt-5"
-                        value="Save Changes"
-                      />
-                    </form>
-                  </div>
-                </>
-              )}
               {activeTab === "Notifications" && (
                 <>
                   <div className="rounded-md shadow  bg-white ">

@@ -56,12 +56,8 @@ function Login() {
       localStorage.setItem("refreshToken", data.data.refreshToken);
 
       // Store tokens in cookies using js-cookie library
-      document.cookie = `accessToken=${
-        data.data.accessToken
-      }; path=/; max-age=${60 * 60 * 24 * 7}`;
-      document.cookie = `refreshToken=${
-        data.data.refreshToken
-      }; path=/; max-age=${60 * 60 * 24 * 7}`;
+      document.cookie = `accessToken=${data.data.accessToken}; path=/; `;
+      document.cookie = `refreshToken=${data.data.refreshToken}; path=/; `;
 
       console.log("Login success:", data); // Handle success response here
       setSuccessMessage("Login successful!");

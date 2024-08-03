@@ -100,43 +100,18 @@ function Shop() {
                     >
                       <i className="fi fi-rr-list text-[20px] text-[#4b5966] leading-[0]"></i>
                     </button>
-                    <div className="min-[768px]:w-[50%]  gi-sort-select md:block sm:block lg:hidden justify-end items-center flex">
-                      <div className="gi-select-inner relative flex w-[10px] h-[50px] leading-[1.5] bg-[#fff] overflow-hidden rounded-[0] border-l-[1px] border-solid border-[#eee]">
-                        <select
-                          name="gi-select"
-                          id="gi-select"
-                          className="appearance-none outline-[0] border-[0] bg-[#fff] grow-[1] px-[10px] text-[#777] cursor-pointer  "
-                        >
-                          <option>Ctegory</option>
-                          <option value="1">Position</option>
-                          <option value="2">Relevance</option>
-                          <option value="3">Name, A to Z</option>
-                          <option value="4">Name, Z to A</option>
-                          <option value="5">Price, low to high</option>
-                          <option value="6">Price, high to low</option>
-                        </select>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="min-[768px]:w-[50%] w-full gi-sort-select flex justify-end items-center">
-                  <div className="gi-select-inner relative flex w-[140px] h-[50px] leading-[1.5] bg-[#fff] overflow-hidden rounded-[0] border-l-[1px] border-solid border-[#eee]">
-                    <select
-                      name="gi-select"
-                      id="gi-select"
-                      className="appearance-none outline-[0] border-[0] bg-[#fff] grow-[1] px-[10px] text-[#777] cursor-pointer"
+                  <span className="gi-select-btn gi-select-btn-clear m-[5px] p-[0] border-[1px] border-solid border-[#eee] rounded-[5px] text-[#777] text-[14px] flex items-center capitalize">
+                    <Link
+                      className="gi-select-clear transition-all duration-[0.3s] ease-in-out h-full m-[0] py-[3px] px-[10px] text-[14px] flex items-center bg-[#4b5966] text-[#fff] rounded-[5px] hover:bg-[#5caf90] hover:text-[#fff]"
+                      to="#"
+                      onClick={clearAllCategories}
                     >
-                      <option selected="" disabled="">
-                        Sort by
-                      </option>
-                      <option value="1">Position</option>
-                      <option value="2">Relevance</option>
-                      <option value="3">Name, A to Z</option>
-                      <option value="4">Name, Z to A</option>
-                      <option value="5">Price, low to high</option>
-                      <option value="6">Price, high to low</option>
-                    </select>
-                  </div>
+                      Clear All
+                    </Link>
+                  </span>
                 </div>
               </div>
               <div className="gi-select-bar mt-[-5px] mx-[-5px] mb-[25px] flex flex-wrap justify-end ">
@@ -155,15 +130,6 @@ function Shop() {
                     </Link>
                   </span>
                 ))}
-                <span className="gi-select-btn gi-select-btn-clear m-[5px] p-[0] border-[1px] border-solid border-[#eee] rounded-[5px] text-[#777] text-[14px] flex items-center capitalize">
-                  <Link
-                    className="gi-select-clear transition-all duration-[0.3s] ease-in-out h-full m-[0] py-[3px] px-[10px] text-[14px] flex items-center bg-[#4b5966] text-[#fff] rounded-[5px] hover:bg-[#5caf90] hover:text-[#fff]"
-                    to="#"
-                    onClick={clearAllCategories}
-                  >
-                    Clear All
-                  </Link>
-                </span>
               </div>
               <div className="  w-full">
                 <div className="shop-pro-inner mx-[-12px] flex justify-center">
@@ -236,94 +202,6 @@ function Shop() {
                       </ul>
                     </div>
                   </div>
-
-                  {/* <div className="gi-sidebar-block mb-[15px]">
-                    <div className="gi-sb-title border-b-[1px] border-solid border-[#eee] pb-[15px]">
-                      <h3 className="gi-sidebar-title font-semibold tracking-[0] relative text-[#4b5966] w-full flex justify-between font-Poppins text-[17px] leading-[1.2]">
-                        Storage
-                      </h3>
-                    </div>
-                    <div className="gi-sb-block-content mt-[15px]">
-                      <ul>
-                        <li>
-                          <div className="gi-sidebar-block-item py-[15px] relative flex flex-row">
-                            <input
-                              type="checkbox"
-                              className="w-full h-[calc(100% - 5px)] absolute opacity-[0] cursor-pointer z-[9] top-[50%] translate-y-[-50%]"
-                              checked
-                            />
-                            <Link
-                              to="#"
-                              className="w-full text-[#777] text-[14px] mt-[0] leading-[20px] font-normal capitalize cursor-pointer flex justify-between pl-[30px]"
-                            >
-                              Medium
-                            </Link>
-                            <span className="checked absolute top-[50%] left-[0] h-[18px] w-[18px] bg-[#fff] border-[1px] border-solid border-[#eee] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="gi-sidebar-block-item py-[15px] relative flex flex-row">
-                            <input
-                              type="checkbox"
-                              className="w-full h-[calc(100% - 5px)] absolute opacity-[0] cursor-pointer z-[9] top-[50%] translate-y-[-50%]"
-                            />
-                            <Link
-                              to="#"
-                              className="w-full text-[#777] text-[14px] mt-[0] leading-[20px] font-normal capitalize cursor-pointer flex justify-between pl-[30px]"
-                            >
-                              Large
-                            </Link>
-                            <span className="checked absolute top-[50%] left-[0] h-[18px] w-[18px] bg-[#fff] border-[1px] border-solid border-[#eee] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="gi-sidebar-block-item py-[15px] relative flex flex-row">
-                            <input
-                              type="checkbox"
-                              className="w-full h-[calc(100% - 5px)] absolute opacity-[0] cursor-pointer z-[9] top-[50%] translate-y-[-50%]"
-                            />
-                            <Link
-                              to="#"
-                              className="w-full text-[#777] text-[14px] mt-[0] leading-[20px] font-normal capitalize cursor-pointer flex justify-between pl-[30px]"
-                            >
-                              Small
-                            </Link>
-                            <span className="checked absolute top-[50%] left-[0] h-[18px] w-[18px] bg-[#fff] border-[1px] border-solid border-[#eee] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="gi-sidebar-block-item py-[15px] relative flex flex-row">
-                            <input
-                              type="checkbox"
-                              className="w-full h-[calc(100% - 5px)] absolute opacity-[0] cursor-pointer z-[9] top-[50%] translate-y-[-50%]"
-                            />
-                            <Link
-                              to="#"
-                              className="w-full text-[#777] text-[14px] mt-[0] leading-[20px] font-normal capitalize cursor-pointer flex justify-between pl-[30px]"
-                            >
-                              extra larg
-                            </Link>
-                            <span className="checked absolute top-[50%] left-[0] h-[18px] w-[18px] bg-[#fff] border-[1px] border-solid border-[#eee] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="gi-sidebar-block-item py-[15px] relative flex flex-row">
-                            <input
-                              type="checkbox"
-                              className="w-full h-[calc(100% - 5px)] absolute opacity-[0] cursor-pointer z-[9] top-[50%] translate-y-[-50%]"
-                            />
-                            <Link
-                              to="#"
-                              className="w-full text-[#777] text-[14px] mt-[0] leading-[20px] font-normal capitalize cursor-pointer flex justify-between pl-[30px]"
-                            >
-                              10ltr
-                            </Link>
-                            <span className="checked absolute top-[50%] left-[0] h-[18px] w-[18px] bg-[#fff] border-[1px] border-solid border-[#eee] transition-all duration-[300ms] linear translate-y-[-50%] rounded-[5px] overflow-hidden"></span>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div> */}
 
                   <div className="gi-sidebar-block mb-[15px]">
                     <div className="gi-sb-title border-b-[1px] border-solid border-[#eee] pb-[15px]">

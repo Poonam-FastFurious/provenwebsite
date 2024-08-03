@@ -1,8 +1,33 @@
 import { Link } from "react-router-dom";
 import images from "../assets/Images/payment.png";
 import Footermobile from "./Footermobile";
-
+import $ from "jquery";
+import { useEffect } from "react";
 function Footer() {
+  useEffect(() => {
+    // jQuery code
+    $(document).ready(function () {
+      $(".gi-footer-links").addClass("gi-footer-dropdown");
+
+      $(".gi-footer-heading").append(
+        "<div class='gi-heading-res'><i class='fi-rr-angle-small-down' aria-hidden='true'></i></div>"
+      );
+
+      $(".gi-footer-heading .gi-heading-res").on("click", function () {
+        var $this = $(this)
+          .closest(".footer-top .gi-footer-toggle")
+          .find(".gi-footer-dropdown");
+        $this.slideToggle("slow");
+        $(".gi-footer-dropdown").not($this).slideUp("slow");
+      });
+    });
+
+    // Clean up jQuery handlers if needed
+    return () => {
+      $(".gi-footer-heading .gi-heading-res").off("click");
+    };
+  }, []); // Empty dependency array ensures this runs once after the initial render
+
   return (
     <>
       <footer className="gi-footer  bg-AFPPrimaryLight  border-t-[1px] border-solid border-[#eee] ">

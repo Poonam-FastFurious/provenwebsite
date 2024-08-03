@@ -35,3 +35,12 @@
 .testimonial-slider .slick-slide {
   padding: 0px 10px;
 }
+.footer-content {
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.footer-content.open {
+  display: block;
+}

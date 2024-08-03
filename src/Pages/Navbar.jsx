@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import { Baseurl } from "../confige";
 import axios from "axios";
 const AccordionItem = ({ title, children }) => {
@@ -37,7 +38,9 @@ const AccordionItem = ({ title, children }) => {
 };
 function Navbar() {
   const [category, setCategory] = useState([]);
+  const [isTokenExpired, setIsTokenExpired] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("accessToken"));
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
@@ -46,13 +49,34 @@ function Navbar() {
     setSearchQuery(e.target.value);
   };
   useEffect(() => {
-    const token = localStorage.getItem("accessToken");
     if (token) {
-      setIsLoggedIn(true);
+      try {
+        const decodedToken = jwtDecode(token);
+        const currentTime = Math.floor(Date.now() / 1000);
+        if (decodedToken.exp < currentTime) {
+          // Token is expired
+          setIsTokenExpired(true);
+          setIsLoggedIn(false);
+          localStorage.removeItem("accessToken");
+          setToken(null);
+        } else {
+          // Token is valid
+          setIsTokenExpired(false);
+          setIsLoggedIn(true);
+        }
+      } catch (error) {
+        // Error decoding token, assume token is invalid
+        setIsTokenExpired(true);
+        setIsLoggedIn(false);
+        localStorage.removeItem("accessToken");
+        setToken(null);
+      }
     } else {
+      // No token found
+      setIsTokenExpired(false);
       setIsLoggedIn(false);
     }
-  }, []);
+  }, [token]);
 
   const [hoveredImage, setHoveredImage] = useState(
     "https://provenonline.in/wp-content/uploads/2023/01/612vp1CNrKL._SL1500_.jpg"
@@ -121,7 +145,11 @@ function Navbar() {
       setIsSearchOpen(false);
     }
   };
-
+  useEffect(() => {
+    if (isTokenExpired) {
+      window.location.href = "/"; // Adjust redirect as needed
+    }
+  }, [isTokenExpired]);
   return (
     <>
       <header

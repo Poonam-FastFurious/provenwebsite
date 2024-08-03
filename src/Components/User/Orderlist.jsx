@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
+import { toast } from "react-toastify"; // Assuming you have react-toastify installed and configured
 
 function Orderlist() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 5; // Number of items per page
+
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -39,6 +41,44 @@ function Orderlist() {
   const totalPages = Math.ceil(orders.length / perPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleCancelOrder = async (orderId) => {
+    try {
+      const response = await fetch(Baseurl + "/api/v1/order/updateorder", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          orderID: orderId,
+          status: "Cancelled",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error updating status");
+      }
+
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order._id === orderId ? { ...order, status: "Cancelled" } : order
+        )
+      );
+
+      toast.success("Order canceled successfully!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch (err) {
+      console.error("Failed to cancel order", err);
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -89,12 +129,15 @@ function Orderlist() {
                     </dl>
 
                     <div className="w-full grid sm:grid-cols-2 lg:flex lg:w-64 lg:items-center lg:justify-end gap-4">
-                      <button
-                        type="button"
-                        className="w-full rounded-lg border border-red-700 px-3 py-2 text-center text-sm font-medium text-red-700 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300 lg:w-auto"
-                      >
-                        Cancel order
-                      </button>
+                      {order.status !== "Cancelled" && (
+                        <button
+                          type="button"
+                          onClick={() => handleCancelOrder(order._id)}
+                          className="w-full rounded-lg border border-red-700 px-3 py-2 text-center text-sm font-medium text-red-700 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300 lg:w-auto"
+                        >
+                          Cancel order
+                        </button>
+                      )}
                       <Link
                         to={`/profile/myorder/orderDetails/${order._id}`}
                         className="w-full inline-flex justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 lg:w-auto"

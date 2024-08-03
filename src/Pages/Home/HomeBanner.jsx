@@ -43,6 +43,7 @@ function HomeBanner() {
       autoPlayInterval={2000}
       controlsStrategy="alternate"
       disableButtonsControls={true}
+      infinite
     />
   );
 }

@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import { Baseurl } from "../../confige";
 import { CiLocationOn, CiLock } from "react-icons/ci";
 import { toast } from "react-toastify";
-import { MdOutlineCurrencyRupee } from "react-icons/md";
 import HomeBestSelling from "../../Pages/Home/HomeBestSelling";
 
 function Productdetailswitvedio() {
@@ -287,8 +286,7 @@ function Productdetailswitvedio() {
                     <div className=" hidden md:hidden sm:hidden lg:block lg:w-[15%]  md:ml-4 md:w-[15%] w-[100%]  md:h-[700px] border-[2px] bg-[#EEEEEE] p-4   font-[14px]">
                       <div className=" w-auto flex flex-wrap flex-col ">
                         <div className=" flex w-full">
-                          <MdOutlineCurrencyRupee />
-                          {productData.price}
+                          ₹ {productData.price}
                         </div>
                         <span className="  text-AFPPrimaryDark   ">
                           Free delivery
@@ -301,7 +299,7 @@ function Productdetailswitvedio() {
                           </span>
                         </div>
                         <h6 className=" mt-4 py-4 text-green-800 font-bold">
-                          In stock
+                          In stock {productData.stocks}
                         </h6>
                         <h1>Sold By</h1>
                         <span className=" text-sm">
@@ -330,6 +328,7 @@ function Productdetailswitvedio() {
                           data-variant="flat"
                           className=" rounded-md text-[13px] md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-body text-center justify-center border-0 border-transparent placeholder-white focus-visible:outline-none focus:outline-none  bg-AFPPrimary text-white  hover:text-white hover:bg-gray-600 hover:shadow-cart h-8 mt-1 text-sm lg:text-base w-full sm:w-auto"
                           type="submit"
+                          onClick={() => addToCart(id)}
                         >
                           Add to cart
                         </button>
@@ -350,6 +349,8 @@ function Productdetailswitvedio() {
                           data-variant="flat"
                           className=" rounded-md text-[13px] md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-body text-center justify-center border-0 border-transparent placeholder-white focus-visible:outline-none focus:outline-none  bg-gray-400 text-white  hover:text-white hover:bg-gray-600 hover:shadow-cart h-8 mt-1 text-sm lg:text-base w-full sm:w-auto"
                           type="submit"
+                          onClick={() => handleAddToWishlist(productData._id)}
+                          disabled={loading}
                         >
                           Add to wish list
                         </button>
@@ -363,7 +364,11 @@ function Productdetailswitvedio() {
                       <div className="gi-single-pro-tab-wrapper flex flex-col">
                         <div className="gi-single-pro-tab-desc">
                           <p className="mb-[15px] text-[14px] tracking-[0] text-[#777] leading-[28px] font-normal">
-                            {productData.description}
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: productData.description,
+                              }}
+                            ></div>
                           </p>
                         </div>
                       </div>
@@ -374,7 +379,7 @@ function Productdetailswitvedio() {
             </div>
           </div>
         </div>
-      </section>{" "}
+      </section>
       <HomeBestSelling heading={"related product"} />
       <div className=" w-full flex ">
         <img

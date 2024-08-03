@@ -113,7 +113,7 @@ function Testimonial() {
         <Slider {...settings} className="testimonial-slider w-full p-8">
           {testimonial.map((testi, index) => (
             <div
-              className="p-6 rounded-lg bg-white shadow-md py-12 h-64"
+              className="p-6 rounded-lg bg-white shadow-md py-12  h-auto"
               key={index}
             >
               <div className="flex items-center">

@@ -11,6 +11,7 @@ function ShaprePart() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(150000);
+
   useEffect(() => {
     // Simulating fetching data from API
     fetch(Baseurl + "/api/v1/Product/products")

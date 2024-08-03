@@ -9,17 +9,81 @@ import {
   MdOutlineMailLock,
   MdPayment,
 } from "react-icons/md";
+import Certificate from "../Home/Certificate";
 
 /* eslint-disable no-irregular-whitespace */
 function Suport() {
   return (
     <>
-      <div className="container relative md:mt-24 mt-16 shadow-lg">
+      <div
+        className="relative overflow-hidden   bg-cover bg-no-repeat p-12 text-center"
+        style={{
+          "background-image":
+            "url('https://s3-alpha-sig.figma.com/img/f481/9791/c00ba055ffdbcfb5a62900ce374afbc2?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jgWTVOOoWsS3YlMebApeFO1tVynCOorn5hvsMFtv7L5Z0O7Ls-C6qlaPHpTEBEcJlmCkptzMHPLLQZCYrYyyyUf5MkwpktpiHefLDUhBunt2U7LfeAo5wrb7uulhgwJ6Pd-wGnzYflhHPeEw-p5Sa1KLeManEqe8xXj1V68pthnXRNHkviDNC7lf2LocJaQLwnI-GvmElnQ-HOQmSENZialUGguCfHz5phm2LeIlAVz8HcOXxqS7OAIq~acqInVBPI9oCAb8K0m09LhNVRUA7thNahG2l2HTuI~-ssz55ZpSeewrblRxu33yjlKm9HCGFU93OrbJtXTTownNE~B0nA__')",
+          height: "540px",
+        }}
+      ></div>
+      <section className=" w-[100%] mx-auto pt-8 container">
+        <div className="  flex items-center justify-center px-4 py-8">
+          <div className="bg-white  rounded-lg p-6 w-full ">
+            <div className="text-center mb-8">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-800">
+                Alternatively
+              </h2>
+              <p className="text-gray-600">
+                You can also register your Service Request by clicking on green
+                WhatsApp button
+              </p>
+            </div>
+
+            <div className="flex justify-center mb-4">
+              <button className="text-green-500 hover:text-green-700">
+                <i className="fas fa-comments fa-3x"></i>
+              </button>
+            </div>
+
+            <div className="text-center mb-4">
+              <p className="text-gray-800">or</p>
+              <a
+                href="mailto:support@proven.com"
+                className="text-blue-600 hover:underline"
+              >
+                E-mail: Support@Proven.com
+              </a>
+            </div>
+
+            <div className="text-center">
+              <p className="text-gray-800">or</p>
+              <p className="font-bold text-black text-xl">Escalation Matrix</p>
+              <p className="text-gray-600 mt-2">
+                In case your Service Request is not addressed properly, please
+                get in touch with the Escalation Matrix below.
+              </p>
+            </div>
+
+            <form className="mt-6 flex items-center justify-center">
+              <input
+                type="text"
+                placeholder="Please Enter your Case Id"
+                className="border border-gray-300 rounded-l-full py-2 px-4 w-full max-w-md focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="bg-blue-600 text-white py-2 px-6 rounded-r-full hover:bg-blue-700 focus:outline-none"
+              >
+                Submit
+              </button>
+            </form>
+
+            <p className="text-gray-500 text-center mt-2">Eg: 2105047-689</p>
+          </div>
+        </div>
+      </section>
+      <div className="container relative md:mt-24 mt-16 ">
         <div className="grid md:grid-cols-12 grid-cols-1 items-center gap-6">
           <div className="lg:col-span-5 md:col-span-6 md:order-2 order-1">
             <img
-              src="https://s3-alpha-sig.figma.com/img/eb25/e7a2/08b91723b76aa02b85398d72e37a24c7?Expires=1721606400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=K0sW7uQyiFQrPMr0PSVxNAYjvW3vff76eNIv~WBL42uCaj-Tmk1TApT8zkih4qUy0ic4FAltpnhFQSb~E-ExskzICXtR7EXVSRyhxtmyfQkpvVkLdxqfMpAv69e-JBC7YzWz0DsotZNwY6LDVDHA7npHVd5Q5BaQcHMcqvsGuncUTDvq6JgdOfeYyEi1B0De08hRDyJCA5tXfGDuHPPh8JY0NwlJEIAXRUdcvI7rri9y82n1QaA29we7vLutubyb2ggIFV151mYBEZo4HDfyWzdl21qPri3bBkI6~KnGQPFhC4y-UwnQvp5hjtzyEVz3I0BAfSBs6if~rIuhhXAhgg__"
-              className="rounded-b-full shadow-md "
+              src="https://s3-alpha-sig.figma.com/img/eb25/e7a2/08b91723b76aa02b85398d72e37a24c7?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H4~BgN~sNVNc9yhk8Ei~dGmojNn19xfMa3F1Y3H8Y7qvTMovYuNmqXRkXcRCGBgHtKPJ0cTqVeCG93zWGSmu-lrZrmURoPZzbTef9crqhKTZ7SCSOChGtvaw4tPY8J8aAiYSuv2Y65CUtkZOqXH7MG9oa5SNjk-enpCLKleZU6uaimrMJH1AciO8NOqDSRGBhupWKx0RmD8LnSNxldgQ0SkvuO0nK1oSYwVliIWnsz~XdlSqMmYZKkkryiFsxVFb~6UVlsxQjOGDasltS0paHbpWXi4PHY6yhDdT6Lwq-xr282juVe37fn9yvvGSnrqNbEWEog57WcjoYWiikekO7Q__"
               alt=""
             />
           </div>
@@ -44,7 +108,6 @@ function Suport() {
           </div>
         </div>
       </div>
-
       <div className="container relative  md:mt-24 mt-16 border mb-4 ">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-14 text-center">
@@ -171,6 +234,7 @@ function Suport() {
           </div>
         </div>
       </div>
+      <Certificate />
     </>
   );
 }

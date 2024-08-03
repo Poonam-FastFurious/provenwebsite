@@ -164,12 +164,7 @@ function Wishlist() {
                               >
                                 Image
                               </th>
-                              <th
-                                scope="col"
-                                className="p-[0.5rem] text-left text-[#4b5966]"
-                              >
-                                Name
-                              </th>
+
                               <th
                                 scope="col"
                                 className="p-[0.5rem] text-left text-[#4b5966]"
