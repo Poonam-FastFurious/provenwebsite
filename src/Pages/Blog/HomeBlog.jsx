@@ -51,7 +51,7 @@ function HomeBlog() {
                       </p>
                       <Link
                         onClick={handleClick}
-                        to="/Blogdetails"
+                        to={`/Blogdetails/${blog._id}`}
                         className="mt-4 inline-block text-blue-600 text-sm hover:underline"
                       >
                         Read More

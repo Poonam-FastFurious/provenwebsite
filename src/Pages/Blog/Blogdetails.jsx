@@ -1,5 +1,36 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 /* eslint-disable react/no-unescaped-entities */
 function Blogdetails() {
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { id } = useParams(); // replace with the actual blog ID or retrieve from route params
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/v1/blog/singleblogs?id=${id}`
+        );
+        setBlog(response.data.data); // Assuming response data is in response.data.data
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    };
+
+    fetchBlog();
+  }, [id]);
+  console.log(blog);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading blog details</p>;
+  if (!blog) return <p>No blog found</p>;
+
   return (
     <>
       <div className="gi-breadcrumb mb-[40px]">
@@ -40,7 +71,7 @@ function Blogdetails() {
                       <figure className="blog-img mb-[16px]">
                         <a href="#">
                           <img
-                            src="https://maraviyainfotech.com/projects/grabit-tailwind/grabit-tailwind/assets/img/blog/8.jpg"
+                            src={blog.image}
                             alt="blog imag"
                             className="w-full rounded-[5px]"
                           />
@@ -48,132 +79,37 @@ function Blogdetails() {
                       </figure>
                       <div className="single-blog-detail">
                         <label className="mb-[15px] text-[#999] inline-block">
-                          June 30,2022 -{" "}
+                          {new Date(blog.createdAt).toLocaleDateString()} -{" "}
                           <a
                             href="#"
                             className="text-[#999] hover:text-[#5caf90]"
                           >
-                            Organic
+                            {blog.category}
                           </a>
                         </label>
                         <h3 className="text-[22px] font-semibold text-[#4b5966] leading-[1.2] mb-[6px] max-[767px]:text-[20px] max-[575px]:text-[19px]">
-                          Marketing Guide: 5 Steps to Success.
+                          {blog.title}
                         </h3>
                         <p className="gi-text text-[#777] text-[14px] mb-[16px]">
-                          "Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s,
-                          when an unknown printer took a galley of type and
-                          scrambled it to make a type specimen book. It has
-                          survived not only five centuries, but also the leap
-                          into electronic typesetting, remaining essentially
-                          unchanged. It was popularised in the 1960s with the
-                          release of Letraset sheets containing Lorem Ipsum
-                          passages, and more recently with desktop publishing
-                          software like Aldus PageMaker including versions of
-                          Lorem Ipsum.
+                          {blog.content}
                         </p>
-                        <p className="gi-text-highlight text-[#777] text-[14px] italic font-medium mb-[16px]">
-                          The standard chunk of Lorem Ipsum used since the 1500s
-                          is reproduced below for those interested. Sections
-                          1.10.32 and 1.10.33 from "de Finibus Bonorum et
-                          Malorum" by Cicero.
-                        </p>
-                        <p className="text-[#777] text-[14px] mb-[16px]">
-                          Contrary to popular belief, Lorem Ipsum is not simply
-                          random text. It has roots in a piece of passages of
-                          Lorem Ipsum classical Latin literature from 45 BC,
-                          making it over 2000 years old. Richard McClintock, a
-                          Latin professor at Hampden-Sydney College in Virginia
-                        </p>
+
                         <div className="sub-img mt-[30px] mx-[-12px]">
-                          <div className="flex flex-wrap">
-                            <div className="min-[768px]:w-[50%] w-full px-[12px] mb-[24px]">
-                              <img
-                                src="https://maraviyainfotech.com/projects/grabit-tailwind/grabit-tailwind/assets/img/blog/3.jpg"
-                                alt="blog"
-                                className="w-full rounded-[5px]"
-                              />
+                          {blog.thumbnail.map((thumb, index) => (
+                            <div className="flex flex-wrap" key={index}>
+                              <div className="min-[768px]:w-[50%] w-full px-[12px] mb-[24px] flex">
+                                <img
+                                  src={thumb}
+                                  alt="blog"
+                                  className="w-full rounded-[5px]"
+                                />
+                              </div>
                             </div>
-                            <div className="min-[768px]:w-[50%] w-full px-[12px] mb-[24px]">
-                              <img
-                                src="https://maraviyainfotech.com/projects/grabit-tailwind/grabit-tailwind/assets/img/blog/4.jpg"
-                                alt="blog"
-                                className="w-full rounded-[5px]"
-                              />
-                            </div>
-                          </div>
+                          ))}
                         </div>
-                        <p className="text-[#777] text-[14px] leading-[28px] mb-[16px]">
-                          It is a long established fact that a reader will be
-                          distracted by the readable content of a page
-                          distracted by the readable when looking at its layout.
-                          The point of using Lorem Ipsum is that it has a
-                          more-or-less normal distribution of letters, as
-                          opposed to using.
-                        </p>
-                        <p className="text-[#777] text-[14px] leading-[28px] mb-[16px]">
-                          There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered distracted
-                          by the readable alteration in some form, by injected
-                          humour.
-                        </p>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div className="gi-pro-pagination pt-[15px] flex justify-between items-center border-t-[1px] border-solid border-[#eee] max-[575px]:flex-col">
-                  <span className="text-[14px] text-[#777] max-[575px]:mb-[10px]">
-                    Showing 1-6 of 20 items
-                  </span>
-                  <ul className="gi-pro-pagination-inner">
-                    <li className="inline-block float-left mr-[5px]">
-                      <a
-                        className="w-[32px] h-[32px] p-[0] font-light text-[#777] leading-[32px] bg-[#eee] flex text-center align-top text-[16px] justify-center items-center rounded-[5px] hover:bg-[#5caf90] hover:text-[#fff] active"
-                        href="#"
-                      >
-                        1
-                      </a>
-                    </li>
-                    <li className="inline-block float-left mr-[5px]">
-                      <a
-                        className="w-[32px] h-[32px] p-[0] font-light text-[#777] leading-[32px] bg-[#eee] flex text-center align-top text-[16px] justify-center items-center rounded-[5px] hover:bg-[#5caf90] hover:text-[#fff]"
-                        href="#"
-                      >
-                        2
-                      </a>
-                    </li>
-                    <li className="inline-block float-left mr-[5px]">
-                      <a
-                        className="w-[32px] h-[32px] p-[0] font-light text-[#777] leading-[32px] bg-[#eee] flex text-center align-top text-[16px] justify-center items-center rounded-[5px] hover:bg-[#5caf90] hover:text-[#fff]"
-                        href="#"
-                      >
-                        3
-                      </a>
-                    </li>
-                    <li className="inline-block float-left mr-[5px]">
-                      <span className="w-[20px] text-[#777] block text-center">
-                        ...
-                      </span>
-                    </li>
-                    <li className="inline-block float-left mr-[5px]">
-                      <a
-                        className="w-[32px] h-[32px] p-[0] font-light text-[#777] leading-[32px] bg-[#eee] flex text-center align-top text-[16px] justify-center items-center rounded-[5px] hover:bg-[#5caf90] hover:text-[#fff]"
-                        href="#"
-                      >
-                        8
-                      </a>
-                    </li>
-                    <li className="inline-block float-left">
-                      <a
-                        className="next w-[32px] h-[32px] p-[0] font-light text-[#777] leading-[32px] bg-[#eee] flex text-center align-top text-[16px] justify-center items-center rounded-[5px] hover:bg-[#5caf90] hover:text-[#fff]"
-                        href="#"
-                      >
-                        Next <i className="gicon gi-angle-right"></i>
-                      </a>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>

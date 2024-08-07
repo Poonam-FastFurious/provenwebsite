@@ -28,7 +28,6 @@ import Career from "../../Pages/Career/Career";
 import Faqs from "../../Pages/Faq/Faqs";
 import NewLoginwithotp from "../Authentication/NewLoginwithotp";
 import Otp from "../Authentication/Otp";
-import PaymentButton from "../User/PaymentButton";
 
 function HomeRouter() {
   return (
@@ -101,8 +100,7 @@ function HomeRouter() {
           />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/Support" element={<Suport />} />
-          <Route path="/Blogdetails" element={<Blogdetails />} />
-          <Route path="/paybutton" element={<PaymentButton />} />
+          <Route path="/Blogdetails/:id" element={<Blogdetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>
