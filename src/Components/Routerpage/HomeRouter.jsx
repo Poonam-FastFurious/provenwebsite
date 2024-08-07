@@ -3,8 +3,6 @@ import Home from "../../Pages/Home/Home";
 import Navbar from "../../Pages/Navbar";
 import Footer from "../../Pages/Footer";
 import Shop from "../../Pages/Shop/Shop";
-
-import Login from "../Authentication/Login";
 import Signup from "../Authentication/Signup";
 import Cart from "../User/Cart";
 import CheckOut from "../User/CheckOut";
@@ -29,6 +27,8 @@ import Forgotpassword from "../Authentication/Forgotpassword";
 import Resetpassword from "../Authentication/Resetpassword";
 import Career from "../../Pages/Career/Career";
 import Faqs from "../../Pages/Faq/Faqs";
+import NewLoginwithotp from "../Authentication/NewLoginwithotp";
+import Otp from "../Authentication/Otp";
 
 function HomeRouter() {
   return (
@@ -52,9 +52,14 @@ function HomeRouter() {
           />
           <Route
             path="/login"
-            element={<ProtectedRoute element={<Login />} redirectTo="/" />}
+            element={
+              <ProtectedRoute element={<NewLoginwithotp />} redirectTo="/" />
+            }
+          />{" "}
+          <Route
+            path="/Otp"
+            element={<ProtectedRoute element={<Otp />} redirectTo="/" />}
           />
-
           <Route
             path="/register"
             element={<ProtectedRoute element={<Signup />} redirectTo="/" />}
@@ -95,7 +100,6 @@ function HomeRouter() {
             path="/profile/myorder/orderDetails/:id"
             element={<OrderDetails />}
           />
-
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/Support" element={<Suport />} />
           <Route path="/Blogdetails" element={<Blogdetails />} />
