@@ -326,7 +326,12 @@ const CheckoutSection = () => {
                       </div>
                     ))
                   ) : (
-                    <p>No addresses found. Please add an address.</p>
+                    <div className="text-center mt-4">
+                      <p>No addresses found.</p>
+                      <button className=" bg-AFPPrimary text-white py-2 px-4 rounded mt-2">
+                        Add Address
+                      </button>
+                    </div>
                   )}
                 </div>
               </AccordionItem>

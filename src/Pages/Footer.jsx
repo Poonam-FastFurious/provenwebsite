@@ -84,22 +84,7 @@ function Footer() {
                             Industrial Ro
                           </Link>
                         </li>
-                        <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
-                          <Link
-                            to="/Productctegory/Hydrogen Water"
-                            className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
-                          >
-                            Hydrogen Water
-                          </Link>
-                        </li>
-                        <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
-                          <Link
-                            to="/Productctegory/Copper Water"
-                            className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
-                          >
-                            Copper Water
-                          </Link>
-                        </li>
+
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center">
                           <Link
                             to="/Spare_Parts"
@@ -130,20 +115,13 @@ function Footer() {
                             About us
                           </Link>
                         </li>
-                        <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
-                          <Link
-                            to="/ordertracking"
-                            className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
-                          >
-                            Delivery
-                          </Link>
-                        </li>
+
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
                             to="/privacy-policy"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
-                            Legal Notice
+                            Privacy Policy
                           </Link>
                         </li>
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
@@ -154,14 +132,7 @@ function Footer() {
                             Terms & conditions
                           </Link>
                         </li>
-                        <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
-                          <Link
-                            to="checkout"
-                            className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
-                          >
-                            Secure payment
-                          </Link>
-                        </li>
+
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center">
                           <Link
                             to="/contact-us"
@@ -186,7 +157,7 @@ function Footer() {
                       <ul className="align-itegi-center">
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
-                            to="/register"
+                            to="/Login"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Sign In

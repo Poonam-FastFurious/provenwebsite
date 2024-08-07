@@ -7,7 +7,6 @@ import Signup from "../Authentication/Signup";
 import Cart from "../User/Cart";
 import CheckOut from "../User/CheckOut";
 import Topheader from "../../Pages/Topheader";
-import Ordertracking from "../User/Ordertracking";
 import Profile from "../User/Profile";
 import BookDemo from "../../Pages/BookDemo/BookDemo";
 import Wishlist from "../User/Wishlist";
@@ -29,6 +28,7 @@ import Career from "../../Pages/Career/Career";
 import Faqs from "../../Pages/Faq/Faqs";
 import NewLoginwithotp from "../Authentication/NewLoginwithotp";
 import Otp from "../Authentication/Otp";
+import PaymentButton from "../User/PaymentButton";
 
 function HomeRouter() {
   return (
@@ -80,7 +80,6 @@ function HomeRouter() {
               <RouteProtected element={<CheckOut />} redirectTo="/login" />
             }
           />
-          <Route path="/ordertracking" element={<Ordertracking />} />
           <Route
             path="/profile"
             element={
@@ -103,6 +102,7 @@ function HomeRouter() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/Support" element={<Suport />} />
           <Route path="/Blogdetails" element={<Blogdetails />} />
+          <Route path="/paybutton" element={<PaymentButton />} />
         </Routes>
         <Footer />
       </BrowserRouter>

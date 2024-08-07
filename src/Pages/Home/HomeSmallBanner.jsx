@@ -12,9 +12,6 @@ function HomeSmallBanner() {
             <div className="gi-ofr-banners">
               <div className="gi-bnr-body flex flex-row relative overflow-hidden">
                 <div className="gi-bnr-img w-full relative">
-                  <span className="lbl py-[2px] px-[7px] text-[12px] absolute top-[0] left-[0] capitalize bg-[#fff] text-[#4b5966]">
-                    50% Off
-                  </span>
                   <img
                     src="https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/ca57cfb7-35eb-4032-a3eb-86555667faf6._CR0,0,1200,628_SX460_QL70_.jpeg"
                     alt="banner"
@@ -27,7 +24,7 @@ function HomeSmallBanner() {
                   </h5>
                   <Link
                     to="#"
-                    className="gi-btn-2 transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative py-[5px] max-[360px]:py-[3px] px-[15px] max-[360px]:px-[10px] bg-[#5caf90] text-[#fff] border-[0] text-[14px] max-[360px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#4b5966] hover:text-[#fff]"
+                    className="gi-btn-2 transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative py-[5px] max-[360px]:py-[3px] px-[15px] max-[360px]:px-[10px]  bg-AFPPrimary text-[#fff] border-[0] text-[14px] max-[360px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#4b5966] hover:text-[#fff]"
                   >
                     Shop Now
                   </Link>
@@ -42,9 +39,6 @@ function HomeSmallBanner() {
             <div className="gi-ofr-banners max-[767px]:mt-[30px]">
               <div className="gi-bnr-body flex flex-row relative overflow-hidden">
                 <div className="gi-bnr-img w-full relative">
-                  <span className="lbl py-[2px] px-[7px] text-[12px] absolute top-[0] left-[0] capitalize bg-[#fff] text-[#4b5966]">
-                    60% Off
-                  </span>
                   <img
                     src="https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/1aeb71f0-f95f-4001-ac2b-ccbae0f43cb5._CR1,0,2399,1256_SX460_QL70_.jpg"
                     alt="banner"
@@ -55,7 +49,7 @@ function HomeSmallBanner() {
                   <h5 className=" text-[34px] font-bold leading-[1.2] capitalize mb-[6px] max-[1399px]:text-[28px] max-[1199px]:text-[22px] max-[991px]:text-[16px] max-[767px]:text-[20px] max-[420px]:text-[16px]"></h5>
                   <Link
                     to="#"
-                    className="gi-btn-2 transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative py-[5px] max-[360px]:py-[3px] px-[15px] max-[360px]:px-[10px] bg-[#5caf90] text-[#fff] border-[0] text-[14px] max-[360px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#4b5966] hover:text-[#fff]"
+                    className="gi-btn-2 transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative py-[5px] max-[360px]:py-[3px] px-[15px] max-[360px]:px-[10px]  bg-AFPPrimary text-[#fff] border-[0] text-[14px] max-[360px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#4b5966] hover:text-[#fff]"
                   >
                     Shop Now
                   </Link>
@@ -70,9 +64,6 @@ function HomeSmallBanner() {
             <div className="gi-ofr-banners max-[767px]:mt-[30px]">
               <div className="gi-bnr-body flex flex-row relative overflow-hidden">
                 <div className="gi-bnr-img w-full relative">
-                  <span className="lbl py-[2px] px-[7px] text-[12px] absolute top-[0] left-[0] capitalize bg-[#fff] text-[#4b5966]">
-                    70% Off
-                  </span>
                   <img
                     src="https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/c6d7ca8c-bb61-44cb-ac6a-d6619ec813b5._CR0,0,1200,628_SX460_QL70_.jpg"
                     alt="banner"
@@ -85,7 +76,7 @@ function HomeSmallBanner() {
                   </h5>
                   <Link
                     to="#"
-                    className="gi-btn-2 transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative py-[5px] max-[360px]:py-[3px] px-[15px] max-[360px]:px-[10px] bg-[#5caf90] text-[#fff] border-[0] text-[14px] max-[360px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#4b5966] hover:text-[#fff]"
+                    className="gi-btn-2 transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative py-[5px] max-[360px]:py-[3px] px-[15px] max-[360px]:px-[10px]  bg-AFPPrimary text-[#fff] border-[0] text-[14px] max-[360px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#4b5966] hover:text-[#fff]"
                   >
                     Shop Now
                   </Link>
