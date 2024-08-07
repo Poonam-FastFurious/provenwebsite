@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Baseurl } from "../../confige";
 
 function NewLoginwithotp() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -32,16 +33,13 @@ function NewLoginwithotp() {
     }
 
     try {
-      const response = await fetch(
-        "http://localhost:3000/api/v1/user/sendsms",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ mobile: formData.mobile }),
-        }
-      );
+      const response = await fetch(Baseurl + "/api/v1/user/sendsms", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ mobile: formData.mobile }),
+      });
 
       if (!response.ok) {
         const data = await response.json();

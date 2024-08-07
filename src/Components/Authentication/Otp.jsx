@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Baseurl } from "../../confige";
 
 function Otp() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -37,16 +38,13 @@ function Otp() {
     const mobile = localStorage.getItem("Otpmobile");
 
     try {
-      const response = await fetch(
-        "http://localhost:3000/api/v1/user/loginwithotp",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ mobile, otp: otpCode }),
-        }
-      );
+      const response = await fetch(Baseurl + "/api/v1/user/loginwithotp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ mobile, otp: otpCode }),
+      });
 
       if (!response.ok) {
         const data = await response.json();
