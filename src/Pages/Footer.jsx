@@ -3,6 +3,7 @@ import images from "../assets/Images/payment.png";
 import Footermobile from "./Footermobile";
 import $ from "jquery";
 import { useEffect } from "react";
+import logo from "../assets/Images/logoproven.png";
 function Footer() {
   useEffect(() => {
     // jQuery code
@@ -38,11 +39,11 @@ function Footer() {
                 <div className="min-[992px]:w-[25%] px-[12px] w-full gi-footer-cat wow fadeInUp">
                   <div className="gi-footer-widget gi-footer-company flex flex-col">
                     <img
-                      src="https://provenonline.in/wp-content/uploads/2023/04/Untitled-design-6.png"
+                      src={logo}
                       className="gi-footer-logo max-w-[144px] max-[767px]:max-w-[130px]  mb-[30px]"
                       alt="footer logo"
                     />
-                    <p className="gi-footer-detail max-w-[400px] mb-[30px] p-[0] text-[14px] leading-[27px] font-normal text-[#777] inline-block relative max-[1199px]:text-[14px]">
+                    <p className="gi-footer-detail max-w-[400px] mb-[30px] p-[0] text-[14px] leading-[27px] font-normal text-[#777]  relative max-[1199px]:text-[14px] hidden">
                       Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                       Officia nulla iste eligendi?
                     </p>
@@ -126,6 +127,14 @@ function Footer() {
                         </li>
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
+                            to="/Career"
+                            className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
+                          >
+                            Career
+                          </Link>
+                        </li>
+                        <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
+                          <Link
                             to="/terms-condition"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
@@ -173,16 +182,24 @@ function Footer() {
                         </li>
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
                           <Link
-                            to="privacy-policy"
+                            to="/ReturnPolicy"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Return Policy
                           </Link>
                         </li>
+                        <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
+                          <Link
+                            to="/FAQ"
+                            className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
+                          >
+                            FAQ
+                          </Link>
+                        </li>
 
                         <li className="gi-footer-link m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center">
                           <Link
-                            to="checkout"
+                            to="/checkout"
                             className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                           >
                             Payments
@@ -208,7 +225,9 @@ function Footer() {
                               <i className="fi fi-rr-marker location leading-[0] text-[18px] mt-[5px] h-[25px] text-[#5caf90] w-[auto]"></i>
                             </span>
                             <p className="m-[0] text-[14px] font-normal text-[#777]">
-                              Noida sector 62
+                              E - 5, Karawal Nagar Main Rd, opposite Pani ki
+                              Tanki & Govt. School, Dayalpur, New Mustafabad,
+                              Delhi, 110094
                             </p>
                           </li>
                           <li className="gi-footer-link gi-foo-call m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
@@ -219,7 +238,7 @@ function Footer() {
                               to="tel:+009876543210"
                               className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                             >
-                              +00 9123456780
+                              +1800-532-3367
                             </Link>
                           </li>
                           <li className="gi-footer-link gi-foo-mail m-[0] leading-[1.5] border-[0] p-[0] font-normal text-[16px] text-[#5caf90] flex items-center mb-[16px]">
@@ -230,7 +249,7 @@ function Footer() {
                               to="mailto:example@email.com"
                               className="transition-all duration-[0.3s] ease-in-out text-[14px] leading-[20px] p-[0] text-[#777] mb-[0] inline-block relative break-all tracking-[0] font-normal hover:text-[#5caf90] hover:opacity-[1]"
                             >
-                              example@email.com
+                              info@provenonline.in
                             </Link>
                           </li>
                         </ul>
@@ -243,7 +262,7 @@ function Footer() {
                         <ul className="align-itegi-center flex flex-wrap">
                           <li className="gi-footer-link pr-[5px]">
                             <Link
-                              to="#"
+                              to="https://www.facebook.com/www.provenonline.in"
                               className="h-[30px] w-[30px] bg-[#4b5966] rounded-[5px] capitalize flex items-center justify-center text-[15px]"
                             >
                               <i
@@ -276,7 +295,7 @@ function Footer() {
                           </li>
                           <li className="gi-footer-link pr-[5px]">
                             <Link
-                              to="#"
+                              to="https://www.instagram.com/proven_india/"
                               className="h-[30px] w-[30px] bg-[#4b5966] rounded-[5px] capitalize flex items-center justify-center text-[15px]"
                             >
                               <i
@@ -301,10 +320,12 @@ function Footer() {
                     <div className="footer-bottom-copy">
                       <div className="gi-copy text-[#777] text-[13px] tracking-[1px] text-center font-light">
                         Copyright ©
-                        <Link className="site-name text-[#5caf90]" to="index">
+                        <Link className="site-name text-AFPPrimary" to="#">
                           Proven Ro
                         </Link>
-                        all rights reserved. Developed by 💓 Brandbell
+                        <span className=" ml-1">
+                          all rights reserved. Developed by 💓 Brandbell
+                        </span>
                       </div>
                     </div>
                   </div>

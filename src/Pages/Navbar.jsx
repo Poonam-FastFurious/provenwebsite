@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { Baseurl } from "../confige";
 import axios from "axios";
+import logo from "../assets/Images/logoproven.png";
+import categorydefulthower from "../assets/Images/categorydefulthower.jpg";
 const AccordionItem = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -78,18 +80,14 @@ function Navbar() {
     }
   }, [token]);
 
-  const [hoveredImage, setHoveredImage] = useState(
-    "https://provenonline.in/wp-content/uploads/2023/01/612vp1CNrKL._SL1500_.jpg"
-  );
+  const [hoveredImage, setHoveredImage] = useState(categorydefulthower);
 
   const handleMouseOver = (imageSrc) => {
     setHoveredImage(imageSrc);
   };
 
   const handleMouseOut = () => {
-    setHoveredImage(
-      "https://provenonline.in/wp-content/uploads/2023/01/612vp1CNrKL._SL1500_.jpg"
-    );
+    setHoveredImage(categorydefulthower);
   };
   useEffect(() => {
     fetch(Baseurl + "/api/v1/category/allcategory")
@@ -163,7 +161,7 @@ function Navbar() {
                   <div className="header-logo text-left">
                     <Link to="/">
                       <img
-                        src="https://provenonline.in/wp-content/uploads/2023/04/Untitled-design-6.png"
+                        src={logo}
                         alt="Site Logo"
                         className="w-[230px] max-[1399px]:w-[180px] max-[1199px]:w-[150px] max-[991px]:w-[120px] max-[767px]:w-[100px]"
                       />
@@ -214,7 +212,7 @@ function Navbar() {
                                     ))}
                                   </ul>
                                   <ul className="mega-block w-[calc(25%-30px)] mr-[30px] py-[15px] block">
-                                    {category.slice(6, 13).map((cat, index) => (
+                                    {category.slice(5, 10).map((cat, index) => (
                                       <li
                                         key={index}
                                         onMouseOver={() =>
@@ -236,7 +234,7 @@ function Navbar() {
                                   </ul>
                                   <ul className="mega-block w-[calc(25%-30px)] mr-[30px] py-[15px] block">
                                     {category
-                                      .slice(13, 24)
+                                      .slice(10, 15)
                                       .map((cat, index) => (
                                         <li
                                           key={index}
@@ -286,10 +284,10 @@ function Navbar() {
                             </li>
                             <li className="dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px]">
                               <Link
-                                to="#"
+                                to="/Client"
                                 className="dropdown-arrow relative transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
                               >
-                                Certifications
+                                Client
                               </Link>
                             </li>
                             <li className="non-drop mx-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:mx-[15px]">
@@ -323,14 +321,14 @@ function Navbar() {
                     {isSearchOpen && (
                       <div className="gi-search-menu w-full h-[30%] fixed top-[0] left-[0] bg-[#000000cc] z-[17]">
                         <div className="gi-search-wrapper h-full w-full relative flex items-center justify-center">
-                          <a
-                            href="javascript:void(0)"
+                          <Link
+                            to="#"
                             className="gi-close-search absolute top-[30px] right-[30px] text-[#fff] text-[30px] leading-[20px]"
                             title="Close"
                             onClick={() => setIsSearchOpen(false)}
                           >
                             ×
-                          </a>
+                          </Link>
                           <form
                             className="gi-form relative flex items-center justify-center max-[575px]:w-[100%] max-[575px]:px-[15px]"
                             onSubmit={handleSearchSubmit}
@@ -383,9 +381,9 @@ function Navbar() {
                           <li>
                             <Link
                               className="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-AFPPrimary"
-                              to="/profile"
+                              to="/OrderList"
                             >
-                              My Accounts
+                              My Orders
                             </Link>
                           </li>
                           <li>
@@ -454,14 +452,14 @@ function Navbar() {
                       {isSearchOpen && (
                         <div className="gi-search-menu w-full h-[30%] fixed top-[0] left-[0] bg-[#000000cc] z-[17]">
                           <div className="gi-search-wrapper h-full w-full relative flex items-center justify-center">
-                            <a
-                              href="javascript:void(0)"
+                            <Link
+                              to="#"
                               className="gi-close-search absolute top-[30px] right-[30px] text-[#fff] text-[30px] leading-[20px]"
                               title="Close"
                               onClick={() => setIsSearchOpen(false)}
                             >
                               ×
-                            </a>
+                            </Link>
                             <form
                               className="gi-form relative flex items-center justify-center max-[575px]:w-[100%] max-[575px]:px-[15px]"
                               onSubmit={handleSearchSubmit}
@@ -502,9 +500,6 @@ function Navbar() {
                         <div className="header-icon relative flex">
                           <i className="fi-rr-heart text-[24px] leading-[17px]"></i>
                         </div>
-                        <span className="gi-header-count gi-wishlist-count w-[15px] h-[15px] text-[#fff] flex items-center justify-center rounded-[50%] text-[11px] absolute top-[-2px] right-[-6px] opacity-[0.8]">
-                          4
-                        </span>
                       </Link>
 
                       <Link
@@ -515,9 +510,6 @@ function Navbar() {
                           <i className="fi-rr-shopping-bag text-[24px] leading-[17px]"></i>
                           <span className="main-label-note-new"></span>
                         </div>
-                        <span className="gi-header-count gi-cart-count w-[15px] h-[15px] text-[#fff] flex items-center justify-center rounded-[50%] text-[11px] absolute top-[-2px] right-[-6px] opacity-[0.8]">
-                          3
-                        </span>
                       </Link>
 
                       <Link
@@ -548,11 +540,7 @@ function Navbar() {
           id="drawer-navigation-label"
           className="text-base font-semibold text-gray-500 uppercase "
         >
-          <img
-            className=" w-20"
-            src="https://provenonline.in/wp-content/uploads/2023/04/Untitled-design-6.png"
-            alt=""
-          />
+          <img className=" w-20" src={logo} alt="logo" />
         </h5>
         <button
           type="button"
@@ -580,32 +568,19 @@ function Navbar() {
         <div className="py-4 overflow-y-auto">
           <ul>
             <li className="dropdown relative">
-              <AccordionItem title="Product summary">
+              <AccordionItem title="Product">
                 <Link
-                  to="#"
-                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
-                >
-                  Water Purifier
-                </Link>
-                <Link
-                  to="#"
+                  to="/Water-purifier"
                   className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
                 >
                   Water Purifier
                 </Link>
               </AccordionItem>
             </li>
+            <li className="relative"></li>
             <li className="relative">
               <Link
-                to="#"
-                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
-              >
-                Book Demo
-              </Link>
-            </li>
-            <li className="relative">
-              <Link
-                to="#"
+                to="/Spare_Parts"
                 className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
               >
                 Spare Parts
@@ -613,23 +588,31 @@ function Navbar() {
             </li>
             <li className="dropdown ">
               <Link
-                to="#"
+                to="/AboutUs"
                 className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
               >
                 About Us
               </Link>
             </li>
+            <li className="dropdown ">
+              <Link
+                to="/contact-us"
+                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                Contact-Us
+              </Link>
+            </li>
             <li className="relative">
               <Link
-                to="#"
+                to="/Client"
                 className="dropdown-arrow p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
               >
-                Certifications
+                Client
               </Link>
             </li>
             <li className="relative pt-2">
               <Link
-                to="#"
+                to="/Book-Demo"
                 className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
               >
                 Book Demo

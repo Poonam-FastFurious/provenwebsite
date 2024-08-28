@@ -1,32 +1,35 @@
 /* eslint-disable react/no-unescaped-entities */
-import { FiEdit } from "react-icons/fi";
-import Orderlist from "../User/Orderlist";
+
+// import Orderlist from "../User/Orderlist";
 import { Link } from "react-router-dom";
 import { IoIosLogOut, IoMdNotificationsOutline } from "react-icons/io";
-import { MdDashboard, MdWifiPassword } from "react-icons/md";
-import { VscListUnordered } from "react-icons/vsc";
+import { MdDashboard, MdDeleteOutline } from "react-icons/md";
+// import { VscListUnordered } from "react-icons/vsc";
 import { FaRegAddressCard } from "react-icons/fa";
-import { RiLockPasswordFill } from "react-icons/ri";
+// import { RiLockPasswordFill } from "react-icons/ri";
 
 import { useEffect, useState } from "react";
 
 import axios from "axios";
 import { Baseurl } from "../../confige";
+// import { IoSettingsOutline } from "react-icons/io5";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 function Profile() {
   const [activeTab, setActiveTab] = useState("DashBoard");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isaddaddressvisible, setIsaddaddressvisible] = useState(false);
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [retypeNewPassword, setRetypeNewPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  // const [oldPassword, setOldPassword] = useState("");
+  // const [newPassword, setNewPassword] = useState("");
+  // const [retypeNewPassword, setRetypeNewPassword] = useState("");
+  // const [message, setMessage] = useState("");
+  // const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({});
   const [addresses, setAddresses] = useState([]);
   const [notification, setNotification] = useState([]);
   const userId = localStorage.getItem("userid");
   const accessToken = localStorage.getItem("accessToken");
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   // Retrieve user ID from local storage
   useEffect(() => {
     const userId = localStorage.getItem("userid");
@@ -69,48 +72,48 @@ function Profile() {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
-  const handlepasswordchange = async (e) => {
-    e.preventDefault();
+  // const handlepasswordchange = async (e) => {
+  //   e.preventDefault();
 
-    if (newPassword !== retypeNewPassword) {
-      setMessage("New passwords do not match");
-      return;
-    }
-    setIsLoading(true);
-    try {
-      const accessToken = localStorage.getItem("accessToken"); // Retrieve the access token from local storage
+  //   if (newPassword !== retypeNewPassword) {
+  //     setMessage("New passwords do not match");
+  //     return;
+  //   }
+  //   setIsLoading(true);
+  //   try {
+  //     const accessToken = localStorage.getItem("accessToken"); // Retrieve the access token from local storage
 
-      if (!accessToken) {
-        setMessage("Access token not found");
-        return;
-      }
+  //     if (!accessToken) {
+  //       setMessage("Access token not found");
+  //       return;
+  //     }
 
-      const response = await fetch(Baseurl + "/api/v1/user/change-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({
-          oldPassword,
-          newPassword,
-        }),
-      });
+  //     const response = await fetch(Baseurl + "/api/v1/user/change-password", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${accessToken}`,
+  //       },
+  //       body: JSON.stringify({
+  //         oldPassword,
+  //         newPassword,
+  //       }),
+  //     });
 
-      const data = await response.json();
+  //     const data = await response.json();
 
-      if (response.ok) {
-        setMessage("Password changed successfully");
-        setOldPassword("");
-        setNewPassword("");
-        setRetypeNewPassword("");
-      } else {
-        setMessage(data.message || "Error changing password");
-      }
-    } catch (error) {
-      setMessage("Error changing password");
-    }
-  };
+  //     if (response.ok) {
+  //       setMessage("Password changed successfully");
+  //       setOldPassword("");
+  //       setNewPassword("");
+  //       setRetypeNewPassword("");
+  //     } else {
+  //       setMessage(data.message || "Error changing password");
+  //     }
+  //   } catch (error) {
+  //     setMessage("Error changing password");
+  //   }
+  // };
   const handleLogout = async () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
@@ -181,12 +184,21 @@ function Profile() {
         body: JSON.stringify(dataToSend),
       });
       const result = await response.json();
+
       if (response.ok) {
-        "Address added successfully:", result;
+        // Show success toast
+        toast.success("Address added successfully!");
+        // Optionally, reset form or perform other actions
+        setFormData({});
+        window.location.reload();
       } else {
+        // Show error toast
+        toast.warn(result.message || "There was a problem adding the address.");
         console.error("Error adding address:", result);
       }
     } catch (error) {
+      // Show error toast for unexpected errors
+      toast.error("An unexpected error occurred. Please try again later.");
       console.error("Error:", error);
     }
   };
@@ -217,14 +229,49 @@ function Profile() {
 
     fetchAddressDetails();
   }, [userId, accessToken]);
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword(!showPassword);
+  // };
   useEffect(() => {
     fetch(Baseurl + "/api/v1/Notification/allnotification")
       .then((response) => response.json())
       .then((data) => setNotification(data.data));
   }, []);
+  const handleDeleteAddress = async (id) => {
+    const accessToken = localStorage.getItem("accessToken");
+
+    // Show SweetAlert2 confirmation dialog
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "This action will permanently delete the address.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`${Baseurl}/api/v1/address/delete?id=${id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        // Optionally, you can update the state to remove the deleted address from the list
+        setAddresses(addresses.filter((address) => address._id !== id));
+        Swal.fire("Deleted!", "Your address has been deleted.", "success");
+      } catch (error) {
+        console.error("Error deleting address:", error);
+        Swal.fire(
+          "Error!",
+          "There was a problem deleting the address.",
+          "error"
+        );
+      }
+    }
+  };
   return (
     <>
       <section className="relative lg:pb-24 pb-16 md:mt-[84px] mt-[70px]">
@@ -234,21 +281,14 @@ function Profile() {
 
         <div className="container relative mt-8 md:mt-12 ">
           <div className="md:flex">
-            <div className=" md:mt-24 mt-16">
-              <div className="relative md:-mt-48 ">
+            <div className=" ">
+              <div className="relative  ">
                 <div className="p-6 rounded-md shadow  bg-white b">
                   <div className="profile-pic text-center mb-5">
-                    <input
-                      id="pro-img"
-                      name="profile-image"
-                      type="file"
-                      className="hidden"
-                      onChange="loadFile(event)"
-                    />
                     <div>
                       <div className="relative h-28 w-28 mx-auto">
                         <img
-                          src="https://shreethemes.in/cartzio/layouts/assets/images/client/16.jpg"
+                          src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
                           className="rounded-full shadow  ring-4 ring-slate-50 "
                           id="profile-image"
                           alt=""
@@ -290,21 +330,6 @@ function Profile() {
                         <Link
                           to="#"
                           className={`navbar-link text-slate-400 flex items-center py-2 rounded ${
-                            activeTab === "Orders" ? "active" : ""
-                          }`}
-                          onClick={() => handleTabChange("Orders")}
-                        >
-                          <span className="me-2 mb-0">
-                            <VscListUnordered />
-                          </span>
-                          <h6 className="mb-0 font-medium">Orders</h6>
-                        </Link>
-                      </li>
-
-                      <li className="navbar-item account-menu">
-                        <Link
-                          to="#"
-                          className={`navbar-link text-slate-400 flex items-center py-2 rounded ${
                             activeTab === "Address" ? "active" : ""
                           }`}
                           onClick={() => handleTabChange("Address")}
@@ -316,7 +341,7 @@ function Profile() {
                         </Link>
                       </li>
 
-                      <li className="navbar-item account-menu">
+                      {/* <li className="navbar-item account-menu">
                         <Link
                           to="#"
                           className={`navbar-link text-slate-400 flex items-center py-2 rounded ${
@@ -329,7 +354,7 @@ function Profile() {
                           </span>
                           <h6 className="mb-0 font-medium">Change Password</h6>
                         </Link>
-                      </li>
+                      </li> */}
                       <li className="navbar-item account-menu">
                         <Link
                           to="#"
@@ -379,11 +404,11 @@ function Profile() {
             </div>
 
             <div className=" w-full  sm:ml-0 md:ml-4 lg:ml-4 xl:ml-4  ">
-              {activeTab === "Orders" && (
+              {/* {activeTab === "Orders" && (
                 <div>
                   <Orderlist />
                 </div>
-              )}
+              )} */}
 
               {activeTab === "DashBoard" && (
                 <>
@@ -449,10 +474,14 @@ function Profile() {
                           <div key={index} className=" border p-4">
                             <div className="flex items-center mb-4 justify-between">
                               <h5 className="text-xl font-medium">
-                                {addres.addressType}{" "}
+                                {addres.addressType}
                               </h5>
-                              <Link to="#" className=" text-AFPPrimary text-lg">
-                                <FiEdit />
+                              <Link
+                                to="#"
+                                className=" text-AFPPrimary text-lg"
+                                onClick={() => handleDeleteAddress(addres._id)}
+                              >
+                                <MdDeleteOutline className=" text-2xl" />
                               </Link>
                             </div>
                             <div className="pt-4 border-t border-gray-100 ">
@@ -492,7 +521,7 @@ function Profile() {
                 </>
               )}
 
-              {activeTab === "Change Password" && (
+              {/* {activeTab === "Change Password" && (
                 <>
                   <div className=" w-[60%]">
                     <h5 className="text-lg font-semibold mb-4 ">
@@ -635,7 +664,7 @@ function Profile() {
                     </form>
                   </div>
                 </>
-              )}
+              )} */}
 
               {activeTab === "Notifications" && (
                 <>
@@ -741,9 +770,9 @@ function Profile() {
                 id="crud-modal"
                 tabIndex="-1"
                 aria-hidden="true"
-                className="fixed top-10 right-0 left-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50"
+                className="fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50"
               >
-                <div className="relative p-4 w-full max-w-2xl max-h-full">
+                <div className="relative p-4 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow">
                   <div className="relative bg-white rounded-lg shadow">
                     <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                       <h3 className="text-lg font-semibold text-gray-900">
@@ -772,8 +801,12 @@ function Profile() {
                         <span className="sr-only">Close modal</span>
                       </button>
                     </div>
-                    <form className="p-4 md:p-5" onSubmit={handleSubmit}>
-                      <div className=" border-gray-900/10 pb-12">
+
+                    <form
+                      className="px-4 md:px-5 pb-12"
+                      onSubmit={handleSubmit}
+                    >
+                      <div className="border-gray-900/10 pb-12">
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                           <div className="sm:col-span-3">
                             <label
@@ -810,7 +843,6 @@ function Profile() {
                                 onChange={(e) => {
                                   const value = e.target.value;
                                   if (/^\d*$/.test(value)) {
-                                    // Only allow digits
                                     setFormData({
                                       ...formData,
                                       phoneNumber: value,
@@ -818,27 +850,50 @@ function Profile() {
                                   }
                                 }}
                                 maxLength="10"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:text-sm sm:leading-6"
                               />
                             </div>
                           </div>
 
-                          <div className="sm:col-span-6">
+                          <div className="sm:col-span-3">
                             <label
-                              htmlFor="streetAddress"
+                              htmlFor="country"
                               className="block text-sm font-medium leading-6 text-gray-900"
                             >
-                              Street address
+                              Country
                             </label>
                             <div className="mt-2">
-                              <textarea
-                                id="streetAddress" // Added id to match label's htmlFor attribute
-                                name="streetAddress"
-                                value={formData.streetAddress}
+                              <select
+                                id="country"
+                                name="country"
+                                value={formData.country}
                                 onChange={handleChange}
-                                className="block w-full  pl-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:text-sm sm:leading-6"
-                                placeholder="Enter your street address" // Added placeholder for better UX
-                              />
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:max-w-xs sm:text-sm sm:leading-6 pl-4"
+                              >
+                                <option>India</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div className="sm:col-span-3">
+                            <label
+                              htmlFor="addressType"
+                              className="block text-sm font-medium leading-6 text-gray-900"
+                            >
+                              Address Type
+                            </label>
+                            <div className="mt-2">
+                              <select
+                                id="addressType"
+                                name="addressType"
+                                value={formData.addressType}
+                                onChange={handleChange}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:text-sm sm:leading-6 pl-4"
+                              >
+                                <option value="">Select address type</option>
+                                <option value="Home">Home</option>
+                                <option value="Office">Office</option>
+                              </select>
                             </div>
                           </div>
 
@@ -856,7 +911,7 @@ function Profile() {
                                 id="city"
                                 value={formData.city}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:text-sm sm:leading-6"
                               />
                             </div>
                           </div>
@@ -894,50 +949,27 @@ function Profile() {
                                 id="postalCode"
                                 value={formData.postalCode}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:text-sm sm:leading-6"
                               />
                             </div>
                           </div>
 
-                          <div className="sm:col-span-3">
+                          <div className="sm:col-span-6">
                             <label
-                              htmlFor="country"
+                              htmlFor="streetAddress"
                               className="block text-sm font-medium leading-6 text-gray-900"
                             >
-                              Country
+                              Street address
                             </label>
                             <div className="mt-2">
-                              <select
-                                id="country"
-                                name="country"
-                                value={formData.country}
+                              <textarea
+                                id="streetAddress"
+                                name="streetAddress"
+                                value={formData.streetAddress}
                                 onChange={handleChange}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:max-w-xs sm:text-sm sm:leading-6"
-                              >
-                                <option>India</option>
-                              </select>
-                            </div>
-                          </div>
-
-                          <div className="sm:col-span-3">
-                            <label
-                              htmlFor="addressType"
-                              className="block text-sm font-medium leading-6 text-gray-900"
-                            >
-                              Address Type
-                            </label>
-                            <div className="mt-2">
-                              <select
-                                id="addressType"
-                                name="addressType"
-                                value={formData.addressType}
-                                onChange={handleChange}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary  sm:text-sm sm:leading-6"
-                              >
-                                <option value="">Select address type</option>
-                                <option value="home">Home</option>
-                                <option value="office">Office</option>
-                              </select>
+                                className="block w-full pl-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-AFPPrimary sm:text-sm sm:leading-6"
+                                placeholder="Enter your street address"
+                              />
                             </div>
                           </div>
                         </div>
@@ -945,7 +977,7 @@ function Profile() {
 
                       <button
                         type="submit"
-                        className="text-white inline-flex items-center bg-AFPPrimary  hover:bg-AFPPrimary  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        className="text-white inline-flex items-center bg-AFPPrimary hover:bg-AFPPrimary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4"
                       >
                         <svg
                           className="me-1 -ms-1 w-5 h-5"

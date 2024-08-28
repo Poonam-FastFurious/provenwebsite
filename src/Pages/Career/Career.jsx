@@ -1,12 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
+import carrerimage from "../../assets/Images/carrerimage.jfif";
+import provencreeer from "../../assets/Images/provencreeer.png";
+import provencreeer1 from "../../assets/Images/careersimage2.jpg";
 function Career() {
   return (
     <>
       <div
         className="relative overflow-hidden  bg-cover bg-no-repeat p-12 text-center"
         style={{
-          "background-image":
-            "url('https://s3-alpha-sig.figma.com/img/8a95/ef60/06cecb2780e9b3247c94e50e0dadcada?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SsXl-wKPy-O7KUwoN9GUcds~W~4KQ0SEZOVnkDc~knmxLDwBWEe-Au6jRYxhA~O5SVGvr2J3olBbcvsfGMdJ9WFGPGYKgdPGGYtH2SPQ7vqDS05M19Ek70fP0lNcD-dl783FNr-vujrwte6nO2y3EUjrUq4Y9M78WMok-cnXuKwp1wSfbMpEXlr7KH66uuDvnRDLV8u09HUBq0OFOCl-yRzkHZbBTzQtqMrR92LTBzCCqYp5cjrE9cjE8f4Dj-Eb1OtzVwGGjr2ETbIexHqJ8jCSabSG1-byTaOS7l-sldb7OGAiqNu1yLpyaTc~qiaMdmoXvWGa3lYBvWwHuldTCg__')",
+          "background-image": `url(${carrerimage})`,
           height: "400px",
         }}
       >
@@ -59,7 +61,7 @@ function Career() {
           {/* Image Section */}
           <div className="flex items-center justify-center md:w-1/2 p-4">
             <img
-              src="https://s3-alpha-sig.figma.com/img/dc4e/19e1/d3f5321be302c35a4e35f791a91c2642?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=EmEmGgWW2RgGyZhGh9jSbUZa0~KSdeRzrpOCNvNvvWKTWtOx1oo4VooiI6x75dFNs9LQNI3Var3bPrl2wiVPmXatuMYC-1fmJS~MjkaTxBVmNRpjP1GjSH4FhMKoxCErdS4zxxEzuzM5tbjElTRa3i3b3wyfJ7q~8awVZ81pGvDgJmZA1KTwcUMn4zE4WoAqOyB1THtZe4N4zqwlDXrxqi7Awm3fzyDTArLt7RSK10RDUxV8MEm7YGJvFPVkRyHka7yooSzk50q6XwmAZVEZasPZvphyMQ4zok7IF1-Cz9UlW9SfcH-KVbcLJwBILT6IDVYgtj6Lg2sK3zn-F7NVpw__"
+              src={provencreeer}
               alt="Sales Executive"
               className="max-w-full h-auto"
             />
@@ -67,16 +69,12 @@ function Career() {
         </div>
       </section>
       <section className=" w-[100%] mx-auto pt-8 container">
-        <img
-          src="https://s3-alpha-sig.figma.com/img/6ea9/bcde/081a607ac95b2044a9623711e6b1af7d?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YNdqgAGK9uAKzVBdORKH3c~lsNSmQA2asa5rFLBJUbhpDXUr3L7FgRZBsnYoc80TpTJ5CH~J4Odf6Ilc7MtlT8pkJGlPXDrdTJ0f2HIBhClztNee03LCGqrsk92AVwo4oGiHvAlEyi1TWNscTNsW9bYGu8fz~bDKFNKrOE5WsQHwJdP3VjuXiZ7ycvemS73rXMTxqcBp3LiZntAg0zn10HE5mGhyrC90BT9-ZbowXg-mLS-vIBqNjNUBHOEXTOJusPqZHQouM4hCCk5yUBvx2bPvoshpZinJ45z28fMNch6PdZ25X6eV8z3Oe0C5AdtiFCR5jQdKOZn-BkCyADGylw__"
-          alt=""
-          className="p-6"
-        />
+        <img src={provencreeer1} alt="" className="p-6" />
       </section>
       <section className="bg-[#DEEDEA] w-[100%] mx-auto pt-8 container">
         <div className="flex flex-col md:flex-row items-center justify-center min-h-screen  p-8 container ">
           <div className="bg-white shadow-lg rounded-lg p-6   w-full">
-            <h1 className="text-2xl font-bold text-blue-600 mb-4 text-center">
+            <h1 className="text-2xl font-bold  text-AFPPrimary mb-4 text-center">
               Apply For Job
             </h1>
             <form className="space-y-4">
@@ -105,7 +103,7 @@ function Career() {
                   </label>
                   <input
                     id="phoneNumber"
-                    type="tel"
+                    type="number"
                     className="w-full p-2 border border-gray-300 rounded"
                     required
                   />
@@ -197,7 +195,7 @@ function Career() {
                   <input
                     id="resume"
                     type="file"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300"
                   />
                 </div>
               </div>

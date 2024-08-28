@@ -301,7 +301,7 @@ function HomeBestSelling({ heading = "add on" }) {
                             <h5 className="gi-pro-title h-full mb-[10px] text-[16px]">
                               <Link
                                 to={`/Product/${pro._id}`}
-                                className="block text-[14px] leading-[22px] text-truncatewebsite font-normal text-[#4b5966] tracking-[0.85px] capitalize font-Poppins hover:text-[#5caf90]"
+                                className="block text-[14px] leading-[22px] text-truncatewebsite font-normal text-[#4b5966] tracking-[0.85px] capitalize font-Poppins hover:text-AFPPrimary"
                               >
                                 {truncateText(pro.title, 20)}
                               </Link>
@@ -389,7 +389,7 @@ function HomeBestSelling({ heading = "add on" }) {
                             <button
                               onClick={() => addToCart(selectedProduct._id)}
                               type="button"
-                              className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px] bg-[#267FA3] text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#5caf90] hover:text-[#fff]"
+                              className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px] bg-[#267FA3] text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center  hover:text-[#fff]"
                             >
                               <i className="fi-rr-shopping-basket text-[14px] leading-[0] mr-[5px]"></i>
                               Add To Cart

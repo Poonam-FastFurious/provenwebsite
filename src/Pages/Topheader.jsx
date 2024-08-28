@@ -11,22 +11,22 @@ function Topheader() {
                 <ul className="mb-[0] p-[0] flex">
                   <li className="list-inline-item transition-all duration-[0.3s] ease-in-out flex text-[13px] mr-[15px]">
                     <Link
-                      to="tel:+919876543210"
+                      to="tel:+18005323367"
                       className="mx-[5px] text-center flex items-center justify-center text-[15px]"
                     >
                       <i className="fi fi-rr-phone-call transition-all duration-[0.3s] ease-in-out text-[#fff]"></i>
                     </Link>
-                    +91 987 654 3210
+                    +91 18005323367
                   </li>
                   <li className="list-inline-item transition-all duration-[0.3s] ease-in-out flex text-[13px]">
                     <Link
-                      to={`https://wa.me/${+919820035336}`}
+                      to={`https://wa.me/${+18005323367}`}
                       target="_blank"
                       className="mx-[5px] text-center flex items-center justify-center text-[15px]"
                     >
                       <i className="fi fi-brands-whatsapp transition-all duration-[0.3s] ease-in-out text-[#fff]"></i>
                     </Link>
-                    +91 987 654 3210
+                    +9118005323367
                   </li>
                 </ul>
               </div>

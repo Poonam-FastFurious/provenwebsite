@@ -22,12 +22,17 @@ import Blogdetails from "../../Pages/Blog/Blogdetails";
 import ShaprePart from "../../Pages/Shop/ShaprePart";
 import SerchPage from "../../Pages/Shop/SerchPage";
 import Productdetailswitvedio from "../Common/Productdetailswitvedio";
-import Forgotpassword from "../Authentication/Forgotpassword";
+// import Forgotpassword from "../Authentication/Forgotpassword";
 import Resetpassword from "../Authentication/Resetpassword";
 import Career from "../../Pages/Career/Career";
 import Faqs from "../../Pages/Faq/Faqs";
 import NewLoginwithotp from "../Authentication/NewLoginwithotp";
 import Otp from "../Authentication/Otp";
+import Terms from "../../Pages/TermsAndcondition/Terms";
+import ReturnPolicy from "../../Pages/ReturnPolicy/ReturnPolicy";
+import Client from "../../Pages/ClientPage/Client";
+import Privacypolicy from "../../Pages/Privacypolicy/Privacypolicy";
+import Orderlist from "../User/Orderlist";
 
 function HomeRouter() {
   return (
@@ -44,7 +49,7 @@ function HomeRouter() {
           <Route path="/Productctegory/:id" element={<WaterPurefire />} />
           <Route path="/Product/:id" element={<Productdetailswitvedio />} />
           <Route path="/products" element={<SerchPage />} />
-          <Route path="/forgotpassword" element={<Forgotpassword />} />
+          {/* <Route path="/forgotpassword" element={<Forgotpassword />} /> */}
           <Route
             path="/Reset-password/:id/:token"
             element={<Resetpassword />}
@@ -66,6 +71,12 @@ function HomeRouter() {
           <Route
             path="/Cart"
             element={<RouteProtected element={<Cart />} redirectTo="/login" />}
+          />
+          <Route
+            path="/OrderList"
+            element={
+              <RouteProtected element={<Orderlist />} redirectTo="/login" />
+            }
           />
           <Route
             path="/success"
@@ -92,6 +103,9 @@ function HomeRouter() {
             }
           />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/terms-condition" element={<Terms />} />
+          <Route path="/ReturnPolicy" element={<ReturnPolicy />} />
+          <Route path="/privacy-policy" element={<Privacypolicy />} />
           <Route path="/Career" element={<Career />} />
           <Route path="/Faq" element={<Faqs />} />
           <Route
@@ -100,6 +114,7 @@ function HomeRouter() {
           />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/Support" element={<Suport />} />
+          <Route path="/Client" element={<Client />} />
           <Route path="/Blogdetails/:id" element={<Blogdetails />} />
         </Routes>
         <Footer />

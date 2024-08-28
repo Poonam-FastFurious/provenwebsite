@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
-
+import logo from "../../assets/Images/logoproven.png";
 function Forgotpassword() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -71,11 +71,7 @@ function Forgotpassword() {
                 to="/"
                 className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
               >
-                <img
-                  className="w-16 mr-2"
-                  src="https://provenonline.in/wp-content/uploads/2023/04/Untitled-design-6.png"
-                  alt="logo"
-                />
+                <img className="w-16 mr-2" src={logo} alt="logo" />
               </Link>
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Forgot Password?

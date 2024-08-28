@@ -1608,10 +1608,10 @@ body.gi-menu-open:before {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background-color: #5caf90;
+  background-color: #267fa3;
 }
 .gi-product-inner .gi-pro-image .gi-pro-actions .gi-btn-group:hover {
-  background-color: #5caf90;
+  background-color: #267fa3;
 }
 .gi-product-inner .gi-pro-image .gi-pro-actions .gi-btn-group:hover i {
   color: #fff;

@@ -21,9 +21,9 @@ function Orderlist() {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        const userOrders = data.data.filter(
-          (order) => order.customer._id === userId
-        );
+        const userOrders = data.data
+          .filter((order) => order.customer._id === userId)
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // Sort by createdAt in descending order
         setOrders(userOrders);
         setLoading(false);
       } catch (error) {
@@ -85,7 +85,7 @@ function Orderlist() {
 
   return (
     <>
-      <section className="bg-white">
+      <section className="bg-white container">
         <div className="mx-auto max-w-screen-xl 2xl:px-0">
           <div className="mx-auto max-w-7xl">
             <div className="gap-4 sm:flex sm:items-center sm:justify-between">

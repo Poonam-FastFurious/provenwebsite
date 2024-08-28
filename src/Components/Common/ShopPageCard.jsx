@@ -230,7 +230,7 @@ function ShopPageCard({
                           <div className="gi-quickview-cart">
                             <button
                               type="button"
-                              className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px] bg-[#4b5966] text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-AFPPrimary hover:text-[#fff]"
+                              className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px] bg-AFPPrimary text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-AFPPrimary hover:text-[#fff]"
                               onClick={() => addToCart(ID)}
                             >
                               <i className="fi-rr-shopping-basket text-[14px] leading-[0] mr-[5px]"></i>

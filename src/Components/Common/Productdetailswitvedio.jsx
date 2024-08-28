@@ -128,7 +128,7 @@ function Productdetailswitvedio() {
               <div className="single-pro-block">
                 <div className="single-pro-inner">
                   <div className="w-full flex flex-wrap">
-                    <div className="single-pro-img single-pro-img-no-sidebar lg:w-[30%] w-full relative  max-[991px]:pl-[12px] max-[991px]:w-full max-[991px]:max-w-[500px] max-[991px]:m-auto max-[420px]:px-[0]">
+                    <div className="single-pro-img single-pro-img-no-sidebar lg:w-[40%] w-full relative  max-[991px]:pl-[12px] max-[991px]:w-full max-[991px]:max-w-[500px] max-[991px]:m-auto max-[420px]:px-[0]">
                       <div className="single-product-scroll p-[15px] sticky top-[30px] rounded-[5px] border-[1px] border-solid border-[#eee]">
                         {productData ? (
                           <>
@@ -207,7 +207,7 @@ function Productdetailswitvedio() {
                         )}
                       </div>
                     </div>
-                    <div className="single-pro-desc single-pro-desc-no-sidebar lg:w-[50%]  sm:w-[100%] md:w-[100%]  relative pl-[12px] max-[991px]:pl-[0] max-[991px]:mt-[30px] max-[991px]:w-full">
+                    <div className="single-pro-desc single-pro-desc-no-sidebar lg:w-[60%]  sm:w-[100%] md:w-[100%]  relative pl-[12px] max-[991px]:pl-[0] max-[991px]:mt-[30px] max-[991px]:w-full">
                       <div className="single-pro-content">
                         <h5 className="gi-single-title text-[#4b5966] text-[22px] capitalize mb-[20px] block font-Poppins font-medium leading-[35px] tracking-[0.02rem] max-[1199px]:text-[20px] max-[1199px]:leading-[33px]  max-[767px]:text-[18px] max-[767px]:leading-[31px]">
                           {productData.title}
@@ -283,7 +283,7 @@ function Productdetailswitvedio() {
                         </div>
                       </div>
                     </div>
-                    <div className=" hidden md:hidden sm:hidden lg:block lg:w-[15%]  md:ml-4 md:w-[15%] w-[100%]  md:h-[700px] border-[2px] bg-[#EEEEEE] p-4   font-[14px]">
+                    <div className=" hidden  md:ml-4 md:w-[15%] w-[100%]  md:h-[700px] border-[2px] bg-[#EEEEEE] p-4   font-[14px]">
                       <div className=" w-auto flex flex-wrap flex-col ">
                         <div className=" flex w-full">
                           ₹ {productData.price}

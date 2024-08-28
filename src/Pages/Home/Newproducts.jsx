@@ -70,7 +70,7 @@ function Newproducts() {
       });
     } catch (error) {
       console.error("Error adding product to cart:", error);
-      toast.warn("Failed to add product to cart.");
+      toast.warn("login First to add product.");
     }
   };
   const truncateText = (text, maxLength) => {
@@ -122,7 +122,7 @@ function Newproducts() {
               <div className="section-title mb-[20px] pb-[20px] flex flex-start">
                 <div className="section-detail">
                   <h2 className="gi-title mb-[0] text-[25px] max-[991px]:text-[24px] max-[767px]:text-[22px] max-[575px]:text-[20px] font-semibold text-[#4b5966] relative inline p-[0] capitalize leading-[1] font-manrope tracking-[0.01rem]">
-                    New <span className="text-[#5caf90]">Arrivals</span>
+                    New <span className=" text-AFPPrimary">Arrivals</span>
                   </h2>
                   <p className="max-w-[400px] mt-[10px] text-[14px] text-[#777] leading-[18px] font-light">
                     Shop online for new arrivals and get free shipping!
@@ -137,7 +137,7 @@ function Newproducts() {
               <div className="tab-content">
                 <div className="tab-pro-pane" id="all">
                   <div className="w-full flex flex-wrap">
-                    {product.map((pro, index) => (
+                    {product.slice(0, 10).map((pro, index) => (
                       <div
                         key={index}
                         className="min-[1200px]:w-[20%] min-[768px]:w-[33.33%] min-[576px]:w-[50%] max-[575px]:w-[50%] max-[480px]:w-full px-[12px]"
@@ -212,7 +212,7 @@ function Newproducts() {
                               <h5 className="gi-pro-title h-full mb-[10px] text-[16px]">
                                 <Link
                                   to={`/Product/${pro._id}`}
-                                  className="block text-[14px] leading-[22px] font-normal text-[#4b5966] tracking-[0.85px] capitalize font-Poppins hover:text-[#5caf90]"
+                                  className="block text-[14px] leading-[22px] font-normal text-[#4b5966] tracking-[0.85px] capitalize font-Poppins hover:text-AFPPrimary"
                                 >
                                   {truncateText(pro.title, 80)}
                                 </Link>
@@ -300,7 +300,7 @@ function Newproducts() {
                             <button
                               onClick={() => addToCart(selectedProduct._id)}
                               type="button"
-                              className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px] bg-[#267FA3] text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center hover:bg-[#5caf90] hover:text-[#fff]"
+                              className="gi-btn-1 ml-[15px] transition-all duration-[0.3s] ease-in-out overflow-hidden text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px] bg-[#267FA3] text-[#fff] border-[0] text-[15px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center  hover:text-[#fff]"
                             >
                               <i className="fi-rr-shopping-basket text-[14px] leading-[0] mr-[5px]"></i>
                               Add To Cart

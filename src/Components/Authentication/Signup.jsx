@@ -3,7 +3,7 @@ import { FaRegEye } from "react-icons/fa";
 import { ImEyeBlocked } from "react-icons/im";
 import { Link, useNavigate } from "react-router-dom";
 import { Baseurl } from "../../confige";
-
+import logo from "../../assets/Images/logoproven.png";
 function Signup() {
   const navigate = useNavigate();
   const [fullName, setFullName] = useState("");
@@ -29,7 +29,22 @@ function Signup() {
   };
 
   const handleMobileChange = (e) => {
-    setMobile(e.target.value);
+    const value = e.target.value;
+    const isValid = /^\d{10}$/.test(value); // Regular expression for exactly 10 digits
+
+    if (!isValid && value !== "") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        mobile: "Mobile number must be exactly 10 digits.",
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        mobile: "",
+      }));
+    }
+
+    setMobile(value);
   };
 
   const validateEmail = (email) => {
@@ -56,10 +71,12 @@ function Signup() {
     } else if (!validateEmail(email)) {
       newErrors.email = "Invalid email format.";
     }
-    if (mobile.trim() === "") {
-      newErrors.mobile = "Mobile number is required.";
-    } else if (!/^\d{10}$/.test(mobile)) {
-      newErrors.mobile = "Mobile number must be exactly 10 digits.";
+    if (!/^\d{10}$/.test(mobile)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        mobile: "Mobile number must be exactly 10 digits.",
+      }));
+      return;
     }
     if (password.trim() === "") {
       newErrors.password = "Password is required.";
@@ -120,11 +137,7 @@ function Signup() {
                 to="/"
                 className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
               >
-                <img
-                  className="w-16 mr-2"
-                  src="https://provenonline.in/wp-content/uploads/2023/04/Untitled-design-6.png"
-                  alt="logo"
-                />
+                <img className="w-16 mr-2" src={logo} alt="logo" />
               </Link>
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Create an account
@@ -193,6 +206,16 @@ function Signup() {
                     placeholder="Mobile Number"
                     value={mobile}
                     onChange={handleMobileChange}
+                    maxLength={10} // Limit input to 10 characters
+                    pattern="\d*" // Allow only digits
+                    onInput={(e) => {
+                      // Restrict input to 10 characters
+                      if (e.target.value.length > 10) {
+                        e.target.value = e.target.value.slice(0, 10);
+                        setMobile(e.target.value);
+                      }
+                    }}
+                    inputMode="numeric"
                   />
                   {errors.mobile && (
                     <p className="text-sm text-red-500 mt-1">{errors.mobile}</p>
@@ -246,7 +269,8 @@ function Signup() {
                       I accept the
                       <Link
                         className="font-medium text-primary-600 hover:underline"
-                        to="#"
+                        to="/terms-condition"
+                        target="_blank"
                       >
                         Terms and Conditions
                       </Link>

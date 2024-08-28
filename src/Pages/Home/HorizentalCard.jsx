@@ -29,7 +29,7 @@ function HorizentalCard({ name, price, images, discount, ID }) {
       });
     } catch (error) {
       console.error("Error adding product to cart:", error);
-      toast.error("Login fist to add to cart.");
+      toast.warn("Login fist to add to cart.");
     }
   };
   return (

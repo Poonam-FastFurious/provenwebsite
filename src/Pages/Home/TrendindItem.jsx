@@ -66,7 +66,7 @@ function TrendingItem() {
                 <div className="section-title mb-[0] pb-[15px]">
                   <div className="section-detail">
                     <h2 className="gi-title mb-[0] text-[25px] max-[991px]:text-[24px] max-[767px]:text-[22px] max-[575px]:text-[20px] font-semibold text-[#4b5966] relative inline p-[0] capitalize leading-[1] font-manrope tracking-[0.01rem]">
-                      Trending <span className="text-[#5caf90]">Items</span>
+                      Trending <span className="text-AFPPrimary">Items</span>
                     </h2>
                   </div>
                 </div>
@@ -92,7 +92,7 @@ function TrendingItem() {
                 <div className="section-title mb-[0] pb-[15px]">
                   <div className="section-detail">
                     <h2 className="gi-title mb-[0] text-[25px] max-[991px]:text-[24px] max-[767px]:text-[22px] max-[575px]:text-[20px] font-semibold text-[#4b5966] relative inline p-[0] capitalize leading-[1] font-manrope tracking-[0.01rem]">
-                      Top <span className="text-[#5caf90]">Rated</span>
+                      Top <span className=" text-AFPPrimary">Rated</span>
                     </h2>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ function TrendingItem() {
                 <div className="section-title mb-[0] pb-[15px]">
                   <div className="section-detail">
                     <h2 className="gi-title mb-[0] text-[25px] max-[991px]:text-[24px] max-[767px]:text-[22px] max-[575px]:text-[20px] font-semibold text-[#4b5966] relative inline p-[0] capitalize leading-[1] font-manrope tracking-[0.01rem]">
-                      Top <span className="text-[#5caf90]">Selling</span>
+                      Top <span className="text-AFPPrimary">Selling</span>
                     </h2>
                   </div>
                 </div>

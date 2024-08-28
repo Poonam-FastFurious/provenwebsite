@@ -57,7 +57,7 @@ function Footermobile() {
           >
             <FaWhatsapp className=" text-2xl  mb-2 text-gray-500" />
             <span className="text-sm text-gray-500   ">
-              <Link to={`https://wa.me/${+919820035336}`} target="_blank">
+              <Link to={`https://wa.me/${+918851515949}`} target="_blank">
                 Whatsapp
               </Link>
             </span>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Baseurl } from "../../confige";
+import Swal from "sweetalert2";
 
 function OrderDetails() {
   const [order, setOrder] = useState(null);
@@ -32,7 +33,7 @@ function OrderDetails() {
       window.open(`${order.shippingInfo.shippingLink}`, "_blank");
     } else {
       // Show alert if shippingLink is null
-      alert("Your order status not cahnge yet .");
+      Swal.fire("Your order status not cahnge yet .");
     }
   };
 

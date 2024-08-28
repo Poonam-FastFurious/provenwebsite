@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Baseurl } from "../../confige";
-
+import logo from "../../assets/Images/logoproven.png";
 function Otp() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [loading, setLoading] = useState(false);
@@ -76,9 +76,7 @@ function Otp() {
       localStorage.removeItem("Otpmobile");
     } catch (error) {
       console.error("OTP verification error:", error); // Handle error here
-      setErrorMessage(
-        `An error occurred: ${error.message || "Please try again."}`
-      );
+      setErrorMessage(` ${error.message || "Please try again."}`);
       setSuccessMessage(""); // Clear any previous success message
     } finally {
       setLoading(false);
@@ -94,18 +92,14 @@ function Otp() {
               to="/"
               className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
             >
-              <img
-                className="w-16 mr-2"
-                src="https://provenonline.in/wp-content/uploads/2023/04/Untitled-design-6.png"
-                alt="logo"
-              />
+              <img className="w-16 mr-2" src={logo} alt="logo" />
             </Link>
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Verify OTP
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
-                <div className="flex gap-4 max-w-lg mx-auto font-[sans-serif]">
+                <div className="flex gap-2 max-w-lg mx-auto ">
                   {otp.map((digit, index) => (
                     <input
                       key={index}
@@ -115,7 +109,7 @@ function Otp() {
                       value={digit}
                       onChange={(e) => handleChange(e, index)}
                       onKeyDown={(e) => handleKeyDown(e, index)}
-                      className="w-12 h-10 flex items-center text-center text-black text-base border-2 border-gray-300 focus:border-AFPPrimary outline-none rounded"
+                      className="w-10 md:w-12 h-10 flex items-center text-center text-black text-base border-2 border-gray-300 focus:border-AFPPrimary outline-none rounded"
                     />
                   ))}
                 </div>

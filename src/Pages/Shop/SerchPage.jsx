@@ -30,11 +30,11 @@ function SerchPage() {
         setSelectedProduct(data.product);
         setQuickview(true);
       } else {
-        toast.error("Failed to fetch product details.");
+        toast.error("Failed to fetch product detailscccc.");
       }
     } catch (error) {
       console.error("Error fetching product details:", error);
-      toast.error("Failed to fetch product details.");
+      toast.error("Failed to fetch product detailsdddd.");
     } finally {
       setLoading(false);
     }
@@ -112,16 +112,20 @@ function SerchPage() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        // Adjust the API URL according to your backend setup
         const response = await axios.get(
           `${Baseurl}/api/v1/Product/searchproduct`,
           {
             params: { query },
           }
         );
-        setProducts(response.data.data);
+
+        if (response.data.success) {
+          setProducts(response.data.data);
+        } else {
+          setError(response.data.message || "Failed to fetch products.");
+        }
       } catch (error) {
-        setError("Failed to fetch products");
+        setError(error.response?.data?.message || "Failed to fetch products.");
       } finally {
         setLoading(false);
       }

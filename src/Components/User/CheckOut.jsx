@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Baseurl } from "../../confige";
+import Swal from "sweetalert2";
 
 // import { Baseurl } from "../../confige";
 
@@ -121,7 +122,7 @@ const CheckoutSection = () => {
       return responseData.data._id;
     } catch (error) {
       console.error("Error creating order:", error);
-      alert(`Error creating order: ${error.message}`);
+      Swal.fire(` Add  Shiping  addres`);
     }
   };
   const paymentHandler = async (e) => {
@@ -255,7 +256,7 @@ const CheckoutSection = () => {
                     >
                       <span className="text-left text-gray-500 text-sm leading-6">
                         <img
-                          className="h-20 w-20 dark:hidden"
+                          className="h-20 w-20 "
                           src={pro.product.image}
                           alt="imac image"
                         />
@@ -329,7 +330,7 @@ const CheckoutSection = () => {
                     <div className="text-center mt-4">
                       <p>No addresses found.</p>
                       <button className=" bg-AFPPrimary text-white py-2 px-4 rounded mt-2">
-                        Add Address
+                        <Link to="/profile">Add Address</Link>
                       </button>
                     </div>
                   )}

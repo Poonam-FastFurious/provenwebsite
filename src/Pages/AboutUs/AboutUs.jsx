@@ -2,15 +2,17 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-alice-carousel";
 import Certificate from "../Home/Certificate";
-
+import bgimg from "../../assets/Images/aboutus.jfif";
+import bgimg1 from "../../assets/Images/about1.jpeg";
+import bgimg2 from "../../assets/Images/about2.jpeg";
+import bgimg3 from "../../assets/Images/about3.jpeg";
 function AboutUs() {
   return (
     <>
       <div
         className="relative overflow-hidden  bg-cover bg-no-repeat p-12 text-center"
         style={{
-          "background-image":
-            "url('https://s3-alpha-sig.figma.com/img/13fc/f39f/f95ccedc77bb0dea110ccc66fa4aef90?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DFV5tja15q2MuXhjkyEMuenSq~vfEsS~f7~D1G8UVQFgFISFzexuBOHVHQPiy8Cb8HG9Qv54H-a-qJTLTUvb3rYl2H-YSmd9w2~YOSkoiTViwLk5pjdna3J1qN~G72~o~-tN9vwUIlEpBxMbRtdTOlSpWWcXKwxD42CTYTgK4rAn6dG8fa8C1a39dvLkYo19l7Ba7PiFceFRY88-N3SAZqaI7wTkPnQeRgctt1kBKwjmRGwesONt3qETx2qkay0XZ3a4yqisChH4qVT3JZUNb-RZYToco4413cU115ag8MIBIXziSBJxHSjy2WD5cZxfTsBSceZVXUQ2FEpuAIem2w__')",
+          "background-image": `url(${bgimg})`,
           height: "400px",
         }}
       >
@@ -20,16 +22,7 @@ function AboutUs() {
         >
           <div className="flex h-full items-center justify-center">
             <div className="text-white">
-              <h2 className="mb-4 text-4xl font-semibold">Aboutus</h2>
-              <h4 className="mb-6 text-xl font-semibold">Subheading</h4>
-              <button
-                type="button"
-                className="rounded border-2 border-neutral-50 px-7 pb-[8px] pt-[10px] text-sm font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-                data-twe-ripple-init
-                data-twe-ripple-color="light"
-              >
-                Call to action
-              </button>
+              <h2 className="mb-4 text-4xl font-semibold">About Us</h2>
             </div>
           </div>
         </div>
@@ -45,12 +38,10 @@ function AboutUs() {
                     Who We Are ?
                   </h4>
                   <p className="max-w-[600px] lg:leading-5 m-0 text-[14px] text-[#777]">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Odit, velit. Ipsum asperiores illum quo mollitia ipsam.
-                    Maiores esse qui blanditiis doloremque odio, unde quos.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Laudantium possimus cupiditate ipsa necessitatibus.
-                    Quisquam?
+                    A Company of PROVEN Founded by Mr. SIYA RAM PRAJAPATI Sales
+                    and service water purifier and RO based mineral water
+                    (Domestic , Commercial and Industrial) from India and
+                    selling, installing, maintaining in local market from 2002.
                   </p>
                 </div>
               </div>
@@ -62,11 +53,11 @@ function AboutUs() {
                     What We Do Best
                   </h4>
                   <p className="max-w-[600px]px] m-0  lg:leading-5 text-[14px] text-[#777]">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Blanditiis quidem eum provident nostrum fugiat et ipsum
-                    adipisci dolorum! Quasi, delectus! Facere molestias Lorem
-                    ipsum dolor, sit amet consectetur adipisicing elit. Ut eum
-                    deleniti cum debitis libero. praesentium rem?
+                    Proven Water Industries Private Limited is a 21st century
+                    healthcare products company with a vision to make the world
+                    a healthy and a happy place. Pioneers in bringing the
+                    revolutionary Reverse Osmosis (RO) technology to India,
+                    PROVEN started its operations from DELHI, India in 2002.
                   </p>
                 </div>
               </div>
@@ -84,11 +75,7 @@ function AboutUs() {
               <div className="gi-ofr-banners">
                 <div className="gi-bnr-body flex flex-row relative overflow-hidden">
                   <div className="gi-bnr-img w-full relative">
-                    <img
-                      src="https://s3-alpha-sig.figma.com/img/eb25/e7a2/08b91723b76aa02b85398d72e37a24c7?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H4~BgN~sNVNc9yhk8Ei~dGmojNn19xfMa3F1Y3H8Y7qvTMovYuNmqXRkXcRCGBgHtKPJ0cTqVeCG93zWGSmu-lrZrmURoPZzbTef9crqhKTZ7SCSOChGtvaw4tPY8J8aAiYSuv2Y65CUtkZOqXH7MG9oa5SNjk-enpCLKleZU6uaimrMJH1AciO8NOqDSRGBhupWKx0RmD8LnSNxldgQ0SkvuO0nK1oSYwVliIWnsz~XdlSqMmYZKkkryiFsxVFb~6UVlsxQjOGDasltS0paHbpWXi4PHY6yhDdT6Lwq-xr282juVe37fn9yvvGSnrqNbEWEog57WcjoYWiikekO7Q__"
-                      alt="banner"
-                      className="w-full"
-                    />
+                    <img src={bgimg1} alt="banner" className="w-full" />
                   </div>
                 </div>
               </div>
@@ -100,11 +87,7 @@ function AboutUs() {
               <div className="gi-ofr-banners max-[767px]:mt-[30px]">
                 <div className="gi-bnr-body flex flex-row relative overflow-hidden">
                   <div className="gi-bnr-img w-full relative">
-                    <img
-                      src="https://s3-alpha-sig.figma.com/img/13fc/f39f/f95ccedc77bb0dea110ccc66fa4aef90?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DFV5tja15q2MuXhjkyEMuenSq~vfEsS~f7~D1G8UVQFgFISFzexuBOHVHQPiy8Cb8HG9Qv54H-a-qJTLTUvb3rYl2H-YSmd9w2~YOSkoiTViwLk5pjdna3J1qN~G72~o~-tN9vwUIlEpBxMbRtdTOlSpWWcXKwxD42CTYTgK4rAn6dG8fa8C1a39dvLkYo19l7Ba7PiFceFRY88-N3SAZqaI7wTkPnQeRgctt1kBKwjmRGwesONt3qETx2qkay0XZ3a4yqisChH4qVT3JZUNb-RZYToco4413cU115ag8MIBIXziSBJxHSjy2WD5cZxfTsBSceZVXUQ2FEpuAIem2w__"
-                      alt="banner"
-                      className="w-full "
-                    />
+                    <img src={bgimg2} alt="banner" className="w-full " />
                   </div>
                 </div>
               </div>
@@ -116,11 +99,7 @@ function AboutUs() {
               <div className="gi-ofr-banners max-[767px]:mt-[30px]">
                 <div className="gi-bnr-body flex flex-row relative overflow-hidden">
                   <div className="gi-bnr-img w-full relative">
-                    <img
-                      src="https://s3-alpha-sig.figma.com/img/eb25/e7a2/08b91723b76aa02b85398d72e37a24c7?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H4~BgN~sNVNc9yhk8Ei~dGmojNn19xfMa3F1Y3H8Y7qvTMovYuNmqXRkXcRCGBgHtKPJ0cTqVeCG93zWGSmu-lrZrmURoPZzbTef9crqhKTZ7SCSOChGtvaw4tPY8J8aAiYSuv2Y65CUtkZOqXH7MG9oa5SNjk-enpCLKleZU6uaimrMJH1AciO8NOqDSRGBhupWKx0RmD8LnSNxldgQ0SkvuO0nK1oSYwVliIWnsz~XdlSqMmYZKkkryiFsxVFb~6UVlsxQjOGDasltS0paHbpWXi4PHY6yhDdT6Lwq-xr282juVe37fn9yvvGSnrqNbEWEog57WcjoYWiikekO7Q__"
-                      alt="banner"
-                      className="w-full"
-                    />
+                    <img src={bgimg3} alt="banner" className="w-full" />
                   </div>
                 </div>
               </div>
@@ -129,66 +108,69 @@ function AboutUs() {
         </div>
       </section>
 
-      <div className=" bg-gray-200 mx-auto w-full h-full px-4 sm:px-6 lg:px-8">
+      <div className=" bg-AFPPrimaryLight mx-auto w-full h-full px-4 sm:px-6 lg:px-8">
         <div className="relative wrap overflow-hidden p-10 h-full">
-          <div
-            className=" absolute sm:border-opacity-20 border-opacity-0 border-gray-700 h-full border"
-            style={{ left: "50%" }}
-          ></div>
-
-          <div className="mb-8 flex flex-col sm:flex-row justify-between items-center w-full right-timeline">
-            <div className="order-1 w-full sm:w-5/12"></div>
-            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-              <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
+          <div className=" w-full my-4">
+            <div className="flex items-center flex-col">
+              <div className="w-6 h-6 shrink-0 mx-[-1px] ring-2 ring-gray-300 ring-offset-4 bg-green-500 p-1 flex items-center justify-center rounded-full">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-full fill-white"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                    data-original="#000000"
+                  />
+                </svg>
+              </div>
+              <div className="my-4 text-center max-w-[400px]">
+                <h6 className="text-base font-bold text-[#333]">Our Founder</h6>
+                <p className="text-sm  mt-1">
+                  A Company of PROVEN Founded by Mr. SIYA RAM PRAJAPATI Sales
+                  and service water purifier and RO based mineral water
+                  (Domestic , Commercial and Industrial) from India and selling,
+                  installing, maintainingin local market from 2002..
+                </p>
+              </div>
+              <div className="w-1 h-24 bg-gray-300 rounded-xl"></div>
             </div>
-            <div className="order-1 bg-AFPPrimaryLight rounded-lg shadow-xl w-full sm:w-5/12 px-6 py-4">
-              <h3 className="mb-3 font-bold text-gray-800 text-xl">
-                Our Founder
-              </h3>
-              <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
-                A Company of PROVEN Founded by Mr. SIYA RAM PRAJAPATI Sales and
-                service water purifier and RO based mineral water (Domestic ,
-                Commercial and Industrial) from India and selling, installing,
-                maintaining in local market from 2002.
-              </p>
+            <div className="flex items-center flex-col">
+              <div className="w-6 h-6 shrink-0 mx-[-1px] ring-2 ring-gray-300 ring-offset-4 p-1 flex items-center justify-center rounded-full">
+                <span className="w-6 h-6 bg-blue-500 rounded-full shrink-0"></span>
+              </div>
+              <div className="my-4 text-center max-w-[400px]">
+                <h6 className="text-base font-bold text-[#333] ">
+                  Delhi, 2002 India
+                </h6>
+                <p className="text-sm  mt-1">
+                  Proven Water Industries Private Limited is a 21st century
+                  healthcare products company with a vision to make the world a
+                  healthy and a happy place. Pioneers in bringing the
+                  revolutionary Reverse Osmosis (RO) technology to India, PROVEN
+                  started its operations from DELHI, India in 2002.
+                </p>
+              </div>
+              <div className="w-1 h-24 bg-gray-300 rounded-xl"></div>
             </div>
-          </div>
-
-          <div className="mb-8 flex flex-col sm:flex-row-reverse justify-between items-center w-full left-timeline">
-            <div className="order-1 w-full sm:w-5/12"></div>
-            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full ">
-              <h1 className="mx-auto text-white font-semibold text-lg ">2</h1>
+            <div className="flex items-center flex-col">
+              <div className="w-6 h-6 shrink-0 mx-[-1px] ring-2 ring-gray-300 ring-offset-4 p-1 flex items-center justify-center rounded-full">
+                <span className="text-base text-gray-500 font-bold">3</span>
+              </div>
+              <div className="my-4 text-center max-w-[400px]">
+                <h6 className="text-base font-bold  text-[#333]">
+                  ISO Certified India
+                </h6>
+                <p className="text-sm mt-1">
+                  PROVEN Water industries private limited is ISO 9001:2015
+                  certified and has been at the forefront of innovation. It has
+                  grown to be a strong organization with offices across India
+                  and most importantly, millions of satisfied customers to its
+                  credit India.
+                </p>
+              </div>
             </div>
-            <div className="order-1 bg-AFPPrimaryLight rounded-lg shadow-xl w-full sm:w-5/12 px-6 py-4">
-              <h3 className="mb-3 font-bold text-black text-xl">Lorem Ipsum</h3>
-              <p className="text-sm font-medium leading-snug tracking-wide text-black text-opacity-100">
-                Proven Water Industries Private Limited is a 21st century
-                healthcare products company with a vision to make the world a
-                healthy and a happy place. Pioneers in bringing the
-                revolutionary Reverse Osmosis (RO) technology to India, PROVEN
-                started its operations from DELHI, India in 2002.
-              </p>
-            </div>
-          </div>
-
-          <div className="mb-8 flex flex-col sm:flex-row justify-between items-center w-full right-timeline">
-            <div className="order-1 w-full sm:w-5/12"></div>
-            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-              <h1 className="mx-auto font-semibold text-lg text-white">3</h1>
-            </div>
-            <div className="order-1 bg-AFPPrimaryLight rounded-lg shadow-xl w-full sm:w-5/12 px-6 py-4">
-              <h3 className="mb-3 font-bold text-gray-800 text-xl">
-                Lorem Ipsum
-              </h3>
-              <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
-                Proven Water Industries Private Limited is a 21st century
-                healthcare products company with a vision to make the world a
-                healthy and a happy place. Pioneers in bringing the
-                revolutionary Reverse Osmosis (RO) technology to India, PROVEN
-                started its operations from DELHI, India in 2002.
-              </p>
-            </div>
-          </div>
+          </div>{" "}
         </div>
       </div>
 
@@ -203,8 +185,9 @@ function AboutUs() {
                 Customers
               </h5>
               <p className="font-normal text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Possimus perferendis reprehenderit voluptates?
+                We acknowledge that every individual brings different
+                perspectives and capabilities to the team and a strong team is
+                built on high moral values and fair practice.
               </p>
             </Link>
             <Link
@@ -215,8 +198,11 @@ function AboutUs() {
                 Honesty
               </h5>
               <p className="font-normal text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Possimus perferendis reprehenderit voluptates?
+                Integrity is the foundation of everything we do. At PROVEN we
+                conduct our business with the highest standards of
+                professionalism, ethics, quality and fairness and develop
+                relationships based on trust. Our core values and philosophy are
+                the foundation for every business decision we make. 
               </p>
             </Link>
             <Link
@@ -227,8 +213,11 @@ function AboutUs() {
                 Our Mission
               </h5>
               <p className="font-normal text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Possimus perferendis reprehenderit voluptates?
+                To be a master class in inventive brilliance. We strive to bring
+                to fruition for our customers, the freedom from water-related
+                problems and peace of mind for good health through our wide
+                range of healthcare products that deliver impeccable standards
+                of quality and service.
               </p>
             </Link>
             <Link
@@ -239,8 +228,10 @@ function AboutUs() {
                 Team Work
               </h5>
               <p className="font-normal text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Possimus perferendis reprehenderit voluptates?
+                We are team players and team builders. We openly communicate
+                across all levels of organization because we believe that
+                success can be achieved through collective efforts committed to
+                achieving common defined goals.
               </p>
             </Link>
           </div>
@@ -250,14 +241,13 @@ function AboutUs() {
               Our Core Values
             </h2>
             <p className="mb-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              voluptates error quae expedita itaque quaerat, commodi, sequi
-              harum, tempore autem quos rem deserunt consectetur facilis?
+              To be a socially responsible brand making a difference in people’s
+              lives by affecting all- pervasive areas of their existence- water.
             </p>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis
-              amet ipsa id? Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Minima rem quod esse.
+              Our fundamental vision is defined by producing innovative
+              healthcare products that purify the water we drink, the food we
+              eat and the air we breathe, and thus help people live healthier.
             </p>
           </div>
         </div>

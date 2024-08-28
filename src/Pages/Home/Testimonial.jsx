@@ -117,10 +117,10 @@ function Testimonial() {
               key={index}
             >
               <div className="flex items-center">
-                <img
+                {/* <img
                   src="https://readymadeui.com/profile_2.webp"
                   className="w-10 h-10 rounded-full"
-                />
+                /> */}
                 <div className="ml-4">
                   <h4 className="text-gray-800 text-sm font-extrabold">
                     {testi.name}

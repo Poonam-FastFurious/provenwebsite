@@ -3,20 +3,26 @@ import { FaHome } from "react-icons/fa";
 import { MdCall, MdOutlineMailLock } from "react-icons/md";
 import { PiBuildings } from "react-icons/pi";
 import contactbanner from "../../assets/Images/analtsis.webp";
+import contactbgimage from "../../assets/Images/contactbgimage.jfif";
 function ContactUs() {
   return (
     <>
-      <div className="relative overflow-hidden h-[450px]">
-        <img
-          className="absolute left-0 top-0 w-full h-full opacity- object-cover"
-          src="https://s3-alpha-sig.figma.com/img/c927/1695/feb959553a8e29013ee7a58abe2d7d52?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NieXCR3u1hLi15thKCCq9mZF88LZ258meT5ttKOpIXfx0ukSMzWurFDBK8ftXPf2E0OLtuRo-6ViwasddfCZRcgGp1ninyrbsrfHjyK8M~qxMaVy09TOsv2AZ~6FCPNS965Ezd665bYz7Hdlgq6IHWln2ynhwWR-0Z9axq-SzdBwo0Bzcd2IK08us5XuzayB0~FbjhQ1I04vY45T9YAxWn4UQT2zOYFgI5FO66HADLLv4D-NfaiIkxTtRopClMJyrOuYJEQ7-ItkSapuh87vUviOmHHpeFDM4DTjfJoVJunhxYjh534lp-8F8PPOXQ5w5qpsC0UbVFpFo5322IDaeA__"
-          alt=""
-        />
-        <div className="absolute left-0 top-0 w-full h-full bg-gray-500 opacity-20"></div>
-        <div className="relative z-10 h-[250px] flex  items-center">
-          <h1 className="  text-AFPPrimary  font-bold text-6xl  absolute top-[200px] left-[380px]">
-            Contact US
-          </h1>
+      <div
+        className="relative overflow-hidden  bg-cover bg-no-repeat p-12 text-center"
+        style={{
+          "background-image": `url(${contactbgimage})`,
+          height: "400px",
+        }}
+      >
+        <div
+          className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
+          style={{ "background-color": "rgba(0, 0, 0, 0.6)" }}
+        >
+          <div className="flex h-full items-center justify-center">
+            <div className="text-white">
+              <h2 className="mb-4 text-4xl font-semibold">Contact Us</h2>
+            </div>
+          </div>
         </div>
       </div>
       <section className="py-24">
@@ -82,56 +88,66 @@ function ContactUs() {
           </div>
         </div>
       </section>
-      <div className="bg-white  xl:px-60 lg:mx-0 sm:px-0 md:px-0 px-0 items-center  lg:h-auto">
-        <div className="grid lg:grid-cols-3 items-center max-lg:justify-center gap-6 h-full sm:p-12 p-8 max-sm:p-4">
-          <div className="max-w-lg max-lg:mx-auto max-lg:text-center max-lg:mb-6">
-            <h2 className="text-xl font-extrabold text-gray-800">
-              FEEL FREE TO TALK TO US
-            </h2>
-            <p className="text-sm text-gray-600 mt-4 leading-relaxed">
-              Have a specific inquiry or looking to explore new opportunities?
-              Our experienced team is ready to engage with you.
-            </p>
 
-            <form className="mx-auto mt-8 bg-white rounded-lg p-6 shadow-md space-y-4">
-              <input
-                type="text"
-                placeholder="Name"
-                className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none"
-              />
-              <input
-                type="text"
-                placeholder="Subject"
-                className="w-full rounded-md h-12 px-6 bg-[#f0f1f2] text-sm outline-none"
-              />
-              <textarea
-                placeholder="Message"
-                rows="6"
-                className="w-full rounded-md px-6 bg-[#f0f1f2] text-sm pt-3 outline-none"
-              ></textarea>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14 text-center">
+          <h2 className="text-2xl text-center font-bold text-gray-900">
+            FEEL FREE TO TALK TO US
+          </h2>
+        </div>
+        <div className="w-full flex flex-wrap  max-[576px]:pt-[60px]">
+          <div className="min-[768px]:w-[50%] w-full px-[12px]">
+            <img
+              src={contactbanner}
+              className="h-full w-full mb-[-7px] border-[1px] border-solid border-[#eee] rounded-[5px] max-[767px]:h-[300px]"
+            ></img>
+          </div>
+          <div className="min-[768px]:w-[50%] w-full px-[12px]">
+            <form className="max-[767px]:mt-[50px]">
+              <div className="form-group mb-[30px]">
+                <input
+                  type="text"
+                  className="form-control py-[10px] px-[15px] border-[1px] border-solid border-[#eee] rounded-[5px] text-[15px] text-[#777] block w-full font-normal leading-[1.5]"
+                  id="fname"
+                  placeholder="Full Name"
+                />
+              </div>
+              <div className="form-group mb-[30px]">
+                <input
+                  type="email"
+                  className="form-control py-[10px] px-[15px] border-[1px] border-solid border-[#eee] rounded-[5px] text-[15px] text-[#777] block w-full font-normal leading-[1.5]"
+                  id="umail"
+                  placeholder="Email"
+                />
+              </div>
+              <div className="form-group mb-[30px]">
+                <input
+                  type="number"
+                  className="form-control py-[10px] px-[15px] border-[1px] border-solid border-[#eee] rounded-[5px] text-[15px] text-[#777] block w-full font-normal leading-[1.5]"
+                  id="phone"
+                  placeholder="Phone"
+                />
+              </div>
+              <div className="form-group mb-[30px]">
+                <textarea
+                  className="form-control py-[10px] px-[15px] border-[1px] border-solid border-[#eee] rounded-[5px] text-[15px] text-[#777] block w-full font-normal leading-[1.5]"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  placeholder="Message"
+                ></textarea>
+              </div>
               <button
-                type="button"
-                className="text-white  bg-AFPPrimary  font-semibold rounded-md text-sm px-6 py-3 block w-full"
+                type="submit"
+                className="gi-btn-2 transition-all duration-[0.3s] ease-in-out py-[10px] px-[15px] text-[14px] font-medium   bg-AFPPrimary text-[#fff] text-center rounded-[5px] hover:bg-[#4b5966] hover:text-[#fff]"
               >
-                Send Message
+                Submit
               </button>
             </form>
           </div>
-
-          <div className="z-10 relative lg:col-span-2">
-            <img
-              src={contactbanner}
-              className="w-3/4 object-contain block mx-auto"
-            />
-          </div>
         </div>
       </div>
-      <div className="bg-white  xl:px-60 lg:mx-0 sm:px-0 md:px-0 px-0 items-center  lg:h-auto pb-4">
+
+      <div className="bg-white pt-[80px] ">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d55986.544485233884!2d77.265536!3d28.714793000000004!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfc1f6f14d23f%3A0xd80245a480de6914!2sProven%20Water%20Industries%20Private%20Limited%20(Proven%20RO)!5e0!3m2!1sen!2sus!4v1718707692166!5m2!1sen!2sus"
           width="100%"

@@ -49,7 +49,7 @@ function Ordersuccess() {
                 </p>
               </div>
               <button className="rounded-full py-3 px-7 font-semibold text-sm leading-7 text-white  bg-AFPPrimary max-lg:mt-5 shadow-sm shadow-transparent transition-all duration-500">
-                <Link to="/profile"> View Order</Link>
+                <Link to="/orderlist"> View Order</Link>
               </button>
             </div>
           </div>

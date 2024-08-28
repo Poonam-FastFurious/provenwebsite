@@ -1,5 +1,28 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Baseurl } from "../../confige";
+
 /* eslint-disable react/no-unescaped-entities */
 function Faqs() {
+  const [openFaq, setOpenFaq] = useState(null);
+  const [faqs, setFaqs] = useState([]);
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      try {
+        const response = await axios.get(Baseurl + "/api/v1/faq/all");
+        if (response.data && response.data.data) {
+          setFaqs(response.data.data);
+        }
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      }
+    };
+
+    fetchFaqs();
+  }, []);
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
   return (
     <>
       <section className="bg-[#DEEDEA] w-[100%] mx-auto pt-8 container">
@@ -291,6 +314,36 @@ function Faqs() {
                 </clipPath>
               </defs>
             </svg>
+          </div>
+        </div>
+      </section>
+      <section className="gi-faq py-[40px] max-[767px]:py-[30px]">
+        <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
+          <div className="w-full flex flex-wrap">
+            {faqs.map((faq, index) => (
+              <div
+                key={faq._id}
+                className="min-[992px]:w-[50%] w-full px-[12px]"
+              >
+                <div className="gi-accordion style-1">
+                  <div className="gi-accordion-item border-[#eee] overflow-hidden mb-[10px]">
+                    <h4
+                      className="gi-accordion-header m-[0] py-[15px] pl-[30px] pr-[35px] bg-[#f8f8fb] text-[#4b5966] text-[16px] leading-[28px] font-medium relative font-Poppins border-[1px] border-solid border-[#eee] rounded-[5px] tracking-[0.01rem] max-[767px]:text-[15px]"
+                      onClick={() => toggleFaq(index)}
+                    >
+                      {faq.question}
+                    </h4>
+                    <div
+                      className={`gi-accordion-body py-[15px] text-[14px] text-[#777] leading-[24px] ${
+                        openFaq === index ? "" : "hidden"
+                      }`}
+                    >
+                      <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

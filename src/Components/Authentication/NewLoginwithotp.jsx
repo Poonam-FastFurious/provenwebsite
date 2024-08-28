@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Baseurl } from "../../confige";
-
+import logo from "../../assets/Images/logoproven.png";
 function NewLoginwithotp() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -11,9 +11,25 @@ function NewLoginwithotp() {
   });
   const navigate = useNavigate();
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    const { name, value } = e.target;
 
+    if (name === "mobile") {
+      const onlyNums = value.replace(/[^0-9]/g, "");
+      if (onlyNums.length > 10) return; // Prevent entering more than 10 digits
+      setFormData({
+        ...formData,
+        [name]: onlyNums,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+
+    // Clear the error for the current field when it's updated
+    setErrorMessage("");
+  };
   const validateMobile = (mobile) => {
     const regex = /^\d{10}$/; // Validate 10-digit mobile number
     return regex.test(mobile);
@@ -43,8 +59,13 @@ function NewLoginwithotp() {
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.message || "Request failed");
+        // Handle specific error messages from the server
+        if (data.message) {
+          throw new Error(data.message);
+        }
+        throw new Error("Request failed");
       }
+
       localStorage.setItem("Otpmobile", formData.mobile);
       setSuccessMessage("OTP sent to your mobile number!");
       setErrorMessage(""); // Clear any previous error message
@@ -52,8 +73,10 @@ function NewLoginwithotp() {
       // Reset form fields after successful request
       setFormData({ mobile: "" });
     } catch (error) {
-      console.error("Send OTP error:", error); // Handle error here
-      setErrorMessage(`An error occurred: ${error || "Please try again."}`);
+      console.error("Send OTP error:", error); // Log error for debugging
+
+      // Display specific error messages based on the error
+      setErrorMessage(error.message || "An error occurred while sending OTP.");
       setSuccessMessage(""); // Clear any previous success message
     } finally {
       setLoading(false);
@@ -70,11 +93,7 @@ function NewLoginwithotp() {
                 to="/"
                 className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
               >
-                <img
-                  className="w-16 mr-2"
-                  src="https://provenonline.in/wp-content/uploads/2023/04/Untitled-design-6.png"
-                  alt="logo"
-                />
+                <img className="w-16 mr-2" src={logo} alt="logo" />
               </Link>
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Sign in to your account
@@ -96,6 +115,13 @@ function NewLoginwithotp() {
                     className="bg-gray-50 border border-gray-300 mb-4 text-gray-900 sm:text-sm rounded-lg focus:ring-[#237DA2] focus:border-[#237DA2] block w-full p-2.5"
                     placeholder="Enter your mobile number"
                     required
+                    onInput={(e) => {
+                      // Restrict input to 10 characters
+                      if (e.target.value.length > 10) {
+                        e.target.value = e.target.value.slice(0, 10);
+                      }
+                    }}
+                    inputMode="numeric"
                   />
                 </div>
                 <button

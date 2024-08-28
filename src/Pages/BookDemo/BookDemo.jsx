@@ -24,10 +24,21 @@ function BookDemo() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
+
+    // Restrict contactNumber input to numeric values only, max 10 digits
+    if (name === "mobile") {
+      const onlyNums = value.replace(/[^0-9]/g, ""); // Remove any non-numeric characters
+      if (onlyNums.length > 10) return; // Prevent entering more than 10 digits
+      setFormData({
+        ...formData,
+        [name]: onlyNums,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: type === "checkbox" ? checked : value,
+      });
+    }
   };
 
   const validateForm = () => {
@@ -115,7 +126,7 @@ function BookDemo() {
                         name="name"
                         type="text"
                         placeholder="Enter Your Name"
-                        className={`py-2 px-4 md:px-5 w-full appearance-none border text-input text-xs lg:text-sm font-body placeholder-body min-h-12 transition duration-200 ease-in-out bg-white border-gray-300 focus:outline-none focus:border-heading h-11 md:h-12 ${
+                        className={`py-2 px-4 md:px-5 w-full appearance-none border text-input text-xs lg:text-sm font-body placeholder-body min-h-12 transition duration-200 ease-in-out bg-white  focus:outline-none focus:border-AFPPrimary rounded-lg  h-11 md:h-12 ${
                           errors.name ? "border-red-500" : ""
                         }`}
                         autoComplete="off"
@@ -142,7 +153,7 @@ function BookDemo() {
                         name="email"
                         type="email"
                         placeholder="Enter Your Email"
-                        className={`py-2 px-4 md:px-5 w-full appearance-none border text-input text-xs lg:text-sm font-body placeholder-body min-h-12 transition duration-200 ease-in-out bg-white border-gray-300 focus:outline-none focus:border-heading h-11 md:h-12 ${
+                        className={`py-2 px-4 md:px-5 w-full appearance-none border text-input text-xs lg:text-sm font-body placeholder-body min-h-12 transition duration-200 ease-in-out bg-white border-gray-300 focus:outline-none rounded-lg  focus:border-AFPPrimary h-11 md:h-12 ${
                           errors.email ? "border-red-500" : ""
                         }`}
                         autoComplete="off"
@@ -170,7 +181,7 @@ function BookDemo() {
                       name="mobile"
                       type="text"
                       placeholder="Enter Your mobile"
-                      className={`py-2 px-4 md:px-5 w-full appearance-none border text-input text-xs lg:text-sm font-body placeholder-body min-h-12 transition duration-200 ease-in-out bg-white border-gray-300 focus:outline-none focus:border-heading h-11 md:h-12 ${
+                      className={`py-2 px-4 md:px-5 w-full appearance-none border text-input text-xs lg:text-sm font-body placeholder-body min-h-12 transition duration-200 ease-in-out bg-white border-gray-300 focus:outline-none focus:border-AFPPrimary rounded-lg  h-11 md:h-12 ${
                         errors.mobile ? "border-red-500" : ""
                       }`}
                       autoComplete="off"
@@ -195,7 +206,7 @@ function BookDemo() {
                     <input
                       id="message"
                       name="pincode"
-                      className={`px-4 py-3 flex items-center w-full appearance-none transition duration-300 ease-in-out text-heading text-sm focus:ring-0 bg-white border border-gray-300 focus:shadow focus:outline-none focus:border-heading placeholder-body ${
+                      className={`px-4 py-3 flex items-center w-full appearance-none transition duration-300 ease-in-out text-heading text-sm focus:ring-0 bg-white border rounded-lg  border-gray-300 focus:shadow focus:outline-none focus:border-AFPPrimary placeholder-body ${
                         errors.pincode ? "border-red-500" : ""
                       }`}
                       autoComplete="off"
@@ -206,12 +217,12 @@ function BookDemo() {
                       onChange={handleChange}
                     ></input>
                     {errors.pincode && (
-                      <p className="text-red-500 text-xs mt-1">
+                      <p className="text-red-500 text-xs mt-4">
                         {errors.pincode}
                       </p>
                     )}
 
-                    <div className="max-w-full  mx-auto">
+                    <div className="max-w-full  py-3 mx-auto">
                       <label
                         htmlFor="countries"
                         className="block mb-2 text-sm font-medium text-gray-900 "
@@ -220,16 +231,16 @@ function BookDemo() {
                       </label>
                       <select
                         id="countries"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        className="bg-gray-50 py-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-AFPPrimary focus:border-AFPPrimary block w-full p-2.5 "
                         value={formData.product}
                         onChange={handleChange}
                         name="product"
                       >
-                        <option selected>Choose Ro</option>
+                        <option value="">Choose Ro</option>
                         <option value="Domestic Ro">Domestic Ro</option>
-                        <option value="Domestic Ro">Domestic Ro</option>
+                        <option value="Spare Part">Spare Part</option>
                         <option value="Domestic Ro">Home & Kitchen</option>
-                        <option value="Domestic Ro">Demo</option>
+                        <option value="Other">Other</option>
                       </select>
                       <div className="flex items-center mb-4 mt-4 ">
                         <input
@@ -238,7 +249,7 @@ function BookDemo() {
                           name="receiveEmails"
                           checked={formData.receiveEmails}
                           onChange={handleChange}
-                          className="w-4 h-4 text-blue-600   border-gray-300 rounded focus:ring-blue-500 "
+                          className="w-4 h-4 text-AFPPrimary   border-gray-300 rounded focus:ring-AFPPrimary "
                         />
                         <label
                           htmlFor="default-checkbox"
@@ -250,10 +261,10 @@ function BookDemo() {
                       </div>
                       <div className="relative">
                         <button
-                          className="text-[13px] md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-body text-center justify-center border-0 border-transparent placeholder-white focus-visible:outline-none focus:outline-none  bg-AFPPrimary text-white px-5 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white hover:bg-gray-600 hover:shadow-cart h-12 lg:h-14 mt-1 text-sm lg:text-base w-full sm:w-auto"
+                          className="text-[13px] md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-body text-center justify-center border-0 border-transparent placeholder-white focus-visible:outline-none focus:outline-none  bg-AFPPrimary text-white px-5 md:px-6 lg:px-4 py-4 md:py-3.5 lg:py-4 hover:text-white  h-12 lg:h-14 mt-1 text-sm lg:text-base w-full sm:w-auto rounded-md"
                           type="submit"
                         >
-                          BOOK Demo
+                          BOOK DEMO
                         </button>
                         {successMessage && (
                           <p className="text-sm text-green-500 mt-2">

@@ -1,6 +1,6 @@
 import { BsCartCheck } from "react-icons/bs";
 import { CiShop, CiViewList } from "react-icons/ci";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser, FaWhatsapp } from "react-icons/fa";
 import { IoLockOpenOutline } from "react-icons/io5";
 import {
   MdCall,
@@ -10,16 +10,38 @@ import {
   MdPayment,
 } from "react-icons/md";
 import Certificate from "../Home/Certificate";
-
+import { Link } from "react-router-dom";
+import bgimage from "../../assets/Images/suportbg.jfif";
+import bgimage1 from "../../assets/Images/suportimage.png";
 /* eslint-disable no-irregular-whitespace */
 function Suport() {
+  const handleWhatsappClick = () => {
+    // Replace with your phone number
+    const phoneNumber = "18005323367";
+    // Optional: Replace with your custom message
+    const message = "Hello, I need assistance with my service request.";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(url, "_blank");
+  };
+  const handleCallClick = () => {
+    // Replace with your phone number
+    const phoneNumber = "1800-532-3367";
+    window.location.href = `tel:${phoneNumber}`;
+  };
+
+  const handleEmailClick = () => {
+    // Replace with your email address
+    const emailAddress = "Support@Proven.com";
+    window.location.href = `mailto:${emailAddress}`;
+  };
   return (
     <>
       <div
         className="relative overflow-hidden   bg-cover bg-no-repeat p-12 text-center"
         style={{
-          "background-image":
-            "url('https://s3-alpha-sig.figma.com/img/f481/9791/c00ba055ffdbcfb5a62900ce374afbc2?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jgWTVOOoWsS3YlMebApeFO1tVynCOorn5hvsMFtv7L5Z0O7Ls-C6qlaPHpTEBEcJlmCkptzMHPLLQZCYrYyyyUf5MkwpktpiHefLDUhBunt2U7LfeAo5wrb7uulhgwJ6Pd-wGnzYflhHPeEw-p5Sa1KLeManEqe8xXj1V68pthnXRNHkviDNC7lf2LocJaQLwnI-GvmElnQ-HOQmSENZialUGguCfHz5phm2LeIlAVz8HcOXxqS7OAIq~acqInVBPI9oCAb8K0m09LhNVRUA7thNahG2l2HTuI~-ssz55ZpSeewrblRxu33yjlKm9HCGFU93OrbJtXTTownNE~B0nA__')",
+          "background-image": `url(${bgimage})`,
           height: "540px",
         }}
       ></div>
@@ -37,55 +59,32 @@ function Suport() {
             </div>
 
             <div className="flex justify-center mb-4">
-              <button className="text-green-500 hover:text-green-700">
-                <i className="fas fa-comments fa-3x"></i>
+              <button
+                className="text-green-500 hover:text-green-700"
+                onClick={handleWhatsappClick}
+              >
+                <i className="fas fa-comments fa-3x">
+                  <FaWhatsapp className=" text-2xl" />
+                </i>
               </button>
             </div>
 
             <div className="text-center mb-4">
               <p className="text-gray-800">or</p>
-              <a
-                href="mailto:support@proven.com"
+              <Link
+                to="mailto:support@proven.com"
                 className="text-blue-600 hover:underline"
               >
                 E-mail: Support@Proven.com
-              </a>
+              </Link>
             </div>
-
-            <div className="text-center">
-              <p className="text-gray-800">or</p>
-              <p className="font-bold text-black text-xl">Escalation Matrix</p>
-              <p className="text-gray-600 mt-2">
-                In case your Service Request is not addressed properly, please
-                get in touch with the Escalation Matrix below.
-              </p>
-            </div>
-
-            <form className="mt-6 flex items-center justify-center">
-              <input
-                type="text"
-                placeholder="Please Enter your Case Id"
-                className="border border-gray-300 rounded-l-full py-2 px-4 w-full max-w-md focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="bg-blue-600 text-white py-2 px-6 rounded-r-full hover:bg-blue-700 focus:outline-none"
-              >
-                Submit
-              </button>
-            </form>
-
-            <p className="text-gray-500 text-center mt-2">Eg: 2105047-689</p>
           </div>
         </div>
       </section>
       <div className="container relative md:mt-24 mt-16 ">
         <div className="grid md:grid-cols-12 grid-cols-1 items-center gap-6">
           <div className="lg:col-span-5 md:col-span-6 md:order-2 order-1">
-            <img
-              src="https://s3-alpha-sig.figma.com/img/eb25/e7a2/08b91723b76aa02b85398d72e37a24c7?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H4~BgN~sNVNc9yhk8Ei~dGmojNn19xfMa3F1Y3H8Y7qvTMovYuNmqXRkXcRCGBgHtKPJ0cTqVeCG93zWGSmu-lrZrmURoPZzbTef9crqhKTZ7SCSOChGtvaw4tPY8J8aAiYSuv2Y65CUtkZOqXH7MG9oa5SNjk-enpCLKleZU6uaimrMJH1AciO8NOqDSRGBhupWKx0RmD8LnSNxldgQ0SkvuO0nK1oSYwVliIWnsz~XdlSqMmYZKkkryiFsxVFb~6UVlsxQjOGDasltS0paHbpWXi4PHY6yhDdT6Lwq-xr282juVe37fn9yvvGSnrqNbEWEog57WcjoYWiikekO7Q__"
-              alt=""
-            />
+            <img src={bgimage1} alt="" />
           </div>
 
           <div className="lg:col-span-7 md:col-span-6 md:order-1 order-2">
@@ -204,7 +203,10 @@ function Suport() {
         <div className="grid sm:grid-cols-2 gap-6 max-w-6xl mx-auto">
           <div className="bg-white flex gap-6 max-lg:flex-col rounded-2xl md:p-8 p-6 shadow-[0_-4px_24px_-8px_rgba(0,0,0,0.2)]">
             <h3 className="text-5xl font-extrabold">
-              <div className=" bg-AFPPrimaryLight rounded-lg flex justify-center items-center mb-5 w-20 h-20 mx-auto cursor-pointer transition-all duration-500 ">
+              <div
+                onClick={handleCallClick}
+                className=" bg-AFPPrimaryLight rounded-lg flex justify-center items-center mb-5 w-20 h-20 mx-auto cursor-pointer transition-all duration-500 "
+              >
                 <MdCall className=" text-4xl" />
               </div>
             </h3>
@@ -214,12 +216,15 @@ function Suport() {
                 we are available online from 9:00 AM to 5:00 PM (GMT95:45) Talk
                 with use now
               </p>
-              <span className=" mt-8 font-bold ">9876543210</span>
+              <span className=" mt-8 font-bold ">1800-532-3367</span>
             </div>
           </div>
           <div className="bg-white flex gap-6 max-lg:flex-col rounded-2xl md:p-8 p-6 shadow-[0_-4px_24px_-8px_rgba(0,0,0,0.2)]">
             <h3 className="text-5xl font-extrabold">
-              <div className=" bg-AFPPrimaryLight rounded-lg flex justify-center items-center mb-5 w-20 h-20 mx-auto cursor-pointer transition-all duration-500 ">
+              <div
+                className=" bg-AFPPrimaryLight rounded-lg flex justify-center items-center mb-5 w-20 h-20 mx-auto cursor-pointer transition-all duration-500 "
+                onClick={handleEmailClick}
+              >
                 <MdOutlineMailLock className=" text-4xl" />
               </div>
             </h3>
