@@ -39,6 +39,8 @@ const AccordionItem = ({ title, children }) => {
   );
 };
 function Navbar() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   const [category, setCategory] = useState([]);
   const [isTokenExpired, setIsTokenExpired] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -46,7 +48,9 @@ function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -512,15 +516,12 @@ function Navbar() {
                         </div>
                       </Link>
 
-                      <Link
-                        to="#"
-                        data-drawer-target="drawer-navigation"
-                        data-drawer-show="drawer-navigation"
-                        aria-controls="drawer-navigation"
+                      <button
+                        onClick={toggleDrawer}
                         className=" gi-site-menu-icon transition-all duration-[0.3s] ease-in-out  flex text-[#4b5966]"
                       >
                         <i className="fi-rr-menu-burger text-[24px] leading-[17px] sm:hidden md:hidden lg:hidden  hide-on-mobile menudemo"></i>
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -532,7 +533,9 @@ function Navbar() {
 
       <div
         id="drawer-navigation"
-        className="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-64 "
+        className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${
+          isDrawerOpen ? "translate-x-0" : "-translate-x-full"
+        } bg-white w-64`}
         tabIndex="-1"
         aria-labelledby="drawer-navigation-label"
       >
@@ -544,8 +547,7 @@ function Navbar() {
         </h5>
         <button
           type="button"
-          data-drawer-hide="drawer-navigation"
-          aria-controls="drawer-navigation"
+          onClick={toggleDrawer}
           className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center "
         >
           <svg
