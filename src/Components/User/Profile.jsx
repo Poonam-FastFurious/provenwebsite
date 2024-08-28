@@ -261,7 +261,20 @@ function Profile() {
         });
         // Optionally, you can update the state to remove the deleted address from the list
         setAddresses(addresses.filter((address) => address._id !== id));
-        Swal.fire("Deleted!", "Your address has been deleted.", "success");
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your address has been deleted.",
+          icon: "success",
+          confirmButtonText: "OK",
+          customClass: {
+            confirmButton: "custom-confirm-button",
+          },
+          didRender: () => {
+            const confirmButton = Swal.getConfirmButton();
+            confirmButton.style.backgroundColor = "#267FA3";
+            confirmButton.style.color = "white";
+          },
+        });
       } catch (error) {
         console.error("Error deleting address:", error);
         Swal.fire(

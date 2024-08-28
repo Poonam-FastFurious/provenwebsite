@@ -5,7 +5,7 @@ import Certificate from "../Home/Certificate";
 import bgimg from "../../assets/Images/aboutus.jfif";
 import bgimg1 from "../../assets/Images/about1.jpeg";
 import bgimg2 from "../../assets/Images/about2.jpeg";
-import bgimg3 from "../../assets/Images/about3.jpeg";
+import bgimg3 from "../../assets/Images/about3.png";
 function AboutUs() {
   return (
     <>

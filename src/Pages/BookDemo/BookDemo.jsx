@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Baseurl } from "../../confige";
-
+import image from "../../assets/Images/Bookdemo.jpeg";
 function BookDemo() {
   const [successMessage, setSuccessMessage] = useState("");
   const [formData, setFormData] = useState({
@@ -97,7 +97,7 @@ function BookDemo() {
             <div className="absolute inset-0 bg-gradient-to-tr from-slate-300 to-slate-800">
               <img
                 className="h-full w-full   object-full object-top "
-                src="https://img.freepik.com/free-vector/water-filter-realistic-with-faucet-full-glass-vector-illustration_1284-76637.jpg?t=st=1720761230~exp=1720764830~hmac=c3ac13ead9f325289541b0202169ee8e66a2abfeec46fb99d3df167c7b501231&w=740"
+                src={image}
                 alt=""
               />
             </div>
@@ -126,7 +126,7 @@ function BookDemo() {
                         name="name"
                         type="text"
                         placeholder="Enter Your Name"
-                        className={`py-2 px-4 md:px-5 w-full appearance-none border text-input text-xs lg:text-sm font-body placeholder-body min-h-12 transition duration-200 ease-in-out bg-white  focus:outline-none focus:border-AFPPrimary rounded-lg  h-11 md:h-12 ${
+                        className={`py-2 px-4 md:px-5 w-full appearance-none border text-input text-xs lg:text-sm font-body placeholder-body min-h-12 transition duration-200 ease-in-out bg-white  border-gray-300 focus:outline-none focus:border-AFPPrimary rounded-lg  h-11 md:h-12 ${
                           errors.name ? "border-red-500" : ""
                         }`}
                         autoComplete="off"

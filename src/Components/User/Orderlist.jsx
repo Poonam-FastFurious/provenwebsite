@@ -149,7 +149,7 @@ function Orderlist() {
                 ))}
               </div>
             </div>
-            <div className="mt-6 flex justify-end">
+            <div className="my-6 flex justify-end">
               <nav
                 className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
                 aria-label="Pagination"

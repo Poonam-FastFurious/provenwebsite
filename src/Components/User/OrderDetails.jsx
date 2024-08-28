@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Baseurl } from "../../confige";
 import Swal from "sweetalert2";
+import Loader from "../Specific/Loader";
 
 function OrderDetails() {
   const [order, setOrder] = useState(null);
@@ -25,7 +26,11 @@ function OrderDetails() {
   }, [id]);
 
   if (!order) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
   const handleTrackOrderClick = () => {
     if (order && order.shippingInfo && order.shippingInfo.shippingLink) {
@@ -33,7 +38,10 @@ function OrderDetails() {
       window.open(`${order.shippingInfo.shippingLink}`, "_blank");
     } else {
       // Show alert if shippingLink is null
-      Swal.fire("Your order status not cahnge yet .");
+      Swal.fire({
+        title: "Your order status not changed yet.",
+        confirmButtonColor: "#267FA3", // This sets the background color of the OK button to red
+      });
     }
   };
 
@@ -74,7 +82,7 @@ function OrderDetails() {
                       to="#"
                       className="min-w-0 flex-1 font-medium text-gray-900 hover:underline"
                     >
-                      {productItem.product?.name}
+                      {productItem.product?.title}
                     </Link>
                   </div>
 
@@ -113,7 +121,11 @@ function OrderDetails() {
                       Shipping Address:
                     </dt>
                     <dd className="font-medium text-gray-900 ">
-                      {order.shippingInfo.address}
+                      {order.shippingInfo.address?.streetAddress} <br />
+                      {order.shippingInfo.address?.city} <br />
+                      {order.shippingInfo.address?.state} <br />
+                      {order.shippingInfo.address?.postalCode} <br />
+                      {order.shippingInfo.address?.addressType} <br />
                     </dd>
                   </dl>
                 </div>
