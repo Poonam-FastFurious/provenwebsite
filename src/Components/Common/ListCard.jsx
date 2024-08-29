@@ -89,8 +89,8 @@ function ListCard({ products }) {
                 <div className="gi-product-inner transition-all duration-[0.3s] ease-in-out cursor-pointer flex flex-row overflow-hidden border-[1px] border-solid border-[#eee] rounded-[5px] max-[767px]:flex-col">
                   <div className="gi-pro-image-outer transition-all duration-[0.3s] ease delay-[0s] z-[11] relative max-w-[270px] bg-[#fff] flex items-center max-[767px]:max-w-full">
                     <div className="gi-pro-image overflow-hidden">
-                      <a
-                        href="product-left-sidebar.html"
+                      <Link
+                        to={`/Product/${products._id}`}
                         className="image relative block overflow-hidden pointer-events-none transition-all duration-[0.3s] ease-in-out"
                       >
                         <span className="label veg max-[991px]:hidden">
@@ -106,9 +106,14 @@ function ListCard({ products }) {
                           src={products.image}
                           alt="Product"
                         />
-                      </a>
+                      </Link>
+                      <span className="flags flex flex-col p-[0] uppercase absolute top-[10px] right-[10px] z-[2]">
+                        <span className="sale py-[5px] px-[10px] text-[11px] font-medium leading-[12px] text-left uppercase flex items-center  bg-AFPPrimary text-[#fff] tracking-[0.5px] relative rounded-[5px]">
+                          -{products.discount}%
+                        </span>
+                      </span>
                       <div className="gi-pro-actions transition-all duration-[0.3s] ease-in-out absolute z-[9] left-[0] right-[0] bottom-[-10px] max-[991px]:opacity-[1] max-[991px]:bottom-[10px] flex flex-row items-center justify-center my-[0] mx-auto opacity-[0]">
-                        <a
+                        <Link
                           className="gi-btn-group wishlist transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90]"
                           title="Wishlist"
                         >
@@ -117,17 +122,17 @@ function ListCard({ products }) {
                             onClick={() => addToWishlist(products._id)}
                             disabled={loading}
                           ></i>
-                        </a>
-                        <a
-                          href="javascript:void(0)"
+                        </Link>
+                        <Link
+                          to="#"
                           className="gi-btn-group modal-toggle quickview transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90]"
                           onClick={toggleQuickview}
                         >
                           <i className="fi-rr-eye transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"></i>
-                        </a>
+                        </Link>
 
-                        <a
-                          href="javascript:void(0)"
+                        <Link
+                          to="#"
                           title="Add To Cart"
                           className="gi-btn-group add-to-cart transition-all duration-[0.3s] ease-in-out w-[30px] h-[30px] mx-[2px] flex items-center justify-center text-[#fff] bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[5px] hover:bg-[#5caf90]"
                         >
@@ -135,23 +140,23 @@ function ListCard({ products }) {
                             onClick={() => addToCart(products._id)}
                             className="fi-rr-shopping-basket transition-all duration-[0.3s] ease-in-out text-[#777] leading-[10px]"
                           ></i>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
                   <div className="gi-pro-content h-full p-[20px] relative z-[10] flex flex-col text-left border-l-[1px] border-solid border-[#eee] justify-center">
-                    <a href="shop-left-sidebar-col-3.html">
+                    <Link to={`/Product/${products._id}`}>
                       <h6 className="gi-pro-stitle mb-[10px] font-normal text-[#999] text-[13px] capitalize font-manrope tracking-[0.01rem] leading-[1.2]">
                         {products.categories}
                       </h6>
-                    </a>
+                    </Link>
                     <h5 className="gi-pro-title h-auto mb-[10px] text-[16px] tracking-[0.01rem] font-normal leading-[1.2]">
-                      <a
-                        href="product-left-sidebar.html"
+                      <Link
+                        to={`/Product/${products._id}`}
                         className="text-[#4b5966] block text-[16px] leading-[22px] font-normal tracking-[0.85px] capitalize font-Poppins"
                       >
                         {products.title}
-                      </a>
+                      </Link>
                     </h5>
 
                     <div className="gi-pro-rat-price mt-[5px] mb-[0] flex flex-col">
@@ -207,7 +212,7 @@ function ListCard({ products }) {
                       <div className="quickview-pro-content">
                         <h5 className="gi-quick-title">
                           <Link
-                            to="/detail"
+                            to={`/Product/${products._id}`}
                             className="mb-[15px] block text-[#4b5966] text-[22px] leading-[1.5] font-medium max-[991px]:text-[20px]"
                           >
                             {products.title}
