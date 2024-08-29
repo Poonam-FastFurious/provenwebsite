@@ -300,7 +300,7 @@ function SerchPage() {
                         <div className="quickview-pro-content">
                           <h5 className="gi-quick-title">
                             <Link
-                              to="product-left-sidebar.html"
+                              to="#"
                               className="mb-[15px] block text-[#4b5966] text-[22px] leading-[1.5] font-medium max-[991px]:text-[20px]"
                             >
                               {selectedProduct.title}
