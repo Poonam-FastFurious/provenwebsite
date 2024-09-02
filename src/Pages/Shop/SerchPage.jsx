@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Baseurl } from "../../confige";
-
+import noproductfound from "../../assets/Images/noproductfound.jpg";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -111,6 +111,8 @@ function SerchPage() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
+        setProducts([]); // Clear previous products before fetching new ones
+        setError(null); //
         const response = await axios.get(
           `${Baseurl}/api/v1/Product/searchproduct`,
           {
@@ -136,7 +138,7 @@ function SerchPage() {
   }, [query]);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+
   return (
     <>
       <div>
@@ -265,6 +267,16 @@ function SerchPage() {
                       ))}
                     </div>
                   </div>
+                  {products.length === 0 && !loading && error && (
+                    <div className="no-products-found text-center">
+                      <p className="text-red-500">{error}</p>
+                      <img
+                        src={noproductfound}
+                        alt="No Products Found"
+                        className="mx-auto h-80"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

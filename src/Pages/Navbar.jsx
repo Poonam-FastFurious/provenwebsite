@@ -97,13 +97,17 @@ function Navbar() {
     fetch(Baseurl + "/api/v1/category/allcategory")
       .then((response) => response.json())
       .then((data) => {
-        // Assuming data is an array of image URLs
-        setCategory(data.data);
+        // Filter out categories with the title "Spare Parts"
+        const filteredCategories = data.data.filter(
+          (cat) => cat.categoriesTitle !== "Spare Parts"
+        );
+        setCategory(filteredCategories);
       })
       .catch((error) => {
-        console.error("Error fetching images:", error);
+        console.error("Error fetching categories:", error);
       });
   }, []);
+
   const handleLogout = async () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
