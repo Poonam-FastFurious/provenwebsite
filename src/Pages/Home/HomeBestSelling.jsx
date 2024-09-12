@@ -36,8 +36,18 @@ function HomeBestSelling({ heading = "add on" }) {
 
   useEffect(() => {
     fetch(Baseurl + "/api/v1/Product/products")
-      .then((responce) => responce.json())
-      .then((data) => setProduct(data.data));
+      .then((response) => response.json())
+      .then((data) => {
+        // Assuming data is an array of objects with properties like tag, price, description, title, offprice
+        const filteredProducts = data.data.filter(
+          (product) => product.categories === "Domestic Ro"
+        );
+
+        setProduct(filteredProducts); // Store filtered data in state
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
   const addToCart = async (productId) => {
     try {

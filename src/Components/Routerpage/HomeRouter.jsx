@@ -33,6 +33,7 @@ import ReturnPolicy from "../../Pages/ReturnPolicy/ReturnPolicy";
 import Client from "../../Pages/ClientPage/Client";
 import Privacypolicy from "../../Pages/Privacypolicy/Privacypolicy";
 import Orderlist from "../User/Orderlist";
+import Certificate from "../../Pages/Home/Certificate";
 
 function HomeRouter() {
   return (
@@ -48,8 +49,8 @@ function HomeRouter() {
           <Route path="/Spare_Parts" element={<ShaprePart />} />
           <Route path="/Productctegory/:id" element={<WaterPurefire />} />
           <Route path="/Product/:id" element={<Productdetailswitvedio />} />
+          <Route path="/certifications" element={<Certificate />} />
           <Route path="/products" element={<SerchPage />} />
-          {/* <Route path="/forgotpassword" element={<Forgotpassword />} /> */}
           <Route
             path="/Reset-password/:id/:token"
             element={<Resetpassword />}
@@ -59,7 +60,7 @@ function HomeRouter() {
             element={
               <ProtectedRoute element={<NewLoginwithotp />} redirectTo="/" />
             }
-          />{" "}
+          />
           <Route
             path="/Otp"
             element={<ProtectedRoute element={<Otp />} redirectTo="/" />}

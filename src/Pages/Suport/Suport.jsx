@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { BsCartCheck } from "react-icons/bs";
 import { CiShop, CiViewList } from "react-icons/ci";
 import { FaRegUser, FaWhatsapp } from "react-icons/fa";
@@ -9,11 +10,11 @@ import {
   MdOutlineMailLock,
   MdPayment,
 } from "react-icons/md";
-import Certificate from "../Home/Certificate";
+
 import { Link } from "react-router-dom";
 import bgimage from "../../assets/Images/suportbg.jfif";
 import bgimage1 from "../../assets/Images/suportimage.png";
-/* eslint-disable no-irregular-whitespace */
+import Newcertificate from "../Home/Newcertificate";
 function Suport() {
   const handleWhatsappClick = () => {
     // Replace with your phone number
@@ -239,7 +240,7 @@ function Suport() {
           </div>
         </div>
       </div>
-      <Certificate />
+      <Newcertificate />
     </>
   );
 }

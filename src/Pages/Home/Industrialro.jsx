@@ -6,7 +6,7 @@ import handleAddToWishlist from "../../Components/Utilty/wishlistUtils";
 import { IoCartOutline } from "react-icons/io5";
 
 /* eslint-disable react/no-unescaped-entities */
-function Newproducts() {
+function Industrialro() {
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -36,14 +36,22 @@ function Newproducts() {
   };
 
   useEffect(() => {
+    // Simulating fetching data from API
     fetch(Baseurl + "/api/v1/Product/products")
       .then((response) => response.json())
       .then((data) => {
-        // Sort products by createdAt field in descending order (latest first)
-        const sortedProducts = data.data.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        // Filter products by category "spare part"
+        const filteredProducts = data.data.filter(
+          (product) => product.categories === "Industrial Ro"
         );
-        setProduct(sortedProducts);
+
+        // Store filtered data in state
+        setProduct(filteredProducts);
+
+        // Extract tags from filtered products
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }, []);
   const addToCart = async (productId) => {
@@ -123,19 +131,24 @@ function Newproducts() {
         data-wow-duration="2s"
       >
         <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
-          <div className="gi-tab-title w-full inline-flex justify-between px-[12px] max-[991px]:flex-col">
-            <div className="gi-main-title">
-              <div className="section-title mb-[20px] pb-[20px] flex flex-start">
-                <div className="section-detail">
-                  <h2 className="gi-title mb-[0] text-[25px] max-[991px]:text-[24px] max-[767px]:text-[22px] max-[575px]:text-[20px] font-semibold text-[#4b5966] relative inline p-[0] capitalize leading-[1] font-manrope tracking-[0.01rem]">
-                    New <span className=" text-AFPPrimary">Arrivals</span>
-                  </h2>
-                  <p className="max-w-[400px] mt-[10px] text-[14px] text-[#777] leading-[18px] font-light">
-                    Shop online for new arrivals and get free shipping!
-                  </p>
-                </div>
-              </div>
+          <div className="section-title w-full mb-[20px]  flex justify-between pb-[20px] z-[5] max-[575px]:flex-col px-[12px]">
+            <div className="section-detail">
+              <h2 className="gi-title mb-[0] text-[25px] font-semibold text-[#4b5966] relative inline p-[0] capitalize leading-[1] font-manrope max-[991px]:text-[24px] max-[767px]:text-[22px] max-[575px]:text-[20px]">
+                Industrial <span className="text-[#5caf90]">RO</span>
+              </h2>
+              <p className="max-w-[400px] mt-[10px] text-[14px] text-[#777] leading-[18px]">
+                Shop online for new arrivals and get free shipping!
+              </p>
             </div>
+            <span className="title-link flex flex-end max-[575px]:mt-[15px]">
+              <Link
+                to="/Productctegory/Industrial Ro"
+                className="max-[575px]:text-[14px] text-[#777] flex items-center"
+              >
+                All Products
+                <i className="fi-rr-angle-double-small-right transition-all duration-[0.3s] ease-in-out h-[18px] ml-[10px] text-[#777]"></i>
+              </Link>
+            </span>
           </div>
 
           <div className="w-full flex flex-wrap mb-[-24px]">
@@ -248,6 +261,7 @@ function Newproducts() {
           </div>
         </div>
       </section>
+
       {quickview && (
         <div className="fixed z-50 inset-0 flex items-center justify-center overflow-hidden">
           <div className="gi-modal-overlay w-full h-screen  fixed top-0 left-0 z-[30] bg-[#000000b3]"></div>
@@ -326,4 +340,4 @@ function Newproducts() {
   );
 }
 
-export default Newproducts;
+export default Industrialro;

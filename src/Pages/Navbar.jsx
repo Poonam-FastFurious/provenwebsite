@@ -48,6 +48,11 @@ function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const [activeMenu, setActiveMenu] = useState(null);
+
+  const handleMenuClick = (menuName) => {
+    setActiveMenu(menuName);
+  };
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
@@ -183,10 +188,17 @@ function Navbar() {
                       <div className="basis-auto w-full self-center">
                         <div className="gi-main-menu flex">
                           <ul className="w-full flex justify-center flex-wrap pl-[0]">
-                            <li className="dropdown drop-list static ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px]">
+                            <li
+                              className={`dropdown drop-list static ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                                activeMenu === "Water-purifier" ? "active" : ""
+                              }`}
+                            >
                               <Link
                                 to="/Water-purifier"
                                 className="dropdown-arrow relative transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
+                                onClick={() =>
+                                  handleMenuClick("Water-purifier")
+                                }
                               >
                                 Water Purifiers
                               </Link>
@@ -266,44 +278,72 @@ function Navbar() {
                                 </li>
                               </ul>
                             </li>
-                            <li className="dropdown drop-list static ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px]">
+                            <li
+                              className={`dropdown drop-list static ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                                activeMenu === "Book-Demo" ? "active" : ""
+                              }`}
+                            >
                               <Link
                                 to="/Book-Demo"
                                 className="dropdown-arrow relative transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
+                                onClick={() => handleMenuClick("Book-Demo")}
                               >
                                 Book Demo
                               </Link>
                             </li>
-                            <li className="dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px]">
+                            <li
+                              className={`dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                                activeMenu === "Spare-Parts" ? "active" : ""
+                              }`}
+                            >
                               <Link
                                 to="/Spare_Parts"
                                 className="dropdown-arrow relative transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
+                                onClick={() => handleMenuClick("Spare-Parts")}
                               >
                                 Spare Parts
                               </Link>
                             </li>
-                            <li className="dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px]">
+                            <li
+                              className={`dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                                activeMenu === "AboutUs" ? "active" : ""
+                              }`}
+                            >
                               <Link
                                 to="/AboutUs"
                                 className="dropdown-arrow relative transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
+                                onClick={() => handleMenuClick("AboutUs")}
                               >
                                 About Us
                               </Link>
                             </li>
-                            <li className="dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px]">
+                            <li
+                              className={`dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                                activeMenu === "Client" ? "active" : ""
+                              }`}
+                            >
                               <Link
                                 to="/Client"
                                 className="dropdown-arrow relative transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
+                                onClick={() => handleMenuClick("Client")}
                               >
                                 Client
                               </Link>
                             </li>
                             <li className="non-drop mx-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:mx-[15px]">
                               <Link
-                                to="/Support"
+                                to="#"
                                 className="transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
                               >
-                                Support
+                                Hydrogen-Water
+                              </Link>
+                            </li>
+                            <li className="non-drop mx-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:mx-[15px]">
+                              <Link
+                                to="#"
+                                className="transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
+                              >
+                                Copper-Water
                               </Link>
                             </li>
                           </ul>
