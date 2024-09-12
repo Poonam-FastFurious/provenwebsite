@@ -332,7 +332,7 @@ function Navbar() {
                             </li>
                             <li className="non-drop mx-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:mx-[15px]">
                               <Link
-                                to="#"
+                                to="/Hydrogen-Water"
                                 className="transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
                               >
                                 Hydrogen-Water
@@ -340,7 +340,7 @@ function Navbar() {
                             </li>
                             <li className="non-drop mx-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:mx-[15px]">
                               <Link
-                                to="#"
+                                to="/Copper-Water"
                                 className="transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
                               >
                                 Copper-Water

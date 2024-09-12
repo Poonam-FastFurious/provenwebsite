@@ -156,7 +156,7 @@ function SpareParts() {
               <div className="tab-content">
                 <div className="tab-pro-pane" id="all">
                   <div className="w-full flex flex-wrap">
-                    {product.slice(0, 10).map((pro, index) => (
+                    {product.slice(0, 5).map((pro, index) => (
                       <div
                         key={index}
                         className="min-[1200px]:w-[20%] min-[768px]:w-[33.33%] min-[576px]:w-[50%] max-[575px]:w-[50%] max-[480px]:w-full px-[12px]"

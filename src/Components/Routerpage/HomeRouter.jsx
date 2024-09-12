@@ -34,6 +34,8 @@ import Client from "../../Pages/ClientPage/Client";
 import Privacypolicy from "../../Pages/Privacypolicy/Privacypolicy";
 import Orderlist from "../User/Orderlist";
 import Certificate from "../../Pages/Home/Certificate";
+import Hydrogen from "../../Pages/HydrogenWater/Hydrogen";
+import Copper from "../../Pages/Copper/Copper";
 
 function HomeRouter() {
   return (
@@ -50,6 +52,8 @@ function HomeRouter() {
           <Route path="/Productctegory/:id" element={<WaterPurefire />} />
           <Route path="/Product/:id" element={<Productdetailswitvedio />} />
           <Route path="/certifications" element={<Certificate />} />
+          <Route path="/Hydrogen-Water" element={<Hydrogen />} />
+          <Route path="/Copper-Water" element={<Copper />} />
           <Route path="/products" element={<SerchPage />} />
           <Route
             path="/Reset-password/:id/:token"
