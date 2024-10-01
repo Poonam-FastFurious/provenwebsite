@@ -6,6 +6,7 @@ import { Baseurl } from "../confige";
 import axios from "axios";
 import logo from "../assets/Images/logoproven.png";
 import categorydefulthower from "../assets/Images/categorydefulthower.jpg";
+import { MdOutlineManageAccounts } from "react-icons/md";
 const AccordionItem = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -189,7 +190,7 @@ function Navbar() {
                         <div className="gi-main-menu flex">
                           <ul className="w-full flex justify-center flex-wrap pl-[0]">
                             <li
-                              className={`dropdown drop-list static ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                              className={`dropdown drop-list static ml-[10px] mr-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
                                 activeMenu === "Water-purifier" ? "active" : ""
                               }`}
                             >
@@ -252,7 +253,7 @@ function Navbar() {
                                       </li>
                                     ))}
                                   </ul>
-                                  <ul className="mega-block w-[calc(25%-30px)] mr-[30px] py-[15px] block">
+                                  <ul className="mega-block w-[calc(25%-30px)] mr-[20px] py-[15px] block">
                                     {category
                                       .slice(10, 15)
                                       .map((cat, index) => (
@@ -279,7 +280,7 @@ function Navbar() {
                               </ul>
                             </li>
                             <li
-                              className={`dropdown drop-list static ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                              className={`dropdown drop-list static ml-[10px] mr-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
                                 activeMenu === "Book-Demo" ? "active" : ""
                               }`}
                             >
@@ -292,7 +293,7 @@ function Navbar() {
                               </Link>
                             </li>
                             <li
-                              className={`dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                              className={`dropdown drop-list relative ml-[10px] mr-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
                                 activeMenu === "Spare-Parts" ? "active" : ""
                               }`}
                             >
@@ -305,7 +306,7 @@ function Navbar() {
                               </Link>
                             </li>
                             <li
-                              className={`dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                              className={`dropdown drop-list relative ml-[10px] mr-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
                                 activeMenu === "AboutUs" ? "active" : ""
                               }`}
                             >
@@ -318,7 +319,7 @@ function Navbar() {
                               </Link>
                             </li>
                             <li
-                              className={`dropdown drop-list relative ml-[20px] mr-[30px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
+                              className={`dropdown drop-list relative ml-[10px] mr-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:ml-[15px] ${
                                 activeMenu === "Client" ? "active" : ""
                               }`}
                             >
@@ -330,15 +331,26 @@ function Navbar() {
                                 Client
                               </Link>
                             </li>
-                            <li className="non-drop mx-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:mx-[15px]">
+                            <li
+                              className={`"non-drop mx-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:mx-[15px] ${
+                                activeMenu === "Hydrogen-Water" ? "active" : ""
+                              }`}
+                            >
                               <Link
                                 to="/Hydrogen-Water"
                                 className="transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
+                                onClick={() =>
+                                  handleMenuClick("Hydrogen-Water")
+                                }
                               >
                                 Hydrogen-Water
                               </Link>
                             </li>
-                            <li className="non-drop mx-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:mx-[15px]">
+                            <li
+                              className={`${
+                                activeMenu === "Copper-Water" ? "active" : ""
+                              }non-drop mx-[20px] transition-all duration-[0.3s] ease-in-out max-[1199px]:mx-[15px]`}
+                            >
                               <Link
                                 to="/Copper-Water"
                                 className="transition-all duration-[0.3s] ease-in-out text-[15px] leading-[60px] capitalize text-[#4b5966] flex items-center font-medium"
@@ -382,7 +394,7 @@ function Navbar() {
                             onSubmit={handleSearchSubmit}
                           >
                             <input
-                              className="gi-popup-search w-[500px] max-[575px]:w-[100%] bg-transparent border-[0] border-b-[2px] border-solid outline-[0] border-[#fff] text-[#fff] h-[50px]"
+                              className="gi-popup-search w-[500px] max-[575px]:w-[100%] bg-transparent border-[0] border-b-[2px] border-solid outline-[0] border-[#fff]  h-[50px] bg-white text-black"
                               type="text"
                               name="u"
                               placeholder="Search here"
@@ -408,7 +420,11 @@ function Navbar() {
                         title="Account"
                       >
                         <div className="header-icon relative flex">
-                          <i className="fi-rr-user text-[24px] leading-[17px]"></i>
+                          {isLoggedIn ? (
+                            <MdOutlineManageAccounts className="text-[34px] leading-[17px]  text-gray-500" /> // Show the login icon when logged in
+                          ) : (
+                            <i className="fi-rr-user text-[24px] leading-[17px]"></i> // Show the default icon when not logged in
+                          )}
                         </div>
                         <div className="gi-btn-desc flex flex-col uppercase ml-[10px] max-[1199px]:hidden">
                           <span className="gi-btn-title transition-all duration-[0.3s] ease-in-out text-[12px] leading-[1] text-[#777] mb-[6px] tracking-[0.6px] capitalize font-medium">
@@ -513,7 +529,7 @@ function Navbar() {
                               onSubmit={handleSearchSubmit}
                             >
                               <input
-                                className="gi-popup-search w-[500px] max-[575px]:w-[100%] bg-transparent border-[0]  border-solid outline-[0] border-[#fff] text-[#fff] h-[50px]"
+                                className="gi-popup-search w-[500px] max-[575px]:w-[100%] bg-transparent border-[0]  border-solid outline-[0] border-[#fff] text-black h-[50px] bg-white"
                                 type="text"
                                 name="u"
                                 placeholder="Search here"
@@ -537,7 +553,11 @@ function Navbar() {
                         className="gi-header-btn gi-header-user mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center"
                       >
                         <div className="header-icon relative flex">
-                          <i className="fi-rr-user text-[24px] leading-[17px]"></i>
+                          {isLoggedIn ? (
+                            <MdOutlineManageAccounts className="text-[34px] leading-[17px]  text-gray-500" /> // Show the login icon when logged in
+                          ) : (
+                            <i className="fi-rr-user text-[24px] leading-[17px]"></i> // Show the default icon when not logged in
+                          )}
                         </div>
                       </Link>
 
@@ -616,16 +636,39 @@ function Navbar() {
             <li className="dropdown relative">
               <AccordionItem title="Product">
                 <Link
+                  onClick={toggleDrawer}
                   to="/Water-purifier"
                   className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
                 >
                   Water Purifier
+                </Link>
+                <Link
+                  onClick={toggleDrawer}
+                  to="/Productctegory/Domestic Ro"
+                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  Domestic Ro
+                </Link>
+                <Link
+                  onClick={toggleDrawer}
+                  to="/Productctegory/Industrial Ro"
+                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  Industrial Ro
+                </Link>
+                <Link
+                  onClick={toggleDrawer}
+                  to="/Productctegory/Commercial Ro"
+                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+                >
+                  Commercial Ro
                 </Link>
               </AccordionItem>
             </li>
             <li className="relative"></li>
             <li className="relative">
               <Link
+                onClick={toggleDrawer}
                 to="/Spare_Parts"
                 className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
               >
@@ -634,6 +677,7 @@ function Navbar() {
             </li>
             <li className="dropdown ">
               <Link
+                onClick={toggleDrawer}
                 to="/AboutUs"
                 className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
               >
@@ -642,6 +686,7 @@ function Navbar() {
             </li>
             <li className="dropdown ">
               <Link
+                onClick={toggleDrawer}
                 to="/contact-us"
                 className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
               >
@@ -650,6 +695,7 @@ function Navbar() {
             </li>
             <li className="relative">
               <Link
+                onClick={toggleDrawer}
                 to="/Client"
                 className="dropdown-arrow p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
               >
@@ -658,10 +704,29 @@ function Navbar() {
             </li>
             <li className="relative pt-2">
               <Link
+                onClick={toggleDrawer}
                 to="/Book-Demo"
                 className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
               >
                 Book Demo
+              </Link>
+            </li>
+            <li className="relative pt-2">
+              <Link
+                onClick={toggleDrawer}
+                to="/Hydrogen-Water"
+                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                Hydrogen-Water
+              </Link>
+            </li>
+            <li className="relative pt-2">
+              <Link
+                onClick={toggleDrawer}
+                to="/Copper-Water"
+                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                Copper-Water
               </Link>
             </li>
           </ul>

@@ -1,7 +1,3 @@
-import images from "../../assets/Images/provensertificate.png";
-import images2 from "../../assets/Images/proven sertifiacte2.png";
-import images3 from "../../assets/Images/provensertificate3.png";
-import images4 from "../../assets/Images/provensertificate4.png";
 import { Link } from "react-router-dom";
 import certificate1 from "../../assets/Images/Compliance.jpeg";
 import certificate2 from "../../assets/Images/Compliance2.jpeg";
@@ -14,6 +10,7 @@ import certificate8 from "../../assets/Images/PROVEN-GST-CERTIFICATE_page-0001.j
 import certificate9 from "../../assets/Images/PROVEN-GST-CERTIFICATE_page-0002.jpg";
 import certificate10 from "../../assets/Images/Screenshot_20200118_180743.jpg";
 import certificate11 from "../../assets/Images/Msme-Certificate_provenindia.jpg";
+import Crausalforimage from "./Crausalforimage";
 function Certificate() {
   return (
     <>
@@ -193,31 +190,7 @@ function Certificate() {
           </div>
         </div>
       </div>{" "}
-      <section className="bg-white ">
-        <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
-          <div className="new-product-carousel owl-carousel gi-product-slider w-full h-full  flex justify-center items-center ">
-            <Link to="#" className="flex justify-center items-center">
-              <img src={images} alt="logodd" />
-            </Link>
-            <Link to="#" className="flex justify-center items-center">
-              <img src={images2} alt="" />
-            </Link>
-            <Link to="#" className="flex justify-center items-center">
-              <img src={images3} alt="" />
-            </Link>
-
-            <Link to="#" className="flex justify-center items-center">
-              <img src={images4} alt="" />
-            </Link>
-            <Link to="#" className="flex justify-center items-center">
-              <img src={images2} alt="logodd" />
-            </Link>
-            <Link to="#" className="flex justify-center items-center">
-              <img src={images} alt="" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Crausalforimage />
     </>
   );
 }

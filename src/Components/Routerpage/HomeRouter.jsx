@@ -10,7 +10,7 @@ import Topheader from "../../Pages/Topheader";
 import Profile from "../User/Profile";
 import BookDemo from "../../Pages/BookDemo/BookDemo";
 import Wishlist from "../User/Wishlist";
-import AboutUs from "../../Pages/AboutUs/AboutUs";
+import NewAboutUs from "../../Pages/AboutUs/NewAboutUs";
 import OrderDetails from "../User/OrderDetails";
 import ContactUs from "../../Pages/ContactUs/ContactUs";
 import Suport from "../../Pages/Suport/Suport";
@@ -36,6 +36,7 @@ import Orderlist from "../User/Orderlist";
 import Certificate from "../../Pages/Home/Certificate";
 import Hydrogen from "../../Pages/HydrogenWater/Hydrogen";
 import Copper from "../../Pages/Copper/Copper";
+import Ordertracking from "../User/Ordertracking";
 
 function HomeRouter() {
   return (
@@ -55,6 +56,7 @@ function HomeRouter() {
           <Route path="/Hydrogen-Water" element={<Hydrogen />} />
           <Route path="/Copper-Water" element={<Copper />} />
           <Route path="/products" element={<SerchPage />} />
+          <Route path="/TrackOrder" element={<Ordertracking />} />
           <Route
             path="/Reset-password/:id/:token"
             element={<Resetpassword />}
@@ -107,7 +109,7 @@ function HomeRouter() {
               <RouteProtected element={<Wishlist />} redirectTo="/login" />
             }
           />
-          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/AboutUs" element={<NewAboutUs />} />
           <Route path="/terms-condition" element={<Terms />} />
           <Route path="/ReturnPolicy" element={<ReturnPolicy />} />
           <Route path="/privacy-policy" element={<Privacypolicy />} />

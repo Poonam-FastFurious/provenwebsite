@@ -239,7 +239,7 @@ function BookDemo() {
                         <option value="">Choose Ro</option>
                         <option value="Domestic Ro">Domestic Ro</option>
                         <option value="Spare Part">Spare Part</option>
-                        <option value="Domestic Ro">Home & Kitchen</option>
+                        <option value="Domestic Ro">Commercial Ro</option>
                         <option value="Other">Other</option>
                       </select>
                       <div className="flex items-center mb-4 mt-4 ">

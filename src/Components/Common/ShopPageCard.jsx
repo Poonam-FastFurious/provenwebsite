@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Baseurl } from "../../confige";
 import { toast } from "react-toastify";
 import handleAddToWishlist from "../Utilty/wishlistUtils";
+import { FaAmazon } from "react-icons/fa";
+import { SiFlipkart } from "react-icons/si";
+import proven from "../../assets/Images/Proven.png"
 /* eslint-disable react/prop-types */
 function ShopPageCard({
   price = " ₹250",
@@ -94,7 +97,7 @@ function ShopPageCard({
               <div className="gi-pro-image overflow-hidden">
                 <Link
                   to={`/Product/${ID}`}
-                  className="image relative block overflow-hidden pointer-events-none transition-all duration-[0.3s] ease-in-out"
+                  className="image relative block overflow-hidden"
                 >
                   <span className="label veg max-[991px]:hidden">
                     <span className="dot"></span>
@@ -165,6 +168,18 @@ function ShopPageCard({
                     ₹{atriutes}
                   </span>
                 </span>
+              </div>
+              <div className=" flex gap-2 py-4 w-full ">
+                <Link  to={`/Product/${ID}`} className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                <img src={proven} alt="" className=" h-4" />
+                </Link>
+                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                  <FaAmazon />
+                </Link>
+
+                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                  <SiFlipkart />
+                </Link>
               </div>
             </div>
           </div>

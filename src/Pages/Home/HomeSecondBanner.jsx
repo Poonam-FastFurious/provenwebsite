@@ -41,10 +41,10 @@ function HomeSecondBanner() {
           <div className="w-full flex flex-wrap px-[12px]">
             <div className="w-full">
               <div
-                className="w-full bg-center bg-no-repeat bg-cover overflow-hidden relative rounded-[5px] h-auto"
+                className="w-full bg-center bg-no-repeat bg-cover overflow-hidden relative rounded-[5px] h-auto sm:p-24 md:p-24 lg:p-24 p-0"
                 style={{ backgroundImage: `url(${banner.image})` }}
               >
-                <div className="gi-bnr-detail h-full py-[80px] px-[100px] max-[991px]:p-[50px] max-[420px]:p-[15px] flex flex-col justify-center items-end text-right relative">
+                <div className="gi-bnr-detail h-full py-[120px] px-[100px] max-[991px]:p-[50px] max-[420px]:p-[15px] flex flex-col justify-center items-end text-right relative">
                   <div className="gi-bnr-info">
                     <h2 className="text-[50px] max-[1399px]:text-[38px] max-[1199px]:text-[30px] max-[991px]:text-[28px] max-[767px]:text-[20px] max-[480px]:text-[18px] font-bold text-white  leading-[65px] max-[1199px]:leading-[40px] max-[991px]:leading-[35px] max-[767px]:leading-[27px] max-[480px]:leading-[25px] z-[2] relative">
                       {banner.title}

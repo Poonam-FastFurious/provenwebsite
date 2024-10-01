@@ -131,3 +131,11 @@ Loader Style
   background: #267fa3;
   border-radius: 50%;
 }
+
+
+/* 
+.slider-image {
+  aspect-ratio: 4/2;
+  object-fit: contain;
+  mix-blend-mode: color-burn;
+} */

@@ -52,17 +52,17 @@ function Topheader() {
                 </Link>
                 <Link
                   className="gi-help pl-[20px] text-[13px] text-[#fff] tracking-[0.7px] font-normal hover:text-[#5caf90]"
-                  to="/Support"
+                  to="/TrackOrder"
                 >
-                  Support
+                  TrackOrder
                 </Link>
                 <div className="header-top-lan-curr header-top-lan dropdown pl-[20px] flex flex-wrap relative">
-                  <button
+                  <Link to="/Support"
                     type="button"
                     className="dropdown-toggle text-[13px] flex items-center p-[0] transition-all duration-[0.3s] ease delay-0 text-[#fff] border-[0] tracking-[0.7px]"
                   >
                     Support
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

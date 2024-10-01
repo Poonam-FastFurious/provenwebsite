@@ -7,6 +7,9 @@ import { Baseurl } from "../../confige";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { IoCartOutline } from "react-icons/io5";
+import { FaAmazon } from "react-icons/fa";
+import { SiFlipkart } from "react-icons/si";
+import proven from "../../assets/Images/Proven.png"
 function HomeBestSelling({ heading = "add on" }) {
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
@@ -94,7 +97,7 @@ function HomeBestSelling({ heading = "add on" }) {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 4,
           slidesToScroll: 3,
         },
       },
@@ -116,7 +119,7 @@ function HomeBestSelling({ heading = "add on" }) {
         breakpoint: 426,
         settings: {
           slidesToScroll: 1,
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
     ],
@@ -328,6 +331,18 @@ function HomeBestSelling({ heading = "add on" }) {
                                   ₹{pro.cutPrice}
                                 </span>
                               </span>
+                            </div>
+                            <div className=" flex gap-2 py-4 w-full h-full ">
+                              <Link to={`/Product/${pro._id}`} className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                                <img src={proven} alt="" className=" h-4" />
+                              </Link>
+                              <Link className="bg-transparent   font-semibold  text-AFPPrimary  py-2 px-4 border  border-AFPPrimary  rounded">
+                                <FaAmazon />
+                              </Link>
+
+                              <Link className="bg-transparent text-AFPPrimary  font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                              <SiFlipkart />
+                              </Link>
                             </div>
                           </div>
                         </div>

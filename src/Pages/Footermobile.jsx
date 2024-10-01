@@ -5,6 +5,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { IoIosMenu, IoMdHome } from "react-icons/io";
 import { TbPhoneCall } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import logo from "../assets/Images/logoproven.png";
 const AccordionItem = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -95,105 +96,121 @@ function Footermobile() {
           </button>
         </div>
         <div
-          id="drawer-navigation"
-          className={`${
-            isDrawerOpen ? "translate-x-0" : "-translate-x-full"
-          } fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-64 `}
-          tabIndex="-1"
+        id="drawer-navigation"
+        className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${
+          isDrawerOpen ? "translate-x-0" : "-translate-x-full"
+        } bg-white w-64`}
+        tabIndex="-1"
+        aria-labelledby="drawer-navigation-label"
+      >
+        <h5
+          id="drawer-navigation-label"
+          className="text-base font-semibold text-gray-500 uppercase "
         >
-          <h5
-            id="drawer-navigation-label"
-            className="text-base font-semibold text-gray-500 uppercase "
+          <img className=" w-20" src={logo} alt="logo" />
+        </h5>
+        <button
+          type="button"
+          onClick={toggleDrawer}
+          className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center "
+        >
+          <svg
+            className="w-3 h-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
           >
-            <img
-              className=" w-20"
-              src="https://provenonline.in/wp-content/uploads/2023/04/Untitled-design-6.png"
-              alt=""
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
             />
-          </h5>
-          <button
-            type="button"
-            onClick={toggleDrawer}
-            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center "
-          >
-            <svg
-              className="w-3 h-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-              />
-            </svg>
-            <span className="sr-only">Close menu</span>
-          </button>
-          <div className="py-4 overflow-y-auto">
-            <ul>
-              <li className="dropdown relative">
-                <AccordionItem title="Product summary">
-                  <Link
-                    to="#"
-                    className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
-                  >
-                    Water Purifier
-                  </Link>
-                  <Link
-                    to="#"
-                    className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
-                  >
-                    Water Purifier
-                  </Link>
-                </AccordionItem>
-              </li>
-              <li className="relative">
+          </svg>
+          <span className="sr-only">Close menu</span>
+        </button>
+        <div className="py-4 overflow-y-auto">
+          <ul>
+            <li className="dropdown relative">
+              <AccordionItem title="Product">
                 <Link
-                  to="#"
+                  onClick={toggleDrawer}
+                  to="/Water-purifier"
                   className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
                 >
-                  Book Demo
+                  Water Purifier
                 </Link>
-              </li>
-              <li className="relative">
-                <Link
-                  to="#"
-                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
-                >
-                  Spare Parts
-                </Link>
-              </li>
-              <li className="dropdown ">
-                <Link
-                  to="#"
-                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li className="relative">
-                <Link
-                  to="#"
-                  className="dropdown-arrow p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
-                >
-                  Certifications
-                </Link>
-              </li>
-              <li className="relative pt-2">
-                <Link
-                  to="#"
-                  className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
-                >
-                  Book Demo
-                </Link>
-              </li>
-            </ul>
-          </div>
+              </AccordionItem>
+            </li>
+            <li className="relative"></li>
+            <li className="relative">
+              <Link
+                onClick={toggleDrawer}
+                to="/Spare_Parts"
+                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                Spare Parts
+              </Link>
+            </li>
+            <li className="dropdown ">
+              <Link
+                onClick={toggleDrawer}
+                to="/AboutUs"
+                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                About Us
+              </Link>
+            </li>
+            <li className="dropdown ">
+              <Link
+                onClick={toggleDrawer}
+                to="/contact-us"
+                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                Contact-Us
+              </Link>
+            </li>
+            <li className="relative">
+              <Link
+                onClick={toggleDrawer}
+                to="/Client"
+                className="dropdown-arrow p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                Client
+              </Link>
+            </li>
+            <li className="relative pt-2">
+              <Link
+                onClick={toggleDrawer}
+                to="/Book-Demo"
+                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                Book Demo
+              </Link>
+            </li>
+            <li className="relative pt-2">
+              <Link
+                onClick={toggleDrawer}
+                to="/Hydrogen-Water"
+                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                Hydrogen-Water
+              </Link>
+            </li>
+            <li className="relative pt-2">
+              <Link
+                onClick={toggleDrawer}
+                to="/Copper-Water"
+                className="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] text-[15px] font-medium"
+              >
+                Copper-Water
+              </Link>
+            </li>
+          </ul>
         </div>
+      </div>
       </div>
     </>
   );

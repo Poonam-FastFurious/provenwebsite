@@ -38,11 +38,14 @@ function Footer() {
               <div className="w-full flex flex-wrap">
                 <div className="min-[992px]:w-[25%] px-[12px] w-full gi-footer-cat wow fadeInUp">
                   <div className="gi-footer-widget gi-footer-company flex flex-col">
-                    <img
-                      src={logo}
-                      className="gi-footer-logo max-w-[144px] max-[767px]:max-w-[130px]  mb-[30px]"
-                      alt="footer logo"
-                    />
+                    <Link to="/">
+                      
+                      <img
+                        src={logo}
+                        className="gi-footer-logo max-w-[144px] max-[767px]:max-w-[130px]  mb-[30px]"
+                        alt="footer logo"
+                      />
+                    </Link>
                     <p className="gi-footer-detail max-w-[400px] mb-[30px] p-[0] text-[14px] leading-[27px] font-normal text-[#777]  relative max-[1199px]:text-[14px] hidden">
                       Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                       Officia nulla iste eligendi?

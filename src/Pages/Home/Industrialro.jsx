@@ -4,7 +4,9 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import handleAddToWishlist from "../../Components/Utilty/wishlistUtils";
 import { IoCartOutline } from "react-icons/io5";
-
+import { FaAmazon } from "react-icons/fa";
+import { SiFlipkart } from "react-icons/si";
+import proven from "../../assets/Images/Proven.png"
 /* eslint-disable react/no-unescaped-entities */
 function Industrialro() {
   const [product, setProduct] = useState([]);
@@ -248,6 +250,18 @@ function Industrialro() {
                                     ₹{pro.cutPrice}
                                   </span>
                                 </span>
+                              </div>
+                              <div className=" flex gap-2 py-4 w-full ">
+                                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                                <img src={proven} alt="" className=" h-4" />
+                                </Link>
+                                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                                  <FaAmazon />
+                                </Link>
+
+                                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                                  <SiFlipkart />
+                                </Link>
                               </div>
                             </div>
                           </div>
