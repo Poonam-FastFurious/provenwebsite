@@ -159,6 +159,8 @@ function ShaprePart() {
                             ID={product._id}
                             atriutes={product.cutPrice}
                             rating={5}
+                            amazon={product.amazonurl}
+                            flipkart={product.flipkarturl}
                           />
                         ))}
                       </>

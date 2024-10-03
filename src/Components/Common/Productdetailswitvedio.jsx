@@ -381,20 +381,12 @@ function Productdetailswitvedio() {
         </div>
       </section>
       <HomeBestSelling heading={"related product"} />
-      <div className=" w-full flex ">
-        <img
-          className=" w-full h-full"
-          src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/06597ed9-24cc-488d-be90-cea49ede5bfa.__CR0,0,1464,600_PT0_SX1464_V1___.jpg"
-          alt=""
-        />
-      </div>
-      <div className=" w-full flex justify-center items-center mx-auto pt-8">
-        <img
-          className=" w-full h-full"
-          src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/ef52858f-1cfe-4c02-acbb-e081122a0a22.__CR0,0,1464,600_PT0_SX1464_V1___.jpg"
-          alt=""
-        />
-      </div>
+      {productData.banners.map((banners, index) => (
+        <div key={index} className=" w-full flex ">
+          <img className=" w-full h-full" src={banners} alt="" />
+        </div>
+      ))}
+      
     </>
   );
 }

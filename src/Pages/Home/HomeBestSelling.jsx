@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { IoCartOutline } from "react-icons/io5";
 import { FaAmazon } from "react-icons/fa";
 import { SiFlipkart } from "react-icons/si";
-import proven from "../../assets/Images/Proven.png"
+import proven from "../../assets/Images/Proven.png";
 function HomeBestSelling({ heading = "add on" }) {
   const [product, setProduct] = useState([]);
   const [quickview, setQuickview] = useState(false);
@@ -333,15 +333,21 @@ function HomeBestSelling({ heading = "add on" }) {
                               </span>
                             </div>
                             <div className=" flex gap-2 py-4 w-full h-full ">
-                              <Link to={`/Product/${pro._id}`} className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                              <Link
+                                to={`/Product/${pro._id}`}
+                                className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                              >
                                 <img src={proven} alt="" className=" h-4" />
                               </Link>
-                              <Link className="bg-transparent   font-semibold  text-AFPPrimary  py-2 px-4 border  border-AFPPrimary  rounded">
+                              <Link
+                                to={`/${pro.amazonurl}`} target="_blank"
+                                className="bg-transparent   font-semibold  text-AFPPrimary  py-2 px-4 border  border-AFPPrimary  rounded"
+                              >
                                 <FaAmazon />
                               </Link>
 
-                              <Link className="bg-transparent text-AFPPrimary  font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
-                              <SiFlipkart />
+                              <Link to={`/${pro.flipkarturl}`} target="_blank" className="bg-transparent text-AFPPrimary  font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                                <SiFlipkart />
                               </Link>
                             </div>
                           </div>

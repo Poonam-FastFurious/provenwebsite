@@ -8,7 +8,7 @@ import handleAddToWishlist from "../Utilty/wishlistUtils";
 import { Link } from "react-router-dom";
 import { FaAmazon } from "react-icons/fa";
 import { SiFlipkart } from "react-icons/si";
-import proven from "../../assets/Images/Proven.png"
+import proven from "../../assets/Images/Proven.png";
 function ListCard({ products }) {
   const [quickview, setQuickview] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -175,17 +175,28 @@ function ListCard({ products }) {
                       </span>
                     </div>
                     <div className=" flex gap-2 py-4 w-full ">
-                                <Link  to={`/Product/${products._id}`} className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
-                                <img src={proven} alt="" className=" h-4" />
-                                </Link>
-                                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
-                                  <FaAmazon />
-                                </Link>
+                      <Link
+                        to={`/Product/${products._id}`}
+                        className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                      >
+                        <img src={proven} alt="" className=" h-4" />
+                      </Link>
+                      <Link
+                        to={`${products.amazonurl}`}
+                        target="_blank"
+                        className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                      >
+                        <FaAmazon />
+                      </Link>
 
-                                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
-                                  <SiFlipkart />
-                                </Link>
-                              </div>
+                      <Link
+                        to={`${products.flipkarturl}`}
+                        target="_blank"
+                        className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                      >
+                        <SiFlipkart />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

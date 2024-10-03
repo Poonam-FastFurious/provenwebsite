@@ -255,11 +255,13 @@ function Industrialro() {
                                 <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
                                 <img src={proven} alt="" className=" h-4" />
                                 </Link>
-                                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                                <Link to={`${pro.amazonurl}`}
+                                  target="_blank" className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
                                   <FaAmazon />
                                 </Link>
 
-                                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                                <Link  to={`${pro.flipkarturl}`}
+                                  target="_blank" className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
                                   <SiFlipkart />
                                 </Link>
                               </div>

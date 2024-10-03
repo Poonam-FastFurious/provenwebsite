@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import handleAddToWishlist from "../Utilty/wishlistUtils";
 import { FaAmazon } from "react-icons/fa";
 import { SiFlipkart } from "react-icons/si";
-import proven from "../../assets/Images/Proven.png"
+import proven from "../../assets/Images/Proven.png";
 /* eslint-disable react/prop-types */
 function ShopPageCard({
   price = " ₹250",
@@ -15,6 +15,8 @@ function ShopPageCard({
   ID,
   atriutes,
   rating,
+  amazon,
+  flipkart,
 }) {
   const [quickview, setQuickview] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -170,14 +172,25 @@ function ShopPageCard({
                 </span>
               </div>
               <div className=" flex gap-2 py-4 w-full ">
-                <Link  to={`/Product/${ID}`} className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
-                <img src={proven} alt="" className=" h-4" />
+                <Link
+                  to={`/Product/${ID}`}
+                  className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                >
+                  <img src={proven} alt="" className=" h-4" />
                 </Link>
-                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                <Link
+                  to={`${amazon}`}
+                  target="_blank"
+                  className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                >
                   <FaAmazon />
                 </Link>
 
-                <Link className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded">
+                <Link
+                  to={`${flipkart}`}
+                  target="_blank"
+                  className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                >
                   <SiFlipkart />
                 </Link>
               </div>
