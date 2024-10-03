@@ -181,21 +181,23 @@ function ListCard({ products }) {
                       >
                         <img src={proven} alt="" className=" h-4" />
                       </Link>
-                      <Link
-                        to={`${products.amazonurl}`}
-                        target="_blank"
-                        className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
-                      >
-                        <FaAmazon />
-                      </Link>
+                      {products.amazonurl && (
+                        <Link
+                          to={`${products.amazonurl}`}
+                          target="_blank"
+                          className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                        >
+                          <FaAmazon />
+                        </Link>
+                      )}
 
-                      <Link
+                     {products.flipkarturl &&( <Link
                         to={`${products.flipkarturl}`}
                         target="_blank"
                         className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
                       >
                         <SiFlipkart />
-                      </Link>
+                      </Link>)}
                     </div>
                   </div>
                 </div>

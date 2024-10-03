@@ -178,21 +178,25 @@ function ShopPageCard({
                 >
                   <img src={proven} alt="" className=" h-4" />
                 </Link>
-                <Link
-                  to={`${amazon}`}
-                  target="_blank"
-                  className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
-                >
-                  <FaAmazon />
-                </Link>
+                {amazon && (
+                  <Link
+                    to={`${amazon}`}
+                    target="_blank"
+                    className="bg-transparent text-AFPPrimary font-semibold py-2 px-4 border border-AFPPrimary rounded"
+                  >
+                    <FaAmazon />
+                  </Link>
+                )}
 
-                <Link
-                  to={`${flipkart}`}
-                  target="_blank"
-                  className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
-                >
-                  <SiFlipkart />
-                </Link>
+                {flipkart && (
+                  <Link
+                    to={`${flipkart}`}
+                    target="_blank"
+                    className="bg-transparent text-AFPPrimary font-semibold py-2 px-4 border border-AFPPrimary rounded"
+                  >
+                    <SiFlipkart />
+                  </Link>
+                )}
               </div>
             </div>
           </div>

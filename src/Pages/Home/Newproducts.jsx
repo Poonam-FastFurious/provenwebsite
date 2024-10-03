@@ -245,21 +245,25 @@ function Newproducts() {
                                 >
                                   <img src={proven} alt="" className=" h-4" />
                                 </Link>
-                                <Link
-                                  to={`${pro.amazonurl}`}
-                                  target="_blank"
-                                  className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
-                                >
-                                  <FaAmazon />
-                                </Link>
+                                {pro.amazonurl && (
+                                  <Link
+                                    to={`${pro.amazonurl}`}
+                                    target="_blank"
+                                    className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                                  >
+                                    <FaAmazon />
+                                  </Link>
+                                )}
 
-                                <Link
-                                  to={`${pro.flipkarturl}`}
-                                  target="_blank"
-                                  className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
-                                >
-                                  <SiFlipkart />
-                                </Link>
+                                {pro.flipkarturl && (
+                                  <Link
+                                    to={`${pro.flipkarturl}`}
+                                    target="_blank"
+                                    className="bg-transparent  text-AFPPrimary font-semibold  py-2 px-4 border  border-AFPPrimary  rounded"
+                                  >
+                                    <SiFlipkart />
+                                  </Link>
+                                )}
                               </div>
                             </div>
                           </div>
