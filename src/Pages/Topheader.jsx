@@ -56,6 +56,12 @@ function Topheader() {
                 >
                   TrackOrder
                 </Link>
+                <Link
+                  className="gi-help pl-[20px] text-[13px] text-[#fff] tracking-[0.7px] font-normal hover:text-[#5caf90]"
+                  to="/Store"
+                >
+                  Store Location
+                </Link>
                 <div className="header-top-lan-curr header-top-lan dropdown pl-[20px] flex flex-wrap relative">
                   <Link to="/Support"
                     type="button"

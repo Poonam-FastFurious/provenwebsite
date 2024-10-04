@@ -37,6 +37,7 @@ import Certificate from "../../Pages/Home/Certificate";
 import Hydrogen from "../../Pages/HydrogenWater/Hydrogen";
 import Copper from "../../Pages/Copper/Copper";
 import Ordertracking from "../User/Ordertracking";
+import StoreLocation from "../StoreLocation/StoreLocation";
 
 function HomeRouter() {
   return (
@@ -115,6 +116,7 @@ function HomeRouter() {
           <Route path="/privacy-policy" element={<Privacypolicy />} />
           <Route path="/Career" element={<Career />} />
           <Route path="/Faq" element={<Faqs />} />
+          <Route path="/Store" element={<StoreLocation />} />
           <Route
             path="/profile/myorder/orderDetails/:id"
             element={<OrderDetails />}

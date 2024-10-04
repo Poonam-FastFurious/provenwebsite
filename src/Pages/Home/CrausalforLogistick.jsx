@@ -51,7 +51,7 @@ function CrausalforLogistick() {
   ];
 
   return (
-    <div className=" w-100 mx-auto sm:px-32 md:mx-32 py-8 ">
+    <div className=" w-100 mx-auto sm:px-16 md:mx-16 py-8 ">
       <h2 className="mb-8 lg:mb-16 text-3xl font-extrabold tracking-normal leading-tight text-center  text-AFPPrimary  md:text-4xl">
         Our Logistics Partners
       </h2>

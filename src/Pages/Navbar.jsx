@@ -50,7 +50,51 @@ function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState(null);
+  const [productCount, setProductCount] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
+  useEffect(() => {
+    const fetchCounts = async () => {
+      try {
+        if (!token) {
+          console.error("No token provided.");
+          return;
+        }
 
+        // Cart API call
+        const cartResponse = await axios.get(`${Baseurl}/api/v1/cart/product`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const cartData = cartResponse.data.cart;
+        const cartProductCount = cartData.items.length;
+        setProductCount(cartProductCount);
+
+        // Wishlist API call
+        const wishlistResponse = await axios.get(`${Baseurl}/api/v1/wishlist`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const wishlistData = wishlistResponse.data.wishlist;
+        const wishlistProductCount = wishlistData.items.length;
+        setWishlistCount(wishlistProductCount);
+      } catch (error) {
+        console.error("Error fetching cart or wishlist data:", error);
+      }
+    };
+
+    // Polling: Fetch cart and wishlist counts every 5 seconds
+    const intervalId = setInterval(fetchCounts, 5000);
+
+    // Fetch counts immediately on mount
+    fetchCounts();
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [token]);
   const handleMenuClick = (menuName) => {
     setActiveMenu(menuName);
   };
@@ -479,9 +523,9 @@ function Navbar() {
                       <div className="header-icon relative flex">
                         <i className="fi-rr-heart text-[24px] leading-[17px]"></i>
                       </div>
-                      <div className="gi-btn-desc flex flex-col uppercase ml-[10px] max-[1199px]:hidden">
-                        <span className="gi-btn-title transition-all duration-[0.3s] ease-in-out text-[12px] leading-[1] text-[#777] mb-[6px] tracking-[0.6px] capitalize font-medium"></span>
-                      </div>
+                      <span className="gi-header-count gi-wishlist-count w-[15px] h-[15px] text-[#fff] flex items-center justify-center rounded-[50%] text-[11px] absolute top-[-2px] right-[-6px] opacity-[0.8]">
+                      {wishlistCount}
+                      </span>
                     </Link>
 
                     <Link
@@ -492,9 +536,9 @@ function Navbar() {
                       <div className="header-icon relative flex">
                         <i className="fi-rr-shopping-bag text-[24px] leading-[17px]"></i>
                       </div>
-                      <div className="gi-btn-desc flex flex-col uppercase ml-[10px] max-[1199px]:hidden">
-                        <span className="gi-btn-title transition-all duration-[0.3s] ease-in-out text-[12px] leading-[1] text-[#777] mb-[6px] tracking-[0.6px] capitalize font-medium"></span>
-                      </div>
+                      <span className="gi-header-count gi-wishlist-count w-[15px] h-[15px] text-[#fff] flex items-center justify-center rounded-[50%] text-[11px] absolute top-[-2px] right-[-6px] opacity-[0.8]">
+                        {productCount}
+                      </span>
                     </Link>
                   </div>
                 </div>
@@ -567,7 +611,9 @@ function Navbar() {
                       >
                         <div className="header-icon relative flex">
                           <i className="fi-rr-heart text-[24px] leading-[17px]"></i>
-                        </div>
+                        </div> <span className="gi-header-count gi-wishlist-count w-[15px] h-[15px] text-[#fff] flex items-center justify-center rounded-[50%] text-[11px] absolute top-[-2px] right-[-6px] opacity-[0.8]">
+                      {wishlistCount}
+                      </span>
                       </Link>
 
                       <Link
@@ -577,7 +623,9 @@ function Navbar() {
                         <div className="header-icon relative flex">
                           <i className="fi-rr-shopping-bag text-[24px] leading-[17px]"></i>
                           <span className="main-label-note-new"></span>
-                        </div>
+                        </div> <span className="gi-header-count gi-wishlist-count w-[15px] h-[15px] text-[#fff] flex items-center justify-center rounded-[50%] text-[11px] absolute top-[-2px] right-[-6px] opacity-[0.8]">
+                        {productCount}
+                      </span>
                       </Link>
 
                       <button

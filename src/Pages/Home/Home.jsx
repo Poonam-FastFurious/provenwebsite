@@ -45,8 +45,8 @@ function Home() {
       <Testimonial />
       <Crausalforimage />
       <CrausalforLogistick />
-      <Newservice />
       <Crausalforclient />
+      <Newservice />
       <HomeBlog />
       <Serviceoffer />
     </>

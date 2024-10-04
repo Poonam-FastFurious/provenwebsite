@@ -44,7 +44,20 @@ import client41 from "../../assets/Images/clientlogo/client (41).png";
 import client42 from "../../assets/Images/clientlogo/client (42).png";
 import client43 from "../../assets/Images/clientlogo/client (43).png";
 import client44 from "../../assets/Images/clientlogo/client (44).png";
+import { useEffect, useState } from "react";
 function Crausalforclient() {
+  const [isSmallDevice, setIsSmallDevice] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallDevice(window.innerWidth <= 768); // Small device breakpoint (e.g., 768px)
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Set initial state
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const responsive = {
     0: {
       items: 3,
@@ -194,9 +207,9 @@ function Crausalforclient() {
   ];
 
   return (
-    <div className=" w-100 mx-auto sm:px-32 md:mx-32 py-8 ">
+    <div className=" w-100 mx-auto sm:px-16 md:mx-16 py-8  ">
       <h2 className="mb-8 lg:mb-16 text-3xl font-extrabold tracking-normal leading-tight text-center  text-AFPPrimary  md:text-4xl">
-      Our Client
+        Our Client
       </h2>
       <AliceCarousel
         mouseTracking
@@ -204,6 +217,7 @@ function Crausalforclient() {
         responsive={responsive}
         autoPlay
         disableButtonsControls
+        disableDotsControls={isSmallDevice} // Disable dots on small devices
       />
     </div>
   );
