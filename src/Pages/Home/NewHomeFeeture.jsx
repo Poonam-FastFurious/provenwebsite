@@ -83,7 +83,7 @@ function NewHomeFeeture() {
                   />
                 </svg>
                 <h3 className="text-gray-800 text-xl font-semibold mt-6 mb-3">
-                  Precise Cooper Dosing
+                  Precise Copper Dosing
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Proven India RO the right amount of Copper in every Glass of
@@ -113,7 +113,7 @@ function NewHomeFeeture() {
                   </g>
                 </svg>
                 <h3 className="text-gray-800 text-xl font-semibold mt-6 mb-3">
-                  Precise Cooper Dosing
+                  Precise Copper Dosing
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Proven India RO automatically cleans the copper, ensuring

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { FaRegEye } from "react-icons/fa";
-import { ImEyeBlocked } from "react-icons/im";
+
 import { Link, useNavigate } from "react-router-dom";
 import { Baseurl } from "../../confige";
 import logo from "../../assets/Images/logoproven.png";
@@ -8,8 +7,7 @@ function Signup() {
   const navigate = useNavigate();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [password, setPassword] = useState("");
+
   const [mobile, setMobile] = useState("");
 
   const [errors, setErrors] = useState({
@@ -19,14 +17,6 @@ function Signup() {
     password: "",
   });
   const [successMessage, setSuccessMessage] = useState("");
-
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
 
   const handleMobileChange = (e) => {
     const value = e.target.value;
@@ -59,7 +49,7 @@ function Signup() {
       fullName: "",
       email: "",
       mobile: "",
-      password: "",
+      form: "", // Added to show form-level errors like API response errors
     };
 
     // Validation
@@ -72,26 +62,19 @@ function Signup() {
       newErrors.email = "Invalid email format.";
     }
     if (!/^\d{10}$/.test(mobile)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        mobile: "Mobile number must be exactly 10 digits.",
-      }));
-      return;
-    }
-    if (password.trim() === "") {
-      newErrors.password = "Password is required.";
+      newErrors.mobile = "Mobile number must be exactly 10 digits.";
     }
 
     setErrors(newErrors);
 
+    // Stop form submission if there are validation errors
     if (Object.values(newErrors).some((error) => error !== "")) {
-      return; // If there are validation errors, stop form submission
+      return;
     }
 
     const user = {
       fullName,
       email,
-      password,
       mobile,
     };
 
@@ -104,26 +87,37 @@ function Signup() {
         body: JSON.stringify(user),
       });
 
+      const data = await response.json();
+
+      // Handle non-200 responses (error from the server)
       if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || "Failed to create an account.");
+        console.error("Error response data:", data);
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          form: data.message || "Failed to create an account.", // Show backend error message
+        }));
+        return; // Stop execution if there is an error
       }
 
-      setSuccessMessage("Account created successfully!");
+      // Success - OTP sent
+      localStorage.setItem("registermobile", mobile);
+      setSuccessMessage(data.message || "Account created successfully!");
 
       // Clear form fields
       setFullName("");
       setEmail("");
-      setPassword("");
       setMobile("");
 
-      // Redirect to home page after a short delay
+      // Redirect to verification page after a short delay
       setTimeout(() => {
-        navigate("/");
+        navigate("/VerifyAcount");
       }, 2000);
     } catch (error) {
-      console.error("Error:", error);
-      setErrors({ ...errors, form: error.message });
+      console.error("Error:", error); // Log full error object for debugging
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        form: "An unexpected error occurred. Please try again.", // Fallback for unknown errors
+      }));
     }
   };
 
@@ -221,7 +215,7 @@ function Signup() {
                     <p className="text-sm text-red-500 mt-1">{errors.mobile}</p>
                   )}
                 </div>
-                <div>
+                {/* <div>
                   <label
                     htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900"
@@ -253,7 +247,7 @@ function Signup() {
                       {errors.password}
                     </p>
                   )}
-                </div>
+                </div> */}
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
                     <input
@@ -287,6 +281,12 @@ function Signup() {
                   <p className="text-sm text-green-500 mt-2">
                     {successMessage}
                   </p>
+                )}
+
+                {errors.form && (
+                  <div className="error-message text-yellow-400">
+                    {errors.form}
+                  </div>
                 )}
                 <p className="text-sm font-light text-gray-500">
                   Already have an account?

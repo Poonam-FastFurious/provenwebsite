@@ -15,7 +15,7 @@ import images14 from "../../assets/Images/Ionic.png";
 import { useState } from "react";
 
 import Crausalforimage from "../Home/Crausalforimage";
-
+import image from "../../assets/Images/depika.png";
 function Copper() {
   const [openFaq, setOpenFaq] = useState(null);
 
@@ -129,7 +129,7 @@ function Copper() {
           <h1 className="text-xl lg:text-2xl font-bold  text-[#A25223] mb-4">
             Presenting Proven RO range of water purifiers
           </h1>
-          <p className="text-base  font-bold lg:text-lg text-[#A25223] mb-6 ">
+          <p className="text-base  font-bold lg:text-lg text-[#A25223] mb-6 text-justify ">
             Proven RO water purifiers bring together the goodness of Copper with
             Calcium, Magnesium, and Zinc. Active Copper infuses Copper ions into
             the water. The effect releases not only Copper but the right amount
@@ -150,7 +150,7 @@ function Copper() {
             Ayurveda In Our Technology
           </h2>
 
-          <p className="text-base font-bold lg:text-lg text-[#A25223] mb-8 container w-[100%] sm:w-[70%]">
+          <p className="text-base font-bold lg:text-lg text-[#A25223] mb-8 container w-[100%] sm:w-[70%] text-justify">
             According to Ayurveda, copper has many benefits, from anti-ageing
             properties to cancer prevention. Drinking copper-infused water can
             transform your health. Based on Ayurveda, there are three basic
@@ -193,7 +193,7 @@ function Copper() {
             THE BENEFITS OF COPPER WATER
           </h2>
 
-          <p className="text-base font-bold lg:text-lg text-[#A25223] mb-8 container w-[100%] ">
+          <p className="text-base font-bold lg:text-lg text-[#A25223] mb-8 container w-[100%] text-justify ">
             Drinking copper-enriched water on an empty stomach in the morning is
             supposed to balance all three doshas and ensures your body’s healthy
             functioning. The Ayurvedic practice of drinking water stored in
@@ -362,7 +362,7 @@ function Copper() {
                 </div>
                 <div className="flex justify-center">
                   <img
-                    src="https://s3-alpha-sig.figma.com/img/e2ff/9475/46added8e890c4f155f04a1f2da1598f?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HA4AtEeUWcqFfi4JmGllrX5HtiRHIKkw89fi-pykGvURWQjXsrpai3mubO4dndHZu6KpZ8D84CK4UeMJCb2vH1R9D7zslTu0TBY5QTkcJexkZcldVsTh6KZcaYZ45gYNdbLnDXyhSHM1MsJOryG13qTv~C4xygsU96rnPn3UczPvInQrRHXLbxEncjx2D-pA~ebH8t4crggZl1jgAgOUR9pSuzJ8CgROK0ynXtiNlL6ZMF4TA0seP5jGcnnNr0eloAVOS4IgT5M26F1bghcXF~mPMfbqA4ZXYJyI4tpl6JfuElzFpod6kuNdthyMJyJvBG66m5AaYYoYaQm3Qcxa-Q__"
+                    src={image}
                     alt="Person with gesture"
                     className="w-full h-auto object-cover"
                   />
@@ -378,21 +378,3 @@ function Copper() {
 }
 
 export default Copper;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

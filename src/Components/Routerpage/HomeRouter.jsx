@@ -38,6 +38,7 @@ import Hydrogen from "../../Pages/HydrogenWater/Hydrogen";
 import Copper from "../../Pages/Copper/Copper";
 import Ordertracking from "../User/Ordertracking";
 import StoreLocation from "../StoreLocation/StoreLocation";
+import VerifyAccount from "../Authentication/VerifyAccount";
 
 function HomeRouter() {
   return (
@@ -58,6 +59,7 @@ function HomeRouter() {
           <Route path="/Copper-Water" element={<Copper />} />
           <Route path="/products" element={<SerchPage />} />
           <Route path="/TrackOrder" element={<Ordertracking />} />
+          <Route path="/VerifyAcount" element={<VerifyAccount />} />
           <Route
             path="/Reset-password/:id/:token"
             element={<Resetpassword />}

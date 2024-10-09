@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 // import images from "../../assets/Images/hydrogen.png";
-import images1 from "../../assets/Images/modelhydrogen (1).png";
-import images2 from "../../assets/Images/modelhydrogen (2).png";
-import images3 from "../../assets/Images/modelhydrogen (3).png";
+import images1 from "../../assets/Images/Final1.png";
+import images2 from "../../assets/Images/Final2.png";
+import images3 from "../../assets/Images/Final3.png";
 
 import { useState } from "react";
 function Hydrogen() {
@@ -63,16 +63,17 @@ function Hydrogen() {
             "Molecular hydrogen (hydrogen, H2) acts as a therapeutic antioxidant by selectively reducing hydroxyl radicals (•OH) and peroxynitrite (ONOO–). It has been well-known that ionizing radiation (IR) causes oxidative damage and consequent apoptosis mainly due to the production of •OH that follows radiolysis of H2O. Our department reported the protective effect of H2 in irradiated cells and mice for the first time, and this effect is well repeated by us and another laboratory in different experimental animal models. A randomized, placebo-controlled investigation also showed consumption of H2 can improve the quality of life of patients treated with radiotherapy for liver tumors. These encouraging results suggested that H2 has a potential as a radio protective agent with efficacy and non-toxicity.",
         },
         {
-          heading: "Hydrogen-Rich Saline Protects Against Intestinal Ischemia/Reperfusion Injury In Rats",
+          heading:
+            "Hydrogen-Rich Saline Protects Against Intestinal Ischemia/Reperfusion Injury In Rats",
           description:
             "Hydrogen gas was reported to reduce reactive oxygen species and alleviate cerebral, myocardial and hepatic ischemia/reperfusion (I/R) injuries. This paper studied the effect of hydrogen-rich saline, which was easier for clinical application, on the intestinal I/R injury. Model of intestinal I/R injury was induced in male Sprague-Dawley rats. Physiological saline, hydrogen-rich saline or nitrogen-rich saline (5 ml/kg) was administered via intravenous infusion at 10 min before reperfusion, respectively. The intestine damage was detected microscopically and was assessed by Chiu score system after I/R injury. In addition, serum DAO activity, TNF-α, IL-1β and IL-6 levels, tissue MDA, protein carbonyl and MPO activity were all increased significantly by I/R injury. Hydrogen-rich saline reduced these markers and relieved morphological intestinal injury, while no significant reduction was observed in the nitrogen-rich saline-treated animals. In conclusion, hydrogen-rich saline protected the small intestine against I/R injury, possibly by reduction of inflammation and oxidative stress.",
         },
         {
-          heading: "Radio Protective Effect Of Hydrogen In Cultured Cells And Mice",
+          heading:
+            "Radio Protective Effect Of Hydrogen In Cultured Cells And Mice",
           description:
             "It has been demonstrated that hydrogen can selectively reduce hydroxyl and peroxynitrite in vitro. Since most of the ionizing radiation-induced cellular damage is caused by hydroxyl radicals, this study was designed to test the hypothesis that hydrogen may be an effective radio protective agent. This paper demonstrates that treating cells with hydrogen before irradiation could significantly inhibit ionizing irradiation (IR)-induced Human Lymphocyte AHH-1 cells apoptosis and increase cells viability in vitro. This paper also shows that hydrogen can protect gastrointestinal endothelia from radiation-induced injury, decrease plasma malondialdehyde (MDA) intestinal 8-hydroxydeoxyguanosine (8-OHDG) levels and increase plasma endogenous antioxidants in vivo. It is suggested that hydrogen has a potential as an effective and safe radio protective agent. <br/> Hydrogen protects rats from dermatitis caused by local radiation <br/> Background: Radiation therapy produced unwanted side effect on normal tissues, such as radio dermatitis. Hydrogen was previously shown capable of radiation protective in both animals and cell cultures. The effect of hydrogen was now to be investigated on radiation-induced cutaneous. Objective: Development of dermatitis is a frequent side effect of radiotherapy of patients with head-and-neck cancer. Here we analyzed the radio protective efficacy of hydrogen under conditions of local, single-dose or fractionated radiation treatment, and its possible molecular mechanisms. Methods: Rats received either single-dose or fractioned irradiation of the head-and-neck area with or without subcutaneous injection of hydrogen solution before irradiation. In vitro, the effect of hydrogen medium on radiation-induced cell viability, apoptosis, and biochemical assays was measured. Result: Hydrogen significantly reduced the severity of dermatitis, accelerated tissue recovery, and reduced the extent of radiation-induced weight loss in rats after a single dose of 15 or 20 Gy but not 25 Gy of radiation. Hydrogen was also protective from cumulative doses of 30 Gy delivered in three fractions, respectively. Hydrogen also protect HaCaT cells from radiation-induced injury, it could significantly inhibit ionizing injury. Conclusion: These results suggest that hydrogen has a positive effect on acute radio dermatitis",
         },
-        
       ],
     },
     {
@@ -530,7 +531,7 @@ function Hydrogen() {
                   <div className=" flex flex-row relative overflow-hidden">
                     <div className=" w-full relative">
                       <img
-                        src={images3}
+                        src={images1}
                         alt="banner"
                         className="w-full h-[350px] "
                       />
@@ -543,7 +544,7 @@ function Hydrogen() {
                   <div className=" flex flex-row relative overflow-hidden">
                     <div className="gi-bnr-img w-full relative">
                       <img
-                        src={images1}
+                        src={images2}
                         alt="banner"
                         className="w-full h-[350px]"
                       />
@@ -556,7 +557,7 @@ function Hydrogen() {
                   <div className=" flex flex-row relative overflow-hidden">
                     <div className="gi-bnr-img w-full relative">
                       <img
-                        src={images2}
+                        src={images3}
                         alt="banner"
                         className="w-full h-[350px] "
                       />

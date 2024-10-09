@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
-
+import flipkart from "../../assets/Images/Flipkart.png";
+import amzon from "../../assets/Images/amzon.png";
+import provenlogo from "../../assets/Images/proven-logo-big.png";
 import { useParams } from "react-router-dom";
 import { Baseurl } from "../../confige";
 import { CiLocationOn, CiLock } from "react-icons/ci";
@@ -238,7 +240,7 @@ function Productdetailswitvedio() {
                                 -{productData.discount}%
                               </span>
                             </div>
-                            <div className="mrp text-[#777]">
+                            <div className="mrp text-black">
                               M.R.P. :
                               <span className="text-[#999] line-through">
                                 ₹{productData.cutPrice}
@@ -254,7 +256,7 @@ function Productdetailswitvedio() {
                             </span>
                           </div>
                         </div>
-                        <div className="gi-single-desc mb-[12px] text-[#777] text-[14px] tracking-[0] break-all leading-[26px] font-Poppins">
+                        <div className="gi-single-desc mb-[12px] text-black text-[14px] tracking-[0] break-all leading-[26px] font-Poppins">
                           {productData.shortDescription}
                         </div>
 
@@ -363,7 +365,7 @@ function Productdetailswitvedio() {
                     <div className="gi-single-pro-tab mt-[40px]">
                       <div className="gi-single-pro-tab-wrapper flex flex-col">
                         <div className="gi-single-pro-tab-desc">
-                          <p className="mb-[15px] text-[14px] tracking-[0] text-[#777] leading-[28px] font-normal">
+                          <p className="mb-[15px] text-[14px] tracking-[0] text-black leading-[28px] font-normal">
                             <div
                               dangerouslySetInnerHTML={{
                                 __html: productData.description,
@@ -381,12 +383,250 @@ function Productdetailswitvedio() {
         </div>
       </section>
       <HomeBestSelling heading={"related product"} />
+      <section className="gi-new-product py- max-[767px]:py-[30px]">
+        <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
+          <div className="flex flex-wrap w-full overflow-hidden mb-[-24px]">
+            <div className="gi-new-prod-section w-full">
+              <div className="gi-products">
+                <div className="section-title  relative flex justify-between pb-[20px] z-[5] max-[767px]:flex-col">
+                  <div className="section-detail">
+                    <h2 className="gi-title mb-[0] text-[25px] font-semibold text-AFPPrimary relative inline p-4 sm:p-0 md:p-0 lg:p-0 xl:p-0 capitalize leading-[1]  font-manrope max-[991px]:text-[25px] max-[767px]:text-[25px] max-[575px]:text-[25px]">
+                      Proven Water Compare
+                      <span className=""></span>
+                    </h2>
+                  </div>
+                  <div
+                    id="dealend"
+                    className="dealend-timer max-[767px]:mt-[15px]"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="gi-compare py-[40px] max-[767px]:py-[30px]">
+        <h2 className="hidden">Compare</h2>
+        <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
+          <div className="flex flex-wrap w-full overflow-hidden">
+            <div className="w-full px-[12px]">
+              <div className="gi-compare-box flex flex-row overflow-auto">
+                <div className="gi-compare-col title-col border-[1px] border-r-[1px] border-solid border-[#eee] relative block h-full w-[314px] min-w-[314px] max-[1399px]:w-[280px] max-[1399px]:min-w-[280px] mr-[-1px] max-[991px]:w-[150px] max-[991px]:min-w-[150px]">
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <div className="title w-full min-h-[221px] h-full flex items-center">
+                      <h5 className="m-[0] leading-[28px] text-[15px] ">
+                        <img
+                          src={productData.image}
+                          alt=""
+                          className=" h-40 w-40"
+                        />
+                      </h5>
+                    </div>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
+                      Name
+                    </h5>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
+                      Replacement Window
+                    </h5>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
+                      Extra Free Spun Filters
+                    </h5>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
+                      Extra Free Inline Filters
+                    </h5>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
+                      Extra Free Inline Carbon
+                    </h5>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
+                      Extra Free Connectors
+                    </h5>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
+                      Free Accessories Worth
+                    </h5>
+                  </div>{" "}
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
+                      Genuine Product
+                    </h5>
+                  </div>
+                </div>
+                <div className="gi-compare-col mr-[-1px] w-[314px] min-w-[380px] h-full block border-[1px] border-solid border-[#eee] relative max-[1399px]:w-[280px] max-[1399px]:min-w-[280px] max-[991px]:w-[251px] max-[991px]:min-w-[251px]">
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <div className="list w-full min-h-[221px] h-full flex items-center justify-center">
+                      <img
+                        src={provenlogo}
+                        alt="product"
+                        className="h-[200px] m-auto"
+                      />
+                    </div>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      {productData.title}
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      30 days
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      Yes
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      Yes
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      Yes
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      Yes
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      3000/-
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      Yes
+                    </p>
+                  </div>
+                </div>
+                <div className="gi-compare-col mr-[-1px] w-[314px] min-w-[380px] h-full block border-[1px] border-solid border-[#eee] relative max-[1399px]:w-[280px] max-[1399px]:min-w-[280px] max-[991px]:w-[251px] max-[991px]:min-w-[251px]">
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <div className="list w-full min-h-[221px] h-full flex items-center justify-center">
+                      <img
+                        src={amzon}
+                        alt="product"
+                        className="h-[200px] m-auto"
+                      />
+                    </div>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      {productData.title}
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      7 days
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      No
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      No
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      No
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      No
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      1500/-
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      Yes
+                    </p>
+                  </div>
+                </div>
+                <div className="gi-compare-col mr-[-1px] w-[314px] min-w-[380px] h-full block border-[1px] border-solid border-[#eee] relative max-[1399px]:w-[280px] max-[1399px]:min-w-[280px] max-[991px]:w-[251px] max-[991px]:min-w-[251px]">
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <div className="list w-full min-h-[221px] h-full flex items-center justify-center">
+                      <img
+                        src={flipkart}
+                        alt="product"
+                        className="h-[200px] m-auto"
+                      />
+                    </div>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      {productData.title}
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      7 days
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      No
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      No
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      No
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      No
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      1500/-
+                    </p>
+                  </div>
+                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
+                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                      Yes
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {productData.banners.map((banners, index) => (
         <div key={index} className=" w-full flex ">
           <img className=" w-full h-full" src={banners} alt="" />
         </div>
       ))}
-      
     </>
   );
 }
