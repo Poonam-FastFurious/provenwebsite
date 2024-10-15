@@ -15,6 +15,8 @@ import { Baseurl } from "../../confige";
 // import { IoSettingsOutline } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+
+import { CiBoxList } from "react-icons/ci";
 function Profile() {
   const [activeTab, setActiveTab] = useState("DashBoard");
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -383,20 +385,20 @@ function Profile() {
                         </Link>
                       </li>
 
-                      {/* <li className="navbar-item account-menu">
+                      <li className="navbar-item account-menu">
                         <Link
-                          to="#"
+                          to="/OrderList"
                           className={`navbar-link text-slate-400 flex items-center py-2 rounded ${
                             activeTab === "settings" ? "active" : ""
                           }`}
                           onClick={() => handleTabChange("settings")}
                         >
                           <span className="me-2 mb-0">
-                            <IoSettingsOutline />
+                            <CiBoxList />
                           </span>
-                          <h6 className="mb-0 font-medium">Settings</h6>
+                          <h6 className="mb-0 font-medium">Order</h6>
                         </Link>
-                      </li> */}
+                      </li>
 
                       <li className="navbar-item account-menu">
                         <Link

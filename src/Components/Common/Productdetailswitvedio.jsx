@@ -163,7 +163,7 @@ function Productdetailswitvedio() {
                                       "embed/"
                                     )}
                                     title="YouTube Video"
-                                    frameBorder="0"
+                                    
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
                                   ></iframe>
@@ -383,6 +383,7 @@ function Productdetailswitvedio() {
         </div>
       </section>
       <HomeBestSelling heading={"related product"} />
+
       <section className="gi-new-product py- max-[767px]:py-[30px]">
         <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
           <div className="flex flex-wrap w-full overflow-hidden mb-[-24px]">
@@ -409,215 +410,324 @@ function Productdetailswitvedio() {
         <h2 className="hidden">Compare</h2>
         <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
           <div className="flex flex-wrap w-full overflow-hidden">
-            <div className="w-full px-[12px]">
-              <div className="gi-compare-box flex flex-row overflow-auto">
-                <div className="gi-compare-col title-col border-[1px] border-r-[1px] border-solid border-[#eee] relative block h-full w-[314px] min-w-[314px] max-[1399px]:w-[280px] max-[1399px]:min-w-[280px] mr-[-1px] max-[991px]:w-[150px] max-[991px]:min-w-[150px]">
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <div className="title w-full min-h-[221px] h-full flex items-center">
-                      <h5 className="m-[0] leading-[28px] text-[15px] ">
-                        <img
-                          src={productData.image}
-                          alt=""
-                          className=" h-40 w-40"
-                        />
-                      </h5>
-                    </div>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
-                      Name
-                    </h5>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
+            <div className="w-full px-[12px] overflow-x-auto">
+              
+              <table className="w-full border border-collapse min-w-[980px]">
+                <thead>
+                  <tr>
+                    <th className="p-4 text-left border max-w-[150px]">
+                     <img src={productData.image} alt="" />
+                    </th>
+                    <th className="p-4 text-center border whitespace-nowrap max-w-[150px]">
+                      <img src={provenlogo} alt="" />
+                    </th>
+                    <th className="p-4 text-center border whitespace-nowrap max-w-[150px]">
+                     <img src={amzon} alt="" />
+                    </th>
+                    <th className="p-4 text-center border whitespace-nowrap max-w-[150px]">
+                     <img src={flipkart} alt="" />
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody className="border text-sm">
+                  <tr>
+                    <td className="px-4 py-3 text-gray-800 border max-w-[150px]">
                       Replacement Window
-                    </h5>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
-                      Extra Free Spun Filters
-                    </h5>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
-                      Extra Free Inline Filters
-                    </h5>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
-                      Extra Free Inline Carbon
-                    </h5>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
-                      Extra Free Connectors
-                    </h5>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
-                      Free Accessories Worth
-                    </h5>
-                  </div>{" "}
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <h5 className="m-[0] leading-[28px] text-[15px] font-bold">
-                      Genuine Product
-                    </h5>
-                  </div>
-                </div>
-                <div className="gi-compare-col mr-[-1px] w-[314px] min-w-[380px] h-full block border-[1px] border-solid border-[#eee] relative max-[1399px]:w-[280px] max-[1399px]:min-w-[280px] max-[991px]:w-[251px] max-[991px]:min-w-[251px]">
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <div className="list w-full min-h-[221px] h-full flex items-center justify-center">
-                      <img
-                        src={provenlogo}
-                        alt="product"
-                        className="h-[200px] m-auto"
-                      />
-                    </div>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      {productData.title}
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
                       30 days
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      7 days
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      7 days
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 text-gray-800 border max-w-[150px]">
+                      Extra Free Spun Filters
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        className="fill-green-500 inline"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                          data-original="#000000"
+                        />
+                      </svg>{" "}
                       Yes
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        className="fill-red-500 inline"
+                        viewBox="0 0 320.591 320.591"
+                      >
+                        <path
+                          d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                          data-original="#000000"
+                        />
+                        <path
+                          d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                          data-original="#000000"
+                        />
+                      </svg>{" "}
+                      No
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        className="fill-red-500 inline"
+                        viewBox="0 0 320.591 320.591"
+                      >
+                        <path
+                          d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                          data-original="#000000"
+                        />
+                        <path
+                          d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                          data-original="#000000"
+                        />
+                      </svg>{" "}
+                      No
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 text-gray-800 border max-w-[150px]">
+                      Extra Free Inline Filters
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        className="fill-green-500 inline"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                          data-original="#000000"
+                        />
+                      </svg>{" "}
                       Yes
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        className="fill-red-500 inline"
+                        viewBox="0 0 320.591 320.591"
+                      >
+                        <path
+                          d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                          data-original="#000000"
+                        />
+                        <path
+                          d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                          data-original="#000000"
+                        />
+                      </svg>
+                      No
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        className="fill-red-500 inline"
+                        viewBox="0 0 320.591 320.591"
+                      >
+                        <path
+                          d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                          data-original="#000000"
+                        />
+                        <path
+                          d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                          data-original="#000000"
+                        />
+                      </svg>
+                      No
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 text-gray-800 border max-w-[150px]">
+                      Extra Free Inline Carbon
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        className="fill-green-500 inline"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                          data-original="#000000"
+                        />
+                      </svg>
                       Yes
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        className="fill-red-500 inline"
+                        viewBox="0 0 320.591 320.591"
+                      >
+                        <path
+                          d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                          data-original="#000000"
+                        />
+                        <path
+                          d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                          data-original="#000000"
+                        />
+                      </svg>
+                      No
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        className="fill-red-500 inline"
+                        viewBox="0 0 320.591 320.591"
+                      >
+                        <path
+                          d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                          data-original="#000000"
+                        />
+                        <path
+                          d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                          data-original="#000000"
+                        />
+                      </svg>
+                      No
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 text-gray-800 border max-w-[150px]">
+                      Extra Free Connectors
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        className="fill-green-500 inline"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                          data-original="#000000"
+                        />
+                      </svg>
                       Yes
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        className="fill-red-500 inline"
+                        viewBox="0 0 320.591 320.591"
+                      >
+                        <path
+                          d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                          data-original="#000000"
+                        />
+                        <path
+                          d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                          data-original="#000000"
+                        />
+                      </svg>
+                      No
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        className="fill-red-500 inline"
+                        viewBox="0 0 320.591 320.591"
+                      >
+                        <path
+                          d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                          data-original="#000000"
+                        />
+                        <path
+                          d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                          data-original="#000000"
+                        />
+                      </svg>
+                      No
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 text-gray-800 border max-w-[150px]">
+                      Free Accessories Worth
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
                       3000/-
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#02d302] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      Yes
-                    </p>
-                  </div>
-                </div>
-                <div className="gi-compare-col mr-[-1px] w-[314px] min-w-[380px] h-full block border-[1px] border-solid border-[#eee] relative max-[1399px]:w-[280px] max-[1399px]:min-w-[280px] max-[991px]:w-[251px] max-[991px]:min-w-[251px]">
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <div className="list w-full min-h-[221px] h-full flex items-center justify-center">
-                      <img
-                        src={amzon}
-                        alt="product"
-                        className="h-[200px] m-auto"
-                      />
-                    </div>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      {productData.title}
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      7 days
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      No
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      No
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      No
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      No
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
                       1500/-
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      Yes
-                    </p>
-                  </div>
-                </div>
-                <div className="gi-compare-col mr-[-1px] w-[314px] min-w-[380px] h-full block border-[1px] border-solid border-[#eee] relative max-[1399px]:w-[280px] max-[1399px]:min-w-[280px] max-[991px]:w-[251px] max-[991px]:min-w-[251px]">
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <div className="list w-full min-h-[221px] h-full flex items-center justify-center">
-                      <img
-                        src={flipkart}
-                        alt="product"
-                        className="h-[200px] m-auto"
-                      />
-                    </div>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      {productData.title}
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      7 days
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      No
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      No
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      No
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-[#ffa5a5] font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
-                      No
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
                       1500/-
-                    </p>
-                  </div>
-                  <div className="gi-compare-cell border-b-[1px] border-solid border-[#eee] px-[15px] py-[10px] flex items-center relative">
-                    <p className="m-[0] text-[14px] text-black font-light leading-[28px] overflow-hidden text-ellipsis whitespace-nowrap tracking-[0.02rem]">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 text-gray-800 border max-w-[150px]">
+                      Genuine Product
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        className="fill-green-500 inline"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                          data-original="#000000"
+                        />
+                      </svg>
                       Yes
-                    </p>
-                  </div>
-                </div>
-              </div>
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        className="fill-green-500 inline"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                          data-original="#000000"
+                        />
+                      </svg>
+                      Yes
+                    </td>
+                    <td className="px-4 py-3 text-gray-800 text-center border max-w-[150px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        className="fill-green-500 inline"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                          data-original="#000000"
+                        />
+                      </svg>
+                      Yes
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

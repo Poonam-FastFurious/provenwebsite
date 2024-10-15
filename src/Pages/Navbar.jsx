@@ -632,7 +632,7 @@ function Navbar() {
                         onClick={toggleDrawer}
                         className=" gi-site-menu-icon transition-all duration-[0.3s] ease-in-out  flex text-[#4b5966]"
                       >
-                        <i className="fi-rr-menu-burger text-[24px] leading-[17px] sm:hidden md:hidden lg:hidden  hide-on-mobile menudemo"></i>
+                        <i className="fi-rr-menu-burger text-[24px] leading-[17px] sm:hidden md:block lg:hidden  hide-on-mobile menudemo"></i>
                       </button>
                     </div>
                   </div>
