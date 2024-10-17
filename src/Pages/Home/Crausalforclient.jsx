@@ -66,7 +66,7 @@ function Crausalforclient() {
       items: 2,
     },
     1024: {
-      items: 8,
+      items: 5,
       itemsFit: "contain",
     },
   };

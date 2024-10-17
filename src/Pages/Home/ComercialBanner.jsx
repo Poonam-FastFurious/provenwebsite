@@ -44,7 +44,7 @@
 //                 className="w-full bg-center bg-no-repeat bg-cover overflow-hidden relative rounded-[5px] h-auto py-72 "
 //                 style={{ backgroundImage: `url()` }}
 //               >
-                
+
 //               </div>
 //             </div>
 //           </div>
@@ -56,13 +56,15 @@
 
 // export default ComercialBanner;
 
-
 function ComercialBanner() {
   return (
     <div>
-      <img src="https://s3-alpha-sig.figma.com/img/015a/009a/e11c9d802ce80797542a8ccdf2a2541d?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o6jRNdcp6vnpJMjeyOfJZ1RH6qq-MnvQUjRuRupVFVTQcYaq3XdX0epTi4BopjtIkNXSDyUSyQC3iKeO4lyYRxBRTwMJ53wCJhsQlf2Gh8dO2MC3mRaKTWYXwRtA2Cdn~2lHjVkDvGWrNPoXgRc3Jvm2sIdsqkDDJWJgRTPc147g7ziHuJ6SkyPuLrFpAZQB8vc7A~B1N8-B3enQjyCy~TsdeWCfjvTn3KKfKsmpLArK84hc5Rh0ayinLlZJfGFK~FQKcSw2yh0Y8T76Jt-wPyNer5IYZC-Iw68olh3UW9qQqeZtEyzbUZZev3~SHF2YrbREAPeGbt2PSOrWQLarWA__" alt="" />
+      <img
+        src="https://s3-alpha-sig.figma.com/img/015a/009a/e11c9d802ce80797542a8ccdf2a2541d?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LhJSvzVmdzyY7C~A-Og1~D8JBUw5Fsspbqr2fPS9ceVcEk773tY3KKHAkygeRkb0iiICkOJzcSg~HQrWuM1u3gDzzVeUVXy1GqAnbCeSLqBFkoCv3jKEhAGeUAvcDtYZsJCjB4DRfcMWxF~Ma73b4iTljjyoIu4-7iv8MG0psQ0xvBBuNKh2vCBMGAwCiWJuHJOrSq5HKBSrtX2XCeTb3nro0xa64y~96iDNjykYGD9Z3vCg2CCm1QVVyZfAyKLo3gfJe-uhxlxVEf094na9UrpFIPTMXWbD022lwX24PR16xNAci~bLhgAHxUmjhBo9-A0eN8DllyjPt-3O0bECmA__"
+        alt=""
+      />
     </div>
-  )
+  );
 }
 
-export default ComercialBanner
+export default ComercialBanner;

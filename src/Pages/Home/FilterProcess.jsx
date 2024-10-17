@@ -22,11 +22,10 @@ function FilterProcess() {
                 solids/salts to bacteria, virus and heavy metals as well.
               </p>
             </div>
-           
           </div>
           <div className="relative w-full ">
             <img
-              src="https://s3-alpha-sig.figma.com/img/3c41/ce79/e6d702ee11499049d546983fe5220dd5?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=X-rANEJyKCOMxeU7gvXKYv5bwk7M~iG6dCy6xPLV4gewLnbJGy50XgSx~AOHR70jx6lTSER9QEby0gpES202fesvg1oEafZu4oIHpv9QVh~26rPBNT0jocNbnuMAXAHXVgPzetxEpD4CvXnVPSdT9TAkjZ8L~iVOUKA0T~Wqn0n0xCI~5BBffdZuW6tZ6WBfeiAO82~DD2DI8KGrSjrBiAWhObuX6Q~XCNtUnWWrltuEz6-21v1cK96A51Sd~TIFoqrY9eQbc7cz~EByRBl14EWWIN2VObH28vyBoOAh1GVtpD-eS927BtqsSIXHXdvEKtQUUrq3Sf-6TcAd4c7nzA__"
+              src="https://s3-alpha-sig.figma.com/img/3c41/ce79/e6d702ee11499049d546983fe5220dd5?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=n6b8qh0xQ58dQWo3EpazrHxDTkU3HmawesM4YxtL8D3-ZPZ7lXEXbW49lK9LeJbGbSFFm6TXGwEMLIFDPZ6KbYbGKEQV3sEMHk~gcdQQaE1cnJvuqHXS8HskMIHMkGsG2pnc0dFkgAl8g9p1jGKxuaxscoWnnecq3HEej1hz2oh9P3t4yjis9W5pe1tt0hm3g~KJP5TFlvLZEj~dXnSalgcyXAiLNYns7O3q4WIpxATLo4HkzJDiUp6K7HKDI~A80FPutXxtHt0psW4kcDbNiGWZ6Xer1375xOwSZ8sH84l9uVVGO8nGcqjBMVC~shccWYk1ZsMBtN2eNwIz-Qkpow__"
               className="w-full  object-cover shrink-0 sm:rounded-[65px] md:rounded-[65px] lg:rounded-[65px] rounded-2xl  h-auto"
             />
           </div>

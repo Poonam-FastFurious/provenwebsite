@@ -1,10 +1,10 @@
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import images from "../../assets/Images/certificate/certi1.png";
-import images2 from "../../assets/Images/certificate/certi2.png";
+import images from "../../assets/Images/certificate/certi1.gif";
+import images2 from "../../assets/Images/certificate/certi2.jpg";
 import images3 from "../../assets/Images/certificate/certi3.png";
-import images4 from "../../assets/Images/certificate/certi4.png";
-import images5 from "../../assets/Images/certificate/certi5.png";
+import images4 from "../../assets/Images/certificate/certi4.jpg";
+import images5 from "../../assets/Images/certificate/certi5.jpg";
 import images6 from "../../assets/Images/certificate/certi6.png";
 import images7 from "../../assets/Images/certificate/certi7.png";
 import images8 from "../../assets/Images/certificate/certi8.png";
@@ -36,47 +36,47 @@ function Crausalforimage() {
   const items = [
     <div className="item" data-value="1" key={1}>
       <Link to={certification6} target="_blank" rel="noopener noreferrer">
-        <img src={images} alt="" />
+        <img src={images} alt="" className="slider-image" />
       </Link>
     </div>,
     <div className="item" data-value="2" key={2}>
       <Link to={certification2} target="_blank" rel="noopener noreferrer">
-        <img src={images2} alt="" />
+        <img src={images2} alt="" className="slider-image" />
       </Link>
     </div>,
     <div className="item" data-value="2" key={2}>
       <Link to={certification3} target="_blank" rel="noopener noreferrer">
-        <img src={images3} alt="" />
+        <img src={images3} alt="" className="slider-image" />
       </Link>
     </div>,
     <div className="item" data-value="2" key={2}>
       <Link to={certification8} target="_blank" rel="noopener noreferrer">
-        <img src={images4} alt="" />
+        <img src={images4} alt="" className="slider-image" />
       </Link>
     </div>,
     <div className="item" data-value="2" key={2}>
       <Link to={certification4} target="_blank" rel="noopener noreferrer">
-        <img src={images5} alt="" />
+        <img src={images5} alt="" className="slider-image" />
       </Link>
     </div>,
     <div className="item" data-value="2" key={2}>
       <Link to={certification9} target="_blank" rel="noopener noreferrer">
-        <img src={images6} alt="" />
+        <img src={images6} alt="" className="slider-image" />
       </Link>
     </div>,
     <div className="item" data-value="2" key={2}>
       <Link to={certification} target="_blank" rel="noopener noreferrer">
-        <img src={images7} alt="" />
+        <img src={images7} alt="" className="slider-image" />
       </Link>
     </div>,
     <div className="item" data-value="2" key={2}>
       <Link to={certification7} target="_blank" rel="noopener noreferrer">
-        <img src={images8} alt="" />
+        <img src={images8} alt="" className="slider-image" />
       </Link>
     </div>,
     <div className="item" data-value="2" key={2}>
       <Link to={certification5} target="_blank" rel="noopener noreferrer">
-        <img src={images9} alt="" />
+        <img src={images9} alt="" className="slider-image" />
       </Link>
     </div>,
   ];

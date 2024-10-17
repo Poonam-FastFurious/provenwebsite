@@ -1,9 +1,7 @@
-
-
 function NewHomeFeeture() {
   return (
     <>
-      <div className=" w-full    py-8 flex flex-wrap justify-between items-center mx-auto  sm:container  overflow-hidden">
+      <div className=" w-full    py-8 flex flex-wrap justify-between items-center mx-auto  sm:container   overflow-hidden">
         <div className="grid md:grid-cols-2 gap-4 items-center  overflow-hidden">
           <div className="relative w-full h-full md:min-h-[470px]">
             <div className="grid md:grid-cols-2 gap-8 max-md:max-w-lg mx-auto">
@@ -123,8 +121,8 @@ function NewHomeFeeture() {
             </div>
           </div>
           <div className="p-6 max-w-xl mx-auto">
-          <h6 className="sm:text-md text-md font-bold  text-AFPPrimary ">
-             About us
+            <h6 className="sm:text-md text-md font-bold  text-AFPPrimary ">
+              About us
             </h6>
             <h1 className="sm:text-2xl text-2xl font-bold ">
               Proven Water Industries pvt. ltd.

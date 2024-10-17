@@ -1,22 +1,75 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { FaHome } from "react-icons/fa";
 import { MdCall, MdOutlineMailLock } from "react-icons/md";
 import { PiBuildings } from "react-icons/pi";
 import contactbanner from "../../assets/Images/analtsis.webp";
 import contactbgimage from "../../assets/Images/contactbgimage.jfif";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 function ContactUs() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submit button clicked");
+
+    const smtpParams = {
+      host: "smtp.elasticemail.com",
+      username: "creativeteam.brandbell2@gmail.com",
+      password: "0F007A66BBD4FE6AEC46E7BB7A04FDC2E63F",
+      fromEmail: "creativeteam.brandbell2@gmail.com",
+      toEmail: "creativeteam.brandbell2@gmail.com",
+      subject: "New Contact Form Submission",
+      body: `
+        Name: ${e.target.name.value}
+        Email: ${e.target.email.value}
+        Phone Number: ${e.target.phone_number.value}
+        Message: ${e.target.message.value}
+      `,
+    };
+
+    window.Email.send({
+      Host: smtpParams.host,
+      Username: smtpParams.username,
+      Password: smtpParams.password,
+      To: smtpParams.toEmail,
+      From: smtpParams.fromEmail,
+      Subject: smtpParams.subject,
+      Body: smtpParams.body,
+      Cc: smtpParams.ccEmail,
+    }).then(
+      (message) => {
+        console.log("Email sent successfully:", message);
+        toast.success("Email sent successfully", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+
+        e.target.reset();
+      },
+      (error) => {
+        console.error("Error sending email:", error);
+        toast.error("Error sending email");
+      }
+    );
+  };
   return (
     <>
       <div
         className="relative overflow-hidden  bg-cover bg-no-repeat p-12 text-center"
         style={{
-          "background-image": `url(${contactbgimage})`,
+          backgroundImage: `url(${contactbgimage})`,
           height: "400px",
         }}
       >
         <div
           className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
-          style={{ "background-color": "rgba(0, 0, 0, 0.6)" }}
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
         >
           <div className="flex h-full items-center justify-center">
             <div className="text-white">
@@ -103,12 +156,13 @@ function ContactUs() {
             ></img>
           </div>
           <div className="min-[768px]:w-[50%] w-full px-[12px]">
-            <form className="max-[767px]:mt-[50px]">
+            <form className="max-[767px]:mt-[50px]" onSubmit={handleSubmit}>
               <div className="form-group mb-[30px]">
                 <input
                   type="text"
                   className="form-control py-[10px] px-[15px] border-[1px] border-solid border-[#eee] rounded-[5px] text-[15px] text-[#777] block w-full font-normal leading-[1.5]"
-                  id="fname"
+                  name="name"
+                  id="name"
                   placeholder="Full Name"
                 />
               </div>
@@ -116,7 +170,8 @@ function ContactUs() {
                 <input
                   type="email"
                   className="form-control py-[10px] px-[15px] border-[1px] border-solid border-[#eee] rounded-[5px] text-[15px] text-[#777] block w-full font-normal leading-[1.5]"
-                  id="umail"
+                  name="email"
+                  id="email"
                   placeholder="Email"
                 />
               </div>
@@ -124,15 +179,17 @@ function ContactUs() {
                 <input
                   type="number"
                   className="form-control py-[10px] px-[15px] border-[1px] border-solid border-[#eee] rounded-[5px] text-[15px] text-[#777] block w-full font-normal leading-[1.5]"
-                  id="phone"
+                  name="phone_number"
+                  id="phone_number"
                   placeholder="Phone"
                 />
               </div>
               <div className="form-group mb-[30px]">
                 <textarea
                   className="form-control py-[10px] px-[15px] border-[1px] border-solid border-[#eee] rounded-[5px] text-[15px] text-[#777] block w-full font-normal leading-[1.5]"
-                  id="exampleFormControlTextarea1"
                   rows="3"
+                  name="message"
+                  id="message"
                   placeholder="Message"
                 ></textarea>
               </div>
@@ -153,7 +210,7 @@ function ContactUs() {
           width="100%"
           height="600"
           style={{ border: "0" }}
-          allowfullscreen=""
+          allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>

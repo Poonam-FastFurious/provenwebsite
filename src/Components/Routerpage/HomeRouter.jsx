@@ -49,6 +49,7 @@ function HomeRouter() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/Book-Demo" element={<BookDemo />} />
           <Route path="/Water-purifier" element={<Shop />} />
           <Route path="/Spare_Parts" element={<ShaprePart />} />

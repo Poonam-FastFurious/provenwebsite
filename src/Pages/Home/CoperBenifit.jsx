@@ -56,7 +56,7 @@ function CoperBenifit() {
   ];
   return (
     <div className="bg-[#E8E0DC]">
-      <section className="  flex flex-wrap justify-between items-center mx-auto  sm:container   bg-[#E8E0DC] ">
+      <section className="  flex flex-wrap justify-between items-center mx-auto  sm:container    bg-[#E8E0DC] ">
         <section className=" py-8 ">
           <div className="flex flex-wrap justify-between  mx-auto  ">
             <h1 className="sm:text-2xl text-2xl font-bold  text-center justify-center w-full text-[#A25223] sm:mb-8 ">
@@ -66,7 +66,7 @@ function CoperBenifit() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                 <div className="flex justify-center">
                   <img
-                    src="https://s3-alpha-sig.figma.com/img/4cd1/5324/26c6b261ac70a599e4f5d615e1cdfebb?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HXQytzR1TNVFpa4LswcJUsDI~LDkh8Vc6n5RcRRCfKG2TAcOLz2vrfJs737GAn6v5e~jw0M4r8CoScMUMPqAQb5COcR2eYy6PsZvgMpMaip5HuKm37tz2hnVLquJ5emjLzDf7FbpyuLDmLLP5wc2DKNdVt0EWaXdJudaKaUwOsWdfviDnG8k2~5k8vmkBgjugydhsnaTB7c-wLZ~86qJfXRbk2kD2a33~hyEvhfyp5vS4RwjLGareAf9kw1kjU5oAhesytzpLjE6agiUqr~gJcYetRKjjliqksJQqpHIXp1SP4dVcBlrBWQ9-AP9mxqG-7rXnMCilch76MKgQ72F-Q__"
+                    src="https://s3-alpha-sig.figma.com/img/4cd1/5324/26c6b261ac70a599e4f5d615e1cdfebb?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=W5emgOurZAMzlmTIFYzHG0DdwTzfrlHdlwJY9ndElkQnMvOAgkf95QLm07D7vvw9ixejrUKN1BzNEvrFmu5F9-YETvLS9n7i4dJ03-PIeg0oxoceN8wh6drHyis~0DnAoWm1pRc~YXyHbAyyFSx6~ieAHFmdaBKOgXBTZvRlMPK9qsq1zxybIF0r~K1UW60Yx9CGA9A0yt7MT4k0z~61F38QkpSli41LsdCZCdbFxyr1MGF5LvjpTh9bDVWm6d39cPHystVYzgQdkNSHaRL8X~XljCl10digEG3NON1h24B4Kt~M9TJGe50UEtk57f5dsFaqjqeHqbbCrjS4GTfS~A__"
                     alt="Person with gesture"
                     className="w-full h-auto object-cover p-8"
                   />

@@ -2,7 +2,63 @@
 import carrerimage from "../../assets/Images/carrerimage.jfif";
 import provencreeer from "../../assets/Images/provencreeer.png";
 import provencreeer1 from "../../assets/Images/careersimage2.jpg";
+import { toast } from "react-toastify";
 function Career() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submit button clicked");
+
+    const smtpParams = {
+      host: "smtp.elasticemail.com",
+      username: "creativeteam.brandbell2@gmail.com",
+      password: "0F007A66BBD4FE6AEC46E7BB7A04FDC2E63F",
+      fromEmail: "creativeteam.brandbell2@gmail.com",
+      toEmail: "creativeteam.brandbell2@gmail.com",
+      ccEmail: "rahulkumarofficial36@gmail.com",
+      subject: "New Career Form Submission",
+      body: `
+        Name: ${e.target.name.value}
+        Email: ${e.target.email.value}
+        Phone Number: ${e.target.phone_number.value}
+        Message: ${e.target.message.value}
+        qualification: ${e.target.message.value}
+        experience: ${e.target.message.value}
+        gender: ${e.target.message.value}
+        resume: ${e.target.message.value}
+      `,
+    };
+
+    window.Email.send({
+      Host: smtpParams.host,
+      Username: smtpParams.username,
+      Password: smtpParams.password,
+      To: smtpParams.toEmail,
+      From: smtpParams.fromEmail,
+      Subject: smtpParams.subject,
+      Body: smtpParams.body,
+      Cc: smtpParams.ccEmail,
+    }).then(
+      (message) => {
+        console.log("Email sent successfully:", message);
+        toast.success("Email sent successfully", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+
+        e.target.reset();
+      },
+      (error) => {
+        console.error("Error sending email:", error);
+        toast.error("Error sending email");
+      }
+    );
+  };
   return (
     <>
       <div
@@ -77,7 +133,7 @@ function Career() {
             <h1 className="text-2xl font-bold  text-AFPPrimary mb-4 text-center">
               Apply For Job
             </h1>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               {/* Row 1 */}
               <div className="flex flex-wrap -mx-2">
                 <div className="w-full md:w-1/2 px-2">
@@ -88,7 +144,8 @@ function Career() {
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
-                    id="fullName"
+                    name="name"
+                    id="name"
                     type="text"
                     className="w-full p-2 border border-gray-300 rounded"
                     required
@@ -102,7 +159,8 @@ function Career() {
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
-                    id="phoneNumber"
+                    name="phone_number"
+                    id="phone_number"
                     type="number"
                     className="w-full p-2 border border-gray-300 rounded"
                     required
@@ -120,6 +178,7 @@ function Career() {
                     E-mail <span className="text-red-500">*</span>
                   </label>
                   <input
+                    name="email"
                     id="email"
                     type="email"
                     className="w-full p-2 border border-gray-300 rounded"
@@ -135,6 +194,7 @@ function Career() {
                   </label>
                   <input
                     id="qualification"
+                    name="qualification"
                     type="text"
                     className="w-full p-2 border border-gray-300 rounded"
                     required
@@ -153,6 +213,7 @@ function Career() {
                   </label>
                   <select
                     id="experience"
+                    name="experience"
                     className="w-full p-2 border border-gray-300 rounded"
                     required
                   >
@@ -172,6 +233,7 @@ function Career() {
                   </label>
                   <select
                     id="gender"
+                    name="gender"
                     className="w-full p-2 border border-gray-300 rounded"
                     required
                   >
@@ -194,6 +256,7 @@ function Career() {
                   </label>
                   <input
                     id="resume"
+                    name="resume"
                     type="file"
                     className="w-full p-2 border border-gray-300"
                   />
@@ -210,6 +273,7 @@ function Career() {
                     Your Message
                   </label>
                   <textarea
+                    name="message"
                     id="message"
                     className="w-full p-2 border border-gray-300 rounded h-32"
                   ></textarea>

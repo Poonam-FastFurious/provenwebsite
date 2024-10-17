@@ -163,7 +163,6 @@ function Productdetailswitvedio() {
                                       "embed/"
                                     )}
                                     title="YouTube Video"
-                                    
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
                                   ></iframe>
@@ -392,7 +391,7 @@ function Productdetailswitvedio() {
                 <div className="section-title  relative flex justify-between pb-[20px] z-[5] max-[767px]:flex-col">
                   <div className="section-detail">
                     <h2 className="gi-title mb-[0] text-[25px] font-semibold text-AFPPrimary relative inline p-4 sm:p-0 md:p-0 lg:p-0 xl:p-0 capitalize leading-[1]  font-manrope max-[991px]:text-[25px] max-[767px]:text-[25px] max-[575px]:text-[25px]">
-                      Proven Water Compare
+                      comparison table
                       <span className=""></span>
                     </h2>
                   </div>
@@ -411,21 +410,20 @@ function Productdetailswitvedio() {
         <div className="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
           <div className="flex flex-wrap w-full overflow-hidden">
             <div className="w-full px-[12px] overflow-x-auto">
-              
               <table className="w-full border border-collapse min-w-[980px]">
                 <thead>
                   <tr>
                     <th className="p-4 text-left border max-w-[150px]">
-                     <img src={productData.image} alt="" />
+                      <img src={productData.image} alt="" />
                     </th>
                     <th className="p-4 text-center border whitespace-nowrap max-w-[150px]">
                       <img src={provenlogo} alt="" />
                     </th>
                     <th className="p-4 text-center border whitespace-nowrap max-w-[150px]">
-                     <img src={amzon} alt="" />
+                      <img src={amzon} alt="" />
                     </th>
                     <th className="p-4 text-center border whitespace-nowrap max-w-[150px]">
-                     <img src={flipkart} alt="" />
+                      <img src={flipkart} alt="" />
                     </th>
                   </tr>
                 </thead>

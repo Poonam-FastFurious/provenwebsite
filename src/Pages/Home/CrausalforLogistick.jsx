@@ -2,7 +2,7 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import images from "../../assets/Images/Logistick/Blue-Dart-Logistics.png";
 import images2 from "../../assets/Images/Logistick/Delivery.png";
-import images3 from "../../assets/Images/Logistick/DHL.png";
+import images3 from "../../assets/Images/Logistick/DHL.jpg";
 import images4 from "../../assets/Images/Logistick/DTDC.png";
 import images5 from "../../assets/Images/Logistick/E-com-EXpress.png";
 import images6 from "../../assets/Images/Logistick/Ekart.png";
@@ -17,37 +17,36 @@ function CrausalforLogistick() {
       items: 2,
     },
     1024: {
-      items: 5,
+      items: 4,
       itemsFit: "contain",
     },
   };
 
   const items = [
     <div className="item" data-value="1" key={1}>
-      <img src={images} alt="" />
+      <img src={images} alt="" className="slider-image" />
     </div>,
     <div className="item" data-value="2" key={2}>
-      <img src={images2} alt="" />
+      <img src={images2} alt="" className="slider-image" />
     </div>,
     <div className="item" data-value="2" key={2}>
-      <img src={images3} alt="" />
+      <img src={images3} alt="" className="slider-image" />
     </div>,
     <div className="item" data-value="2" key={2}>
-      <img src={images4} alt="" />
+      <img src={images4} alt="" className="slider-image" />
     </div>,
     <div className="item" data-value="2" key={2}>
-      <img src={images5} alt="" />
+      <img src={images5} alt="" className="slider-image" />
     </div>,
     <div className="item" data-value="2" key={2}>
-      <img src={images6} alt="" />
+      <img src={images6} alt="" className="slider-image" />
     </div>,
     <div className="item" data-value="2" key={2}>
-      <img src={images7} alt="" />
+      <img src={images7} alt="" className="slider-image" />
     </div>,
     <div className="item" data-value="2" key={2}>
-      <img src={images8} alt="" />
+      <img src={images8} alt="" className="slider-image" />
     </div>,
-   
   ];
 
   return (

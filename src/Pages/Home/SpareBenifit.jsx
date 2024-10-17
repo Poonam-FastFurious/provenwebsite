@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import image from "../../assets/Images/Sparepartimage.png"
+import image from "../../assets/Images/Sparepartimage.png";
 function SpareBenifit() {
   return (
-    <div className="  bg-[#E7C6A5] ">
+    <div className="  bg-[#E7C6A5]   ">
       <div className="grid lg:grid-cols-2 items-center gap-10 my-4     container mx-auto p-4">
         <div className="max-lg:text-center">
           <h6 className=" text-sm max-sm:text-2xl font-extrabold text-AFPPrimary">
@@ -30,17 +30,12 @@ function SpareBenifit() {
             type="button"
             className="  px-4 py-2.5 rounded-md tracking-wide flex items-center text-sm mt-6 bg-AFPPrimary text-white max-lg:mx-auto"
           >
-          <Link to="/Spare_Parts">  Shop Now</Link>
-           
+            <Link to="/Spare_Parts"> Shop Now</Link>
           </button>
         </div>
 
         <div className=" w-full">
-          <img
-            src={image}
-            alt=""
-            className=" h-[450px]"
-          />
+          <img src={image} alt="" className=" h-[450px]" />
         </div>
       </div>
     </div>

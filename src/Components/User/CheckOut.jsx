@@ -122,7 +122,11 @@ const CheckoutSection = () => {
       return responseData.data._id;
     } catch (error) {
       console.error("Error creating order:", error);
-      Swal.fire(` Add  Shiping  addres`);
+      Swal.fire({
+        text: "Please add a shipping address",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#237DA2", // Setting OK button background to gray
+      });
     }
   };
   const paymentHandler = async (e) => {

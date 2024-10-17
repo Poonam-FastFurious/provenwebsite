@@ -10,6 +10,18 @@ import certificate8 from "../../assets/Images/PROVEN-GST-CERTIFICATE_page-0001.j
 import certificate9 from "../../assets/Images/PROVEN-GST-CERTIFICATE_page-0002.jpg";
 import certificate10 from "../../assets/Images/Screenshot_20200118_180743.jpg";
 import certificate11 from "../../assets/Images/Msme-Certificate_provenindia.jpg";
+import delhigst from "../../assets/Images/gst/(01) PROVEN DELHI GST_page-0001.jpg";
+import delhigstpdf from "../../assets/Images/gst/(01) PROVEN DELHI GST.pdf";
+import KARNATAKA from "../../assets/Images/gst/(02) PROVEN KARNATAKA GST_page-0001.jpg";
+import KARNATAKApdf from "../../assets/Images/gst/(02) PROVEN KARNATAKA GST.pdf";
+import TELANGANA from "../../assets/Images/gst/(03) PROVEN TELANGANA GST_page-0001.jpg";
+import TELANGANApdf from "../../assets/Images/gst/(03) PROVEN TELANGANA GST.pdf";
+import MAHARESHTRA from "../../assets/Images/gst/(04) PROVEN MAHARESHTRA GST_page-0001.jpg";
+import MAHARESHTRApdf from "../../assets/Images/gst/(04) PROVEN MAHARESHTRA GST.pdf";
+import WESTBENGAL from "../../assets/Images/gst/(05) PROVEN WEST BENGAL GST_page-0001.jpg";
+import WESTBENGALpdf from "../../assets/Images/gst/(05) PROVEN WEST BENGAL GST.pdf";
+import TAMINADU from "../../assets/Images/gst/(06) PROVEN TAMIL NADU GST_page-0001.jpg";
+import TAMINADUpdf from "../../assets/Images/gst/(06) PROVEN TAMIL NADU GST.pdf";
 import Crausalforimage from "./Crausalforimage";
 function Certificate() {
   return (
@@ -141,14 +153,14 @@ function Certificate() {
             <div className="p-4 text-center">
               <p className="text-sm font-semibold">Trademark Certificate</p>
             </div>
-          </div>{" "}
+          </div>
         </div>
       </div>
       <div className="container mx-auto px-12">
         <h2 className="text-center text-2xl font-bold mb-6  bg-AFPPrimary p-4">
           GST Registration Certification
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-white  rounded overflow-hidden p-12">
             <Link target="_blank" to={certificate8}>
               <img
@@ -166,9 +178,81 @@ function Certificate() {
                 className="w-full   h-84"
               />
             </Link>
-          </div>{" "}
+          </div>
+          <div className="bg-white  rounded overflow-hidden p-12">
+            <Link target="_blank" to={delhigstpdf}>
+              <img
+                src={delhigst}
+                alt="ISO 9001:2015"
+                className="w-full   h-84"
+              />
+            </Link>{" "}
+            <div className="p-4 text-center">
+              <p className="text-sm font-semibold">Delhi GST</p>
+            </div>
+          </div>
+          <div className="bg-white  rounded overflow-hidden p-12">
+            <Link target="_blank" to={KARNATAKApdf}>
+              <img
+                src={KARNATAKA}
+                alt="ISO 9001:2015"
+                className="w-full   h-84"
+              />
+            </Link>
+            <div className="p-4 text-center">
+              <p className="text-sm font-semibold">KARNATAKA GST</p>
+            </div>
+          </div>
+          <div className="bg-white  rounded overflow-hidden p-12">
+            <Link target="_blank" to={TELANGANApdf}>
+              <img
+                src={TELANGANA}
+                alt="ISO 9001:2015"
+                className="w-full   h-84"
+              />
+            </Link>
+            <div className="p-4 text-center">
+              <p className="text-sm font-semibold">TELANGANA GST</p>
+            </div>
+          </div>
+          <div className="bg-white  rounded overflow-hidden p-12">
+            <Link target="_blank" to={MAHARESHTRApdf}>
+              <img
+                src={MAHARESHTRA}
+                alt="ISO 9001:2015"
+                className="w-full   h-84"
+              />
+            </Link>
+            <div className="p-4 text-center">
+              <p className="text-sm font-semibold">Maharashtra GST</p>
+            </div>
+          </div>
+          <div className="bg-white  rounded overflow-hidden p-12">
+            <Link target="_blank" to={WESTBENGALpdf}>
+              <img
+                src={WESTBENGAL}
+                alt="ISO 9001:2015"
+                className="w-full   h-84"
+              />
+            </Link>
+            <div className="p-4 text-center">
+              <p className="text-sm font-semibold">WESTBENGAL GST</p>
+            </div>
+          </div>
+          <div className="bg-white  rounded overflow-hidden p-12">
+            <Link target="_blank" to={TAMINADUpdf}>
+              <img
+                src={TAMINADU}
+                alt="ISO 9001:2015"
+                className="w-full   h-84"
+              />
+            </Link>{" "}
+            <div className="p-4 text-center">
+              <p className="text-sm font-semibold">TAMIL NADU GST</p>
+            </div>
+          </div>
         </div>
-      </div>{" "}
+      </div>
       <div className="container mx-auto px-12">
         <h2 className="text-center text-2xl font-bold mb-6  bg-AFPPrimary p-4">
           Certificate of Nomination

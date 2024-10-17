@@ -37,7 +37,7 @@ function HorizentalCard({ name, price, images, discount, ID }) {
       <div className="gi-all-product-block px-[12px]">
         <div className="w-full gi-all-product-block px-[12px]">
           <div className="gi-all-product-inner mr-[1px] p-[15px] flex flex-wrap items-center bg-[#fff] border-[1px] border-solid border-[#eee] overflow-hidden relative">
-            <div className="gi-pro-image-outer basis-[70px]">
+            <div className="gi-pro-image-outer ">
               <div className="gi-pro-image overflow-hidden">
                 <Link to={`/Product/${ID}`} className="image">
                   <img

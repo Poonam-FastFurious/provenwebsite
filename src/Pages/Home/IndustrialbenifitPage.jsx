@@ -7,9 +7,8 @@ function IndustrialbenifitPage() {
         <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-12 items-center">
           <div>
             <img
-              src="https://s3-alpha-sig.figma.com/img/38a4/0166/da2d9de0de81c778d2d9f7d954325e84?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KbGAWh64j21Gf3AoSDr0DNyegkSzhk05JEoPzFBtxniFzmR3x-4wPjizurXNmm-IVzq5BNlq0zejkW8Ce~OcTAD8oN-lW9Nr8VIOp-OeevMyQ1Pp2aiNyyBNTiPNDHOn~MgVsBM5zukGfKWtBzfQHquQaHRk-wrSFws-Ipl8NWdOREOtZbAD~KD7X8ibghmYnYPbO9tWOj~rif4xY0Ft4KAnwYLrgY5cotNsUazhmEe22bzxFH5k2lLmZ2n53ejvTTaOdvZn2ozPtIqw-cHGGq0qEjdisyfdcd8y8j1SUfUQtza8xPMOUK-tcYgdKQhf4dClnd4-YK7fOdF7lR9tUQ__"
+              src="https://s3-alpha-sig.figma.com/img/38a4/0166/da2d9de0de81c778d2d9f7d954325e84?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a7tdZvso1nr3FErp3miVSRpRjPJBz2n~UqoDf~3k-ThIyQuYEYDTFne3TdsP3hhEPHYA3PHfrKocm1I~iwLedbbhjU5kUT1Z8kTeswV1OAguKq37AzXsh5ac38q5VS4Ra2YX5fFMbAiPqiaXLL9tSLiMcr3Jli5U7uysmnYUYr6E-tj5~sfufbZa7XoSTSTQ38dDykX6qTCqt8IY2KcSFp0S9MEJaWGGLBDt3Ljfmty7h6lRZ4LCIikMBasPyv1nC5OddovMR3ki9R8CwT81DJQZr8u3OPGH3wqcjSXavL6nz-uCHriJYbK~RoB7mB0ZENvfCtaJsJiuhmMKXW8rlw__"
               className="w-full rounded-md "
-              
             />
           </div>
 
@@ -19,7 +18,7 @@ function IndustrialbenifitPage() {
                 Industrial RO System
               </h6>
               <h2 className="text-white sm:text-xl text-xl font-bold">
-              Industrial RO System and Water Treatment Plant
+                Industrial RO System and Water Treatment Plant
               </h2>
               <p className=" text-white  mt-2 text-justify">
                 We are leading manufacturer and supplier of industrial RO system
@@ -63,9 +62,7 @@ function IndustrialbenifitPage() {
                     data-original="#000000"
                   ></path>
                 </svg>
-                <h6 className="text-base text-white">
-                  Fully automatic system
-                </h6>
+                <h6 className="text-base text-white">Fully automatic system</h6>
               </div>
               <div className="flex items-center gap-3">
                 <svg
@@ -115,12 +112,11 @@ function IndustrialbenifitPage() {
               </div>
             </div>
             <button
-            type="button"
-            className=" border px-4 py-2.5 rounded-md tracking-wide flex items-center text-sm mt-6 bg-AFPPrimary text-white max-lg:mx-auto"
-          >
-            <Link to="Productctegory/Industrial Ro">Shop Now</Link>
-           
-          </button>
+              type="button"
+              className=" border px-4 py-2.5 rounded-md tracking-wide flex items-center text-sm mt-6 bg-AFPPrimary text-white max-lg:mx-auto"
+            >
+              <Link to="Productctegory/Industrial Ro">Shop Now</Link>
+            </button>
           </div>
         </div>
       </div>

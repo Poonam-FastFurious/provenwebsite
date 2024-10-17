@@ -34,7 +34,7 @@ function Suport() {
 
   const handleEmailClick = () => {
     // Replace with your email address
-    const emailAddress = "Support@Proven.com";
+    const emailAddress = "info@provenonline.in";
     window.location.href = `mailto:${emailAddress}`;
   };
   return (
@@ -73,10 +73,10 @@ function Suport() {
             <div className="text-center mb-4">
               <p className="text-gray-800">or</p>
               <Link
-                to="mailto:support@proven.com"
+                to="mailto:info@provenonline.in"
                 className="text-blue-600 hover:underline"
               >
-                E-mail: Support@Proven.com
+                E-mail: info@provenonline.in
               </Link>
             </div>
           </div>
@@ -235,7 +235,7 @@ function Suport() {
                 we are available online from 9:00 AM to 5:00 PM (GMT95:45) Talk
                 with use now
               </p>
-              <span className=" font-bold">Support@Proven.com</span>
+              <span className=" font-bold">info@provenonline.in</span>
             </div>
           </div>
         </div>
