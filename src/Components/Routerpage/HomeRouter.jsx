@@ -39,6 +39,7 @@ import Copper from "../../Pages/Copper/Copper";
 import Ordertracking from "../User/Ordertracking";
 import StoreLocation from "../StoreLocation/StoreLocation";
 import VerifyAccount from "../Authentication/VerifyAccount";
+// import Payumoneycheckout from "../User/Payumoneycheckout";
 
 function HomeRouter() {
   return (
@@ -49,7 +50,6 @@ function HomeRouter() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-
           <Route path="/Book-Demo" element={<BookDemo />} />
           <Route path="/Water-purifier" element={<Shop />} />
           <Route path="/Spare_Parts" element={<ShaprePart />} />
@@ -88,13 +88,28 @@ function HomeRouter() {
             element={
               <RouteProtected element={<Orderlist />} redirectTo="/login" />
             }
-          />
+          />{" "}
           <Route
             path="/success"
             element={
               <RouteProtected element={<Ordersuccess />} redirectTo="/login" />
             }
           />
+          {/* <Route
+            path="/success/:txnid"
+            element={
+              <RouteProtected element={<Ordersuccess />} redirectTo="/login" />
+            }
+          /> */}
+          {/* <Route
+            path="/checkout"
+            element={
+              <RouteProtected
+                element={<Payumoneycheckout />}
+                redirectTo="/login"
+              />
+            }
+          />{" "} */}
           <Route
             path="/checkout"
             element={
